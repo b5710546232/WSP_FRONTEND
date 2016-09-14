@@ -2,3 +2,4 @@ node_modules/
 test.zip
 .DS_Store
 test/
+npm-debug.log
