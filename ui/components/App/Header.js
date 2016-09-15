@@ -8,7 +8,6 @@ export default class Header extends Component {
   render() {
     return (
       <div>
-        {/* <button type="button" className="btn btn-danger">Action</button> */}
         <div className="navbar navbar-default">
           <div className="container-fluid">
             <div className="navbar-header">
