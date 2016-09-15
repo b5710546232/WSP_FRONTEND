@@ -27,6 +27,8 @@
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
     "node-sass": "^3.10.0",
+    "postcss": "^5.2.0",
+    "postcss-loader": "^0.13.0",
     "react-hot-loader": "^3.0.0-beta.3",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
