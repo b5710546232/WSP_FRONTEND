@@ -16,14 +16,14 @@ export default class Header extends Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="#">STARBURSTEAM</a>
+              <a className="navbar-brand" href="#">STARBURSTSTREAM</a>
             </div>
             <div className="collapse navbar-collapse" id="mynavbar-content">
               <ul className="nav navbar-nav">
                 <li ><a href="#">Home</a></li>
                 <li ><a href="#">About</a></li>
                 <li ><a href="#">Pricing</a></li>
-                <li ><a href="#">Contract</a></li>
+                <li ><a href="#">Contact</a></li>
                 <li ><a href="#">Feedback</a></li>
               </ul>
             </div>
