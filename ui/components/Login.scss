@@ -1,0 +1,11 @@
+.Input {
+  display: flex;
+  flex-direction: row-reverse;
+  border-bottom: 1px solid rgba(255, 252, 232, 0.1);
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+}
+
+#save {
+  display: inline;
+}
