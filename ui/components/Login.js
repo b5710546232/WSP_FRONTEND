@@ -1,11 +1,34 @@
 // ui/components/App/Header.js
 import React, { Component } from 'react'
 import Input from './Input'
-// import 'jquery'
-// import 'bootstrap-sass'
-// import Button from './Button'
 import './Login.scss'
+import 'whatwg-fetch';
+const API = 'http://localhost:5000/users'
 export default class Login extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      id:"",
+      password:""
+    }
+  }
+  onClickLogin(e){
+    e.preventDefault()
+    // console.log(this.refs.inputID.value)
+    console.log(this.refs.inputPassword.value)
+    let user_password = this.refs.inputPassword.value
+    let user_id = this.refs.inputID.value
+    fetch(API,
+    {method: 'POST',headers:{'Content-Type': 'application/json'},
+    body:JSON.stringify({"user_id":user_id,"user_password":user_password})})
+       .then(() => fetch(API))
+       .then((data) => data.json())
+       .then((data) => {this.setState({id:"",password:""})})
+    this.refs.inputPassword.value = ''
+    this.refs.inputID.value = ''
+  }
+  handleID(e){
+  }
   render() {
     return (
       <div className="LoginContainer container text-center">
@@ -13,8 +36,8 @@ export default class Login extends Component {
         <br/>
         <br/>
         <form
-          onSubmit="{this.props.onSubmit}"
-          className="ModalForm">
+        onSubmit={(e) => this.onClickLogin(e)}
+          >
           <div className="inputContainerID row">
                 <div className="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                   <div className="text-right">
@@ -23,10 +46,12 @@ export default class Login extends Component {
                 </div>
                 <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                   <div className="text-left">
-                  <Input
+                  <input
                     id="name"
                     type="text"
-                    placeholder="username" />
+                    onChange={(e) => this.handleID(e)}
+                    placeholder="username"
+                    ref = "inputID" />
                   </div>
                 </div>
           </div>
@@ -39,20 +64,21 @@ export default class Login extends Component {
             </div>
             <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
               <div className="text-left">
-                <Input
+                <input
                   id="password"
                   type="password"
-                  placeholder="password" />
+                  placeholder="password"
+                  ref="inputPassword"
+                  />
               </div>
             </div>
         </div>
         <br/>
-        <div className="ButtonLoginContainer">
-        <button className="btn btn-info">
-          Log in <i className="fa fa-fw fa-chevron-right"></i>
+        <button className="btn btn-info"
+          type="submit">
+          Log in
         </button>
-        </div>
-      </form>
+        </form>
     </div>
   )
 }
