@@ -36,11 +36,6 @@ export default class Login extends Component {
         <form
         onSubmit={(e) => this.onClickLogin(e)}
           >
-          onSubmit="{this.props.onSubmit}"
-          className="LoginForm">
-          <label>Login</label>
-          <br/>
-          <br/>
           <div className="inputContainerID row">
                 <div className="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                   <div className="text-right">
@@ -77,7 +72,11 @@ export default class Login extends Component {
             </div>
         </div>
         <br/>
-
+        <button className="btn btn-info"
+          type="submit">
+          Log in
+        </button>
+        </form>
     </div>
   )
 }
