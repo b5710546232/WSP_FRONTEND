@@ -4,7 +4,7 @@
   "description": "e-comerce-web-site",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
+    "start": "webpack-dev-server --hot --inline --port 9999",
     "build": "webpack --progress --colors",
     "api": "json-server --watch api/db.json --routes api/routes.json --port 5000",
     "test": "echo \"Error: no test specified\" && exit 1"

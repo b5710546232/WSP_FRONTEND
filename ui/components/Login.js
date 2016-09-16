@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Input from './Input'
 import './Login.scss'
 import 'whatwg-fetch';
-const API = 'http://localhost:5000/users'
+const API = 'http://localhost:5000/api/v1/users/login/'
 export default class Login extends Component {
   constructor(props){
     super(props)
@@ -20,10 +20,10 @@ export default class Login extends Component {
     let user_id = this.refs.inputID.value
     fetch(API,
     {method: 'POST',headers:{'Content-Type': 'application/json'},
-    body:JSON.stringify({"user_id":user_id,"user_password":user_password})})
-       .then(() => fetch(API))
-       .then((data) => data.json())
-       .then((data) => {this.setState({id:"",password:""})})
+    body:JSON.stringify({"username":user_id,"password":user_password})})
+      //  .then(() => fetch(API))
+      //  .then((data) => data.json())
+      //  .then((data) => {this.setState({id:"",password:""})})
     this.refs.inputPassword.value = ''
     this.refs.inputID.value = ''
   }
