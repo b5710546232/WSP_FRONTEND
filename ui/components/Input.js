@@ -4,7 +4,6 @@ export default class Input extends Component {
   render() {
     return (
       <div className="Input">
-        <span className={this.props.icon}></span>
         <input
           id={this.props.name}
           autoComplete="false"

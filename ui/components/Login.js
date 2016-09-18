@@ -14,7 +14,6 @@ export default class Login extends Component {
   }
   onClickLogin(e){
     e.preventDefault()
-    // console.log(this.refs.inputID.value)
     console.log(this.refs.inputPassword.value)
     let user_password = this.refs.inputPassword.value
     let user_id = this.refs.inputID.value
