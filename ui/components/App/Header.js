@@ -1,14 +1,17 @@
 // ui/components/App/Header.js
 import React, { Component } from 'react'
-// import 'jquery'
+import './Header.scss'
+import LoginModal from './LoginModal'
+import RegisterModal from './RegisterModal'
+import 'jquery'
 // import 'bootstrap-sass'
-// import Button from './Button'
 
 export default class Header extends Component {
+
   render() {
     return (
       <div>
-        <div className="navbar navbar-default">
+        <div className="navbar navbar-default navbar-inverse">
           <div className="container-fluid">
             <div className="navbar-header">
               <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content">
@@ -26,11 +29,15 @@ export default class Header extends Component {
                 <li ><a href="#">Contact</a></li>
                 <li ><a href="#">Feedback</a></li>
               </ul>
+              <ul className="nav navbar-nav navbar-right">
+                <li ><LoginModal/></li>
+                <li>&nbsp;</li>
+                <li ><RegisterModal/></li>
+              </ul>
             </div>
-
-
           </div>
         </div>
+        {/* <LoginModal ref="modal"/> */}
       </div>
     )
   }
