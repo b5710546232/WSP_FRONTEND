@@ -16,14 +16,10 @@
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.1.0",
     "react": "^15.3.1",
-<<<<<<< HEAD
     "react-bootstrap": "^0.30.3",
-    "react-dom": "^15.3.1",
-    "react-modal": "^1.4.0"
-=======
+    "react-modal": "^1.4.0",
     "react-dom": "^15.3.1",
     "whatwg-fetch": "^1.0.0"
->>>>>>> 7b2abf0d664668ed7a48e96eab2ca0ad925a5ae6
   },
   "devDependencies": {
     "autoprefixer": "^6.4.1",

@@ -1,8 +1,8 @@
 // ui/components/App/Header.js
 import React, { Component } from 'react'
 import './Header.scss'
-import LoginModal from './LoginModal'
-import RegisterModal from './RegisterModal'
+import {LoginModal} from '../Login'
+import {RegisterModal} from '../Register'
 import 'jquery'
 // import 'bootstrap-sass'
 
