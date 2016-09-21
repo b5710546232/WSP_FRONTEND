@@ -3,3 +3,4 @@ test.zip
 .DS_Store
 test/
 npm-debug.log
+api/

@@ -4,8 +4,9 @@
   "description": "e-comerce-web-site",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
+    "start": "webpack-dev-server --hot --inline --port 9999",
     "build": "webpack --progress --colors",
+    "api": "json-server --watch api/db.json --routes api/routes.json --port 5000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "starburststream.company",
@@ -15,9 +16,14 @@
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.1.0",
     "react": "^15.3.1",
+<<<<<<< HEAD
     "react-bootstrap": "^0.30.3",
     "react-dom": "^15.3.1",
     "react-modal": "^1.4.0"
+=======
+    "react-dom": "^15.3.1",
+    "whatwg-fetch": "^1.0.0"
+>>>>>>> 7b2abf0d664668ed7a48e96eab2ca0ad925a5ae6
   },
   "devDependencies": {
     "autoprefixer": "^6.4.1",
@@ -28,6 +34,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
+    "json-server": "^0.8.21",
     "node-sass": "^3.10.0",
     "postcss": "^5.2.0",
     "postcss-loader": "^0.13.0",
