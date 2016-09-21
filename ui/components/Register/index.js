@@ -1,0 +1,2 @@
+
+export RegisterModal from './RegisterModal'
