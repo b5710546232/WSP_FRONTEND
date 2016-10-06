@@ -1,7 +1,6 @@
 // ui/components/Register/RegisterModal.js
 import React,{ Component } from 'react'
 import { Modal } from 'react-bootstrap'
-import { Button } from 'react-bootstrap'
 import Regis from './RegisterForm.js'
 
 export default class RegisterModal extends Component{
@@ -24,11 +23,10 @@ export default class RegisterModal extends Component{
   render(){
     return(
       <div>
-        <Button className="waves-effect waves-light btn-large" bsStyle="danger"
-          bsSize="large"
+        <button className="waves-effect btn btn-danger btn-large"
           onClick={this.open.bind(this)}>
           Sign up
-        </Button>
+        </button>
         <Modal show={this.state.showModal}
           onHide={this.close.bind(this)}>
           <Modal.Header closeButton>

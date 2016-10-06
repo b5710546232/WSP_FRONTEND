@@ -46,7 +46,6 @@ import {Form,
         <Form horizontal
         className="LoginForm">
 
-
         <FormGroup controlId="formBasicText" >
         <Col componentClass={ControlLabel} sm={4}>
         Username
@@ -80,7 +79,7 @@ import {Form,
         </Col>
         </FormGroup>
 
-        <Button bsStyle="info" bsSize="large" onClick={this.login.bind(this)} >Login</Button>
+        <button className="waves-effect btn btn-primary btn-medium" onClick={this.login.bind(this)} >Login</button>
 
 
         </Form>

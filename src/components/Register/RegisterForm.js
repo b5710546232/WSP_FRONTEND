@@ -4,14 +4,16 @@ import ReactDOM from 'react-dom';
 import validator from 'validator';
 import { FormGroup ,
   Col,
+  Row,
   Form,
   FormControl,
   ControlLabel,
   HelpBlock } from 'react-bootstrap'
-  import './Regis.scss'
-  import 'whatwg-fetch'
-  const API = 'http://localhost:8000/api/v1/member/detail/'
-  export default class RegisForm extends Component {
+import './Regis.scss'
+import 'whatwg-fetch'
+const API = 'http://localhost:8000/api/v1/member/detail/'
+
+export default class RegisForm extends Component {
     constructor(props){
       super(props);
 
@@ -90,12 +92,10 @@ import { FormGroup ,
         return (
           <div className="text-center">
             <form className="RegisForm">
-              <div className="inputContainerID row toInline">
+              <br/>
                 {/* username */}
-                <FormGroup
-                  controlId="input_user"
-                  validationState={this.state.validate_user}
-                  >
+              <Row>
+                <FormGroup controlId="input_user" validationState={this.state.validate_user}>
                   <Col componentClass={ControlLabel} sm={4}>
                     Username
                   </Col>
@@ -104,108 +104,89 @@ import { FormGroup ,
                       type="text"
                       ref="input_username"
                       label="Username"
-                      placeholder="Input username"
+                      placeholder="Enter Username"
                       />
                   </Col>
                 </FormGroup>
-
-
-              </div>
-              <br/>
-              {/* pasword */}
-              <div className="inputContainerPass row toInline">
-                {/* <p>Password</p> */}
-                {/* &nbsp;&nbsp; */}
-                {/* <input id="password" type="password" name="password" onChange={this.handleChange.bind(this)} required/> */}
-                <div style={{width: 100}}>
-                  <label htmlFor="">Password</label>
-                </div>
-                <FormControl
-                  type="text"
-                  value={this.state.value}
-                  placeholder="Enter Password"
-                  ref = "input_password"
-                  />
-              </div>
-              <br/>
-              {/* confirm password */}
-              <div className="inputContainerConfirmPass row toInline">
-                {/* <p>Confirm Password</p> */}
-                {/* &nbsp;&nbsp; */}
-                {/* <input id="confirm_password" type="password" name="confirm_password" onChange={this.handleChange.bind(this)} required/> */}
-                <div style={{width: 100}}>
-                  <label htmlFor="">Confirm password</label>
-                  <br/>
-                </div>
-                <FormControl
-                  type="text"
-                  value={this.state.value}
-                  placeholder="Enter Confirm Password"
-                  ref = "input_confirm_password"
-                  />
-              </div>
-              <br/>
-              <div className="inputContainerFirstName row toInline">
-                {/* <p>Firstname</p> */}
-                {/* &nbsp;&nbsp; */}
-                {/* <input id="firstname" type="text" name="first_name" onChange={this.handleChange.bind(this)} required/> */}
-                <div style={{width: 100}}>
-                  <label htmlFor="">Firstname</label>
-                  <br/>
-                </div>
-                <FormControl
-                  type="text"
-                  value={this.state.value}
-                  placeholder="Enter Firstname"
-                  ref = "input_first_name"
-                  />
-              </div>
-              <br/>
-              <div className="inputContainerLastName row toInline">
-                {/* <p>Lastname</p> */}
-                {/* &nbsp;&nbsp; */}
-                {/* <input id="lastname" type="text" name="last_name" onChange={this.handleChange.bind(this)} required/> */}
-                <div style={{width: 100}}>
-                  <label htmlFor="">Lastname</label>
-                  <br/>
-                </div>
-                <FormControl
-                  type="text"
-                  value={this.state.value}
-                  placeholder="Enter LastName"
-                  ref = "input_last_name"
-                  />
-              </div>
-              <br/>
-
-
-              <FormGroup
-                controlId="input_email"
-                validationState={this.state.validate_email}
-                >
-                <div className="inputContainerEmail row toInline">
-                  {/* <p>Email</p> */}
-                  {/* &nbsp;&nbsp; */}
-                  {/* <input id="email" type="text" name="email" onChange={this.handleChange.bind(this)} required/> */}
+              </Row>
+                {/* password */}
+              <Row>
+                <FormGroup controlId="input_password">
                   <Col componentClass={ControlLabel} sm={4}>
-                    E-mail
+                    Password
                   </Col>
                   <Col sm={6}>
-                  <FormControl
-                    type="email"
-                    value={this.state.value}
-                    placeholder="Enter Email"
-                    ref = "input_email"
-                    />
+                    <FormControl
+                      type="text"
+                      placeholder="Enter Password"
+                      ref = "input_password"
+                      />
                   </Col>
-                </div>
-              </FormGroup>
-              <br/>
-              <br/>
-              <div className="ButtonRegisContainer">
-                <div className="regisBtn">
-                  <input id="btnSubmit" type="submit" value = "Sign up" className="btn btn-info" onClick={this.regis.bind(this)} />
-                </div>
+                </FormGroup>
+              </Row>
+                {/* confirm password */}
+              <Row>
+                <FormGroup controlId="input_confirm_password">
+                  <Col componentClass={ControlLabel} sm={4}>
+                    Confirm Password
+                  </Col>
+                  <Col sm={6}>
+                    <FormControl
+                      type="text"
+                      placeholder="Enter Confirm Password"
+                      ref = "input_confirm_password"
+                      />
+                  </Col>
+                </FormGroup>
+              </Row>
+                {/* first_name */}
+              <Row>
+                <FormGroup controlId="input_first_name">
+                  <Col componentClass={ControlLabel} sm={4}>
+                    Firstname
+                  </Col>
+                  <Col sm={6}>
+                    <FormControl
+                      type="text"
+                      placeholder="Enter Firstname"
+                      ref = "input_first_name"
+                      />
+                  </Col>
+                </FormGroup>
+              </Row>
+                {/* last_name */}
+              <Row>
+                <FormGroup controlId="input_last_name">
+                  <Col componentClass={ControlLabel} sm={4}>
+                    LastName
+                  </Col>
+                  <Col sm={6}>
+                    <FormControl
+                      type="text"
+                      placeholder="Enter LastName"
+                      ref = "input_last_name"
+                      />
+                  </Col>
+                </FormGroup>
+              </Row>
+                {/* email */}
+              <Row>
+                <FormGroup controlId="input_email" validationState={this.state.validate_email}>
+                    <Col componentClass={ControlLabel} sm={4}>
+                      E-mail
+                    </Col>
+                    <Col sm={6}>
+                      <FormControl
+                        type="email"
+                        value={this.state.value}
+                        placeholder="Enter Email"
+                        ref = "input_email"
+                        />
+                    </Col>
+                </FormGroup>
+              </Row>
+              <div className="regisBtn">
+                <input id="btnSubmit" type="submit" value = "Sign up" className="btn btn-danger" onClick={this.regis.bind(this)} />
               </div>
             </form>
           </div>

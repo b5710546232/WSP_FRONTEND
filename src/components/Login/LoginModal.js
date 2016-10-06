@@ -24,9 +24,9 @@ export default class LoginModal extends Component{
   render(){
     return(
       <div>
-        <Button bsStyle="primary" bsSize="large" onClick={this.open.bind(this)}>
+        <button className="waves-effect btn btn-primary btn-large" onClick={this.open.bind(this)}>
           Login
-        </Button>
+        </button>
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
             <Modal.Title>Login</Modal.Title>
