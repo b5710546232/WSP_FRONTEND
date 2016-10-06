@@ -1,11 +1,10 @@
 import React,{ Component } from 'react'
 import { Carousel } from 'react-bootstrap'
-
-
+import './SlidePreview.scss'
 export default class Homepage extends Component {
   render(){
     return(
-      <div>
+      <div className="slide-preview">
         <Carousel>
          <Carousel.Item>
            <img className="img-responsive center-block" width={800} height={600} src="src/assets/1.jpg"/>

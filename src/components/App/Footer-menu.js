@@ -1,7 +1,7 @@
 import React,{ Component } from 'react'
 import {Row,Col,Well} from 'react-bootstrap'
 import {Card,CardTitle} from 'react-materialize'
-
+import './Footer.scss'
 export default class FooterMenu extends Component {
   render(){
     return(
@@ -13,7 +13,7 @@ export default class FooterMenu extends Component {
           </Well> */}
           <Card className='small'
             header={<CardTitle image='src/assets/1.jpg'/>}
-            actions={[<a href='#'>Design your brand</a>]}>
+            actions={[<a href='#' className="card-text">Design your brand</a>]}>
           </Card>
         </Col>
         <Col md={4} xs={4}>
@@ -22,7 +22,7 @@ export default class FooterMenu extends Component {
           </Well> */}
           <Card className='small'
             header={<CardTitle image='src/assets/2.jpg'/>}
-            actions={[<a href='#'>Go To Store</a>]}>
+            actions={[<a href='#' className="card-text">Go To Store</a>]}>
           </Card>
         </Col>
         <Col md={4} xs={4}>
@@ -31,7 +31,7 @@ export default class FooterMenu extends Component {
           </Well> */}
           <Card className='small'
             header={<CardTitle image='src/assets/3.jpg'/>}
-            actions={[<a href='#'>Top Rate</a>]}>
+            actions={[<a href='#' className="card-text">Top Rate</a>]}>
           </Card>
         </Col>
       </Row>
