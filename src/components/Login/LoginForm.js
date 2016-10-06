@@ -1,6 +1,7 @@
 // ui/components/Login/LoginForm.js
 import React, { Component } from 'react'
 import {Form} from 'react-bootstrap'
+import {ControlLabel} from 'react-bootstrap'
 import {FormControl} from 'react-bootstrap'
 import {FormGroup} from 'react-bootstrap'
 import {FieldGroup} from 'react-bootstrap'
@@ -10,6 +11,7 @@ import { Checkbox } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 import './Login.scss'
 import 'whatwg-fetch'
+
 
 // const API = 'http://localhost:8000/api/v1/member/detail/'
 export default class Login extends Component {
@@ -89,11 +91,11 @@ export default class Login extends Component {
       </div>
       <br/> */}
 
-      <FormGroup controlId="formBasicText">
-      <Col componentClass={ControlLabel} sm={2}>
+      <FormGroup controlId="formBasicText" >
+      <Col componentClass={ControlLabel} sm={4}>
       Username
       </Col>
-      <Col sm={10}>
+      <Col sm={6}>
       <FormControl
       type="text"
       value={this.state.value}
@@ -105,12 +107,23 @@ export default class Login extends Component {
       </FormGroup>
 
       <FormGroup controlId="formBasicText">
+      <Col componentClass={ControlLabel} sm={4}>
+      Password
+      </Col>
+      <Col sm={6}>
       <FormControl
       type="text"
       value={this.state.value}
       placeholder="Input password"
       onChange={this.handleChange}
       />
+      </Col>
+      </FormGroup>
+
+      <FormGroup>
+      <Col smOffset={3} sm={11}>
+      <Checkbox>Remember me</Checkbox>
+      </Col>
       </FormGroup>
 
       <Button bsStyle="info" bsSize="large" actives>Login</Button>
