@@ -23,7 +23,7 @@ export default class RegisterModal extends Component{
   render(){
     return(
       <div>
-        <button className="waves-effect btn btn-danger btn-large"
+        <button className="waves-effect btn btn-danger btn-register"
           onClick={this.open.bind(this)}>
           Sign up
         </button>

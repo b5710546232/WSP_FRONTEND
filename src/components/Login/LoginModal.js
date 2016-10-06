@@ -3,6 +3,7 @@ import React,{ Component } from 'react'
 import { Modal } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 import Login from './LoginForm.js'
+import './LoginModal.scss'
 
 export default class LoginModal extends Component{
 
@@ -24,7 +25,7 @@ export default class LoginModal extends Component{
   render(){
     return(
       <div>
-        <button className="waves-effect btn btn-primary btn-large" onClick={this.open.bind(this)}>
+        <button className="waves-effect btn btn-primary btn-signup" onClick={this.open.bind(this)}>
           Login
         </button>
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
