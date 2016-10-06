@@ -11,7 +11,7 @@ export default class Header extends Component {
   render() {
     return (
       <div>
-        <div className="navbar navbar-default navbar-inverse">
+        <div className="navbar navbar-default navbar-inverse navbar-fixed-top">
           <div className="container-fluid">
             <div className="navbar-header">
               <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content">
