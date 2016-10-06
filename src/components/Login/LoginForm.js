@@ -28,7 +28,7 @@ export default class Login extends Component {
           <br/>
           <div className="ButtonLoginContainer toInline">
             <div className="loginBtn">
-              <button className="btn btn-info">
+              <button type="button" className="btn btn-info">
                 Log in <i className="fa fa-fw fa-chevron-right"></i>
             </button>
           </div>
