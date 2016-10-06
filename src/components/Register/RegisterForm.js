@@ -186,7 +186,7 @@ export default class RegisForm extends Component {
                 </FormGroup>
               </Row>
               <div className="regisBtn">
-                <input id="btnSubmit" type="submit" value = "Sign up" className="btn btn-danger" onClick={this.regis.bind(this)} />
+                <input id="btnSubmit" type="submit" value = "Sign up" className="btn btn-default" onClick={this.regis.bind(this)} />
               </div>
             </form>
           </div>
