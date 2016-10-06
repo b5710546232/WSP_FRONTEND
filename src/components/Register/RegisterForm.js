@@ -1,12 +1,11 @@
 // ui/components/Register/RegisterForm.js
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
-import { Form } from 'react-bootstrap'
 import { FormGroup ,
   Form,
   FormControl,
   ControlLabel,
-  HelpBlock} from 'react-bootstrap'
+  HelpBlock } from 'react-bootstrap'
 import './Regis.scss'
 import 'whatwg-fetch'
 const API = 'http://localhost:8000/api/v1/member/detail/'
