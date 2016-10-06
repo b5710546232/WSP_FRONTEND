@@ -1,9 +1,12 @@
 // ui/components/Register/RegisterForm.js
 import React, { Component } from 'react'
-import Input from '../Input'
+import ReactDOM from 'react-dom';
 import { Form } from 'react-bootstrap'
-import { FormGroup } from 'react-bootstrap'
-import { FormControl } from 'react-bootstrap'
+import { FormGroup ,
+  Form,
+  FormControl,
+  ControlLabel,
+  HelpBlock} from 'react-bootstrap'
 import './Regis.scss'
 import 'whatwg-fetch'
 const API = 'http://localhost:8000/api/v1/member/detail/'
@@ -18,16 +21,23 @@ export default class RegisForm extends Component {
       first_name:'',
       last_name:'',
       email:'',
-      emailError: false
+      emailError: false,
+      userError:''
     };
   }
 
   handleChange(event) {
-    this.setState({[event.target.name]: event.target.value});
+    this.setState({[event.target.name]: event.target.value})
+  }
+
+  validateUser(){
+    this.setState(this.state.userError:'error')
   }
 
   regis(e){
     e.preventDefault()
+    console.log(ReactDOM.findDOMNode(this.refs.input_username).value)
+    // console.log(this.state.userError)
     var data = {
       username: this.state.username,
       password: this.state.password,
@@ -65,27 +75,29 @@ export default class RegisForm extends Component {
     }
 
     render() {
-      console.log(this.state.emailError);
       return (
         <div className="text-center">
           <form className="RegisForm">
             <div className="inputContainerID row toInline">
-              <div style={{width: 80}}>
-                <label htmlFor="">Username</label>
-              </div>
+              <FormGroup >
+                <ControlLabel>Input username</ControlLabel>
               <FormControl
                 type="text"
-                value={this.state.value}
+                // value={this.state.value}
                 placeholder="Enter Username"
-                ref = "text-username"
+                ref = "input_username"
               />
+            {/* <HelpBlock>Help text with validation state.</HelpBlock> */}
+            </FormGroup>
+
+
               </div>
             <br/>
             <div className="inputContainerPass row toInline">
               {/* <p>Password</p> */}
               {/* &nbsp;&nbsp; */}
               {/* <input id="password" type="password" name="password" onChange={this.handleChange.bind(this)} required/> */}
-              <div style={{width: 80}}>
+              <div style={{width: 100}}>
                 <label htmlFor="">Password</label>
               </div>
               <FormControl
@@ -100,8 +112,9 @@ export default class RegisForm extends Component {
               {/* <p>Confirm Password</p> */}
               {/* &nbsp;&nbsp; */}
               {/* <input id="confirm_password" type="password" name="confirm_password" onChange={this.handleChange.bind(this)} required/> */}
-              <div style={{width: 200}}>
+              <div style={{width: 100}}>
                 <label htmlFor="">Confirm password</label>
+                <br/>
               </div>
               <FormControl
                 type="text"
@@ -115,8 +128,9 @@ export default class RegisForm extends Component {
               {/* <p>Firstname</p> */}
               {/* &nbsp;&nbsp; */}
               {/* <input id="firstname" type="text" name="first_name" onChange={this.handleChange.bind(this)} required/> */}
-              <div style={{width: 80}}>
+              <div style={{width: 100}}>
                 <label htmlFor="">Firstname</label>
+                <br/>
               </div>
               <FormControl
                 type="text"
@@ -130,8 +144,9 @@ export default class RegisForm extends Component {
               {/* <p>Lastname</p> */}
               {/* &nbsp;&nbsp; */}
               {/* <input id="lastname" type="text" name="last_name" onChange={this.handleChange.bind(this)} required/> */}
-              <div style={{width: 80}}>
+              <div style={{width: 100}}>
                 <label htmlFor="">Lastname</label>
+                <br/>
               </div>
               <FormControl
                 type="text"
@@ -145,8 +160,9 @@ export default class RegisForm extends Component {
               {/* <p>Email</p> */}
               {/* &nbsp;&nbsp; */}
               {/* <input id="email" type="text" name="email" onChange={this.handleChange.bind(this)} required/> */}
-              <div style={{width: 80}}>
+              <div style={{width: 100}}>
                 <label htmlFor="">Email</label>
+                <br/>
               </div>
               <FormControl
                 type="text"
