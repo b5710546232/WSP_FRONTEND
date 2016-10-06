@@ -8,26 +8,29 @@ export default class Homepage extends Component {
       <div>
         <Carousel>
          <Carousel.Item>
-           <img className="img-responsive center-block" width={600} height={200} alt="500x200" src="src/assets/1.jpg"/>
+           <img className="img-responsive center-block" width={800} height={600} src="src/assets/1.jpg"/>
            <Carousel.Caption>
-             <h3>First slide label</h3>
-             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+             {/* <h3>First slide label</h3>
+             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
            </Carousel.Caption>
          </Carousel.Item>
          <Carousel.Item>
-           <img className="img-responsive center-block" width={600} height={200} alt="500x200" src="src/assets/2.jpg"/>
-           <Carousel.Caption>
-             <h3>Second slide label</h3>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-           </Carousel.Caption>
+           <img className="img-responsive center-block" width={800} height={600} src="src/assets/2.jpg"/>
          </Carousel.Item>
          <Carousel.Item>
-           <img className="img-responsive center-block" width={600} height={200} alt="500x200" src="src/assets/3.jpg"/>
-           <Carousel.Caption>
-             <h3>Third slide label</h3>
-             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-           </Carousel.Caption>
+           <img className="img-responsive center-block" width={800} height={600} src="src/assets/3.jpg"/>
          </Carousel.Item>
+         <Carousel.Item>
+           <img className="img-responsive center-block" width={800} height={600} src="src/assets/4.jpg"/>
+         </Carousel.Item>
+         <Carousel.Item>
+           <img className="img-responsive center-block" width={800} height={600} src="src/assets/5.jpg"/>
+         </Carousel.Item>
+         <Carousel.Item>
+           <img className="img-responsive center-block" width={800} height={600} src="src/assets/6.jpg"/>
+         </Carousel.Item>
+
+
         </Carousel>
       </div>
     )
