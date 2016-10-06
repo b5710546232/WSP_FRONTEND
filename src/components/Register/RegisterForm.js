@@ -1,184 +1,214 @@
 // ui/components/Register/RegisterForm.js
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
+import validator from 'validator';
 import { FormGroup ,
+  Col,
   Form,
   FormControl,
   ControlLabel,
   HelpBlock } from 'react-bootstrap'
-import './Regis.scss'
-import 'whatwg-fetch'
-const API = 'http://localhost:8000/api/v1/member/detail/'
-export default class RegisForm extends Component {
-  constructor(props){
-    super(props);
+  import './Regis.scss'
+  import 'whatwg-fetch'
+  const API = 'http://localhost:8000/api/v1/member/detail/'
+  export default class RegisForm extends Component {
+    constructor(props){
+      super(props);
 
-    this.state = {
-      username:'',
-      password:'',
-      confirm_password:'',
-      first_name:'',
-      last_name:'',
-      email:'',
-      emailError: false,
-      userError:''
-    };
-  }
-
-  handleChange(event) {
-    this.setState({[event.target.name]: event.target.value})
-  }
-
-  validateUser(){
-    this.setState(this.state.userError:'error')
-  }
-
-  regis(e){
-    e.preventDefault()
-    console.log(ReactDOM.findDOMNode(this.refs.input_username).value)
-    // console.log(this.state.userError)
-    var data = {
-      username: this.state.username,
-      password: this.state.password,
-      email: this.state.email,
-      first_name: this.state.first_name,
-      last_name: this.state.last_name
+      this.state = {
+        emailError: false,
+        validate_user: null,
+        validate_email: null
+      };
     }
-    if(true) {
-      this.setState({
-        emailError : true
-      });
-    }else {
-      fetch(API,
-        {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(
-            data
-          )
-        }).then(function(response) {
-          if (!response.ok) {
-            throw Error(response.statusText);
-          }
-          return response;
-        }).then(function(response) {
-          console.log("ok");
-        }).catch(function(error) {
-          console.log(error);
-        });
+
+    handleChange(event) {
+      this.setState({[event.target.name]: event.target.value})
+    }
+
+    validateData(data){
+      let { username,first_name, last_name, password,confirm_password,email, } = data
+      console.log("email = "+email);
+      let validate = true
+      if(username === null || username ===''){
+        console.log('false');
+        this.setState({validate_user:'error'})
+        console.log(this.state.validate_user)
+        validate = false
+      }
+      if(!validator.isEmail(email)){
+        console.log('hi');
+        this.setState({validate_email:'error'})
+        validate = false
+      }
+      return validate
+    }
+
+    regis(e){
+      e.preventDefault()
+      let username = ReactDOM.findDOMNode(this.refs.input_username).value
+      let password = ReactDOM.findDOMNode(this.refs.input_password).value
+      let confirm_password = ReactDOM.findDOMNode(this.refs.input_confirm_password).value
+      let email = ReactDOM.findDOMNode(this.refs.input_email).value
+      let first_name = ReactDOM.findDOMNode(this.refs.input_first_name).value
+      let last_name = ReactDOM.findDOMNode(this.refs.input_last_name).value
+
+      // console.log(this.state.userError)
+      let data = {
+        username: username,
+        confirm_password:confirm_password,
+        password: password,
+        email: email,
+        first_name: first_name,
+        last_name: last_name
+      }
+      if(this.validateData(data)){
+        fetch(API,
+          {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(
+              data
+            )
+          }).then(function(response) {
+            if (!response.ok) {
+              throw Error(response.statusText);
+            }
+            return response;
+          }).then(function(response) {
+            console.log("ok");
+          }).catch(function(error) {
+            console.log(error);
+          });
+        }
       }
 
+      render() {
+        return (
+          <div className="text-center">
+            <form className="RegisForm">
+              <div className="inputContainerID row toInline">
+                {/* username */}
+                <FormGroup
+                  controlId="input_user"
+                  validationState={this.state.validate_user}
+                  >
+                  <Col componentClass={ControlLabel} sm={4}>
+                    Username
+                  </Col>
+                  <Col sm={6}>
+                    <FormControl
+                      type="text"
+                      ref="input_username"
+                      label="Username"
+                      placeholder="Input username"
+                      />
+                  </Col>
+                </FormGroup>
+
+
+              </div>
+              <br/>
+              {/* pasword */}
+              <div className="inputContainerPass row toInline">
+                {/* <p>Password</p> */}
+                {/* &nbsp;&nbsp; */}
+                {/* <input id="password" type="password" name="password" onChange={this.handleChange.bind(this)} required/> */}
+                <div style={{width: 100}}>
+                  <label htmlFor="">Password</label>
+                </div>
+                <FormControl
+                  type="text"
+                  value={this.state.value}
+                  placeholder="Enter Password"
+                  ref = "input_password"
+                  />
+              </div>
+              <br/>
+              {/* confirm password */}
+              <div className="inputContainerConfirmPass row toInline">
+                {/* <p>Confirm Password</p> */}
+                {/* &nbsp;&nbsp; */}
+                {/* <input id="confirm_password" type="password" name="confirm_password" onChange={this.handleChange.bind(this)} required/> */}
+                <div style={{width: 100}}>
+                  <label htmlFor="">Confirm password</label>
+                  <br/>
+                </div>
+                <FormControl
+                  type="text"
+                  value={this.state.value}
+                  placeholder="Enter Confirm Password"
+                  ref = "input_confirm_password"
+                  />
+              </div>
+              <br/>
+              <div className="inputContainerFirstName row toInline">
+                {/* <p>Firstname</p> */}
+                {/* &nbsp;&nbsp; */}
+                {/* <input id="firstname" type="text" name="first_name" onChange={this.handleChange.bind(this)} required/> */}
+                <div style={{width: 100}}>
+                  <label htmlFor="">Firstname</label>
+                  <br/>
+                </div>
+                <FormControl
+                  type="text"
+                  value={this.state.value}
+                  placeholder="Enter Firstname"
+                  ref = "input_first_name"
+                  />
+              </div>
+              <br/>
+              <div className="inputContainerLastName row toInline">
+                {/* <p>Lastname</p> */}
+                {/* &nbsp;&nbsp; */}
+                {/* <input id="lastname" type="text" name="last_name" onChange={this.handleChange.bind(this)} required/> */}
+                <div style={{width: 100}}>
+                  <label htmlFor="">Lastname</label>
+                  <br/>
+                </div>
+                <FormControl
+                  type="text"
+                  value={this.state.value}
+                  placeholder="Enter LastName"
+                  ref = "input_last_name"
+                  />
+              </div>
+              <br/>
+
+
+              <FormGroup
+                controlId="input_email"
+                validationState={this.state.validate_email}
+                >
+                <div className="inputContainerEmail row toInline">
+                  {/* <p>Email</p> */}
+                  {/* &nbsp;&nbsp; */}
+                  {/* <input id="email" type="text" name="email" onChange={this.handleChange.bind(this)} required/> */}
+                  <Col componentClass={ControlLabel} sm={4}>
+                    E-mail
+                  </Col>
+                  <Col sm={6}>
+                  <FormControl
+                    type="email"
+                    value={this.state.value}
+                    placeholder="Enter Email"
+                    ref = "input_email"
+                    />
+                  </Col>
+                </div>
+              </FormGroup>
+              <br/>
+              <br/>
+              <div className="ButtonRegisContainer">
+                <div className="regisBtn">
+                  <input id="btnSubmit" type="submit" value = "Sign up" className="btn btn-info" onClick={this.regis.bind(this)} />
+                </div>
+              </div>
+            </form>
+          </div>
+        )
+      }
     }
-
-    render() {
-      return (
-        <div className="text-center">
-          <form className="RegisForm">
-            <div className="inputContainerID row toInline">
-              <FormGroup >
-                <ControlLabel>Input username</ControlLabel>
-              <FormControl
-                type="text"
-                // value={this.state.value}
-                placeholder="Enter Username"
-                ref = "input_username"
-              />
-            {/* <HelpBlock>Help text with validation state.</HelpBlock> */}
-            </FormGroup>
-
-
-              </div>
-            <br/>
-            <div className="inputContainerPass row toInline">
-              {/* <p>Password</p> */}
-              {/* &nbsp;&nbsp; */}
-              {/* <input id="password" type="password" name="password" onChange={this.handleChange.bind(this)} required/> */}
-              <div style={{width: 100}}>
-                <label htmlFor="">Password</label>
-              </div>
-              <FormControl
-                type="text"
-                value={this.state.value}
-                placeholder="Enter Password"
-                ref = "text-password"
-              />
-            </div>
-            <br/>
-            <div className="inputContainerConfirmPass row toInline">
-              {/* <p>Confirm Password</p> */}
-              {/* &nbsp;&nbsp; */}
-              {/* <input id="confirm_password" type="password" name="confirm_password" onChange={this.handleChange.bind(this)} required/> */}
-              <div style={{width: 100}}>
-                <label htmlFor="">Confirm password</label>
-                <br/>
-              </div>
-              <FormControl
-                type="text"
-                value={this.state.value}
-                placeholder="Enter Confirm Password"
-                ref = "text-confirm-password"
-                />
-            </div>
-            <br/>
-            <div className="inputContainerFirstName row toInline">
-              {/* <p>Firstname</p> */}
-              {/* &nbsp;&nbsp; */}
-              {/* <input id="firstname" type="text" name="first_name" onChange={this.handleChange.bind(this)} required/> */}
-              <div style={{width: 100}}>
-                <label htmlFor="">Firstname</label>
-                <br/>
-              </div>
-              <FormControl
-                type="text"
-                value={this.state.value}
-                placeholder="Enter Firstname"
-                ref = "text-firstname"
-                />
-            </div>
-            <br/>
-            <div className="inputContainerLastName row toInline">
-              {/* <p>Lastname</p> */}
-              {/* &nbsp;&nbsp; */}
-              {/* <input id="lastname" type="text" name="last_name" onChange={this.handleChange.bind(this)} required/> */}
-              <div style={{width: 100}}>
-                <label htmlFor="">Lastname</label>
-                <br/>
-              </div>
-              <FormControl
-                type="text"
-                value={this.state.value}
-                placeholder="Enter LastName"
-                ref = "text-lastname"
-                />
-            </div>
-            <br/>
-            <div className="inputContainerEmail row toInline">
-              {/* <p>Email</p> */}
-              {/* &nbsp;&nbsp; */}
-              {/* <input id="email" type="text" name="email" onChange={this.handleChange.bind(this)} required/> */}
-              <div style={{width: 100}}>
-                <label htmlFor="">Email</label>
-                <br/>
-              </div>
-              <FormControl
-                type="text"
-                value={this.state.value}
-                placeholder="Enter Email"
-                ref = "text-email"
-                />
-            </div>
-            <br/>
-            <br/>
-            <div className="ButtonRegisContainer">
-              <div className="regisBtn">
-                <input id="btnSubmit" type="submit" value = "Sign up" className="btn btn-info" onClick={this.regis.bind(this)} />
-              </div>
-            </div>
-          </form>
-        </div>
-      )
-    }
-  }
