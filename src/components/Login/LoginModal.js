@@ -25,7 +25,7 @@ export default class LoginModal extends Component{
   render(){
     return(
       <div>
-        <button className="waves-effect btn btn-primary btn-signup" onClick={this.open.bind(this)}>
+        <button className="btn btn-default  btn-signup" onClick={this.open.bind(this)}>
           Login
         </button>
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>

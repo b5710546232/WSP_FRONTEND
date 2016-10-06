@@ -11,23 +11,26 @@ export default class Header extends Component {
   render() {
     return (
       <div>
-        <div className="navbar  navbar-inverse    navbar-fixed-top">
+        <div className="navbar  navbar-default nav-app navbar-fixed-top">
           <div className="container-fluid">
+
             <div className="navbar-header">
               <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content">
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="#">STARBURSTSTREAM</a>
+              <ul className="nav navbar-nav navbar-center">
+                <a className="navbar-brand" href="#">Nature Drink</a>
+              </ul>
             </div>
+
             <div className="collapse navbar-collapse " id="mynavbar-content">
               <ul className="nav navbar-nav">
                 <li ><a href="#">Home</a></li>
                 <li ><a href="#">About</a></li>
                 <li ><a href="#">Pricing</a></li>
                 <li ><a href="#">Contact</a></li>
-                <li ><a href="#">Feedback</a></li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
                 <li ><LoginModal/></li>
@@ -35,9 +38,9 @@ export default class Header extends Component {
                 <li ><RegisterModal/></li>
               </ul>
             </div>
+
           </div>
         </div>
-        {/* <LoginModal ref="modal"/> */}
       </div>
     )
   }

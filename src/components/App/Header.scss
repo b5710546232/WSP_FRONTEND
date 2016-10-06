@@ -5,8 +5,21 @@ $fontsize: 17px;
   // font-size: $fontsize;
   // font-family: $fontfamily;
 }
-
-.navbar-app{
+.navbar-default{
   background-color: #0380db;
   border-color: #074691;
+  color:#8f4781;
+
+}
+
+.navbar {
+    position: relative;
+    background-color: #8b8b8b;
+    box-shadow: 0.5px 1px 10px 0.01px #888888;
+}
+.navbar-brand{
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
 }
