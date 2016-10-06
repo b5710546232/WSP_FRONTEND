@@ -24,7 +24,7 @@ export default class RegisterModal extends Component{
   render(){
     return(
       <div>
-        <Button bsStyle="danger"
+        <Button className="waves-effect waves-light btn-large" bsStyle="danger"
           bsSize="large"
           onClick={this.open.bind(this)}>
           Sign up
