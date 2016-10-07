@@ -1,21 +1,22 @@
 // ui/components/Register/RegisterModal.js
 import React,{ Component } from 'react'
 import { Modal } from 'react-bootstrap'
-import Regis from './RegisterForm.js'
+import RegisForm from './RegisterForm.js'
 
 export default class RegisterModal extends Component{
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
+    this.close = this.props.onClose
     this.state =  { showModal: false };
 
   }
 
-  close() {
+  onCloseModal() {
     this.setState({ showModal: false });
   }
 
-  open() {
+  onShowModal() {
     this.setState({ showModal: true });
   }
 
@@ -24,15 +25,15 @@ export default class RegisterModal extends Component{
     return(
       <div>
         <ul className="nav navbar-nav ul-signup">
-          <li ><a href="#" onClick={this.open.bind(this)}>Sign up</a></li>
+          <li ><a href="#" onClick={this.onShowModal.bind(this)}>Sign up</a></li>
           </ul>
         <Modal show={this.state.showModal}
-          onHide={this.close.bind(this)}>
+          onHide={this.onCloseModal.bind(this)} >
           <Modal.Header closeButton>
             <Modal.Title>Sign up</Modal.Title>
           </Modal.Header>
           <div className='text-center'>
-            <Regis />
+            <RegisForm onClose={this.onCloseModal.bind(this)} />
           </div>
           <Modal.Body>
           </Modal.Body>

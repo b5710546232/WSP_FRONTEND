@@ -12,7 +12,7 @@ import { FormGroup ,
   import './Regis.scss'
   import 'whatwg-fetch'
   // const API = 'http://localhost:8000/api/v1/member/detail/'
-    const API = 'http://158.108.138.84:8000/api/v1/member/detail/'
+  const API = 'http://158.108.138.84:8000/api/v1/member/detail/'
 
   export default class RegisForm extends Component {
     constructor(props){
@@ -28,6 +28,7 @@ import { FormGroup ,
     handleChange(event) {
       this.setState({[event.target.name]: event.target.value})
     }
+
 
     validateData(data){
       let { username,first_name, last_name, password,confirm_password,email, } = data
@@ -49,6 +50,7 @@ import { FormGroup ,
 
     regis(e){
       e.preventDefault()
+      const {onClose}  = this.props
       let username = ReactDOM.findDOMNode(this.refs.input_username).value
       let password = ReactDOM.findDOMNode(this.refs.input_password).value
       let confirm_password = ReactDOM.findDOMNode(this.refs.input_confirm_password).value
@@ -83,6 +85,7 @@ import { FormGroup ,
             return response;
           }).then(function(response) {
             console.log("ok");
+            onClose()
           }).catch(function(error) {
             console.log(error);
           });
@@ -92,105 +95,105 @@ import { FormGroup ,
       render() {
         return (
           <div className="text-center">
-          <form className="RegisForm">
-          <br/>
-          {/* username */}
-          <Row>
-          <FormGroup controlId="input_user"
-          validationState={this.state.validate_user}>
-          <Col componentClass={ControlLabel} sm={4}>
-          Username
-          </Col>
-          <Col sm={6}>
-          <FormControl
-          type="text"
-          ref="input_username"
-          label="Username"
-          placeholder="Enter Username"
-          />
-          </Col>
-          </FormGroup>
-          </Row>
-          {/* password */}
-          <Row>
-          <FormGroup controlId="input_password">
-          <Col componentClass={ControlLabel} sm={4}>
-          Password
-          </Col>
-          <Col sm={6}>
-          <FormControl
-          type="password"
-          placeholder="Enter Password"
-          ref = "input_password"
-          />
-          </Col>
-          </FormGroup>
-          </Row>
-          {/* confirm password */}
-          <Row>
-          <FormGroup controlId="input_confirm_password">
-          <Col componentClass={ControlLabel} sm={4}>
-          Confirm Password
-          </Col>
-          <Col sm={6}>
-          <FormControl
-          type="password"
-          placeholder="Enter Confirm Password"
-          ref = "input_confirm_password"
-          />
-          </Col>
-          </FormGroup>
-          </Row>
-          {/* first_name */}
-          <Row>
-          <FormGroup controlId="input_first_name">
-          <Col componentClass={ControlLabel} sm={4}>
-          Firstname
-          </Col>
-          <Col sm={6}>
-          <FormControl
-          type="text"
-          placeholder="Enter Firstname"
-          ref = "input_first_name"
-          />
-          </Col>
-          </FormGroup>
-          </Row>
-          {/* last_name */}
-          <Row>
-          <FormGroup controlId="input_last_name">
-          <Col componentClass={ControlLabel} sm={4}>
-          LastName
-          </Col>
-          <Col sm={6}>
-          <FormControl
-          type="text"
-          placeholder="Enter LastName"
-          ref = "input_last_name"
-          />
-          </Col>
-          </FormGroup>
-          </Row>
-          {/* email */}
-          <Row>
-          <FormGroup controlId="input_email" validationState={this.state.validate_email}>
-          <Col componentClass={ControlLabel} sm={4}>
-          E-mail
-          </Col>
-          <Col sm={6}>
-          <FormControl
-          type="email"
-          value={this.state.value}
-          placeholder="Enter Email"
-          ref = "input_email"
-          />
-          </Col>
-          </FormGroup>
-          </Row>
-          <div className="regisBtn">
-          <input id="btnSubmit" type="submit" value = "Sign up" className="btn btn-default" onClick={this.regis.bind(this)} />
-          </div>
-          </form>
+            <form className="RegisForm">
+              <br/>
+              {/* username */}
+              <Row>
+                <FormGroup controlId="input_user"
+                  validationState={this.state.validate_user}>
+                  <Col componentClass={ControlLabel} sm={4}>
+                    Username
+                  </Col>
+                  <Col sm={6}>
+                    <FormControl
+                      type="text"
+                      ref="input_username"
+                      label="Username"
+                      placeholder="Enter Username"
+                      />
+                  </Col>
+                </FormGroup>
+              </Row>
+              {/* password */}
+              <Row>
+                <FormGroup controlId="input_password">
+                  <Col componentClass={ControlLabel} sm={4}>
+                    Password
+                  </Col>
+                  <Col sm={6}>
+                    <FormControl
+                      type="password"
+                      placeholder="Enter Password"
+                      ref = "input_password"
+                      />
+                  </Col>
+                </FormGroup>
+              </Row>
+              {/* confirm password */}
+              <Row>
+                <FormGroup controlId="input_confirm_password">
+                  <Col componentClass={ControlLabel} sm={4}>
+                    Confirm Password
+                  </Col>
+                  <Col sm={6}>
+                    <FormControl
+                      type="password"
+                      placeholder="Enter Confirm Password"
+                      ref = "input_confirm_password"
+                      />
+                  </Col>
+                </FormGroup>
+              </Row>
+              {/* first_name */}
+              <Row>
+                <FormGroup controlId="input_first_name">
+                  <Col componentClass={ControlLabel} sm={4}>
+                    Firstname
+                  </Col>
+                  <Col sm={6}>
+                    <FormControl
+                      type="text"
+                      placeholder="Enter Firstname"
+                      ref = "input_first_name"
+                      />
+                  </Col>
+                </FormGroup>
+              </Row>
+              {/* last_name */}
+              <Row>
+                <FormGroup controlId="input_last_name">
+                  <Col componentClass={ControlLabel} sm={4}>
+                    LastName
+                  </Col>
+                  <Col sm={6}>
+                    <FormControl
+                      type="text"
+                      placeholder="Enter LastName"
+                      ref = "input_last_name"
+                      />
+                  </Col>
+                </FormGroup>
+              </Row>
+              {/* email */}
+              <Row>
+                <FormGroup controlId="input_email" validationState={this.state.validate_email}>
+                  <Col componentClass={ControlLabel} sm={4}>
+                    E-mail
+                  </Col>
+                  <Col sm={6}>
+                    <FormControl
+                      type="email"
+                      value={this.state.value}
+                      placeholder="Enter Email"
+                      ref = "input_email"
+                      />
+                  </Col>
+                </FormGroup>
+              </Row>
+              <div className="regisBtn">
+                <input id="btnSubmit" type="submit" value = "Sign up" className="btn btn-default" onClick={this.regis.bind(this)} />
+              </div>
+            </form>
           </div>
         )
       }
