@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import './Header.scss'
 import {LoginModal} from '../Login'
 import {RegisterModal} from '../Register'
+import { Link } from 'react-router'
 import 'jquery'
 // import 'bootstrap-sass'
 
@@ -20,6 +21,14 @@ export default class Header extends Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
+<<<<<<< HEAD
+=======
+              <ul className="nav navbar-nav navbar-center">
+                <Link className="navbar-brand" to={{ pathname:'/' }}>
+                  Nature Drink
+                </Link>
+              </ul>
+>>>>>>> 4f8459589ce624706ed6730825be6eb3e5c60ef5
             </div>
 
             <div className="collapse navbar-collapse " id="mynavbar-content">
@@ -30,7 +39,11 @@ export default class Header extends Component {
                 <li ><a href="#">น้ำชาย</a></li>
                 <li ><a href="#">น้ำหญิง</a></li>
                 <li ><a href="#">Pricing</a></li>
-                <li ><a href="#">Contact</a></li>
+                <li >
+                  <Link to={{ pathname:'/contact' }}>
+                    Contact
+                  </Link>
+                </li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
                 <li ><LoginModal/></li>
@@ -38,7 +51,6 @@ export default class Header extends Component {
                 <li ><RegisterModal/></li>
               </ul>
             </div>
-
           </div>
         </div>
       </div>

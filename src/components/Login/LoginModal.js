@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap'
 import Login from './LoginForm.js'
 import './LoginModal.scss'
 
+
 export default class LoginModal extends Component{
 
   constructor(){
@@ -28,7 +29,7 @@ export default class LoginModal extends Component{
         {/* <button className="btn btn-default  btn-signup" onClick={this.open.bind(this)}> */}
           {/* Login */}
         {/* </button> */}
-        <ul className="nav navbar-nav">
+        <ul className="nav navbar-nav ul-login">
           <li ><a href="#" onClick={this.open.bind(this)}>Login</a></li>
           </ul>
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
