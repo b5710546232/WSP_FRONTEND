@@ -1,7 +1,7 @@
 import React,{ Component } from 'react'
 import { Carousel } from 'react-bootstrap'
 
-export default class Homepage extends Component {
+export default class SlidePreview extends Component {
   render(){
     return(
       <div className="slide-preview">

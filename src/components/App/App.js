@@ -12,9 +12,14 @@ export default class App extends Component {
     return (
       <div>
         <Header/>
-        <br/><br/>
+        <div className='container'>
+          <div>
+            {this.props.children}
+          </div>
+        </div>
+        {/* <br/><br/>
         <Preview/>
-        <Footer/>
+        <Footer/> */}
       </div>
     )
   }
