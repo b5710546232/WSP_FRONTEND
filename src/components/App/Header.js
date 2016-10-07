@@ -21,14 +21,6 @@ export default class Header extends Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-<<<<<<< HEAD
-=======
-              <ul className="nav navbar-nav navbar-center">
-                <Link className="navbar-brand" to={{ pathname:'/' }}>
-                  Nature Drink
-                </Link>
-              </ul>
->>>>>>> 4f8459589ce624706ed6730825be6eb3e5c60ef5
             </div>
 
             <div className="collapse navbar-collapse " id="mynavbar-content">

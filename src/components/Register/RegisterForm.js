@@ -119,7 +119,7 @@ import { FormGroup ,
           </Col>
           <Col sm={6}>
           <FormControl
-          type="text"
+          type="password"
           placeholder="Enter Password"
           ref = "input_password"
           />
@@ -134,7 +134,7 @@ import { FormGroup ,
           </Col>
           <Col sm={6}>
           <FormControl
-          type="text"
+          type="password"
           placeholder="Enter Confirm Password"
           ref = "input_confirm_password"
           />
