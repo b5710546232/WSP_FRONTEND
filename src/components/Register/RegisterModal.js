@@ -23,11 +23,7 @@ export default class RegisterModal extends Component{
   render(){
     return(
       <div>
-        {/* <button className="waves-effect btn btn-default btn-register"
-          onClick={this.open.bind(this)}>
-          Sign up
-        </button> */}
-        <ul className="nav navbar-nav">
+        <ul className="nav navbar-nav ul-signup">
           <li ><a href="#" onClick={this.open.bind(this)}>Sign up</a></li>
           </ul>
         <Modal show={this.state.showModal}
