@@ -25,9 +25,12 @@ export default class LoginModal extends Component{
   render(){
     return(
       <div>
-        <button className="btn btn-default  btn-signup" onClick={this.open.bind(this)}>
-          Login
-        </button>
+        {/* <button className="btn btn-default  btn-signup" onClick={this.open.bind(this)}> */}
+          {/* Login */}
+        {/* </button> */}
+        <ul className="nav navbar-nav">
+          <li ><a href="#" onClick={this.open.bind(this)}>Login</a></li>
+          </ul>
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
             <Modal.Title>Login</Modal.Title>

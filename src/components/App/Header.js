@@ -27,8 +27,8 @@ export default class Header extends Component {
 
             <div className="collapse navbar-collapse " id="mynavbar-content">
               <ul className="nav navbar-nav">
-                <li ><a href="#">Home</a></li>
-                <li ><a href="#">About</a></li>
+                <li ><a href="#">น้ำชาย</a></li>
+                <li ><a href="#">น้ำหญิง</a></li>
                 <li ><a href="#">Pricing</a></li>
                 <li ><a href="#">Contact</a></li>
               </ul>
