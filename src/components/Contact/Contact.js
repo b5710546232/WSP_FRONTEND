@@ -1,18 +1,13 @@
 // ui/components/Register/RegisterForm.js
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
-import { FormGroup ,
-  Form,
-  FormControl,
-  ControlLabel,
-  HelpBlock } from 'react-bootstrap'
 import './Contact.scss'
-import 'whatwg-fetch'
+
 export default class ContactForm extends Component {
   constructor(props){
     super(props);
   };
-    render() {
+  render() {
       return(
         <div className="text-center">
           <form className="ContactForm">
@@ -48,10 +43,8 @@ export default class ContactForm extends Component {
             </div>
           </div>
           <br/>
-
-
           </form>
         </div>
       )
-    }
+  }
 }
