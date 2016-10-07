@@ -1,7 +1,6 @@
 import React,{ Component } from 'react'
 import {Row,Col,Well} from 'react-bootstrap'
 import {Card,CardTitle} from 'react-materialize'
-import './Footer.scss'
 export default class FooterMenu extends Component {
   render(){
     return(
