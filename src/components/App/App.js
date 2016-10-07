@@ -4,6 +4,7 @@ import Preview from './Slide-preview'
 import Footer from './Footer-menu'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
+import './App.scss'
 // import 'bootstrap-material-design/dist/css/bootstrap-material-design.min.css'
 // import 'bootstrap-material-design/dist/js/material.min.js'
 export default class App extends Component {
@@ -12,14 +13,11 @@ export default class App extends Component {
     return (
       <div>
         <Header/>
-        <div className='container'>
+        <div>
           <div>
             {this.props.children}
           </div>
         </div>
-        {/* <br/><br/>
-        <Preview/>
-        <Footer/> */}
       </div>
     )
   }
