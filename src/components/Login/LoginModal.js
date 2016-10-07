@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap'
 import Login from './LoginForm.js'
 import './LoginModal.scss'
 
+
 export default class LoginModal extends Component{
 
   constructor(){

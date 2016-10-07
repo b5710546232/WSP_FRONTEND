@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Input from './Input'
 import './Login.scss'
 import 'whatwg-fetch';
+import AuthService from '../../services/AuthService';
 const API = 'http://localhost:5000/api/v1/users/login/'
 export default class Login extends Component {
   constructor(props){
