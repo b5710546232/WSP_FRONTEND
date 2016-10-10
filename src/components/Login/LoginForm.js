@@ -90,12 +90,14 @@ import {Form,
         }
       }
 
-      renderHint(){
+      renderHint(bool){
+        if(bool)
         return(
           <div>
           wrong something.
           </div>
         )
+        else return
       }
 
       render() {

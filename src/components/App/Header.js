@@ -16,7 +16,7 @@ export default class Header extends Component {
           <div className="container-fluid">
 
             <div className="navbar-header">
-              <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content">
+              <button type="button" className="navbar-toggle navbar-left" data-toggle="collapse" data-target="#mynavbar-content">
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
