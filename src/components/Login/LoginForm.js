@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+
 import {Form,
   FormGroup,
   FormControl,
@@ -12,8 +13,8 @@ import {Form,
   Col} from 'react-bootstrap'
   import './Login.scss'
   import 'whatwg-fetch'
-  // const API = 'http://localhost:8000/api/v1/member/login/'
-  const API = 'http://158.108.138.84:8000/api/v1/member/login/'
+  const API = 'http://localhost:8000/api/v1/member/login/'
+  //const API = 'http://158.108.138.84:8000/api/v1/member/login/'
   export default class Login extends Component {
 
     constructor(props){
@@ -59,9 +60,10 @@ import {Form,
       e.preventDefault()
       console.log(ReactDOM.findDOMNode(this.refs.input_username).value);
       console.log(ReactDOM.findDOMNode(this.refs.input_password).value);
-
+      const {onClose}  = this.props
       let username = ReactDOM.findDOMNode(this.refs.input_username).value
       let password = ReactDOM.findDOMNode(this.refs.input_password).value
+
       let data = {
         username: username,
         password: password
@@ -72,18 +74,22 @@ import {Form,
             method: 'POST',
             headers: {
               'Accept': 'application/json',
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'HOST': 'localhost:8000'
             },
             body: JSON.stringify(
               data
             )
           }).then(function(response) {
+            let promise = response.json()
+            Promise.resolve(promise).then(function(value){
+            console.log(value.token)
+            onClose()
+            })
             if (!response.ok) {
               throw Error(response.statusText);
             }
             return response;
-          }).then(function(response) {
-            console.log("ok");
           }).catch(function(error) {
             console.log(error);
           });
@@ -141,7 +147,7 @@ import {Form,
           </Col>
           </FormGroup>
 
-          <button className="waves-effect btn btn-primary btn-medium" onClick={this.login.bind(this)} >Login</button>
+          <button className="waves-effect btn btn-primary btn-medium" id="buttonLogin" onClick={this.login.bind(this)} >Login</button>
 
 
           </Form>

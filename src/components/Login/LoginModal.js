@@ -11,7 +11,6 @@ export default class LoginModal extends Component{
   constructor(){
     super();
     this.state =  { showModal: false };
-
   }
 
   close() {
@@ -38,7 +37,7 @@ export default class LoginModal extends Component{
           </Modal.Header>
           <Modal.Body>
             <div className='text-center'>
-              <Login />
+              <Login onClose={this.close.bind(this)} />
             </div>
           </Modal.Body>
         </Modal>

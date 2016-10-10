@@ -11,8 +11,8 @@ import { FormGroup ,
   HelpBlock } from 'react-bootstrap'
   import './Regis.scss'
   import 'whatwg-fetch'
-  // const API = 'http://localhost:8000/api/v1/member/detail/'
-  const API = 'http://158.108.138.84:8000/api/v1/member/detail/'
+  const API = 'http://localhost:8000/api/v1/member/detail/'
+  //const API = 'http://158.108.138.84:8000/api/v1/member/detail/'
 
   export default class RegisForm extends Component {
     constructor(props){
