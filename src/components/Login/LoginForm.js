@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+
 import {Form,
   FormGroup,
   FormControl,
@@ -59,7 +60,7 @@ import {Form,
       e.preventDefault()
       console.log(ReactDOM.findDOMNode(this.refs.input_username).value);
       console.log(ReactDOM.findDOMNode(this.refs.input_password).value);
-
+      const {onClose}  = this.props
       let username = ReactDOM.findDOMNode(this.refs.input_username).value
       let password = ReactDOM.findDOMNode(this.refs.input_password).value
 
@@ -82,7 +83,8 @@ import {Form,
           }).then(function(response) {
             let promise = response.json()
             Promise.resolve(promise).then(function(value){
-              console.log(value.token)
+            console.log(value.token)
+            onClose()
             })
             if (!response.ok) {
               throw Error(response.statusText);
@@ -143,7 +145,7 @@ import {Form,
           </Col>
           </FormGroup>
 
-          <button className="waves-effect btn btn-primary btn-medium" onClick={this.login.bind(this)} >Login</button>
+          <button className="waves-effect btn btn-primary btn-medium" id="buttonLogin" onClick={this.login.bind(this)} >Login</button>
 
 
           </Form>
