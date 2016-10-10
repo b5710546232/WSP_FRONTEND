@@ -7,14 +7,34 @@ $fontsize: 17px;
 }
 
 
-.navbar-default {
-    background-color: #390909;
-    border-color: #e7e7e7;
+.navbar-default{
+    background-color: rgb(46, 101, 255);
+    border-color:rgba(17, 80, 147, 0.53);
+    .navbar-brand{
+      color:rgb(255, 255, 255);
+      // position: absolute;
+      // left: 50%;
+      // margin-left: -50px !important;  /* 50% of your logo width */
+      // display: block;
+
+
+    }
+}
+
+.navbar-default .navbar-toggle .icon-bar{
+    background-color: rgb(255, 255, 255);
+}
+
+.navbar-default .navbar-toggle .icon-bar{
+    background-color: rgb(255, 255, 255);
+}
+
+.navbar-default .navbar-toggle:hover .icon-bar{
+  background-color:rgb(33, 115, 191);
 }
 
 .navbar {
     position: relative;
-    background-color: #8b8b8b;
     box-shadow: 0.5px 1px 10px 0.01px #888888;
 }
 .navbar-brand{
@@ -22,4 +42,8 @@ $fontsize: 17px;
     // left: 50%;
     // margin-left: -50px !important;  /* 50% of your logo width */
     // display: block;
+}
+
+.navbar-default .navbar-nav li a{
+    color:rgb(255, 255, 255)
 }

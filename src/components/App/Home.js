@@ -6,7 +6,6 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <br/><br/>
         <Preview/>
         <Footer/>
       </div>
