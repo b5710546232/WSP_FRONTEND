@@ -12,9 +12,6 @@ export default class ContactForm extends Component {
         <div className="container">
           <form className="ContactForm">
             <div class="span2">
-            <br/>
-            <br/>
-            <br/>
               <h2>Namsailaiyen</h2>
             </div>
             <div class="span2">
@@ -31,20 +28,35 @@ export default class ContactForm extends Component {
                 <h5>&nbsp;&nbsp;&nbsp;Bangna Bangkok, Thailand 11150</h5>
 
             </div>
-            <table class="table table-striped">
+            <table class="table table-hover">
             <tbody>
             <tr>
             <td>
               <a href="https://www.facebook.com/Gameonlinechan/">
-                <img class="feature-icon"width={60} height={60} src="src/assets/F_icon.svg.png" alt="Main about showroom"/>
+                <img class="feature-icon"width={60} height={60} src="src/assets/F_icon.svg.png" alt="facebook"/>
                 <h5>facebook</h5>
               </a>
             </td>
-            <td>Line</td>
             <td>
-                <a href="http://localhost:9999/">
-                  Web
+              <a>
+              <img class="feature-icon"width={60} height={60} src="src/assets/Line.png" alt="main page"/>
+              <h5>Line</h5>
+              </a>
+              </td>
+              <td>
+                <a>
+                <img class="feature-icon"width={60} height={60} src="src/assets/Instagram.png" alt="main page"/>
+                <h5>Instagram</h5>
+
                 </a>
+                </td>
+            <td>
+
+                <a href="http://localhost:9999/">
+                  <img class="feature-icon"width={60} height={60} src="src/assets/button-home (2).png" alt="main page"/>
+                  <h5>Web</h5>
+                </a>
+
             </td>
             </tr>
           </tbody>
