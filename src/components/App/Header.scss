@@ -19,9 +19,6 @@ $fontsize: 17px;
 
 
     }
-    .navbar-brand li a:hover{
-      color:rgb(128, 213, 255)
-    }
 }
 
 .navbar-default .navbar-toggle .icon-bar{
@@ -36,21 +33,18 @@ $fontsize: 17px;
   background-color:rgb(33, 115, 191);
 }
 .navbar-default .navbar-nav li a:hover{
-  background-color: rgb(128, 213, 255)
+  background-color: rgb(128, 213, 255);
 }
-.navbar-default .navbar-nav navbar-brand li a:hover{
-  background-color:rgb(128, 213, 255)
+.navbar-header li .navbar-brand:hover{
+  background-color:rgb(128, 213, 255);
+  .brand-text:hover{
+    color:rgb(46,139,87);
+  }
 }
 
 .navbar {
-    position: relative;
+  
     box-shadow: 0.5px 1px 10px 0.01px #888888;
-}
-.navbar-brand{
-    // position: absolute;
-    // left: 50%;
-    // margin-left: -50px !important;  /* 50% of your logo width */
-    // display: block;
 }
 
 .navbar-default .navbar-nav li a{

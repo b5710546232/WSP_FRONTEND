@@ -12,7 +12,7 @@ export default class Header extends Component {
   render() {
     return (
       <div>
-        <div className="navbar  navbar-default nav-app navbar-fixed-top">
+        <div className="navbar navbar-default nav-app navbar-fixed-top">
           <div className="container-fluid">
 
             <div className="navbar-header">
@@ -23,7 +23,7 @@ export default class Header extends Component {
               </button>
               <li className="nav navbar-nav navbar-center">
                 <Link className="navbar-brand" to={{ pathname:'/' }}>
-                  Nature Drink
+                  <span className="brand-text">Nature Drink</span>
                 </Link>
               </li>
             </div>
@@ -43,7 +43,7 @@ export default class Header extends Component {
               <ul className="nav navbar-nav navbar-right">
                 <li ><LoginModal/></li>
                 <li>&nbsp;</li>
-                <li ><RegisterModal/></li>
+                <li><RegisterModal/></li>
               </ul>
             </div>
           </div>

@@ -10,7 +10,7 @@ import {Form,
   Checkbox,
   Button,
   FieldGroup,
-  Col} from 'react-bootstrap'
+  Col,Row} from 'react-bootstrap'
   import './Login.scss'
   import 'whatwg-fetch'
   const API = 'http://localhost:8000/api/v1/member/login/'
@@ -112,31 +112,41 @@ import {Form,
 
           <FormGroup controlId="formBasicText"
           validationState={this.state.validate_username}>
-          <Col componentClass={ControlLabel} sm={4}>
+          {/* <Col componentClass={ControlLabel} sm={4}>
           Username
+          </Col> */}
+          <Col sm={2}></Col>
+          <Col sm={8}>
+            <div className="input-group">
+              <span className="glyphicon glyphicon-user input-group-addon"></span>
+              <FormControl
+              type="text"
+              ref="input_username"
+              label="Username"
+              placeholder="Input username"
+              />
+            </div>
           </Col>
-          <Col sm={6}>
-          <FormControl
-          type="text"
-          ref="input_username"
-          label="Username"
-          placeholder="Input username"
-          />
-          </Col>
+          <Col sm={2}></Col>
           </FormGroup>
 
           <FormGroup controlId="formBasicText"
           validationState={this.state.validate_password}>
-          <Col componentClass={ControlLabel} sm={4}>
+          {/* <Col componentClass={ControlLabel} sm={4}>
           Password
+          </Col> */}
+          <Col sm={2}></Col>
+          <Col sm={8}>
+            <div className="input-group">
+              <span className="glyphicon glyphicon-lock input-group-addon"></span>
+              <FormControl
+              type="password"
+              ref="input_password"
+              placeholder="Input password"
+              />
+            </div>
           </Col>
-          <Col sm={6}>
-          <FormControl
-          type="password"
-          ref="input_password"
-          placeholder="Input password"
-          />
-          </Col>
+          <Col sm={2}></Col>
           </FormGroup>
 
           <FormGroup>

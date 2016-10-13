@@ -31,7 +31,7 @@ export default class LoginModal extends Component{
         <ul className="nav navbar-nav ul-login">
           <li ><a href="#" onClick={this.open.bind(this)}>Login</a></li>
           </ul>
-        <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
+        <Modal dialogClassName="login-modal" show={this.state.showModal} onHide={this.close.bind(this)}>
           <Modal.Header closeButton>
             <Modal.Title>Login</Modal.Title>
           </Modal.Header>
