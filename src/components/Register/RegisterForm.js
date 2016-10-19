@@ -11,7 +11,7 @@ import { FormGroup ,
   HelpBlock } from 'react-bootstrap'
   import './Regis.scss'
   import 'whatwg-fetch'
-  const API = 'http://localhost:8000/api/v1/member/detail/'
+  const API = 'http://localhost:8000/api/v1/u/user/'
   //const API = 'http://158.108.138.84:8000/api/v1/member/detail/'
 
   export default class RegisForm extends Component {
@@ -163,12 +163,12 @@ import { FormGroup ,
               <Row>
                 <FormGroup controlId="input_last_name">
                   <Col componentClass={ControlLabel} sm={4}>
-                    LastName
+                    Lastname
                   </Col>
                   <Col sm={6}>
                     <FormControl
                       type="text"
-                      placeholder="Enter LastName"
+                      placeholder="Enter Lastname"
                       ref = "input_last_name"
                       />
                   </Col>

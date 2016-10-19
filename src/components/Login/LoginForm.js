@@ -13,8 +13,7 @@ import {Form,
   Col,Row} from 'react-bootstrap'
   import './Login.scss'
   import 'whatwg-fetch'
-  const API = 'http://localhost:8000/api/v1/member/login/'
-  //const API = 'http://158.108.138.84:8000/api/v1/member/login/'
+  const API = 'http://localhost:8000/api/v1/u/login/'
   export default class Login extends Component {
 
     constructor(props){
@@ -63,7 +62,7 @@ import {Form,
       const {onClose}  = this.props
       let username = ReactDOM.findDOMNode(this.refs.input_username).value
       let password = ReactDOM.findDOMNode(this.refs.input_password).value
-
+      var self = this
       let data = {
         username: username,
         password: password
@@ -81,17 +80,22 @@ import {Form,
               data
             )
           }).then(function(response) {
-            let promise = response.json()
-            Promise.resolve(promise).then(function(value){
-            console.log(value.token)
-            onClose()
-            })
             if (!response.ok) {
-              throw Error(response.statusText);
+              console.log('not ok');
+              self.setState({validate_username:'error'})
+              self.setState({validate_password:'error'})
+            }
+            else{
+              let promise = response.json()
+              Promise.resolve(promise).then(function(value){
+              console.log(value.token)
+              })
+              // localStorage.setItem(token,value.token)
+              // localstorage.token = value.token
+              onClose()
             }
             return response;
           }).catch(function(error) {
-            console.log(error);
           });
         }
       }

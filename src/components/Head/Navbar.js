@@ -1,13 +1,13 @@
 // ui/components/App/Header.js
 import React, { Component } from 'react'
-import './Header.scss'
+import './Navbar.scss'
 import {LoginModal} from '../Login'
 import {RegisterModal} from '../Register'
 import { Link } from 'react-router'
 import 'jquery'
 // import 'bootstrap-sass'
 
-export default class Header extends Component {
+export default class Navbar extends Component {
 
   render() {
     return (
@@ -31,9 +31,8 @@ export default class Header extends Component {
             <div className="collapse navbar-collapse " id="mynavbar-content">
               <ul className="nav navbar-nav">
 
-                <li ><a href="#">น้ำชาย</a></li>
-                <li ><a href="#">น้ำหญิง</a></li>
-                <li ><a href="#">Pricing</a></li>
+                <li ><a href="#">Store</a></li>
+                <li ><a href="#">Design</a></li>
                 <li >
                   <Link to={{ pathname:'/contact' }}>
                     Contact
