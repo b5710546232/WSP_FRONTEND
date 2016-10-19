@@ -4,6 +4,8 @@ import {
   App,
   Home,
   Contact,
+  Store,
+  Design,
 } from './components'
 
 export default () => {
@@ -13,8 +15,12 @@ export default () => {
         <IndexRoute component={Home} />
         <route path='contact'>
           <IndexRoute component={Contact} />
-            {/* <route path=':id'
-                   component={ShowPage}/> */}
+        </route>
+        <route path='store'>
+          <IndexRoute component={Store} />
+        </route>
+        <route path='design'>
+          <IndexRoute component={Design} />
         </route>
       </Router>
     </Router>

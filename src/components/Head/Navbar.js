@@ -31,8 +31,16 @@ export default class Navbar extends Component {
             <div className="collapse navbar-collapse " id="mynavbar-content">
               <ul className="nav navbar-nav">
 
-                <li ><a href="#">Store</a></li>
-                <li ><a href="#">Design</a></li>
+                <li >
+                  <Link to={{ pathname:'/store' }}>
+                    Store
+                  </Link>
+                </li>
+                <li >
+                  <Link to={{ pathname:'/design' }}>
+                    Design
+                  </Link>
+                </li>
                 <li >
                   <Link to={{ pathname:'/contact' }}>
                     Contact
