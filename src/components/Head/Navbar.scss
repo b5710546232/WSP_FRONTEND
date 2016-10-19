@@ -1,13 +1,19 @@
 $fontsize: 17px;
 // $fontfamily: monospace;
 
-.navbar{
+.navbar_menu{
+  margin-top:30px;
   // font-size: $fontsize;
   // font-family: $fontfamily;
 }
 
+.navbar_status{
+  margin-top: -16px;
+  height: 10px;
+  background-color: rgba(57,94,166, 1);
+}
 
-.navbar-default{
+.navbar_menu{
     background-color: rgba(60, 170, 241, 1);
     border-color: rgba(60, 170, 241, 1);
     .navbar-brand{
@@ -43,7 +49,6 @@ $fontsize: 17px;
 }
 
 .navbar {
-  
     box-shadow: 0.5px 1px 10px 0.01px #888888;
 }
 

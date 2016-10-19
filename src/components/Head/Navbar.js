@@ -12,7 +12,7 @@ export default class Navbar extends Component {
   render() {
     return (
       <div>
-        <div className="navbar navbar-default nav-app navbar-fixed-top">
+        <div className="navbar navbar-default nav-app navbar-fixed-top navbar_menu">
           <div className="container-fluid">
 
             <div className="navbar-header">
