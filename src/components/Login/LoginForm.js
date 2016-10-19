@@ -67,6 +67,8 @@ import {Form,
         username: username,
         password: password
       }
+      let token = localStorage.getItem('token')
+      console.log(token,'kkkk')
       if(this.validateData(data)){
         fetch(API,
           {
@@ -88,10 +90,9 @@ import {Form,
             else{
               let promise = response.json()
               Promise.resolve(promise).then(function(value){
-              console.log(value.token)
+                console.log(value.token)
+                localStorage.setItem('token',value.token)
               })
-              // localStorage.setItem(token,value.token)
-              // localstorage.token = value.token
               onClose()
             }
             return response;

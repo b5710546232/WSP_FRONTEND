@@ -8,6 +8,25 @@ import 'jquery'
 // import 'bootstrap-sass'
 
 export default class Navbar extends Component {
+  constructor(props){
+    super(props)
+    this.state = { hasToken:false }
+  }
+
+  componentWillMount(){
+    this.token = localStorage.getItem('token')
+    if(this.token == null){
+      this.setState({hasToken:false})
+    }
+    else{
+      this.setState({hasToken:true})
+    }
+  }
+
+  logout(){
+    this.setState({hasToken:false})
+    localStorage.removeItem('token')
+  }
 
   render() {
     return (
@@ -48,9 +67,12 @@ export default class Navbar extends Component {
                 </li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
-                <li ><LoginModal/></li>
-                <li>&nbsp;</li>
-                <li><RegisterModal/></li>
+                {this.state.hasToken ? <li className="icon-bar"><a href="">WatchList</a></li> : <li><LoginModal/></li> }
+                {this.state.hasToken ? <li className="icon-bar"><a href="">Postal</a></li> : <li><RegisterModal/></li> }
+                {this.state.hasToken ? <li className="icon-bar"><a href="">Payment</a></li> : <span></span> }
+                {this.state.hasToken ? <li className="icon-bar"><a href="">WatchList</a></li> : <span></span> }
+                {this.state.hasToken ? <li className="icon-bar"><button className="btn btn-warning btn_logout" onClick={this.logout.bind(this)}>Logout</button></li> : <span></span> }
+
               </ul>
             </div>
           </div>
