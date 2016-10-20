@@ -67,9 +67,9 @@ export default class Navbar extends Component {
                 </li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
-                {this.state.hasToken ? <li className="icon-bar"><a href="">WatchList</a></li> : <li><LoginModal/></li> }
-                {this.state.hasToken ? <li className="icon-bar"><a href="">Postal</a></li> : <li><RegisterModal/></li> }
-                {this.state.hasToken ? <li className="icon-bar"><a href="">Payment</a></li> : <span></span> }
+                {this.state.hasToken ? <li className="icon-bar"><a href="#">WatchList</a></li> : <li><LoginModal/></li> }
+                {this.state.hasToken ? <li className="icon-bar"><a href="#">Postal</a></li> : <li><RegisterModal/></li> }
+                {this.state.hasToken ? <li className="icon-bar"><a href="#">Payment</a></li> : <span></span> }
                 {this.state.hasToken ? <li className="icon-bar"><button className="btn btn-danger btn_logout" onClick={this.logout.bind(this)}>Logout</button></li> : <span></span> }
               </ul>
             </div>
