@@ -8,9 +8,9 @@ module.exports = {
     './app/index.js'
   ],
   output: {
-    publicPath: "/static/",
-    path: path.join(__dirname, "static"),
-    filename: "javascripts/bundle.js"
+    publicPath: "/dist/javascripts/",
+    path: path.join(__dirname, "dist/javascripts"),
+    filename: "bundle.js"
   },
   module: {
     loaders:[
@@ -34,6 +34,7 @@ module.exports = {
     return [autoprefixer];
   },
   devServer: {
+    contentBase:"./dist",
     historyApiFallback: true,
     proxy: {
       '/api/*': {
