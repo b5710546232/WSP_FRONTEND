@@ -1,6 +1,5 @@
 // ui/components/Register/RegisterForm.js
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom';
 import './Contact.scss'
 
 export default class ContactForm extends Component {
