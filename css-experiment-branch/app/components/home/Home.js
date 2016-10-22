@@ -60,7 +60,7 @@ export default class Home extends Component {
               </div>
             </div>
         </div>
-        <div className="parallax-container">
+        <div className="parallax-container parallax-design">
           <div className="container white-text">
             <div className="row">
               <div className="col s4">
