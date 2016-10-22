@@ -1,2 +1,5 @@
 export App from './app/App'
 export Home from './home/Home'
+export Store from './store/Store'
+export Admin from './admin/Admin'
+export Design from './design/Design'
