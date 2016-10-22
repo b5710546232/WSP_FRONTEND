@@ -15,6 +15,7 @@
   "dependencies": {
     "immutable": "^3.8.1",
     "jquery": "^3.1.0",
+    "materialize-css": "^0.97.7",
     "react": "^15.3.1",
     "react-cookie": "^0.4.8",
     "react-dom": "^15.3.1",

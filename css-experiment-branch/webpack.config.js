@@ -24,12 +24,6 @@ module.exports = {
       {test: /\.scss$/,loaders: ['style', 'css', 'sass','postcss']}
     ]
   },
-  plugins: [
-  new webpack.ProvidePlugin({
-    $: "jquery",
-    jQuery: "jquery"
-  })
-],
   postcss:function () {
     return [autoprefixer];
   },
