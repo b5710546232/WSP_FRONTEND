@@ -8,8 +8,8 @@ module.exports = {
     './app/index.js'
   ],
   output: {
-    publicPath: "/dist/javascripts/",
-    path: path.join(__dirname, "dist/javascripts"),
+    publicPath: "/dist/js/",
+    path: path.join(__dirname, "dist/js"),
     filename: "bundle.js"
   },
   module: {
