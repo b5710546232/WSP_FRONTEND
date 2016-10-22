@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC");
+@media (min-width: 992px){
+.Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Aligner-item {
+  max-width: 50%;
+}
+.Aligner-item--bottom {
+  float:right;
+}
+}
+.brand {
+  font-size: 150%
+}
+
+.custom-nav {
+  font-family: 'Amatic SC', cursive;
+  font-size: 250%
+}
+
+.transparent{
+  background-color:rgba(0, 0, 0, 0.0);
+}
