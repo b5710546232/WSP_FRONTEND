@@ -11,56 +11,9 @@ export default class ItemInfoModal extends Component {
         <div>
           <img className="item-preview" src="media/images/3.png"/>
           <div className="section ">
-            <h3>Water 9฿</h3>
+            <h3>{this.props.name} {this.props.price}฿</h3>
             <p className="flow-text">
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
-              This fucking good water blah blah blah blah
+              {this.props.description}
             </p>
             <Button>Add to cart</Button>
           </div>
