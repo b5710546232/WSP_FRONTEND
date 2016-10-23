@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 export default class HeaderNavbar extends Component {
+  componentDidMount(){
+    $(".button-collapse").sideNav()
+  }
   render() {
     return (
       <nav className=" light-blue">

@@ -33,8 +33,8 @@ export default class Home extends Component {
             <img src="media/images/1.jpg"/>
           </div>
         </div>
-        <div className="section white container center">
-            <div className="row">
+        <div className="section white center z-depth-2  ">
+            <div className="container row">
               <div className="col s12 left">
                 <h2>Why you have to buy Nature Drink?</h2>
               </div>
