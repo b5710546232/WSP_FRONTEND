@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import LoginModal from './modal/login/LoginModal'
 export default class HeaderNavbar extends Component {
   componentDidMount(){
     $(".button-collapse").sideNav()
@@ -14,12 +15,12 @@ export default class HeaderNavbar extends Component {
             <li className="left"><Link className="waves-effect waves-light" to={{ pathname:'/store' }}>Store</Link></li>
             <li className="left"><Link className="waves-effect waves-light" to={{ pathname:'/design' }}>design</Link></li>
             <li className="right"><Link className="waves-effect waves-light" to={{ pathname:'/' }}>Register</Link></li>
-            <li className="right"><Link className="waves-effect waves-light" to={{ pathname:'/' }}>Login</Link></li>
+            <li className="right"><LoginModal/></li>
           </ul>
           <ul className="side-nav" id="mobile-demo">
             <li><Link className="waves-effect waves-light" to={{ pathname:'/store' }}>Store</Link></li>
             <li><Link className="waves-effect waves-light" to={{ pathname:'/design' }}>Design</Link></li>
-            <li><Link className="waves-effect waves-light" to={{ pathname:'/' }}>Login</Link></li>
+            <li><LoginModal/></li>
             <li><Link className="waves-effect waves-light" to={{ pathname:'/' }}>Register</Link></li>
           </ul>
         </div>
