@@ -6,7 +6,7 @@ export default class LoginModal extends Component {
       <Modal
         header='Login'
         trigger={
-          <Button waves='light'>Login</Button>
+          <Button waves='light' className="space-button">Login</Button>
         }>
         <form>
           <Row className="center">
