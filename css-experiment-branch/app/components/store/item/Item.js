@@ -5,7 +5,7 @@ export default class Filter extends Component {
   render() {
     return (
       <Col s={12} m={5} l={4}>
-        <Card className='small'
+        <Card className='small hoverable'
           header={<CardTitle
             image='media/images/2.png'>{this.props.name}
           </CardTitle>}
