@@ -9,7 +9,7 @@ export default class Store extends Component {
     }
     return (
       <div className="store-container" style={bg}>
-        <div className="transparent container">
+        <div className="transparent container center">
           <div className="row">
             <Filter/>
             <ItemContainer/>

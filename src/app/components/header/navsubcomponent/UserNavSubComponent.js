@@ -11,6 +11,7 @@ export default class UserNavSubComponent extends Component {
       <div>
         <div>
           <li className={this.props.position}><MemberModal/></li>
+          {this.props.is_admin}
           <li className={this.props.position}><PaymentModal/></li>
           <li className={this.props.position}><PostalModal/></li>
           <li className={this.props.position}><CartModal/></li>

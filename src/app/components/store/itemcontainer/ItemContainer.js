@@ -4,7 +4,7 @@ import Item from '../item/Item'
 export default class Filter extends Component {
   render() {
     return (
-      <div className="col s12 m8 ">
+      <div className="col s12 m7 l8 ">
         <div className="row">
           <Item name="Nature DrinkA" description="Fucking Holy water from middle earth!!!!!!!" price="1.00"/>
           <Item name="Nature DrinkB" description="Fucking Holy water from middle earth!!!!!!!" price="2.00"/>
