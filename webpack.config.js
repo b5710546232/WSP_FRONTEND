@@ -5,11 +5,11 @@ const autoprefixer = require('autoprefixer');
 module.exports = {
   devtool: 'eval-cheap-module-source-map',
   entry: [
-    './src/index.js'
+    './app/index.js'
   ],
   output: {
-    publicPath: "/static/",
-    path: path.join(__dirname, "static"),
+    publicPath: "/dist/js/",
+    path: path.join(__dirname, "dist/js"),
     filename: "bundle.js"
   },
   module: {
@@ -24,16 +24,11 @@ module.exports = {
       {test: /\.scss$/,loaders: ['style', 'css', 'sass','postcss']}
     ]
   },
-  plugins: [
-  new webpack.ProvidePlugin({
-    $: "jquery",
-    jQuery: "jquery"
-  })
-],
   postcss:function () {
     return [autoprefixer];
   },
   devServer: {
+    contentBase:"./dist",
     historyApiFallback: true,
     proxy: {
       '/api/*': {
