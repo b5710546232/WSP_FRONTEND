@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Modal} from 'react-materialize'
+import {Modal,Button,Table} from 'react-materialize'
 export default class CartModal extends Component {
   render() {
     return (

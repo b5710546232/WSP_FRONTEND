@@ -20,9 +20,7 @@ class HeaderNavbar extends Component {
             <li className="left"><Link className="waves-effect waves-light" to={{ pathname:'/store' }}>Store</Link></li>
             <li className="left"><Link className="waves-effect waves-light" to={{ pathname:'/design' }}>design</Link></li>
 
-          <GuestNavSubComponent
-              position="right"
-              />
+            {!this.props.authed.isLogin ?<GuestNavSubComponent position="right"/>:<UserNavSubComponent position="right"/>}
           </ul>
           <ul className="side-nav" id="mobile-demo">
             <li><Link className="waves-effect waves-light brand-logo" to={{ pathname:'/' }}>Nature Drink</Link></li>

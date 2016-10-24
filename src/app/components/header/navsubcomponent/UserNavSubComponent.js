@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import LoginModal from '../modal/login/LoginModal'
-import PaymentModal from '../modal/register/RegisterModal'
+import PaymentModal from '../modal/payment/PaymentModal'
 import PostalModal from '../modal/postal/PostalModal'
 import CartModal from '../modal/cart/CartModal'
 import MemberModal from '../modal/member/MemberModal'

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Modal} from 'react-materialize'
+import {Modal,Button} from 'react-materialize'
 export default class PaymentModal extends Component {
   render() {
     return (
