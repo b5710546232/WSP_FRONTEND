@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
-import {Modal,Button,Input,Row} from 'react-materialize'
+import {Modal,Button,Input,Row,Col} from 'react-materialize'
 import '../../../../assets/scss/info.scss'
 export default class ItemInfoModal extends Component {
   render() {
+    var margin = {
+      marginTop : "0px",
+      marginBottom :"0px"
+    }
     return (
       <Modal
         trigger={
@@ -15,7 +19,14 @@ export default class ItemInfoModal extends Component {
             <p className="flow-text">
               {this.props.description}
             </p>
-            <Button>Add to cart</Button>
+            <Row>
+              <Col>
+                <span className="flow-text">Quantity : </span>
+              </Col>
+              <Input type="number" lable="Quantity" defaultValue={0} s={12} m={1} style={margin  } />
+
+              <Button>Add to cart</Button>
+            </Row>
           </div>
         </div>
       </Modal>
