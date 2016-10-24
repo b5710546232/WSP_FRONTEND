@@ -16,16 +16,16 @@
     "classnames": "^2.2.5",
     "immutable": "^3.8.1",
     "jquery": "^3.1.0",
-    "materialize-css": "^0.97.7",
     "react": "^15.3.1",
     "react-cookie": "^0.4.8",
     "react-dom": "^15.3.1",
-    "react-google-maps": "^4.11.0",
     "react-materialize": "^0.17.0",
     "react-router": "^2.8.1",
     "react-select": "^1.0.0-rc.2",
     "validator": "^6.0.0",
-    "whatwg-fetch": "^1.0.0"
+    "redux": "^3.5.2",
+    "redux-api-middleware": "^1.0.2",
+    "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.1",
@@ -34,15 +34,10 @@
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
-    "chai": "^3.5.0",
-    "chai-immutable": "^1.6.0",
     "css-loader": "^0.25.0",
     "eslint": "^3.5.0",
     "eslint-plugin-react": "^6.3.0",
     "file-loader": "^0.9.0",
-    "jsdom": "^9.5.0",
-    "json-server": "^0.8.21",
-    "mocha": "^3.0.2",
     "node-sass": "^3.10.0",
     "postcss": "^5.2.0",
     "postcss-loader": "^0.13.0",
@@ -50,6 +45,7 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
+    "redux-logger": "^2.7.0",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.1"
   }
