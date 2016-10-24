@@ -13,13 +13,13 @@ export default () => {
     <Router history={browserHistory}>
       <Router path='/' component={App}>
         <IndexRoute component={Home}/>
-        <route path='store'>
+        <route path='/store'>
           <IndexRoute component={Store} />
         </route>
-        <route path='design'>
+        <route path='/design'>
           <IndexRoute component={Design} />
         </route>
-        <route path='admin'>
+        <route path='/admin'>
           <IndexRoute component={Admin} />
         </route>
       </Router>

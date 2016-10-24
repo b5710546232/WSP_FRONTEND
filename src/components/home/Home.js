@@ -19,7 +19,7 @@ export default class Home extends Component {
               Visit Store
             </Link>
           }
-          background="media/images/1.jpg"
+          background="src/assets/media/images/1.jpg"
           footer = {
             <TriSection
               title="Why you have to buy Nature Drink"
