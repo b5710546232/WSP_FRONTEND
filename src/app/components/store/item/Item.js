@@ -12,7 +12,8 @@ export default class Filter extends Component {
           actions={<ItemInfoModal
             name={this.props.name}
             description={this.props.description}
-            price={this.props.price}/>}>
+            price={this.props.price}
+            image='src/assets/media/images/2.png'/>}>
           {this.props.description}
         </Card>
       </Col>

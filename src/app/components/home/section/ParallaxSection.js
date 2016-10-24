@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../../../assets/scss/home.scss'
+import '../../../../assets/scss/home.scss'
 import classnames from 'classnames';
 
 export default class Section extends Component {

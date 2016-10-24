@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import FilterItem from '../filteritem/FilterItem'
-import '../../../assets/scss/filter.scss'
+import '../../../../assets/scss/filter.scss'
 export default class Filter extends Component {
   render() {
     return (

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Filter from './filter/Filter'
 import ItemContainer from './itemcontainer/ItemContainer'
-import '../../assets/scss/store.scss'
+import '../../../assets/scss/store.scss'
 export default class Store extends Component {
   render() {
     var bg = {

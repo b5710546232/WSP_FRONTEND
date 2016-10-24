@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Modal,Button,Input,Row} from 'react-materialize'
-import '../../../assets/scss/info.scss'
+import '../../../../assets/scss/info.scss'
 export default class ItemInfoModal extends Component {
   render() {
     return (
@@ -9,7 +9,7 @@ export default class ItemInfoModal extends Component {
           <a>9.00฿</a>
         }>
         <div>
-          <img className="item-preview" src="media/images/3.png"/>
+          <img className="item-preview" src={this.props.image}/>
           <div className="section ">
             <h3>{this.props.name} {this.props.price}฿</h3>
             <p className="flow-text">
