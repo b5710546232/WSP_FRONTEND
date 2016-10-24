@@ -11,7 +11,8 @@ export default class PostalModal extends Component {
         }
         >
         <Collapsible popout>
-          {//Postal Soon...}
+          {//Postal Soon...
+          }
         </Collapsible>
       </Modal>
     )
