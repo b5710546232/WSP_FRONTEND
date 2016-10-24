@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Input} from 'react-materialize'
-import '../../../../dist/scss/filter.scss'
+import '../../../assets/scss/filter.scss'
 export default class FilterItem extends Component {
   render() {
     return (

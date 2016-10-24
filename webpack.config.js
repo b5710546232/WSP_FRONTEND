@@ -5,7 +5,7 @@ const autoprefixer = require('autoprefixer');
 module.exports = {
   devtool: 'eval-cheap-module-source-map',
   entry: [
-    './app/index.js'
+    './src/index.js'
   ],
   output: {
     publicPath: "/dist/js/",
@@ -28,7 +28,6 @@ module.exports = {
     return [autoprefixer];
   },
   devServer: {
-    contentBase:"./dist",
     historyApiFallback: true,
     proxy: {
       '/api/*': {

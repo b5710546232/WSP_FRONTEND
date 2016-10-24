@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Modal,Button,Input,Row} from 'react-materialize'
-import '../../../../dist/scss/info.scss'
+import '../../../assets/scss/info.scss'
 export default class ItemInfoModal extends Component {
   render() {
     return (

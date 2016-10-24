@@ -7,7 +7,7 @@ export default class Filter extends Component {
       <Col s={12} m={5} l={4}>
         <Card className='small hoverable'
           header={<CardTitle
-            image='media/images/2.png'>{this.props.name}
+            image='src/assets/media/images/2.png'>{this.props.name}
           </CardTitle>}
           actions={<ItemInfoModal
             name={this.props.name}
