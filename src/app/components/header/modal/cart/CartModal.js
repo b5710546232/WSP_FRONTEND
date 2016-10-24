@@ -26,7 +26,7 @@ export default class CartModal extends Component {
             </tr>
           </tbody>
         </Table>
-        <Button wave="light">Pay</Button>
+        <Button waves="light">Pay</Button>
       </Modal>
     )
   }
