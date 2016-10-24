@@ -3,9 +3,6 @@ import {Input} from 'react-materialize'
 import Item from '../item/Item'
 export default class Filter extends Component {
   render() {
-    var autoWidthStyle = {
-
-    }
     return (
       <div className="col s12 m12 l12" >
         <div className="row">
