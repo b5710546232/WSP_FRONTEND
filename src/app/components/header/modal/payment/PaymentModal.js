@@ -3,7 +3,13 @@ import React, { Component } from 'react'
 export default class RegisterModal extends Component {
   render() {
     return (
-      <h1>PaymentModal</h1>
+      <Modal
+        header='Payment'
+        trigger={
+          <Button waves='light' className="space-button">Payment</Button>
+        }>
+
+      </Modal>
     )
   }
 }
