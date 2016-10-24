@@ -23,8 +23,7 @@ export default class ItemInfoModal extends Component {
               <Col>
                 <span className="flow-text">Quantity : </span>
               </Col>
-              <Input type="number" lable="Quantity" defaultValue={0} s={12} m={1} style={margin  } />
-
+              <Input type="number" name="quantity" lable="Quantity" defaultValue={0} s={12} m={1} style={margin  } />
               <Button>Add to cart</Button>
             </Row>
           </div>

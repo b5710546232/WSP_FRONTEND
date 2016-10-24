@@ -2,7 +2,15 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {logout} from '../../../../actions/AuthedAction'
 import {Modal,Button} from 'react-materialize'
+import MemberInfo from './MemberInfo'
 class MemberModal extends Component {
+  componentDidMount(){
+    $(document).ready(function(){
+      $('.collapsible').collapsible({
+        accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+      });
+    });
+  }
   onLogout(){
     this.props.onLogout()
   }
@@ -12,17 +20,30 @@ class MemberModal extends Component {
     }
     return (
       <Modal
-        header='Modal Header'
+        header='User Control Panel'
         trigger={
           <span style={margin}>Welcome, {this.props.authed.userdata.username}</span>
         }
         >
-        <div className="collection">
-          <a href="#!" className="collection-item">Alvin</a>
-          <a href="#!" className="collection-item active">Alvin</a>
-          <a href="#!" className="collection-item">Alvin</a>
-          <a href="#!" className="collection-item">Alvin</a>
-        </div>
+        <ul className="collapsible" data-collapsible="accordion">
+          <li>
+            <div className="collapsible-header active">User Info</div>
+            <div className="collapsible-body"><MemberInfo
+              username={this.props.authed.userdata.username}
+              first_name={this.props.authed.userdata.first_name}
+              last_name={this.props.authed.userdata.last_name}
+              email={this.props.authed.userdata.email}
+              /></div>
+          </li>
+          <li>
+            <div className="collapsible-header">Change Password</div>
+            <div className="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+          </li>
+          <li>
+            <div className="collapsible-header">Manage Address</div>
+            <div className="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+          </li>
+        </ul>
         <div className="row center">
           <Button waves="light" className="modal-close" onClick={
              (e)=>this.onLogout()
