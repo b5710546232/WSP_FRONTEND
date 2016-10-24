@@ -1,22 +1,20 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import {Modal,Button,Input,Row} from 'react-materialize'
-import AuthedAction from '../../../../actions/AuthedAction'
-export default class LoginModal extends Component {
+import {login} from '../../../../actions/AuthedAction'
+import {connect} from 'react-redux'
+class LoginModal extends Component {
   onLogin(e){
     e.preventDefault()
-    let username = ReactDOM.findDOMNode(this.refs.username).value
-    let password = ReactDOM.findDOMNode(this.refs.password).value
-    console.log(ReactDOM.findDOMNode(this.refs.username).value);
+    let username = this.refs.form.username.value
+    let password = this.refs.form.password.value
 
     let data = {
       username: username,
       password: password
     }
-    // this.props.login(data)
+    this.props.onLogin(data)
 
-    ReactDOM.findDOMNode(this.refs.password).value = ''
-    ReactDOM.findDOMNode(this.refs.password).value.value = ''
   }
   render() {
     return (
@@ -25,7 +23,7 @@ export default class LoginModal extends Component {
         trigger={
           <Button waves='light' className="space-button">Login</Button>
         }>
-        <form>
+        <form action="" ref="form">
           <Row className="center">
             <Input name="username" s={12} label="Username"
               ref = "username"
@@ -40,3 +38,14 @@ export default class LoginModal extends Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+  return state
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogin: (username) => {
+      dispatch(login(username))
+    }
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(LoginModal)
