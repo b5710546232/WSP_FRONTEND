@@ -3,8 +3,11 @@ import {Input} from 'react-materialize'
 import Item from '../item/Item'
 export default class Filter extends Component {
   render() {
+    var autoWidthStyle = {
+
+    }
     return (
-      <div className="col s12 m7 l8 ">
+      <div className="col s12 m12 l12" >
         <div className="row">
           <Item name="Nature DrinkA" description="Fucking Holy water from middle earth!!!!!!!" price="1.00"/>
           <Item name="Nature DrinkB" description="Fucking Holy water from middle earth!!!!!!!" price="2.00"/>

@@ -8,9 +8,9 @@ export default class AppFooter extends Component {
 
         links={
           <ul>
-            <li><Link className="waves-effect waves-light" to={{ pathname:'/' }}>Home</Link></li>
-            <li><Link className="waves-effect waves-light" to={{ pathname:'/store' }}>Store</Link></li>
-            <li><Link className="waves-effect waves-light" to={{ pathname:'/design' }}>Design</Link></li>
+            <li><Link className="waves-effect waves-light white-text" to={{ pathname:'/' }}>Home</Link></li>
+            <li><Link className="waves-effect waves-light white-text" to={{ pathname:'/store' }}>Store</Link></li>
+            <li><Link className="waves-effect waves-light white-text" to={{ pathname:'/design' }}>Design</Link></li>
           </ul>
         }
         className='page-footer light-blue'

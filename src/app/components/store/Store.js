@@ -11,8 +11,8 @@ export default class Store extends Component {
       <div className="store-container" style={bg}>
         <div className="transparent container center">
           <div className="row">
-            <Filter/>
-            <ItemContainer/>
+            <Filter />
+            <ItemContainer />
           </div>
         </div>
       </div>
