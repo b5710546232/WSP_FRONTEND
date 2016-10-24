@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class RegisterModal extends Component {
+export default class PaymentModal extends Component {
   render() {
     return (
       <Modal

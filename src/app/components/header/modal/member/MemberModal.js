@@ -6,7 +6,7 @@ export default class MemberModal extends Component {
       <Modal
         header='Modal Header'
         trigger={
-          Welcome, {this.props.firstname} {this.props.lastname}
+          Welcome, {this.props.user.firstname} {this.props.user.lastname}
         }
         >
         <div class="collection">
