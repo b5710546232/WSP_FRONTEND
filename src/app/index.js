@@ -2,5 +2,15 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 import routes from './routes'
+import configureStore from './store/configureStore'
+import { browserHistory } from 'react-router'
+import {Provider} from 'react-redux'
 
-render(routes(), document.getElementById('app'))
+const store = configureStore(browserHistory)
+render(
+   <Provider store={store} key='provider'>
+  {routes(store, browserHistory)}
+</Provider>
+
+
+  , document.getElementById('app'))
