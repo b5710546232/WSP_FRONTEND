@@ -10,7 +10,7 @@ class MemberModal extends Component {
       <Modal
         header='Modal Header'
         trigger={
-          <span style={margin}>Welcome, {this.props.authed.userdata.first_name} {this.props.authed.userdata.last_name}  </span>
+          <span style={margin}>Welcome, {this.props.authed.userdata.username}</span>
         }
         >
         <div class="collection">

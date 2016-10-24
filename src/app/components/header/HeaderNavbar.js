@@ -13,8 +13,8 @@ class HeaderNavbar extends Component {
   }
   render() {
     var margin = {
-      marginLeft: "3%",
-      marginRight: "3%"
+      marginLeft: "1%",
+      marginRight: "1%"
     }
     return (
       <nav className=" light-blue">
