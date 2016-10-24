@@ -3,7 +3,7 @@ import { CALL_API } from 'redux-api-middleware'
 
 const initialState = []
 
-const categories = (state=initialState,action)=>{
+const products = (state=initialState,action)=>{
   switch(action.type) {
     case 'LOAD_PRODUCT_LIST_SUCCESS':
       return action.payload
@@ -13,4 +13,4 @@ const categories = (state=initialState,action)=>{
       return state;
   }
 }
-export default categories;
+export default products;
