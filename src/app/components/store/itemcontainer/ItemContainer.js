@@ -13,9 +13,6 @@ class ItemContainer extends Component {
     return this.props.products !== nextProps
   }
   render() {
-    var autoWidthStyle = {
-
-    }
     return (
       <div className="col s12 m12 l12" >
         <div className="row">

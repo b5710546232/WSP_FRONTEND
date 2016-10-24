@@ -3,11 +3,14 @@ import {connect} from 'react-redux'
 import {Modal} from 'react-materialize'
 class MemberModal extends Component {
   render() {
+    var margin = {
+      paddingRight: "15px"
+    }
     return (
       <Modal
         header='Modal Header'
         trigger={
-          <span>Welcome, {this.props.authed.userdata.first_name} {this.props.authed.userdata.last_name}</span>
+          <span style={margin}>Welcome, {this.props.authed.userdata.first_name} {this.props.authed.userdata.last_name}  </span>
         }
         >
         <div class="collection">

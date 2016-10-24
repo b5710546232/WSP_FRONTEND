@@ -31,7 +31,9 @@ class LoginModal extends Component {
             <Input name="password" type="password" label="password" s={12}
               ref = "password"
                />
-            <Button waves="light" type="submit" onClick={(e)=>this.onLogin(e)}>Login</Button>
+             <Button waves="light" type="submit" className="modal-close" onClick={
+                (e)=>this.onLogin(e)
+              }>Login</Button>
           </Row>
         </form>
       </Modal>

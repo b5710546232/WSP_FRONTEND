@@ -7,7 +7,7 @@ export default class PostalModal extends Component {
       <Modal
         header='Modal Header'
         trigger={
-          <Button waves='light'>Postal<Icon left>navigation</Icon></Button>
+          <Button waves='light'>Postal</Button>
         }
         >
         <Collapsible popout>
