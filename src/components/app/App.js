@@ -6,7 +6,7 @@ export default class App extends Component {
     return (
       <div>
         <HeaderNavbar/>
-        {this.props.children}
+          {this.props.children}
         <AppFooter/>
       </div>
     )
