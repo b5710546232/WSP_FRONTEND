@@ -20,12 +20,14 @@
     "react-cookie": "^0.4.8",
     "react-dom": "^15.3.1",
     "react-materialize": "^0.17.0",
+    "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
+    "react-router-redux": "^4.0.6",
     "react-select": "^1.0.0-rc.2",
-    "validator": "^6.0.0",
     "redux": "^3.5.2",
     "redux-api-middleware": "^1.0.2",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "validator": "^6.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.1",

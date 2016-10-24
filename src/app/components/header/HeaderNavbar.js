@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import GuestNavSubComponent from './navsubcomponent/GuestNavSubComponent'
-export default class HeaderNavbar extends Component {
+import {connect} from 'react-redux'
+class HeaderNavbar extends Component {
   componentDidMount(){
     $(".button-collapse").sideNav()
+  }
+  shouldComponentUpdate(nextProps){
+    return this.props.authed !== nextProps
   }
   render() {
     return (
@@ -14,7 +18,8 @@ export default class HeaderNavbar extends Component {
           <ul className="hide-on-med-and-down center">
             <li className="left"><Link className="waves-effect waves-light" to={{ pathname:'/store' }}>Store</Link></li>
             <li className="left"><Link className="waves-effect waves-light" to={{ pathname:'/design' }}>design</Link></li>
-            <GuestNavSubComponent
+
+          <GuestNavSubComponent
               position="right"
               />
           </ul>
@@ -22,10 +27,16 @@ export default class HeaderNavbar extends Component {
             <li><Link className="waves-effect waves-light brand-logo" to={{ pathname:'/' }}>Nature Drink</Link></li>
             <li><Link className="waves-effect waves-light" to={{ pathname:'/store' }}>Store</Link></li>
             <li><Link className="waves-effect waves-light" to={{ pathname:'/design' }}>Design</Link></li>
-            <GuestNavSubComponent/>
+
+            {!this.props.authed.isLogin ?<GuestNavSubComponent/>:<div></div>}
           </ul>
         </div>
       </nav>
     )
   }
 }
+const mapStateToProps = (state) => {
+  return state
+}
+
+export default connect(mapStateToProps)(HeaderNavbar)
