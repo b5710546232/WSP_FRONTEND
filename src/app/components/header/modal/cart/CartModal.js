@@ -6,7 +6,7 @@ export default class CartModal extends Component {
       <Modal
         header="Cart"
         trigger={
-          <Button waves='light'><Icon left>shopping_cart</Icon>Cart<div class=chip>num of item in cart</div></Button>
+          <Button waves='light'>Cart<div className="chip">num of item in cart</div></Button>
         }
         >
         <Table>

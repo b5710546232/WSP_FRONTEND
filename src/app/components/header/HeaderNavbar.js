@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import GuestNavSubComponent from './navsubcomponent/GuestNavSubComponent'
+import UserNavSubComponent from './navsubcomponent/UserNavSubComponent'
 import {connect} from 'react-redux'
 class HeaderNavbar extends Component {
   componentDidMount(){
@@ -28,7 +29,7 @@ class HeaderNavbar extends Component {
             <li><Link className="waves-effect waves-light" to={{ pathname:'/store' }}>Store</Link></li>
             <li><Link className="waves-effect waves-light" to={{ pathname:'/design' }}>Design</Link></li>
 
-            {!this.props.authed.isLogin ?<GuestNavSubComponent/>:<div></div>}
+            {!this.props.authed.isLogin ?<GuestNavSubComponent/>:<UserNavSubComponent/>}
           </ul>
         </div>
       </nav>
