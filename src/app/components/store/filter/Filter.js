@@ -1,7 +1,16 @@
 import React, { Component } from 'react'
 import FilterItem from '../filteritem/FilterItem'
 import '../../../../assets/scss/filter.scss'
-export default class Filter extends Component {
+import {loadCategoryList} from '../../../actions/CategoryAction'
+import {connect} from 'react-redux'
+
+class Filter extends Component {
+  componentDidMount(){
+    this.props.onLoadCategoryList()
+  }
+  shouldComponentUpdate(nextProps){
+    return this.props.categories !== nextProps
+  }
   render() {
     return (
       <div className="col s12 ">
@@ -11,8 +20,15 @@ export default class Filter extends Component {
           </div>
           <div className="container ">
             <div className="filter-component row " >
-              <FilterItem name="Bottle" id="1"/>
-              <FilterItem name="Drink" id="2"/>
+              {this.props.categories.map((category) =>
+                (<FilterItem
+                  key={category.id}
+                  name ={category.name}
+                  {...category}
+                  />)
+              )}
+              {/* <FilterItem name="Bottle" id="1"/> */}
+              {/* <FilterItem name="Drink" id="2"/> */}
             </div>
           </div>
         </div>
@@ -20,3 +36,15 @@ export default class Filter extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return state
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLoadCategoryList: () => {
+      dispatch(loadCategoryList())
+    }
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Filter)

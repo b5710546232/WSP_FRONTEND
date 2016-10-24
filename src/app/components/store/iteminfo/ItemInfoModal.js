@@ -6,7 +6,7 @@ export default class ItemInfoModal extends Component {
     return (
       <Modal
         trigger={
-          <a>9.00฿</a>
+          <a>{this.props.price}฿</a>
         }>
         <div>
           <img className="item-preview" src={this.props.image}/>
