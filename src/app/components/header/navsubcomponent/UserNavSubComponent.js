@@ -12,7 +12,7 @@ export default class UserNavSubComponent extends Component {
         <div>
           <li className={this.props.position}>
             <MemberModal
-              user={this.props.authed.user}
+              user={this.props.authed}
               />
           </li>
           {this.props.is_admin? <Button>Admin</Button>?<div></div>}
