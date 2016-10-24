@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import {Modal,Button,Input,Row} from 'react-materialize'
 import '../../../../assets/scss/info.scss'
 export default class ItemInfoModal extends Component {
+  addToCart(){
+    let data = {
+      product:"s"
+    }
+  }
   render() {
     return (
       <Modal
@@ -15,7 +20,7 @@ export default class ItemInfoModal extends Component {
             <p className="flow-text">
               {this.props.description}
             </p>
-            <Button>Add to cart</Button>
+            <Button onClick = {()=>this.addToCart()} >Add to cart</Button>
           </div>
         </div>
       </Modal>
