@@ -8,7 +8,7 @@ export default class Home extends Component {
       <div>
         <ParallaxSection
           position="center"
-          logo="media/images/logo.png"
+          logo="app/assets/images/logo.png"
           title="Nature Drink"
           subtitle="It&lsquo;s not the noob water, but &ldquo;It&lsquo;s water from the heaven!&ldquo;"
           button={
