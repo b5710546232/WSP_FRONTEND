@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {Modal} from 'react-materialize'
+import {logout} from '../../../../actions/AuthedAction'
+import {Modal,Button} from 'react-materialize'
 class MemberModal extends Component {
+  onLogout(){
+    this.props.onLogout()
+  }
   render() {
     var margin = {
       paddingRight: "15px"
@@ -13,11 +17,17 @@ class MemberModal extends Component {
           <span style={margin}>Welcome, {this.props.authed.userdata.username}</span>
         }
         >
-        <div class="collection">
-          <a href="#!" class="collection-item">Alvin</a>
-          <a href="#!" class="collection-item active">Alvin</a>
-          <a href="#!" class="collection-item">Alvin</a>
-          <a href="#!" class="collection-item">Alvin</a>
+        <div className="collection">
+          <a href="#!" className="collection-item">Alvin</a>
+          <a href="#!" className="collection-item active">Alvin</a>
+          <a href="#!" className="collection-item">Alvin</a>
+          <a href="#!" className="collection-item">Alvin</a>
+        </div>
+        <div className="row center">
+          <Button waves="light" className="modal-close" onClick={
+             (e)=>this.onLogout()
+           }>Logout</Button>
+         <Button waves="light" >Admin</Button>
         </div>
       </Modal>
     )
@@ -26,5 +36,11 @@ class MemberModal extends Component {
 const mapStateToProps = (state) => {
   return state
 }
-
-export default connect(mapStateToProps)(MemberModal)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogout: () => {
+      dispatch(logout())
+    }
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(MemberModal)
