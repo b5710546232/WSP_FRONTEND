@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {logout} from '../../../../actions/AuthedAction'
 import {Modal,Button} from 'react-materialize'
 import MemberInfo from './MemberInfo'
+import ChangePasswordPanel from './ChangePasswordPanel'
 class MemberModal extends Component {
   componentDidMount(){
     $(document).ready(function(){
@@ -37,7 +38,7 @@ class MemberModal extends Component {
           </li>
           <li>
             <div className="collapsible-header">Change Password</div>
-            <div className="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            <div className="collapsible-body"><ChangePasswordPanel/></div>
           </li>
           <li>
             <div className="collapsible-header">Manage Address</div>
