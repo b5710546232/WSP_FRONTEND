@@ -14,6 +14,7 @@ class AddressInfo extends Component {
     this.setState({select_item:null,add_address:true,edit_address:null})
   }
   componentWillMount(){
+
     $('.dropdown-button').dropdown();
   }
   render(){

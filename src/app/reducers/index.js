@@ -3,6 +3,7 @@ import user from './user'
 import categories from './categories'
 import products from './products'
 import cart from './cart'
+import address from './address'
 import { routerReducer } from 'react-router-redux'
 
 const rootReducer = combineReducers({
@@ -10,5 +11,6 @@ const rootReducer = combineReducers({
   routing: routerReducer,
   cart,
   products,
+  address,
   categories})
 export default rootReducer
