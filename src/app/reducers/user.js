@@ -39,7 +39,8 @@ const user = (state=initialState,action)=>{
         username:action.payload.username,
         userdata:action.payload
       })
-      case Action.EDIT_USER_SUCCESS:
+      case 'EDIT_USER_SUCCESS':
+      console.log('edit',action.payload);
       return Object.assign({}, state, {
           username:action.payload.username,
           userdata:action.payload

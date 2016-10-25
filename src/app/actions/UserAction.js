@@ -172,7 +172,6 @@ export const editUser= (data,id,token) => (
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
                 console.log(data);
-                // dispatch(loadUserdata(token))
                 return data
               })
             }
