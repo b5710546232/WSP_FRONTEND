@@ -53,7 +53,7 @@ export const loadPaymentMethod = (id) => (
       'Content-Type': 'application/json',
     },
     method: 'GET',
-    types: ['LOAD_PAYMENTMETHOD_REQUEST', 'LOAD_PPAYMENTMETHOD_SUCCESS', 'LOAD_PAYMENTMETHOD_FAILURE']
+    types: ['LOAD_PAYMENTMETHOD_REQUEST', 'LOAD_PAYMENTMETHOD_SUCCESS', 'LOAD_PAYMENTMETHOD_FAILURE']
   }}
 )
 
