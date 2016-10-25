@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import {Row,Button,Input} from 'react-materialize'
 export default class PaymentInfo extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {select_address:null,select_method:null};
+  }
   componentWillMount(){
     $('.dropdown-button').dropdown();
   }
@@ -15,7 +18,7 @@ export default class PaymentInfo extends Component {
               <li className="divider"></li>
               <li><a href="#!">three</a></li>
           </ul>
-          <span>{this.props.select_method? this.props.select_method:<span>Select Payment Method</span>}</span>
+          <span>{this.state.select_method? this.state.select_method:<span>Select Payment Method</span>}</span>
         </Row>
         <Row>
           <a className='dropdown-button btn' href='#' data-activates='dropdown-address'>Select</a>
@@ -24,7 +27,7 @@ export default class PaymentInfo extends Component {
               <li className="divider"></li>
               <li><a href="#!">three</a></li>
           </ul>
-          <span>{this.props.select_address? this.props.select_address:<span>Select your address</span>}</span>
+          <span>{this.state.select_address? this.state.select_address:<span>Select your address</span>}</span>
         </Row>
         <Row>
           <Button waves="light" className="left" onClick={this.props.back}>Back</Button>
