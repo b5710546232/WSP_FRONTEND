@@ -19,7 +19,8 @@ import { CALL_API } from 'redux-api-middleware'
 
 const initialState = {
   username: "",
-  isLogin: false,
+  isLogin:localStorage.token!==null ? true:false,
+  isRegister:false,
   accessToken:null,
   userdata:null,
 }
@@ -28,11 +29,12 @@ const user = (state=initialState,action)=>{
   switch(action.type) {
     case Action.RECEIVE_ACCESS_TOKEN_SUCCESS:
     console.log('action',action.payload);
+    localStorage.setItem('token',action.payload.token)
     return Object.assign({}, state, {
          accessToken : action.payload.token
        })
-   case Action.LOAD_USER_DATA_SUCCESS:
-   return Object.assign({}, state, {
+    case Action.LOAD_USER_DATA_SUCCESS:
+    return Object.assign({}, state, {
         isLogin: true,
         username:action.payload.username,
         userdata:action.payload
@@ -45,7 +47,12 @@ const user = (state=initialState,action)=>{
       // newState.isLogin = true,
       // newState.username = action.data
       // return newState;
+    case 'REGISTER_SUCCESS':
+      return Object.assign({}, state, {
+        isRegister: true
+      })
     case Action.LOGOUT:
+      localStorage.removeItem('token')
       return initialState;
     default:
       return state;

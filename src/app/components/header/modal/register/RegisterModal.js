@@ -24,6 +24,7 @@ class RegisterModal extends Component {
     }
     this.props.register(data)
     console.log('data',data);
+    console.log(this.props.user.isRegister)
 
   }
   onReset(e){

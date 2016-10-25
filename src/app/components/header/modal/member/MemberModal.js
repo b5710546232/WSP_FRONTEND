@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {logout} from '../../../../actions/UserAction'
+import {logout,loadUserdata} from '../../../../actions/UserAction'
 import {Modal,Button} from 'react-materialize'
 import MemberInfo from './MemberInfo'
 import ChangePasswordPanel from './ChangePasswordPanel'
 import AddressInfo from './AddressInfo'
 class MemberModal extends Component {
   componentDidMount(){
+    // this.props.loadUserdata(localStorage.token)
     $(document).ready(function(){
       $('.collapsible').collapsible({
         accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
@@ -65,6 +66,9 @@ const mapDispatchToProps = (dispatch) => {
     onLogout: () => {
       dispatch(logout())
     }
+    // loadUserdata: (token) =>{
+    //   dispatch(loadUserdata(token))
+    // }
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(MemberModal)

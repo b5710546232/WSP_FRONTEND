@@ -4,6 +4,9 @@ import {Modal,Button,Input,Row} from 'react-materialize'
 import {login} from '../../../../actions/UserAction'
 import {connect} from 'react-redux'
 class LoginModal extends Component {
+
+
+
   onLogin(e){
     e.preventDefault()
     let username = this.refs.form.username.value
@@ -14,6 +17,7 @@ class LoginModal extends Component {
       password: password
     }
     this.props.onLogin(data)
+    this.props.loadUserdata(this.props.user.accessToken)
 
   }
   render() {
@@ -31,7 +35,7 @@ class LoginModal extends Component {
             <Input name="password" type="password" label="password" s={12}
               ref = "password"
                />
-             <Button waves="light" type="submit" className="modal-close" onClick={
+             <Button waves="light" type="submit" className="space-button" onClick={
                 (e)=>this.onLogin(e)
               }>Login</Button>
           </Row>
@@ -47,6 +51,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onLogin: (username) => {
       dispatch(login(username))
+    },
+    loadUserdata:(token) => {
+      dispatch(loadUserdata(token))
     }
   }
 }

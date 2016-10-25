@@ -8,13 +8,13 @@ export const logout = ()=> {
   }
 }
 
-export const loadUserdata = (data) => (
+export const loadUserdata = (token) => (
   {[CALL_API]: {
     endpoint: USER_ENDPOINT,
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization':'Token '+data.token
+      'Authorization':'Token '+token
     },
     method: 'GET',
     types: ['LOAD_USER_DATA_REQUEST', 'LOAD_USER_DATA_SUCCESS', 'LOAD_USER_DATA_FAILURE']
@@ -38,7 +38,6 @@ export const login = (data) => (
             type: 'RECEIVE_ACCESS_TOKEN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
-                dispatch(loadUserdata(data))
                 return data
               })
             }
