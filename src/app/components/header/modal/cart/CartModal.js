@@ -50,6 +50,7 @@ class CartModal extends Component {
                   <th data-field="id">Product Name</th>
                   <th data-field="name">Quantity</th>
                   <th data-field="price">Price</th>
+                  <th data-field="delete"></th>
                 </tr>
               </thead>
 

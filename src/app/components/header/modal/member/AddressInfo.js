@@ -11,10 +11,13 @@ class AddressInfo extends Component {
   }
   addAddressForm(){
     //{address_number,village,road,sub_distinct,distinct,province,country,zipcode}
+
     this.setState({select_item:null,add_address:true,edit_address:null})
   }
   componentWillMount(){
-
+    let token = this.props.user.accessToken
+    this.props.loadAddressList(token)
+    console.log(this.props.address);
     $('.dropdown-button').dropdown();
   }
   render(){
@@ -42,9 +45,9 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    // onLogout: () => {
-    //   dispatch(logout())
-    // }
+    loadAddressList: (token) => {
+      dispatch(loadAddressList(token))
+    }
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(AddressInfo)
