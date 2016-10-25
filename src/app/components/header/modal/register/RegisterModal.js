@@ -3,6 +3,7 @@ import {Modal,Button,Input,Row} from 'react-materialize'
 import {connect} from 'react-redux'
 import {register} from '../../../../actions/UserAction'
 
+
 class RegisterModal extends Component {
 
   onRegister(e){
