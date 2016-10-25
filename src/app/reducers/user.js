@@ -52,11 +52,11 @@ const user = (state=initialState,action)=>{
       })
     case 'CHANGE_PASSWORD_SUCCESS':
     return Object.assign({}, state, {
-      change_pass_success: true
+      change_password_success: true
     })
     case 'CHANGE_PASSWORD_FAILURE':
     return Object.assign({}, state, {
-      change_pass_success: false
+      change_password_success: false
     })
     case Action.LOGOUT:
       localStorage.removeItem('token')

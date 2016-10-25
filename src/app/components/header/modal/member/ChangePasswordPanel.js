@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import {Input,Row,Col,Button} from 'react-materialize'
-import {changePassword} from '../../../../actions/UserAction'
+import {changePassword,loadUserdata} from '../../../../actions/UserAction'
 import {connect} from 'react-redux'
 
 class ChangePasswordPanel extends Component {
-
+  componentDidMount(){
+    this.props.loadUserdata(localStorage.token)
+  }
   onChangePassword(e) {
     e.preventDefault()
     let password = this.refs.form.password.value
@@ -21,7 +23,14 @@ class ChangePasswordPanel extends Component {
       this.props.onChangePassword(data,token)
     }
   }
-
+  // shouldComponentUpdate(nextProps,nextState){
+  //   if (this.props.user.change_password_success) {
+  //     Materialize.toast('Password is changed', 4000)
+  //   }else {
+  //     Materialize.toast('Fail to change password', 4000)
+  //   }
+  //   return this.props.user.change_password_success
+  // }
   render(){
     return (
       <form ref="form">
@@ -40,6 +49,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onChangePassword: (data,token) => {
       dispatch(changePassword(data,token))
+    },
+    loadUserdata:(token)=>{
+      dispatch(loadUserdata(token))
     }
   }
 }
