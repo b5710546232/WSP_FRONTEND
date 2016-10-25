@@ -7,6 +7,9 @@ class ChangePasswordPanel extends Component {
   componentDidMount(){
     this.props.loadUserdata(localStorage.token)
   }
+  shouldComponentUpdate(nextProps){
+    return this.props.user !== nextProps.user
+  }
   onChangePassword(e) {
     e.preventDefault()
     let password = this.refs.form.password.value
