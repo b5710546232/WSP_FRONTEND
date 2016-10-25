@@ -38,6 +38,7 @@ export const login = (data) => (
             type: 'RECEIVE_ACCESS_TOKEN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadUserdata(data.token))
                 return data
               })
             }

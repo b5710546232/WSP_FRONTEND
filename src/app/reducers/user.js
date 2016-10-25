@@ -19,9 +19,9 @@ import { CALL_API } from 'redux-api-middleware'
 
 const initialState = {
   username: "",
-  isLogin:localStorage.token!==null ? true:false,
+  isLogin:localStorage.token!=null ? true:false,
   isRegister:false,
-  accessToken:null,
+  accessToken:localStorage.token !==null?localStorage.token :null,
   userdata:null,
 }
 
@@ -53,7 +53,9 @@ const user = (state=initialState,action)=>{
       })
     case Action.LOGOUT:
       localStorage.removeItem('token')
-      return initialState;
+      return Object.assign({}, state, {
+          isLogin: false,
+        })
     default:
       return state;
   }

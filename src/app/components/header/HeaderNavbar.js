@@ -9,7 +9,7 @@ class HeaderNavbar extends Component {
     $(".button-collapse").sideNav()
   }
   shouldComponentUpdate(nextProps){
-    return this.props.user !== nextProps
+    return this.props.user !== nextProps.user
   }
   render() {
     var margin = {
