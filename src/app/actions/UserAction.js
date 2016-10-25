@@ -171,6 +171,8 @@ export const editUser= (data,id,token) => (
             type: 'EDIT_USER_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                console.log(data);
+                // dispatch(loadUserdata(token))
                 return data
               })
             }

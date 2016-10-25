@@ -39,14 +39,11 @@ const user = (state=initialState,action)=>{
         username:action.payload.username,
         userdata:action.payload
       })
-  //  console.log(action.data);
-  //  return Object.assign({}, state, {
-  //       isLogin: true,
-  //       username:action.data.name
-  //     })
-      // newState.isLogin = true,
-      // newState.username = action.data
-      // return newState;
+      case Action.EDIT_USER_SUCCESS:
+      return Object.assign({}, state, {
+          username:action.payload.username,
+          userdata:action.payload
+        })
     case 'REGISTER_SUCCESS':
       return Object.assign({}, state, {
         isRegister: true
