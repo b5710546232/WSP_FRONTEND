@@ -20,8 +20,32 @@ export default class RegisterModal extends Component {
       firstname: firstname,
       lastname: lastname
     }
-    this.props.onLogin(data)
+
+    if(this.validateData(data)){
+      fetch(API,
+        {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(
+            data
+          )
+        }).then(function(response) {
+          if (!response.ok) {
+            throw Error(response.statusText);
+          }
+          return response;
+        }).then(function(response) {
+          console.log("ok");
+          onClose()
+        }).catch(function(error) {
+          console.log(error);
+        });
+    }
   }
+
   render() {
     return (
       <Modal
