@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {logout} from '../../../../actions/AuthedAction'
+import {logout} from '../../../../actions/UserAction'
 import {Modal,Button} from 'react-materialize'
 import MemberInfo from './MemberInfo'
 import ChangePasswordPanel from './ChangePasswordPanel'
@@ -24,17 +24,17 @@ class MemberModal extends Component {
       <Modal
         header='User Control Panel'
         trigger={
-          <span style={margin}>Welcome, {this.props.authed.userdata.username}</span>
+          <span style={margin}>Welcome, {this.props.user.userdata.username}</span>
         }
         >
         <ul className="collapsible" data-collapsible="accordion">
           <li>
             <div className="collapsible-header active">User Info</div>
             <div className="collapsible-body"><MemberInfo
-              username={this.props.authed.userdata.username}
-              first_name={this.props.authed.userdata.first_name}
-              last_name={this.props.authed.userdata.last_name}
-              email={this.props.authed.userdata.email}
+              username={this.props.user.userdata.username}
+              first_name={this.props.user.userdata.first_name}
+              last_name={this.props.user.userdata.last_name}
+              email={this.props.user.userdata.email}
               /></div>
           </li>
           <li>

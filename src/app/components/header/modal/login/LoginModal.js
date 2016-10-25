@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import {Modal,Button,Input,Row} from 'react-materialize'
-import {login} from '../../../../actions/AuthedAction'
+import {login} from '../../../../actions/UserAction'
 import {connect} from 'react-redux'
 class LoginModal extends Component {
   onLogin(e){

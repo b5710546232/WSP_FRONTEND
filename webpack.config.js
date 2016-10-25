@@ -3,7 +3,8 @@ const path = require("path");
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
-  devtool: 'eval-cheap-module-source-map',
+  // devtool: 'eval-cheap-module-source-map',
+  devtool: 'source-map',
   entry: [
     './src/app/index.js'
   ],

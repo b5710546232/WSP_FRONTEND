@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Modal,Button,Table} from 'react-materialize'
 import CartInfo from './CartInfo'
 import {loadCartList} from '../../../../actions/CartAction'
+import {loadProductList} from '../../../../actions/ProductAction'
 import {connect} from 'react-redux'
 class CartModal extends Component {
   constructor(props) {
@@ -13,8 +14,9 @@ class CartModal extends Component {
     this.setState({cart_info:false,payment_info:true,summarize:false})
   }
   componentDidMount(){
-    let token = this.props.authed.accessToken
+    let token = this.props.user.accessToken
     this.props.loadCartList(token)
+    this.props.loadProductList()
     this.total = this.props.cart.length
   }
   shouldComponentUpdate(nextProps){
@@ -62,6 +64,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     loadCartList: (token) => {
       dispatch(loadCartList(token))
+    },
+    loadProductList:()=>{
+      dispatch(loadProductList())
     }
   }
 }

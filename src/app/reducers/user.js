@@ -24,7 +24,7 @@ const initialState = {
   userdata:null,
 }
 
-const authed = (state=initialState,action)=>{
+const user = (state=initialState,action)=>{
   switch(action.type) {
     case Action.RECEIVE_ACCESS_TOKEN_SUCCESS:
     console.log('action',action.payload);
@@ -51,4 +51,4 @@ const authed = (state=initialState,action)=>{
       return state;
   }
 }
-export default authed;
+export default user;

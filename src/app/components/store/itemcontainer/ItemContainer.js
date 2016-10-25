@@ -6,10 +6,8 @@ import {loadProductList} from '../../../actions/ProductAction'
 class ItemContainer extends Component {
   componentDidMount(){
     this.props.onLoadProductList()
-    console.log('list',this.props.products)
   }
   shouldComponentUpdate(nextProps){
-    console.log('update');
     return this.props.products !== nextProps
   }
   render() {

@@ -4,7 +4,7 @@
   "description": "Online water and bottle store",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --open",
+    "start": "webpack-dev-server --hot --inline --progress --open",
     "build": "webpack --progress --colors",
     "test": "mocha --compilers js:babel-core/register --require ./test/setup.js 'test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch --watch-extensions jsx",
