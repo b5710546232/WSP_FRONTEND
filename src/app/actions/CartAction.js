@@ -3,7 +3,7 @@ import { CALL_API } from 'redux-api-middleware'
 import {CART_ENDPOINT} from '../constants/endpoints'
 
 // Add Item to cart
-export const AddItemtoCard = (data,token) => (
+export const addItemtoCard = (data,token) => (
   (dispatch) =>
     dispatch({
       [CALL_API]: {

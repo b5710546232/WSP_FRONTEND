@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
 import {Modal,Button,Input,Row,Col} from 'react-materialize'
 import '../../../../assets/scss/info.scss'
-export default class ItemInfoModal extends Component {
+import {addItemtoCard} from '../../../actions/CartAction'
+import {connect} from 'react-redux'
+class ItemInfoModal extends Component {
   addToCart(e){
     e.preventDefault()
+    let quantity = this.refs.quantity.state.value
+    let token = this.props.authed.accessToken
     let data = {
-      product:"s"
+      product:this.props.id,
+      quantity:quantity
     }
+    this.props.addItemtoCard(data,token)
+
     console.log(this.refs.quantity.state.value);
   }
   render() {
@@ -40,3 +47,14 @@ export default class ItemInfoModal extends Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+  return state
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addItemtoCard: (data,token) => {
+      dispatch(addItemtoCard(data,token))
+    }
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(ItemInfoModal)

@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
 import {Modal,Button,Table} from 'react-materialize'
-export default class CartModal extends Component {
+import {loadCartList} from '../../../../actions/CartAction'
+import {connect} from 'react-redux'
+class CartModal extends Component {
+  componentDidMount(){
+    let token = this.props.authed.accessToken
+    this.props.loadCartList(token)
+  }
+  shouldComponentUpdate(nextProps){
+    return this.props.cart !== nextProps
+  }
   render() {
     return (
       <Modal
@@ -20,9 +29,10 @@ export default class CartModal extends Component {
 
           <tbody>
             <tr>
-              <td>Bottle A</td>
+              {/* <td>Bottle A</td>
               <td>9</td>
-              <td>9.99฿</td>
+              <td>9.99฿</td> */}
+
             </tr>
           </tbody>
         </Table>
@@ -31,3 +41,14 @@ export default class CartModal extends Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+  return state
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadCartList: (token) => {
+      dispatch(loadCartList(token))
+    }
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(CartModal)
