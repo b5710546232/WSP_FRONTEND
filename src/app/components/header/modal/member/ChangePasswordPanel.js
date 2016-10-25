@@ -28,11 +28,10 @@ class ChangePasswordPanel extends Component {
   }
 
   render(){
-    let x = <div>sucess นะคับ</div>
-    let y = <div>fail อ่ะคับ</div>
+
     return (
       <form ref="form">
-        {this.props.user.change_password_success?x:y}
+        {this.props.user.change_password_success?Materialize.toast('Password changed successful', 4000):Materialize.toast('Fail to change password!', 4000)}
         <Row><Input type="password" name="password" label="Password" s={12} /></Row>
         <Row><Input type="password" name="new_password" label="New Password" s={12} /></Row>
         <Row><Input type="password" name="re_password" label="Re-Password" s={12} /></Row>

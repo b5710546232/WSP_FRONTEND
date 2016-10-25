@@ -34,7 +34,9 @@ class AddressInfo extends Component {
           </Input>
           <Col s={12} className="center"><Button waves="light" className="center">Create New Address</Button></Col>
         </Row>
-        
+        <form ref="form">
+          
+        </form>
       </div>
     )
   }
