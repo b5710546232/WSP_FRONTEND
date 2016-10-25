@@ -97,7 +97,7 @@ export const deletePaymentMethod = (id,token)=> (
       'Authorization':'Token '+token
     },
     method: 'DELETE',
-    types: ['DELETE_PAYMENTMETHOD_REQUEST', 'DELETE_PPAYMENTMETHOD_SUCCESS', 'DELETE_PAYMENTMETHOD_FAILURE']
+    types: ['DELETE_PAYMENTMETHOD_REQUEST', 'DELETE_PAYMENTMETHOD_SUCCESS', 'DELETE_PAYMENTMETHOD_FAILURE']
   }}
 )
 // Reactive Payment Method [Staff]
