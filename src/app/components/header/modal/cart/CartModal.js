@@ -30,7 +30,11 @@ class CartModal extends Component {
     this.setState({cart_info:true,payment_info:false,summarize:false})
   }
   render() {
-    let total = this.props.cart.length
+    let total = 0
+    let price = 0;
+    this.props.cart.forEach(function(data){
+      total+=data.quantity
+    })
     return (
       <Modal
         header="Cart"
@@ -57,6 +61,11 @@ class CartModal extends Component {
                     {...item}
                     />)
                 )}
+                <tr>
+                  <td className="bold">Total</td>
+                  <td className="bold">{total}</td>
+                  <td className="bold">{price}฿</td>
+                </tr>
               </tbody>
             </Table>
             <Button waves="light" onClick={()=>this.toPayment()}>Pay</Button>
