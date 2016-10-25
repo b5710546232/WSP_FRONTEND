@@ -18,13 +18,14 @@ class MemberModal extends Component {
   }
   render() {
     var margin = {
-      paddingRight: "15px"
+      paddingRight: "15px",
+      paddingLeft:"15px"
     }
     return (
       <Modal
         header='User Control Panel'
         trigger={
-          <span style={margin}>Welcome, {this.props.user.userdata.username}</span>
+          <span className="waves-effect waves-light" style={margin}>Welcome, {this.props.user.userdata.username}</span>
         }
         >
         <ul className="collapsible" data-collapsible="accordion">
