@@ -23,7 +23,7 @@ const initialState = {
   isRegister:false,
   accessToken:localStorage.token !==null?localStorage.token :null,
   userdata:null,
-  change_pass_success:false
+  change_password_success:false
 }
 
 const user = (state=initialState,action)=>{
