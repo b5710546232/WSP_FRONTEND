@@ -12,8 +12,8 @@ export default class RegisterModal extends Component {
         <form>
           <Row className="center">
             <Input name="username" s={12} label="Username" />
-            <Input name="password" type="password" label="password" s={12} />
-            <Input name="password" type="password" label="password" s={12} />
+            <Input name="password" type="password" label="Password" s={12} />
+            <Input name="password" type="password" label="Confirm Password" s={12} />
             <Input s={6} name="firstname" label="First Name" />
             <Input s={6} name="lastname" label="Last Name" />
             <Input name="email" type="email" label="Email" s={12} />
