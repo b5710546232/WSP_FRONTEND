@@ -4,6 +4,7 @@ import {logout} from '../../../../actions/AuthedAction'
 import {Modal,Button} from 'react-materialize'
 import MemberInfo from './MemberInfo'
 import ChangePasswordPanel from './ChangePasswordPanel'
+import AddressInfo from './AddressInfo'
 class MemberModal extends Component {
   componentDidMount(){
     $(document).ready(function(){
@@ -42,7 +43,7 @@ class MemberModal extends Component {
           </li>
           <li>
             <div className="collapsible-header">Manage Address</div>
-            <div className="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            <div className="collapsible-body"><AddressInfo/></div>
           </li>
         </ul>
         <div className="row center">

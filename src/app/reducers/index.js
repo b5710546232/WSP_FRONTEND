@@ -2,7 +2,12 @@ import { combineReducers } from 'redux'
 import authed from './authed'
 import categories from './categories'
 import products from './products'
-import cartReducer from './cartReducer'
+import cart from './cart'
 import { routerReducer } from 'react-router-redux'
-const rootReducer = combineReducers({authed,routing: routerReducer,cartReducer,products,categories})
+
+const rootReducer = combineReducers({authed,
+  routing: routerReducer,
+  cart,
+  products,
+  categories})
 export default rootReducer

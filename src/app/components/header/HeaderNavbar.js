@@ -23,7 +23,7 @@ class HeaderNavbar extends Component {
           <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
           <ul className="hide-on-med-and-down " style={margin}>
             <li className="left"><Link className="waves-effect waves-light" to={{ pathname:'/store' }}>Store</Link></li>
-            <li className="left"><Link className="waves-effect waves-light" to={{ pathname:'/design' }}>design</Link></li>
+            <li className="left"><Link className="waves-effect waves-light" to={{ pathname:'/design' }}>Design</Link></li>
 
             {!this.props.authed.isLogin ?<GuestNavSubComponent position="right"/>:<UserNavSubComponent position="right"/>}
           </ul>

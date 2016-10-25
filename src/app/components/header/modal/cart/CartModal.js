@@ -1,23 +1,35 @@
 import React, { Component } from 'react'
 import {Modal,Button,Table} from 'react-materialize'
+import CartInfo from './CartInfo'
 import {loadCartList} from '../../../../actions/CartAction'
 import {connect} from 'react-redux'
 class CartModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {cart_info:true,payment_info:false,summarize:false};
+    this.total = 0
+  }
+  toPayment(){
+    this.setState({cart_info:false,payment_info:true,summarize:false})
+  }
   componentDidMount(){
     let token = this.props.authed.accessToken
     this.props.loadCartList(token)
+    this.total = this.props.cart.length
   }
   shouldComponentUpdate(nextProps){
     return this.props.cart !== nextProps
   }
   render() {
+    let total = this.props.cart.length
     return (
       <Modal
         header="Cart"
         trigger={
-          <Button waves='light'>Cart 1</Button>
+          <Button waves='light'>{total}</Button>
         }
         >
+
         <Table>
           <thead>
             <tr>
@@ -28,15 +40,17 @@ class CartModal extends Component {
           </thead>
 
           <tbody>
-            <tr>
-              {/* <td>Bottle A</td>
-              <td>9</td>
-              <td>9.99฿</td> */}
-
-            </tr>
+            {this.props.cart.map((item) =>
+              (<CartInfo
+                key={item.id}
+                quantity = {item.quantity}
+                {...item}
+                />)
+            )}
           </tbody>
         </Table>
-        <Button waves="light">Pay</Button>
+        <Button waves="light" onClick={()=>this.toPayment()}>Pay</Button>
+
       </Modal>
     )
   }

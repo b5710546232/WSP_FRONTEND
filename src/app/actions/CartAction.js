@@ -21,6 +21,7 @@ export const addItemtoCard = (data,token) => (
             type: 'ADD_ITEM_TO_CART_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadCartList(token))
                 return data
               })
             }
