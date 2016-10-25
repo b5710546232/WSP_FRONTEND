@@ -26,17 +26,13 @@ class ChangePasswordPanel extends Component {
       this.props.onChangePassword(data,token)
     }
   }
-  // shouldComponentUpdate(nextProps,nextState){
-  //   if (this.props.user.change_password_success) {
-  //     Materialize.toast('Password is changed', 4000)
-  //   }else {
-  //     Materialize.toast('Fail to change password', 4000)
-  //   }
-  //   return this.props.user.change_password_success
-  // }
+
   render(){
+    let x = <div>sucess นะคับ</div>
+    let y = <div>fail อ่ะคับ</div>
     return (
       <form ref="form">
+        {this.props.user.change_password_success?x:y}
         <Row><Input type="password" name="password" label="Password" s={12} /></Row>
         <Row><Input type="password" name="new_password" label="New Password" s={12} /></Row>
         <Row><Input type="password" name="re_password" label="Re-Password" s={12} /></Row>
