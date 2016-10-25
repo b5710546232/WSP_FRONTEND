@@ -49,17 +49,17 @@ export default class AppFooter extends Component {
               lng={coords.lng}
               draggable={true}
               onDragEnd={this.onDragEnd} />
-            <InfoWindow
+            {/* <InfoWindow
               lat={coords.lat}
               lng={coords.lng}
               content={'Wellcome to Nature Drink'}
-              onCloseClick={this.onCloseClick} />
+              onCloseClick={this.onCloseClick} /> */}
           </Gmaps>
           </div>
-          <Row>
+          {/* <Row>
             <Button floating  className='red' waves='light' icon='add' />
             <Button floating  className='red' waves='light' icon='add' />
-          </Row>
+          </Row> */}
 
       </Footer>
     )
