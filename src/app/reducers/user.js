@@ -23,6 +23,7 @@ const initialState = {
   isRegister:false,
   accessToken:localStorage.token !==null?localStorage.token :null,
   userdata:null,
+  change_pass_success:false
 }
 
 const user = (state=initialState,action)=>{
@@ -49,6 +50,14 @@ const user = (state=initialState,action)=>{
       return Object.assign({}, state, {
         isRegister: true
       })
+    case 'CHANGE_PASSWORD_SUCCESS':
+    return Object.assign({}, state, {
+      change_pass_success: true
+    })
+    case 'CHANGE_PASSWORD_FAILURE':
+    return Object.assign({}, state, {
+      change_pass_success: false
+    })
     case Action.LOGOUT:
       localStorage.removeItem('token')
       return Object.assign({}, state, {
