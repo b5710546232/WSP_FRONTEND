@@ -10,32 +10,31 @@ class AddressInfo extends Component {
     this.handleAddForm = this.addAddressForm.bind(this)
   }
   addAddressForm(){
-    //{address_number,village,road,sub_distinct,distinct,province,country,zipcode}
-
     this.setState({select_item:null,add_address:true,edit_address:null})
   }
   componentWillMount(){
+    $('#address-dropdown.dropdown-button').dropdown();
+  }
+  componentDidMount(){
     let token = this.props.user.accessToken
     this.props.loadAddressList(token)
-    console.log(this.props.address);
-    $('.dropdown-button').dropdown();
   }
   render(){
-
     return (
       <div>
         <Row>
-          <Col s={6}>
-            <a className='dropdown-button btn' href='#' data-activates='dropdown-structure'>Drop Me!</a>
-            <ul id='dropdown-structure' className='dropdown-content'>
-                <li><a href="#!">two</a></li>
-                <li className="divider"></li>
-                <li><a href="#!">three</a></li>
-            </ul>
-          </Col>
-          <span>{this.props.method }</span>
+          <Input s={12} type='select' label="Select Address" ref="select_address">
+            {
+              this.props.address.map((address) =>
+                (
+                  <option value={address.id}>{address.address_number} {address.province}</option>
+                )
+              )
+            }
+          </Input>
+          <Col s={12} className="center"><Button waves="light" className="center">Create New Address</Button></Col>
         </Row>
-
+        
       </div>
     )
   }

@@ -5,14 +5,15 @@ export default class PaymentInfo extends Component {
     super(props);
     this.state = {select_address:null,select_method:null};
   }
-  componentWillMount(){
-    $('.dropdown-button').dropdown();
+  componentDidMount(){
+    $('#address-info-dropdown.dropdown-button').dropdown();
+    $('#payment-dropdown.dropdown-button').dropdown();
   }
   render(){
     return (
       <div>
         <Row>
-          <a className='dropdown-button btn' href='#' data-activates='dropdown-method'>Select</a>
+          <a id="payment-dropdown" className='dropdown-button btn' href='#' data-activates='dropdown-method'>Select</a>
           <ul id='dropdown-method' className='dropdown-content'>
               <li><a href="#!">two</a></li>
               <li className="divider"></li>
@@ -21,7 +22,7 @@ export default class PaymentInfo extends Component {
           <span>{this.state.select_method? this.state.select_method:<span>Select Payment Method</span>}</span>
         </Row>
         <Row>
-          <a className='dropdown-button btn' href='#' data-activates='dropdown-address'>Select</a>
+          <a id="address-info-dropdown" className='dropdown-button btn' href='#' data-activates='dropdown-address'>Select</a>
           <ul id='dropdown-address' className='dropdown-content'>
               <li><a href="#!">two</a></li>
               <li className="divider"></li>

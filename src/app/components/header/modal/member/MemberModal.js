@@ -9,12 +9,13 @@ class MemberModal extends Component {
   constructor(props){
     super(props)
 
-    this.userdata = {
-      username:"",
-      first_name:"",
-      last_name:"",
-      email:""
-    }
+      this.userdata = {
+        username:"",
+        first_name:"",
+        last_name:"",
+        email:""
+      }
+      this.handleChange = this.onChange.bind(this)
   }
 
   componentDidMount(){
@@ -30,7 +31,9 @@ class MemberModal extends Component {
   shouldComponentUpdate(nextProps){
     return this.props.user !== nextProps.user
   }
-
+  onChange(){
+    this.props.loadUserdata(localStorage.token)
+  }
   onLogout(){
     this.props.onLogout()
   }
@@ -47,7 +50,7 @@ class MemberModal extends Component {
           <span className="waves-effect waves-light" style={margin}>Welcome, {this.userdata.username}</span>
         }
         >
-        <ul className="collapsible" data-collapsible="accordion">
+        <ul className="collapsible row" data-collapsible="accordion">
           <li>
             <div className="collapsible-header active">User Info</div>
             <div className="collapsible-body"><MemberInfo
@@ -55,6 +58,7 @@ class MemberModal extends Component {
               first_name={this.userdata.first_name}
               last_name={this.userdata.last_name}
               email={this.userdata.email}
+              onChange = {this.handleChange}
               /></div>
           </li>
           <li>

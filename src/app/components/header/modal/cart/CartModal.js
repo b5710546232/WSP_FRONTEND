@@ -35,6 +35,7 @@ class CartModal extends Component {
     this.props.cart.forEach(function(data){
       total+=data.quantity
     })
+
     return (
       <Modal
         header="Cart"

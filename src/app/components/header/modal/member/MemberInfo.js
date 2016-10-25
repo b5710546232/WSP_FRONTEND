@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import {Row,Input,Col,Button} from 'react-materialize'
+import {connect} from 'react-redux'
+import {editUser} from '../../../../actions/UserAction'
 class MemberInfo extends Component {
   constructor(props) {
     super(props);
@@ -15,13 +17,18 @@ class MemberInfo extends Component {
     let first_name = this.refs.form.first_name.value
     let last_name = this.refs.form.last_name.value
     let email = this.refs.form.email.value
+    let token = this.props.user.accessToken
+    let id = this.props.user.userdata.id
     let data = {
       first_name: first_name,
       last_name: last_name,
       email : email
     }
     this.changeState(false)
-    this.props.onSave(data)
+    this.props.editUser(data,id,token)
+  }
+  componentDidMount(){
+    this.props.onChange()
   }
   render(){
     return (
@@ -51,4 +58,14 @@ class MemberInfo extends Component {
     )
   }
 }
-export default MemberInfo
+const mapStateToProps = (state) => {
+  return state
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    editUser: (data,id,token) => {
+      dispatch(editUser(data,id,token))
+    }
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(MemberInfo)

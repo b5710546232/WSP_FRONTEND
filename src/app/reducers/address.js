@@ -5,7 +5,7 @@ const initialState = []
 
 const address = (state=initialState,action)=>{
   switch(action.type) {
-    case 'LOAD_CART_LIST_SUCCESS':
+    case 'LOAD_ADDRESS_LIST_SUCCESS':
       return action.payload
     default:
       return state;
