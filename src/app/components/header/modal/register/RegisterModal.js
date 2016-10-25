@@ -36,9 +36,15 @@ class RegisterModal extends Component {
     this.refs.form.lastname.value = ''
     this.refs.form.email.value = ''
   }
+
+  shouldComponentUpdate(){
+    $('#register_modal').closeModal();
+  }
+
   render() {
     return (
       <Modal
+        id="register_modal"
         header='Register'
         trigger={
           <Button waves='light' className="space-button">Register</Button>

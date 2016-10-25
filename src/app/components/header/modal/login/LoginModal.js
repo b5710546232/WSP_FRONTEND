@@ -14,11 +14,17 @@ class LoginModal extends Component {
       password: password
     }
     this.props.onLogin(data)
-
+    console.log(this.props.user.isLogin,'kkkk');
   }
+
+  shouldComponentUpdate(){
+    $('#login_modal').closeModal();
+  }
+
   render() {
     return (
       <Modal
+        id='login_modal'
         header='Login'
         trigger={
           <Button waves='light' className="space-button">Login</Button>
@@ -31,7 +37,7 @@ class LoginModal extends Component {
             <Input name="password" type="password" label="password" s={12}
               ref = "password"
                />
-             <Button waves="light" type="submit" className="modal-close" onClick={
+             <Button waves="light" className="space-button" type="submit" onClick={
                 (e)=>this.onLogin(e)
               }>Login</Button>
           </Row>
