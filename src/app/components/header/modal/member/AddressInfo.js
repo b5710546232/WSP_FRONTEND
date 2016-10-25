@@ -24,15 +24,14 @@ class AddressInfo extends Component {
           <Col s={6}>
             <a className='dropdown-button btn' href='#' data-activates='dropdown-structure'>Drop Me!</a>
             <ul id='dropdown-structure' className='dropdown-content'>
-                <li><a href="#!">one</a></li>
                 <li><a href="#!">two</a></li>
                 <li className="divider"></li>
                 <li><a href="#!">three</a></li>
             </ul>
-            <Button waves="light" onClick={this.handleAddForm}>Add Address</Button>
           </Col>
+          <span>{this.props.method }</span>
         </Row>
-        
+
       </div>
     )
   }
