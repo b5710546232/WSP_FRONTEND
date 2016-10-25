@@ -7,7 +7,7 @@ class ItemInfoModal extends Component {
   addToCart(e){
     e.preventDefault()
     let quantity = this.refs.quantity.state.value
-    let token = this.props.authed.accessToken
+    let token = this.props.user.accessToken
     let data = {
       product:this.props.id,
       quantity:quantity
