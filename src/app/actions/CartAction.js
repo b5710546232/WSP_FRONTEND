@@ -123,7 +123,7 @@ export const deleteItemInCart = (id,token) => (
 //   }}
 // )
 // Pay item in cart
-export const payItemInCart = (data,token) => {
+export const payItemInCart = (data,token) => (
   (dispatch) =>
     dispatch({
       [CALL_API]: {
@@ -151,4 +151,4 @@ export const payItemInCart = (data,token) => {
       }
     }
   )
-}
+)

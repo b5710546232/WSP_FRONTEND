@@ -23,7 +23,7 @@ class CartInfo extends Component {
         <td>{product.name}</td>
         <td>{this.props.editable? <Input defaultValue={this.props.quantity} type="number" s={2}/>:<div>{this.props.quantity}</div>}</td>
         <td>{product.price}฿</td>
-        {this.props.editable? <td><a className="btn-floating btn waves-effect waves-light red" onClick={(e)=>this.onDelete(e)}><i className="material-icons small">delete</i></a></td>:<div></div>}
+        {this.props.editable? <td><a className="btn-floating btn waves-effect waves-light red" onClick={(e)=>this.onDelete(e)}><i className="material-icons small">delete</i></a></td>: <a></a>}
       </tr>
     )
   }

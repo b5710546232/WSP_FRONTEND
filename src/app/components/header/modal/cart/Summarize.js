@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Modal,Button,Table,Row,Col} from 'react-materialize'
 import {payItemInCart} from '../../../../actions/CartAction'
+import {logout} from '../../../../actions/UserAction'
 import {connect} from 'react-redux'
 import CartInfo from './CartInfo'
 
@@ -14,6 +15,7 @@ class Summarize extends Component {
       method: this.props.select_method
     }
     this.props.payItemInCart(data,token)
+    console.log('confirm',this.props);
   }
   render() {
     let total = 0
@@ -82,7 +84,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     payItemInCart: (data,token)=>{
       dispatch(payItemInCart(data,token))
+    },
+    logout:()=>{
+      dispatch(logout())
     }
+
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Summarize)
