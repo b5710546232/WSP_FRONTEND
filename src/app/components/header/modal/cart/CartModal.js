@@ -5,6 +5,7 @@ import {loadCartList} from '../../../../actions/CartAction'
 import {loadProductList} from '../../../../actions/ProductAction'
 import {connect} from 'react-redux'
 import PaymentInfo from './PaymentInfo'
+import Summarize from './Summarize'
 class CartModal extends Component {
   constructor(props) {
     super(props);
@@ -29,10 +30,25 @@ class CartModal extends Component {
     console.log(this.state);
     this.setState({cart_info:true,payment_info:false,summarize:false})
   }
+  toConfirm(select_address,select_method){
+    this.setState(
+      {
+        cart_info:false,
+        payment_info:false,
+        summarize:true,
+        select_address:select_address,
+        select_method:select_method
+      })
+  }
+  toPayment(){
+    this.setState({cart_info:false,payment_info:true,summarize:false})
+  }
   render() {
     let total = 0
     let price = 0;
+    let products = this.props.products
     this.props.cart.forEach(function(data){
+      price+= products.find((product) => product.id === data.product).price*data.quantity
       total+=data.quantity
     })
 
@@ -58,6 +74,7 @@ class CartModal extends Component {
               <tbody>
                 {this.props.cart.map((item) =>
                   (<CartInfo
+                    editable={true}
                     key={item.id}
                     quantity = {item.quantity}
                     {...item}
@@ -76,9 +93,16 @@ class CartModal extends Component {
         {this.state.payment_info?
           <PaymentInfo
             back={this.onCart}
+            confirm={this.toConfirm.bind(this)}
             />:<div></div>
         }
-
+        {this.state.summarize?
+          <Summarize
+            select_method={this.state.select_method}
+            select_address={this.state.select_address}
+            back={this.toPayment.bind(this)}
+            />:<div></div>
+        }
       </Modal>
     )
   }

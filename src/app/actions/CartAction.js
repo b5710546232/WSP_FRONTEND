@@ -123,7 +123,7 @@ export const deleteItemInCart = (id,token) => (
 //   }}
 // )
 // Pay item in cart
-export const payItemInCart = (token) => {
+export const payItemInCart = (data,token) => {
   (dispatch) =>
     dispatch({
       [CALL_API]: {
@@ -141,7 +141,7 @@ export const payItemInCart = (token) => {
             type: 'PAY_CART_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
-                dispatch(loadCategoryList())
+                dispatch(loadCartList(token))
                 return data
               })
             }
