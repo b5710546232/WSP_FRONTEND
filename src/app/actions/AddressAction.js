@@ -60,7 +60,7 @@ export const loadAddress = (id,token) => (
 )
 
 // Edit address [Owner(limit),Staff]
-export const updatePaymentMethod = (data,id,token) => (
+export const editAddress = (data,id,token) => (
   (dispatch) =>
     dispatch({
       [CALL_API]: {
@@ -78,7 +78,6 @@ export const updatePaymentMethod = (data,id,token) => (
             type: 'UPDATE_ADDRESS_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
-                dispatch(loadCategoryList())
                 return data
               })
             }
