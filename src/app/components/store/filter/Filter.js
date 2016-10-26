@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import FilterItem from '../filteritem/FilterItem'
 import '../../../../assets/scss/filter.scss'
 import {loadCategoryList} from '../../../actions/CategoryAction'
+import {addFilter,removeFilter} from '../../../actions/FilterAction'
 import {connect} from 'react-redux'
 
 class Filter extends Component {
@@ -24,11 +25,10 @@ class Filter extends Component {
                 (<FilterItem
                   key={category.id}
                   name ={category.name}
+                  check ={category.checked}
                   {...category}
                   />)
               )}
-              {/* <FilterItem name="Bottle" id="1"/> */}
-              {/* <FilterItem name="Drink" id="2"/> */}
             </div>
           </div>
         </div>
@@ -44,6 +44,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onLoadCategoryList: () => {
       dispatch(loadCategoryList())
+    },
+    addFilter: (filters) => {
+      dispatch(addFilter(filters))
+    },
+    removeFilter: (filters) => {
+      dispatch(removeFilter(filters))
     }
   }
 }

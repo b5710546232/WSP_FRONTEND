@@ -25,7 +25,7 @@ export default class Header extends Component {
           <li>{this.state.status_msg}&nbsp;&nbsp;</li>
         </ul>
       </div>
-    </nav>
+      </nav>
       </div>
     )
   }

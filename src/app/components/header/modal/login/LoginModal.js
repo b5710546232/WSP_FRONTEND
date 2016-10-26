@@ -14,7 +14,6 @@ class LoginModal extends Component {
       password: password
     }
     this.props.onLogin(data)
-    console.log(this.props.user.isLogin,'kkkk');
   }
 
   shouldComponentUpdate(){

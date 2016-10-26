@@ -4,17 +4,32 @@ import Item from '../item/Item'
 import {connect} from 'react-redux'
 import {loadProductList} from '../../../actions/ProductAction'
 class ItemContainer extends Component {
+  constructor(props){
+    super(props)
+    this.filter_product = []
+  }
   componentDidMount(){
     this.props.onLoadProductList()
   }
   shouldComponentUpdate(nextProps){
     return this.props.products !== nextProps
   }
+  filterProduct(){
+    let temp =  this.props.products
+    this.filter_product = []
+    var self = this
+    console.log(this.props.filters,'state filters');
+    temp.forEach(function(product) {
+      if(self.props.filters.includes(product.category))
+        self.filter_product.push(product)
+    });
+  }
   render() {
+    this.filterProduct()
     return (
       <div className="col s12 m12 l12" >
         <div className="row">
-          {this.props.products.map((product) =>
+          {this.filter_product.map((product) =>
             (<Item
               key={product.id}
               name = {product.name}
