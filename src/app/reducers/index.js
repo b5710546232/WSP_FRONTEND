@@ -6,6 +6,7 @@ import cart from './cart'
 import orders from './orders'
 import paymentMethods from './paymentMethods'
 import address from './address'
+import admin from './admin'
 import { routerReducer } from 'react-router-redux'
 
 const rootReducer = combineReducers({
@@ -16,5 +17,7 @@ const rootReducer = combineReducers({
   orders,
   paymentMethods,
   address,
-  categories})
+  categories,
+  admin
+})
 export default rootReducer
