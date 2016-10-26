@@ -5,6 +5,7 @@ import {Modal,Button} from 'react-materialize'
 import MemberInfo from './MemberInfo'
 import ChangePasswordPanel from './ChangePasswordPanel'
 import AddressInfo from './AddressInfo'
+import {Link} from 'react-router'
 class MemberModal extends Component {
   constructor(props){
     super(props)
@@ -75,7 +76,7 @@ class MemberModal extends Component {
           <Button waves="light" className="modal-close" onClick={
              (e)=>this.onLogout()
            }>Logout</Button>
-         {this.props.user.is_admin? <Button waves="light" >Admin</Button>:<div></div>}
+         {this.props.user.is_admin? <Link className="waves-effect waves-light btn" to={{ pathname:'/admin' }}>Admin</Link>:<div></div>}
         </div>
       </Modal>
     )
