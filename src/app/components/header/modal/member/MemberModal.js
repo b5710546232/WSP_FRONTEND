@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {logout,loadUserdata} from '../../../../actions/UserAction'
+import {logout,loadUserdata,check_admin} from '../../../../actions/UserAction'
 import {Modal,Button} from 'react-materialize'
 import MemberInfo from './MemberInfo'
 import ChangePasswordPanel from './ChangePasswordPanel'
@@ -25,6 +25,7 @@ class MemberModal extends Component {
       });
     });
     this.props.loadUserdata(localStorage.token)
+    this.props.check_admin(localStorage.token)
     console.log('user',this.userdata);
 
   }
@@ -74,7 +75,7 @@ class MemberModal extends Component {
           <Button waves="light" className="modal-close" onClick={
              (e)=>this.onLogout()
            }>Logout</Button>
-         <Button waves="light" >Admin</Button>
+         {this.props.user.is_admin? <Button waves="light" >Admin</Button>:<div></div>}
         </div>
       </Modal>
     )
@@ -90,6 +91,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     loadUserdata:(token)=>{
       dispatch(loadUserdata(token))
+    },
+    check_admin: (token)=>{
+      dispatch(check_admin(token))
     }
   }
 }

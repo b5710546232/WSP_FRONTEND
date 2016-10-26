@@ -23,7 +23,8 @@ const initialState = {
   isRegister:false,
   accessToken:localStorage.token !==null?localStorage.token :null,
   userdata:null,
-  change_password_success:false
+  change_password_success:false,
+  is_admin:false
 }
 
 const user = (state=initialState,action)=>{
@@ -62,6 +63,14 @@ const user = (state=initialState,action)=>{
       localStorage.removeItem('token')
       return Object.assign({}, state, {
           isLogin: false,
+        })
+    case 'CHECK_ADMIN_SUCCESS':
+      return Object.assign({}, state, {
+          is_admin: true,
+        })
+    case 'CHECK_AMDIN_FAILURE':
+      return Object.assign({}, state, {
+          is_admin: false,
         })
     default:
       return state;
