@@ -66,7 +66,7 @@ export const updateCart = (data,id,token) => (
             type: 'UPDATE_CART_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
-                dispatch(loadCategoryList())
+                dispatch(loadCartList(token))
                 return data
               })
             }
@@ -78,18 +78,50 @@ export const updateCart = (data,id,token) => (
   )
 )
 // Delete item form cart
-export const deleteItemInCart = (id,token)=> (
-  {[CALL_API]: {
-    endpoint: CART_ENDPOINT+id+'/',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization':'Token '+token
-    },
-    method: 'DELETE',
-    types: ['DELETE_CART_REQUEST', 'DELETE_CART_SUCCESS', 'DELETE_CART_FAILURE']
-  }}
+export const deleteItemInCart = (id,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+         endpoint: CART_ENDPOINT+id+'/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'DELETE',
+        types: [
+          'DELETE_CART_REQUEST',
+          {
+            type: 'DELETE_CART_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadCartList(token))
+                return data
+              })
+            }
+          },
+          'DELETE_CART_FAILURE'
+        ]
+      }
+    }
+  )
 )
+// export const deleteItemInCart = (id,token)=> (
+//   {[CALL_API]: {
+//     endpoint: CART_ENDPOINT+id+'/',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json',
+//       'Authorization':'Token '+token
+//     },
+//     method: 'DELETE',
+//     types: ['DELETE_CART_REQUEST', {
+//       type:'DELETE_CART_SUCCESS',
+//       dispatch(loadCartList(token))
+//
+//     }, 'DELETE_CART_FAILURE']
+//   }}
+// )
 // Pay item in cart
 export const payItemInCart = (token) => {
   (dispatch) =>
