@@ -1,6 +1,6 @@
 import {Action} from '../constants';
 import { CALL_API } from 'redux-api-middleware'
-import {ADMIN_USER_ENDPOINT} from '../constants/endpoints'
+import {ADMIN_USER_ENDPOINT,ADMIN_ADDRESS_ENDPOINT} from '../constants/endpoints'
 
 export const loadUser = (id,token) => (
   {[CALL_API]: {
