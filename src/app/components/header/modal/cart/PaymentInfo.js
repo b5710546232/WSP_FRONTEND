@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {Row,Button,Input} from 'react-materialize'
-export default class PaymentInfo extends Component {
+import {connect} from 'react-redux'
+
+class PaymentInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {select_address:null,select_method:null};
@@ -38,3 +40,20 @@ export default class PaymentInfo extends Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+  return state
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // loadAddressList: (token) => {
+    //   dispatch(loadAddressList(token))
+    // },
+    // onCreate: (data,token) =>{
+    //   dispatch(createAddress(data,token))
+    // },
+    // onEdit: (data,token,id) =>{
+    //   dispatch(editAddress(data,id,token))
+    // }
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(PaymentInfo)
