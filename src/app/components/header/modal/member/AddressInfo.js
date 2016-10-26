@@ -38,7 +38,8 @@ class AddressInfo extends Component {
     let province = this.refs.edit_form.province.value
     let country = this.refs.edit_form.country.value
     let zipcode = this.refs.edit_form.zipcode.value
-    let token = localStorage.token
+
+    let token = this.props.user.accessToken
     let data = {
       address_number: address_number,
       village : village,
@@ -67,7 +68,7 @@ class AddressInfo extends Component {
               {
                 this.props.address.map((address) =>
                   (
-                    <option value={JSON.stringify(address)} >{address.address_number} {address.province}</option>
+                    <option key={address.id} value={JSON.stringify(address)} >{address.address_number} {address.province}</option>
                   )
                 )
               }

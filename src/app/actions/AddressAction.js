@@ -55,7 +55,7 @@ export const loadAddress = (id,token) => (
       'Authorization':'Token '+token
     },
     method: 'GET',
-    types: ['LOAD_ADDRESS_REQUEST', 'LOAD_PPAYMENTMETHOD_SUCCESS', 'LOAD_ADDRESS_FAILURE']
+    types: ['LOAD_ADDRESS_REQUEST', 'LOAD_ADDRESS_SUCCESS', 'LOAD_ADDRESS_FAILURE']
   }}
 )
 
@@ -78,6 +78,7 @@ export const editAddress = (data,id,token) => (
             type: 'UPDATE_ADDRESS_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadAddressList(token))
                 return data
               })
             }
@@ -98,6 +99,6 @@ export const deletePaymentMethod = (id,token)=> (
       'Authorization':'Token '+token
     },
     method: 'DELETE',
-    types: ['DELETE_ADDRESS_REQUEST', 'DELETE_PPAYMENTMETHOD_SUCCESS', 'DELETE_ADDRESS_FAILURE']
+    types: ['DELETE_ADDRESS_REQUEST', 'DELETE_ADDRESS_SUCCESS', 'DELETE_ADDRESS_FAILURE']
   }}
 )

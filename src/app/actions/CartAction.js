@@ -87,7 +87,7 @@ export const deleteItemInCart = (id,token)=> (
       'Authorization':'Token '+token
     },
     method: 'DELETE',
-    types: ['DELETE_CART_REQUEST', 'DELETE_PPAYMENTMETHOD_SUCCESS', 'DELETE_CART_FAILURE']
+    types: ['DELETE_CART_REQUEST', 'DELETE_CART_SUCCESS', 'DELETE_CART_FAILURE']
   }}
 )
 // Pay item in cart

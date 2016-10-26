@@ -69,7 +69,7 @@ export const deleteItemInCart = (id,token)=> (
       'Authorization':'Token '+token
     },
     method: 'DELETE',
-    types: ['DELETE_ORDER_REQUEST', 'DELETE_PPAYMENTMETHOD_SUCCESS', 'DELETE_ORDER_FAILURE']
+    types: ['DELETE_POSTAL_REQUEST', 'DELETE_POSTAL_SUCCESS', 'DELETE_POSTAL_FAILURE']
   }}
 )
 
