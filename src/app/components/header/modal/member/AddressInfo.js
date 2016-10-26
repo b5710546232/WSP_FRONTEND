@@ -1,30 +1,34 @@
 import React, { Component } from 'react'
 import {Row,Col,Button,Dropdown,Input,NavItem} from 'react-materialize'
-import {createAddress,loadAddress,loadAddressList} from '../../../../actions/AddressAction'
+import {createAddress,editAddress,loadAddress,loadAddressList} from '../../../../actions/AddressAction'
 import {connect} from 'react-redux'
 
 class AddressInfo extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {select_address:null}
+    this.state = {select_address:null,edit_address:false,add_address:false}
 
-  }
-  componentWillMount(){
-    $('#address-dropdown.dropdown-button').dropdown();
   }
   componentDidMount(){
     let token = this.props.user.accessToken
     this.props.loadAddressList(token)
   }
 
-  onSelect(e){
+  onEditSelect(e){
     e.preventDefault()
-    this.setState({select_address:this.refs.form.select_address.value})
-    console.log(this.refs.form.select_address);
+    this.setState({select_address:JSON.parse(this.refs.form.select_address.value),edit_address:true,add_address:false})
   }
 
-  onEdit(e){
+  onAddSelect(e){
+    e.preventDefault()
+    this.setState({select_address:{},add_address:true,edit_address:false})
+  }
+  onCancel(e){
+    e.preventDefault()
+    this.setState({select_address:null,add_address:false,edit_address:false})
+  }
+  onSave(e){
     e.preventDefault()
     let address_number = this.refs.edit_form.address_number.value
     let village = this.refs.edit_form.village.value
@@ -35,7 +39,23 @@ class AddressInfo extends Component {
     let country = this.refs.edit_form.country.value
     let zipcode = this.refs.edit_form.zipcode.value
     let token = localStorage.token
-
+    let data = {
+      address_number: address_number,
+      village : village,
+      road : road,
+      sub_distinct : sub_distinct,
+      distinct : distinct,
+      province : province,
+      country : country,
+      zipcode : zipcode
+    }
+    if (this.state.edit_address){
+      let id = this.state.select_address.id
+      this.props.onEdit(data,token,id)
+    }else {
+      this.props.onCreate(data,token)
+    }
+    this.setState({select_address:null,edit_address:null,add_address:null})
   }
 
   render(){
@@ -47,12 +67,14 @@ class AddressInfo extends Component {
               {
                 this.props.address.map((address) =>
                   (
-                    <option value={address} >{address.address_number} {address.province}</option>
+                    <option value={JSON.stringify(address)} >{address.address_number} {address.province}</option>
                   )
                 )
               }
             </Input>
-            <Col s={12} className="center"><Button waves="light" className="center" onClick={(e)=>this.onSelect(e)}>Edit</Button></Col>
+            {!this.state.select_address?
+              <Col s={12} className="center"><Button waves="light" className="center" onClick={(e)=>this.onEditSelect(e)}>View Address</Button><Button waves="light" className="center" onClick={(e)=>this.onAddSelect(e)}>Add New Address</Button></Col>:<div></div>
+            }
           </form>
         </Row>
         { this.state.select_address?
@@ -65,7 +87,7 @@ class AddressInfo extends Component {
             <Input s={12} type="text" name="province" label="Province" defaultValue={this.state.select_address.province}></Input>
             <Input s={12} type="text" name="country" label="Country" defaultValue={this.state.select_address.country}></Input>
             <Input s={12} type="number" name="zipcode" label="Zipcode" defaultValue={this.state.select_address.zipcode}></Input>
-            <Col s={12} className="center"><Button waves="light">Save</Button></Col>
+            <Col s={12} className="center"><Button waves="light" onClick={(e)=>this.onSave(e)}>Save</Button><Button waves="light" onClick={(e)=>this.onCancel(e)}>Cancel</Button></Col>
           </form>:<div></div>
         }
       </div>
@@ -79,6 +101,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     loadAddressList: (token) => {
       dispatch(loadAddressList(token))
+    },
+    onCreate: (data,token) =>{
+      dispatch(createAddress(data,token))
+    },
+    onEdit: (data,token,id) =>{
+      dispatch(editAddress(data,id,token))
     }
   }
 }
