@@ -159,7 +159,7 @@ export const loadProduct = (token) => (
       'Authorization':'Token '+token
     },
     method: 'GET',
-    types: ['LOAD_ADMIN_PRODUCT_REQUEST', 'LOAD_ADMIN_PRODCT_SUCCESS', 'LOAD_ADMIN_PRODUCT_FAILURE']
+    types: ['LOAD_ADMIN_PRODUCT_REQUEST', 'LOAD_ADMIN_PRODUCT_SUCCESS', 'LOAD_ADMIN_PRODUCT_FAILURE']
   }}
 )
 

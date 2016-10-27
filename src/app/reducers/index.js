@@ -8,6 +8,7 @@ import paymentMethods from './paymentMethods'
 import address from './address'
 import admin from './admin'
 import filters from './filters'
+import itemlines from './itemlines'
 import { routerReducer } from 'react-router-redux'
 
 const rootReducer = combineReducers({
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   address,
   categories,
   filters,
-  admin
+  admin,
+  itemlines
 })
 export default rootReducer
