@@ -3,7 +3,7 @@ import {check_admin} from '../../actions/UserAction'
 import {loadUser,loadOrder,loadAddress,loadProduct,loadItemLine,loadCategory,loadMethod} from '../../actions/AdminAction'
 import {connect} from 'react-redux'
 import '../../../assets/scss/store.scss'
-import ProductBody from './product/ProductBody'
+import CategoryBody from './product/CategoryBody'
 import OrderBody from './order/OrderBody'
 import MethodBody from './method/MethodBody'
 import MemberBody from './member/MemberBody'
@@ -33,7 +33,7 @@ class Admin extends Component {
             {this.props.user.is_admin?
               <ul className="collapsible popout"  data-collapsible="accordion">
                 <MemberBody />
-                <ProductBody />
+                <CategoryBody />
                 <MethodBody />
                 <OrderBody />
                </ul>:
