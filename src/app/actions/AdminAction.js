@@ -80,7 +80,7 @@ export const updateUser = (id,data,token) => (
     }
   )
 )
-export const loadAddress = (id,token) => (
+export const loadAddress = (token) => (
   {[CALL_API]: {
     endpoint: ADMIN_ADDRESS_ENDPOINT,
     headers: {
@@ -150,7 +150,7 @@ export const updateAddress = (id,data,token) => (
     }
   )
 )
-export const loadProduct = (id,token) => (
+export const loadProduct = (token) => (
   {[CALL_API]: {
     endpoint: ADMIN_PRODUCT_ENDPOINT,
     headers: {
@@ -220,7 +220,7 @@ export const updateProduct = (id,data,token) => (
     }
   )
 )
-export const loadCategory = (id,token) => (
+export const loadCategory = (token) => (
   {[CALL_API]: {
     endpoint: ADMIN_CATEGORY_ENDPOINT,
     headers: {
@@ -291,7 +291,7 @@ export const updateCategory = (id,data,token) => (
   )
 )
 
-export const loadMethod = (id,token) => (
+export const loadMethod = (token) => (
   {[CALL_API]: {
     endpoint: ADMIN_METHOD_ENDPOINT,
     headers: {
@@ -362,7 +362,7 @@ export const updateMethod = (id,data,token) => (
   )
 )
 
-export const loadOrder = (id,token) => (
+export const loadOrder = (token) => (
   {[CALL_API]: {
     endpoint: ADMIN_ORDER_ENDPOINT,
     headers: {
@@ -375,7 +375,7 @@ export const loadOrder = (id,token) => (
   }}
 )
 
-export const loadItemLine = (id,token) => (
+export const loadItemLine = (token) => (
   {[CALL_API]: {
     endpoint: ADMIN_ITEMLINE_ENDPOINT,
     headers: {

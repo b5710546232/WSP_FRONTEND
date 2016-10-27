@@ -10,14 +10,13 @@ import MemberBody from './member/MemberBody'
 class Admin extends Component {
   componentDidMount(){
     this.props.check_admin(localStorage.token)
+    this.props.loadOrder(localStorage.token)
     this.props.loadUser(localStorage.token)
-    this.props.loadOrder(toklocalStorage.tokenen)
     this.props.loadAddress(localStorage.token)
     this.props.loadProduct(localStorage.token)
     this.props.loadItemLine(localStorage.token)
     this.props.loadCategory(localStorage.token)
     this.props.loadMethod(localStorage.token)
-
   }
 
   render() {

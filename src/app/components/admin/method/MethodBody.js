@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-
+import MethodEditForm from './MethodEditForm'
 class MethodBody extends Component {
   componentDidMount(){
     $(document).ready(function(){
@@ -10,29 +10,30 @@ class MethodBody extends Component {
     });
   }
   render() {
+    console.log('method',this.props.admin.method);
     return(
       <li>
         <div className="collapsible-header">Payment Method</div>
         <div className="collapsible-body white">
-          <table>
+          <table className="table-responsive">
             <thead>
               <tr>
                   <th data-field="id">ID</th>
-                  <th data-field="name">Payment Method Name</th>
+                  <th data-field="name">Payment Method</th>
                   <th data-field="is_active">Is Active</th>
-                  <th data-field="edit">Edit</th>
+                  <th data-field="add"><MethodEditForm add={true}/></th>
               </tr>
             </thead>
             <tbody>
               {this.props.admin.method.map(
-                (method)=>{
+                (method)=>(
                     <tr>
-                      <td>method.id</td>
-                      <td>method.name</td>
+                      <td>{method.id}</td>
+                      <td>{method.name}</td>
                       <td>{method.is_active? <a>Active</a>:<a claasName="red-text">Disable</a>}</td>
-                      <td><li><a className="btn-floating red"><i className="material-icons">insert_chart</i></a></li></td>
+                      <td><MethodEditForm select_method={method}/></td>
                     </tr>
-                }
+                )
               )}
             </tbody>
           </table>
