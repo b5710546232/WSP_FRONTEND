@@ -7,7 +7,8 @@ const initialState = {
   product : [],
   category : [],
   order : [],
-  item_line : []
+  item_line : [],
+  method : []
 }
 
 const admin = (state=initialState,action)=>{
@@ -36,6 +37,10 @@ const admin = (state=initialState,action)=>{
       return Object.assign({}, state, {
         item_line: action.payload
       })
+    case 'LOAD_ADMIN_METHOD_SUCCESS':
+      return Object.assign({}, state, {
+        method: action.payload
+    })
     default :
       return state;
   }
