@@ -9,21 +9,21 @@ import MethodBody from './method/MethodBody'
 import MemberBody from './member/MemberBody'
 class Admin extends Component {
   componentDidMount(){
-    let token = localStorage.token
-    this.props.check_admin(token)
-    this.props.loadUser(token)
-    this.props.loadOrder(token)
-    this.props.loadAddress(token)
-    this.props.loadProduct(token)
-    this.props.loadItemLine(token)
-    this.props.loadCategory(token)
-    this.props.loadMethod(token)
+    this.props.check_admin(localStorage.token)
+    this.props.loadUser(localStorage.token)
+    this.props.loadOrder(toklocalStorage.tokenen)
+    this.props.loadAddress(localStorage.token)
+    this.props.loadProduct(localStorage.token)
+    this.props.loadItemLine(localStorage.token)
+    this.props.loadCategory(localStorage.token)
+    this.props.loadMethod(localStorage.token)
 
   }
 
   render() {
     var bg = {
-      backgroundImage: 'url(src/assets/media/images/3.png)'
+      backgroundImage: 'url(src/assets/media/images/3.png)',
+      minHeight:"600px"
     }
 
     return (
@@ -53,6 +53,27 @@ const mapDispatchToProps = (dispatch) => {
   return {
     check_admin: (token)=>{
       dispatch(check_admin(token))
+    },
+    loadUser: (token)=>{
+      dispatch(loadUser(token))
+    },
+    loadOrder: (token)=>{
+      dispatch(loadOrder(token))
+    },
+    loadAddress: (token)=>{
+      dispatch(loadAddress(token))
+    },
+    loadProduct: (token)=>{
+      dispatch(loadProduct(token))
+    },
+    loadItemLine: (token)=>{
+      dispatch(loadItemLine(token))
+    },
+    loadCategory: (token)=>{
+      dispatch(loadCategory(token))
+    },
+    loadMethod: (token)=>{
+      dispatch(loadMethod(token))
     }
   }
 }

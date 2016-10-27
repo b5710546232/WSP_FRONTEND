@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 
 class ProductBody extends Component {
   componentDidMount(){
@@ -13,13 +14,18 @@ class ProductBody extends Component {
       <li>
         <div className="collapsible-header">Product / Category</div>
         <div className="collapsible-body">
-          <div>
-            Edit Here
-          </div>
+
         </div>
       </li>
     )
   }
 }
+const mapStateToProps = (state) => {
+  return state
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
 
-export default ProductBody
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(ProductBody)

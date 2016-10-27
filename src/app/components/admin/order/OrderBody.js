@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 
 class OrderBody extends Component {
   componentDidMount(){
@@ -22,4 +23,12 @@ class OrderBody extends Component {
   }
 }
 
-export default OrderBody
+const mapStateToProps = (state) => {
+  return state
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(OrderBody)

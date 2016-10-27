@@ -5,7 +5,8 @@ import '../../../assets/scss/store.scss'
 export default class Store extends Component {
   render() {
     var bg = {
-      backgroundImage: 'url(src/assets/media/images/3.png)'
+      backgroundImage: 'url(src/assets/media/images/3.png)',
+      minHeight:"600px"
     }
     return (
       <div className="store-container" style={bg}>

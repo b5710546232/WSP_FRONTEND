@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 
 class MemberBody extends Component {
   componentDidMount(){
@@ -21,5 +22,12 @@ class MemberBody extends Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+  return state
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
 
-export default MemberBody
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(MemberBody)
