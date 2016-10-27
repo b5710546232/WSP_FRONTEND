@@ -17,6 +17,10 @@ class Summarize extends Component {
     this.props.payItemInCart(data,token)
     console.log('confirm',this.props);
   }
+  shouldComponentUpdate(nextProps){
+    $('#register_modal').closeModal();
+    return this.props.cart!==nextProps
+  }
   render() {
     let total = 0
     let price = 0;
