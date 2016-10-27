@@ -11,10 +11,16 @@ class OrderInfo extends Component {
     });
   }
   render(){
-    let itemList = this.props.itemlines.filter((itemline)=>parseInt(itemline.order)===parseInt(this.props.order.id))
-    console.log(itemList);
+    let itemList = this.props.itemlines.filter(itemline=>itemline.order===this.props.order.id)
+    let address = this.props.address.find(select_address=>select_address.id===this.props.order.address)
+    let price = 0
+    let quantity = 0
+    itemList.forEach((item)=>{
+      quantity+=item.quantity
+      price+=this.props.products.find((product)=>parseInt(item.product)==product.id).price*item.quantity
+    })
     return (
-      <li>
+      <li >
         <div className="collapsible-header"><h6><span className="bold left">Order ID : {this.props.order.id}</span><span className="bold right">{this.props.order.status}</span></h6></div>
         <div className="collapsible-body white">
           <Row>
@@ -30,12 +36,10 @@ class OrderInfo extends Component {
           <Row>
             <Col s={12} m={6}>
               <Row>
-                <Col s={12} m={6}>
-                  Address :
-                </Col>
-                <Col s={12} m={6}>
-                  {this.props.order.address}
-                </Col>
+                Address :
+              </Row>
+              <Row>
+                {address.address_number} {address.village} {address.road} {address.sub_distinct} {address.distinct} {address.province} {address.country} {address.zipcode}
               </Row>
             </Col>
             <Col s={12} m={6}>
@@ -45,25 +49,32 @@ class OrderInfo extends Component {
             </Col>
           </Row>
           <Row>
-            <Table>
-              <tr>
-                <th data-field="id">Product</th>
-                <th data-field="name">Quantity</th>
-                <th data-field="price">Price</th>
-              </tr>
-              <tbody>
-                {itemList.map(
-                  (item)=>{
-                    <tr>
-                      <td>{this.props.products.find((product)=>parseInt(item.product)==product.id).name}</td>
-                      <td>{item.Quantity}</td>
-                      <td>{(this.props.products.find((product)=>parseInt(item.product)==product.id).price)*item.quantity}</td>
-                    </tr>
+            <Col s={12}>
+              <Table className="center">
+                <tr>
+                  <th data-field="id">Product</th>
+                  <th data-field="name">Quantity</th>
+                  <th data-field="price">Price</th>
+                </tr>
+                <tbody>
+                  {itemList.map(
+                    (item)=>(
+                      <tr>
+                        <td>{this.props.products.find((product)=>parseInt(item.product)==product.id).name}</td>
+                        <td>{item.quantity}</td>
+                        <td>{(this.props.products.find((product)=>parseInt(item.product)==product.id).price)*item.quantity}</td>
+                      </tr>
+                    )
+                  )
                   }
-                )
-                }
-              </tbody>
-            </Table>
+                  <tr className="bold bold-text">
+                    <td>Total</td>
+                    <td>{quantity}</td>
+                    <td>{price}</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </Col>
           </Row>
         </div>
       </li>
