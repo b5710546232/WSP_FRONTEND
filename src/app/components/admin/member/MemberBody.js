@@ -11,7 +11,7 @@ class MemberBody extends Component {
     });
   }
   shouldComponentUpdate(nextProps){
-    return this.props.products !== nextProps
+    return this.props.admin.user !== nextProps
   }
   render() {
     return(
@@ -57,7 +57,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    
+
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(MemberBody)

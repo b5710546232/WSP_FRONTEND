@@ -14,7 +14,7 @@ class ProductBody extends Component {
   shouldComponentUpdate(nextProps){
     console.log(this.props.admin.category,"list category");
     console.log(this.props.admin.product,"list product");
-    return this.props.products !== nextProps
+    return this.props.admin.product !== nextProps
   }
 
   render() {
