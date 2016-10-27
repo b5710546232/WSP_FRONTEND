@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {loadUser} from '../../../actions/AdminAction'
+
 import '../../../../assets/scss/admin.scss'
 class MemberBody extends Component {
   componentDidMount(){
@@ -9,13 +9,8 @@ class MemberBody extends Component {
         accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
       });
     });
-    this.props.loadUser(localStorage.token)
-    console.log(this.props.admin.user,"user list");
-
   }
   shouldComponentUpdate(nextProps){
-    console.log(this.props.admin.user,"user list");
-
     return this.props.products !== nextProps
   }
   render() {
@@ -62,9 +57,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadUser:(token)=>{
-      dispatch(loadUser(token))
-    }
+    
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(MemberBody)
