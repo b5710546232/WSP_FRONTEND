@@ -17,6 +17,13 @@ class PaymentInfo extends Component {
     this.props.loadAddressList(token)
     this.props.loadPaymentMethodList(token)
   }
+  onCancel(e) {
+    e.preventDefault()
+    this.setState(add_address:false)
+  }
+  shouldComponentUpdate(nextProps){
+    return this.props.address !== nextProps
+  }
   onSave(e){
     e.preventDefault()
     let address_number = this.refs.add_form.address_number.value
