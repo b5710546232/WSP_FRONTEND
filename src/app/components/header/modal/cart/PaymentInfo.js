@@ -98,7 +98,7 @@ class PaymentInfo extends Component {
         }
         <Row>
           <Button waves="light" className="left" onClick={this.props.back}>Back</Button>
-          <Button waves="light" className="right" onClick={(e)=>this.onConfirm(e)}>Confirm</Button>
+          {this.props.address.length>0&&this.props.paymentMethods.length>0? <Button waves="light" className="right" onClick={(e)=>this.onConfirm(e)}>Confirm</Button>:<div></div>}
         </Row>
       </div>
     )

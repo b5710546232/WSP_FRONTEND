@@ -88,7 +88,7 @@ class CartModal extends Component {
                 </tr>
               </tbody>
             </Table>
-            <Button waves="light" onClick={()=>this.toPayment()}>Pay</Button>
+            {total!=0? <Button waves="light" onClick={()=>this.toPayment()}>Pay</Button>:<div></div>}
           </div>:<div></div>
         }
         {this.state.payment_info?
