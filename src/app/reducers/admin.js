@@ -42,6 +42,8 @@ const admin = (state=initialState,action)=>{
       return Object.assign({}, state, {
         method: action.payload
     })
+    case 'LOGOUT':
+      return initialState
     default :
       return state;
   }

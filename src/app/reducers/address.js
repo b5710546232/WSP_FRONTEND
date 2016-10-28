@@ -12,6 +12,8 @@ const address = (state=initialState,action)=>{
             ...state,
             action.payload
         ]
+    case 'LOGOUT':
+      return initialState
     default:
       return state;
   }
