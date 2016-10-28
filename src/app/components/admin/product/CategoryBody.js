@@ -54,7 +54,7 @@ class CategoryBody extends Component {
                   </div>
                 </div>
                 <div className="collapsible-body white">
-                <ProductBody products={this.findProductList(category.id)}/>
+                <ProductBody products={this.findProductList(category.id)} select_category={category.id}/>
                 </div>
               </li>
             )
