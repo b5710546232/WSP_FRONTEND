@@ -19,6 +19,7 @@ class MethodEditForm extends Component {
       this.props.updateMethod(this.props.select_method.id,data,localStorage.token)
     }
   }
+
   render() {
     return (
       <Modal
@@ -32,7 +33,7 @@ class MethodEditForm extends Component {
         }>
         <form ref="form">
           <Input s={6} label="Payment Method Name" name="name" defaultValue={this.props.add? "":this.props.select_method.name} s={12}/>
-    
+
           <Row>
               <Button waves="light" onClick={(e)=>this.onSave(e)} className="right">Save</Button>
           </Row>

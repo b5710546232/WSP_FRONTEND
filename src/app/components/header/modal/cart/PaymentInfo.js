@@ -63,7 +63,7 @@ class PaymentInfo extends Component {
         <form ref="form">
           <Input s={12} type='select' name="select_method" label="Select Payment Method" ref="select_method" >
             {
-              this.props.paymentMethods.map((method) =>
+              this.props.paymentMethods.filter((method)=>method.is_active===true).map((method) =>
                 (
                   <option key={method.id} value={method.id} >{method.name}</option>
                 )

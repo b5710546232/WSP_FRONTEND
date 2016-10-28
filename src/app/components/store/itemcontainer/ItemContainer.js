@@ -29,7 +29,7 @@ class ItemContainer extends Component {
     return (
       <div className="col s12 m12 l12" >
         <div className="row">
-          {this.filter_product.map((product) =>
+          {this.filter_product.filter((product)=>product.is_active===true).map((product) =>
             (<Item
               key={product.id}
               name = {product.name}

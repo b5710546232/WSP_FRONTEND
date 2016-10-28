@@ -2,10 +2,18 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import ProductEditModal from './ProductEditModal'
 // import '../../../../assets/scss/admin.scss'
-
-export default class ProductBody extends Component {
+import {deactiveProduct,reactiveProduct} from '../../../actions/AdminAction'
+class ProductBody extends Component {
   constructor(props){
     super(props)
+  }
+  deactiveProduct(e,id){
+    e.preventDefault()
+    this.props.deactiveProduct(id,localStorage.token)
+  }
+  reactiveProduct(e,id){
+    e.preventDefault()
+    this.props.reactiveProduct(id,localStorage.token)
   }
   render() {
     return(
@@ -22,14 +30,14 @@ export default class ProductBody extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.products.map(
+          {this.props.select_product.map(
             (product)=>(
                 <tr>
                   <td>{product.id}</td>
                   <td>{product.name}</td>
                   <td>{product.description}</td>
                   <td>{product.price}</td>
-                  <td>{product.is_active ? <i className="material-icons done-icon">done</i> : <i className="material-icons clear-icon">clear</i>}</td>
+                  <td>{product.is_active ? <i onClick={(e)=>this.deactiveProduct(e,product.id)} className="material-icons done-icon">done</i> : <i onClick={(e)=>this.reactiveProduct(e,product.id)} className="material-icons clear-icon">clear</i>}</td>
                   <td><ProductEditModal select_product={product} select_category={this.props.select_category}/></td>
                 </tr>
             )
@@ -40,3 +48,13 @@ export default class ProductBody extends Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+  return state
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deactiveProduct:(id,token)=>(dispatch(deactiveProduct(id,token))),
+    reactiveProduct:(id,token)=>(dispatch(reactiveProduct(id,token)))
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(ProductBody)

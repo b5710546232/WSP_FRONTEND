@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import MethodEditForm from './MethodEditForm'
+import {deactiveMethod,reactiveMethod} from '../../../actions/AdminAction'
+
 class MethodBody extends Component {
   componentDidMount(){
     $(document).ready(function(){
@@ -11,6 +13,14 @@ class MethodBody extends Component {
   }
   shouldComponentUpdate(nextProps){
     return this.props.admin.method!==nextProps
+  }
+  deactiveMethod(e,id){
+    e.preventDefault()
+    this.props.deactiveMethod(id,localStorage.token)
+  }
+  reactiveMethod(e,id){
+    e.preventDefault()
+    this.props.reactiveMethod(id,localStorage.token)
   }
   render() {
     console.log('method',this.props.admin.method);
@@ -33,7 +43,7 @@ class MethodBody extends Component {
                     <tr>
                       <td>{method.id}</td>
                       <td>{method.name}</td>
-                      <td>{method.is_active? <i className="material-icons done-icon">done</i> : <i className="material-icons clear-icon">clear</i>}</td>
+                      <td>{method.is_active? <i onClick={(e)=>this.deactiveMethod(e,method.id)} className="material-icons done-icon">done</i> : <i onClick={(e)=>this.reactiveMethod(e,method.id)} className="material-icons clear-icon">clear</i>}</td>
                       <td><MethodEditForm select_method={method}/></td>
                     </tr>
                 )
@@ -51,7 +61,12 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    deactiveMethod: (id,token)=>(
+      dispatch(deactiveMethod(id,token))
+    ),
+    reactiveMethod: (id,token)=>(
+      dispatch(reactiveMethod(id,token))
+    )
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(MethodBody)
