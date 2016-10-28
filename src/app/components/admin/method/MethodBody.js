@@ -9,6 +9,9 @@ class MethodBody extends Component {
       });
     });
   }
+  shouldComponentUpdate(nextProps){
+    return this.props.admin.method!==nextProps
+  }
   render() {
     console.log('method',this.props.admin.method);
     return(
@@ -30,7 +33,7 @@ class MethodBody extends Component {
                     <tr>
                       <td>{method.id}</td>
                       <td>{method.name}</td>
-                      <td>{method.is_active? <a>Active</a>:<a claasName="red-text">Disable</a>}</td>
+                      <td>{method.is_active? <i className="material-icons done-icon">done</i> : <i className="material-icons clear-icon">clear</i>}</td>
                       <td><MethodEditForm select_method={method}/></td>
                     </tr>
                 )

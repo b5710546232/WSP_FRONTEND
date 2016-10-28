@@ -32,16 +32,7 @@ class MethodEditForm extends Component {
         }>
         <form ref="form">
           <Input s={6} label="Payment Method Name" name="name" defaultValue={this.props.add? "":this.props.select_method.name} s={12}/>
-      {/**    {
-            this.props.add?
-            <Row><Input name='is_active' type='checkbox'  id="is_active" checked="checked"/></Row>:
-              <Row>
-                {this.props.select_method.is_active?
-                  <Input name='is_active' type='checkbox'  id="is_active" checked="checked"/>:
-                    <Input name='is_active' type='checkbox'  id="is_active" />
-                }
-              </Row>
-          }**/}
+    
           <Row>
               <Button waves="light" onClick={(e)=>this.onSave(e)} className="right">Save</Button>
           </Row>

@@ -14,6 +14,9 @@ class OrderModal extends Component {
       });
     });
   }
+  shouldComponentUpdate(nextProps){
+    return this.props.orders!==nextProps
+  }
   render() {
     return (
       <Modal
