@@ -61,7 +61,7 @@ const user = (state=initialState,action)=>{
     })
     case Action.LOGOUT:
       localStorage.removeItem('token')
-      return Object.assign({}, state, {
+      return Object.assign({}, initialState, {
           isLogin: false,
         })
     case 'CHECK_ADMIN_SUCCESS':
