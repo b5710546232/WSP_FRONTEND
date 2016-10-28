@@ -26,14 +26,13 @@ class OrderBody extends Component {
           <ul className="collapsible popout"  data-collapsible="accordion">
               <li>
                 <div className="collapsible-header">Awaiting payment</div>
-                <div className="collapsible-body white">
+                <div className="collapsible-body">
                     <OrderList/>
                 </div>
               </li>
               <li>
                 <div className="collapsible-header">Confirm payment</div>
                 <div className="collapsible-body white">
-
                 </div>
               </li>
               <li>

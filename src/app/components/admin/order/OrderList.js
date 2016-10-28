@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 // import '../../../../assets/scss/admin.scss'
-
+import OrderItem from './OrderItem'
 class OrderList extends Component {
   constructor(props){
     super(props)
@@ -10,8 +10,9 @@ class OrderList extends Component {
   getUserbyID(id){
     let usertemp = {id:'',first_name:'',last_name:'',email:'',username:'',is_staff:false,is_active:false}
     this.props.admin.user.forEach((user)=>{
-      if(user.id === id)
-      usertemp = user
+      if(user.id === id){
+        usertemp = user
+      }
     })
     return usertemp
   }
@@ -35,52 +36,13 @@ class OrderList extends Component {
   }
   render() {
     return(
-      <li>
-        <div className="collapsible-header">
-        <table className="table-responsive">
-          <thead>
-            <tr>
-                <th data-field="name">ID</th>
-                <th data-field="name">Date</th>
-                <th data-field="description">Firstname</th>
-                <th data-field="Price">Lastname</th>
-                <th data-field="is_active">Payment</th>
-                {/* <th data-field="is_active">Address</th>
-                <th data-field="is_active">Active</th>
-                <th data-field="is_active">Paid</th>
-                <th data-field="is_active">Shipped</th>
-                <th data-field="is_active">Slip</th>
-                <th data-field="is_active">Postal</th> */}
-            </tr>
-          </thead>
-          <tbody>
-          <ul className="collapsible popout"  data-collapsible="accordion">
-              <li>
-                <div className="collapsible-header">
-                {this.props.admin.order.map(
-                  (orders)=>(
-                      <tr>
-                        <td>{orders.id}</td>
-                        <td>{orders.create_date}</td>
-                        <td>{this.getUserbyID(orders.user).first_name}</td>
-                        <td>{this.getUserbyID(orders.user).last_name}</td>
-                        <td>{this.getPaymentbyID(orders.method).name}</td>
-                      </tr>
-                  )
-                )}
-                </div>
-                <div className="collapsible-body white"></div>
-              </li>
-          </ul>
-
-          </tbody>
-        </table>
-
-        </div>
-        <div className="collapsible-body white">
-            {/* <OrderItem/> */}
-        </div>
-      </li>
+      <ul className="collapsible popout"  data-collapsible="accordion">
+            {this.props.admin.order.map(
+              (order)=>(
+                <OrderItem order={order} userorder={this.getUserbyID(order.user)}/>
+              )
+            )}
+      </ul>
     )
   }
 }

@@ -35,37 +35,12 @@ class OrderItem extends Component {
   }
   render() {
     return(
-      <li>
+      <li className="white">
         <div className="collapsible-header">
-        {/* <table className="table-responsive">
-          <thead>
-            <tr>
-                <th data-field="name">ID</th>
-                <th data-field="name">Date</th>
-                <th data-field="description">Firstname</th>
-                <th data-field="Price">Lastname</th>
-                <th data-field="is_active">Payment</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.admin.order.map(
-              (orders)=>(
-                  <tr>
-                    <td>{orders.id}</td>
-                    <td>{orders.create_date}</td>
-                    <td>{this.getUserbyID(orders.user).first_name}</td>
-                    <td>{this.getUserbyID(orders.user).last_name}</td>
-                    <td>{this.getPaymentbyID(orders.method).name}</td>
-
-                  </tr>
-              )
-            )}
-          </tbody>
-        </table> */}
+          OrderID: {this.props.order.id} {this.props.userorder.first_name} {this.props.userorder.last_name}
         </div>
         <div className="collapsible-body white">
-          eiei
-            {/* <OrderItem orders={this.findProductList(category.id)}/> */}
+          dddd
         </div>
       </li>
     )
