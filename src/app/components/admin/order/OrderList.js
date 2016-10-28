@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import OrderItem from './OrderItem'
 // import '../../../../assets/scss/admin.scss'
 
 class OrderList extends Component {
@@ -54,26 +53,32 @@ class OrderList extends Component {
                 <th data-field="is_active">Postal</th> */}
             </tr>
           </thead>
+          <tbody>
+          <ul className="collapsible popout"  data-collapsible="accordion">
+              <li>
+                <div className="collapsible-header">
+                {this.props.admin.order.map(
+                  (orders)=>(
+                      <tr>
+                        <td>{orders.id}</td>
+                        <td>{orders.create_date}</td>
+                        <td>{this.getUserbyID(orders.user).first_name}</td>
+                        <td>{this.getUserbyID(orders.user).last_name}</td>
+                        <td>{this.getPaymentbyID(orders.method).name}</td>
+                      </tr>
+                  )
+                )}
+                </div>
+                <div className="collapsible-body white"></div>
+              </li>
+          </ul>
+
+          </tbody>
         </table>
-        <div className="collapsible-body white">
-          {this.props.admin.order.map(
-            (orders)=>(
-                <tr>
-                  <td>{orders.id}</td>
-                  <td>{orders.create_date}</td>
-                  <td>{this.getUserbyID(orders.user).first_name}</td>
-                  <td>{this.getUserbyID(orders.user).last_name}</td>
-                  <td>{this.getPaymentbyID(orders.method).name}</td>
-                  {/* <td>{this.getAddressbyID(orders.user).address_number+' '+this.getAddressbyID(orders.user).country}</td> */}
-                </tr>
-              )
-            )}
-          </div>
 
-
-      </div>
+        </div>
         <div className="collapsible-body white">
-            <OrderItem/>
+            {/* <OrderItem/> */}
         </div>
       </li>
     )
