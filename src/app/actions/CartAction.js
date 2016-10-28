@@ -1,7 +1,7 @@
 import {Action} from '../constants';
 import { CALL_API } from 'redux-api-middleware'
 import {CART_ENDPOINT} from '../constants/endpoints'
-
+import {loadOrderList} from './OrderAction'
 // Add Item to cart
 export const addItemtoCard = (data,token) => (
   (dispatch) =>
@@ -142,6 +142,7 @@ export const payItemInCart = (data,token) => (
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
                 dispatch(loadCartList(token))
+                dispatch(loadOrderList(token))
                 return data
               })
             }
