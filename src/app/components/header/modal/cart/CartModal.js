@@ -58,6 +58,7 @@ class CartModal extends Component {
         trigger={
           <Button waves='light'>Cart {total}</Button>
         }
+        id="cart_modal"
         >
         {this.state.cart_info?
           <div>
