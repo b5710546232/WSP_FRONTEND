@@ -25,7 +25,7 @@ class OrderInfo extends Component {
         <div className="collapsible-body white">
           <Row>
             <Col s={12} m={6}>
-              Payment Method : {this.props.order.method}
+              Payment Method : {this.props.paymentMethods.find((method)=> method.id===this.props.order.method).name}
             </Col>
             <Col s={12} m={6} >
               {this.props.order.transfer_slip==''?

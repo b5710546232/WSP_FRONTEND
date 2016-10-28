@@ -266,7 +266,7 @@ export const updateCategory = (id,data,token) => (
   (dispatch) =>
     dispatch({
       [CALL_API]: {
-        endpoint: ADMIN_ADDRESS_ENDPOINT+id+'/',
+        endpoint: ADMIN_CATEGORY_ENDPOINT+id+'/',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',

@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import {Modal,Button} from 'react-materialize'
 import {loadOrderList} from '../../../../actions/OrderAction'
 import {loadItemLines} from '../../../../actions/ItemLineAction'
+import {loadPaymentMethodList} from '../../../../actions/PaymentMethodAction'
 import {connect} from 'react-redux'
 import OrderInfo from './OrderInfo'
 class OrderModal extends Component {
   componentDidMount(){
     this.props.loadOrderList(localStorage.token)
     this.props.loadItemLines(localStorage.token)
+    this.props.loadPaymentMethodList(localStorage.token)
     $(document).ready(function(){
       $('.collapsible').collapsible({
         accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
@@ -45,6 +47,9 @@ const mapDispatchToProps = (dispatch) => {
     ),
     loadItemLines: (token)=>(
       dispatch(loadItemLines(token))
+    ),
+    loadPaymentMethodList:(token)=>(
+      dispatch(loadPaymentMethodList(token))
     )
   }
 }

@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import '../../../../assets/scss/admin.scss'
 import ProductBody from './ProductBody'
+import CategoryEditForm from './CategoryEditForm'
+import CategoryEditModal from './CategoryEditModal'
 class CategoryBody extends Component {
+
   componentDidMount(){
     $(document).ready(function(){
       $('.collapsible').collapsible({
@@ -28,21 +31,34 @@ class CategoryBody extends Component {
   render() {
     console.log(this.findProductList(3),"ProductList");
     return(
-      <li>
+      <li className="white">
         <div className="collapsible-header">Product</div>
         <div className="collapsible-body">
-
         <ul className="collapsible popout"  data-collapsible="accordion">
-        {this.props.admin.category.map(
-          (category)=>(
-            <li>
-              <div className="collapsible-header">{category.name}</div>
-              <div className="collapsible-body white">
-              <ProductBody products={this.findProductList(category.id)}/>
-              </div>
-            </li>
-          )
-        )}
+          <li>
+            <div className="collapsible-header grey lighten-4 center">Add new Category</div>
+            <div className="collapsible-body grey lighten-4">
+              <CategoryEditForm add={true}/>
+            </div>
+          </li>
+          {this.props.admin.category.map(
+            (category)=>(
+              <li>
+                <div className="collapsible-header">
+                  <div className="left">{category.name}</div>
+                  <div className="right">
+                    {category.is_active?
+                      <i className="material-icons done-icon">done</i> : <i className="material-icons clear-icon">clear</i>
+                    }
+                    <CategoryEditModal select_category={category} />
+                  </div>
+                </div>
+                <div className="collapsible-body white">
+                <ProductBody products={this.findProductList(category.id)}/>
+                </div>
+              </li>
+            )
+          )}
         </ul>
         </div>
       </li>
