@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import OrderItem from './OrderItem'
 // import '../../../../assets/scss/admin.scss'
 
-class OrderItem extends Component {
+class OrderList extends Component {
   constructor(props){
     super(props)
   }
@@ -37,7 +38,7 @@ class OrderItem extends Component {
     return(
       <li>
         <div className="collapsible-header">
-        {/* <table className="table-responsive">
+        <table className="table-responsive">
           <thead>
             <tr>
                 <th data-field="name">ID</th>
@@ -45,27 +46,34 @@ class OrderItem extends Component {
                 <th data-field="description">Firstname</th>
                 <th data-field="Price">Lastname</th>
                 <th data-field="is_active">Payment</th>
+                {/* <th data-field="is_active">Address</th>
+                <th data-field="is_active">Active</th>
+                <th data-field="is_active">Paid</th>
+                <th data-field="is_active">Shipped</th>
+                <th data-field="is_active">Slip</th>
+                <th data-field="is_active">Postal</th> */}
             </tr>
           </thead>
-          <tbody>
-            {this.props.admin.order.map(
-              (orders)=>(
-                  <tr>
-                    <td>{orders.id}</td>
-                    <td>{orders.create_date}</td>
-                    <td>{this.getUserbyID(orders.user).first_name}</td>
-                    <td>{this.getUserbyID(orders.user).last_name}</td>
-                    <td>{this.getPaymentbyID(orders.method).name}</td>
-
-                  </tr>
+        </table>
+        <div className="collapsible-body white">
+          {this.props.admin.order.map(
+            (orders)=>(
+                <tr>
+                  <td>{orders.id}</td>
+                  <td>{orders.create_date}</td>
+                  <td>{this.getUserbyID(orders.user).first_name}</td>
+                  <td>{this.getUserbyID(orders.user).last_name}</td>
+                  <td>{this.getPaymentbyID(orders.method).name}</td>
+                  {/* <td>{this.getAddressbyID(orders.user).address_number+' '+this.getAddressbyID(orders.user).country}</td> */}
+                </tr>
               )
             )}
-          </tbody>
-        </table> */}
-        </div>
+          </div>
+
+
+      </div>
         <div className="collapsible-body white">
-          eiei
-            {/* <OrderItem orders={this.findProductList(category.id)}/> */}
+            <OrderItem/>
         </div>
       </li>
     )
@@ -80,4 +88,4 @@ const mapDispatchToProps = (dispatch) => {
 
   }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(OrderItem)
+export default connect(mapStateToProps,mapDispatchToProps)(OrderList)

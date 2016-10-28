@@ -20,6 +20,7 @@ class MemberBody extends Component {
           <table className="table-responsive">
             <thead>
               <tr>
+                  <th data-field="id">ID</th>
                   <th data-field="username">Username</th>
                   <th data-field="first_name">Firstname</th>
                   <th data-field="last_name">Lastname</th>
@@ -32,6 +33,7 @@ class MemberBody extends Component {
               {this.props.admin.user.map(
                 (user)=>(
                     <tr>
+                      <td>{user.id}</td>
                       <td>{user.username}</td>
                       <td>{user.first_name}</td>
                       <td>{user.last_name}</td>
