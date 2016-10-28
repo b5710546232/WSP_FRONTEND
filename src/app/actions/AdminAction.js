@@ -538,3 +538,27 @@ export const reactiveMethod = (id,token) => (
     types: ['REACTIVE_METHOD_ADMIN_REQUEST', 'REACTIVE_METHOD_ADMIN_SUCCESS', 'REACTIVE_METHOD_ADMIN_FAILURE']
   }}
 )
+export const assignStaff = (id,token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_USER_ENDPOINT+id+'/assign_staff/',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'PUT',
+    types: ['ASSIGN_STAFF_ADMIN_REQUEST', 'ASSIGN_STAFF_ADMIN_SUCCESS', 'ASSIGN_STAFF_ADMIN_FAILURE']
+  }}
+)
+export const fireStaff = (id,token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_USER_ENDPOINT+id+'/fire_staff/',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'PUT',
+    types: ['FIRE_STAFF_ADMIN_REQUEST', 'FIRE_STAFF_ADMIN_SUCCESS', 'FIRE_STAFF_ADMIN_FAILURE']
+  }}
+)
