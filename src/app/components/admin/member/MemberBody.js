@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import '../../../../assets/scss/admin.scss'
+import {deactiveUser,reactiveUser} from '../../../actions/AdminAction'
 class MemberBody extends Component {
   componentDidMount(){
     $(document).ready(function(){
@@ -11,6 +12,14 @@ class MemberBody extends Component {
   }
   shouldComponentUpdate(nextProps){
     return this.props.admin.user !== nextProps
+  }
+  deactiveUser(e,id){
+    e.preventDefault()
+    this.props.deactiveUser(id,localStorage.token)
+  }
+  reactiveUser(e,id){
+    e.preventDefault()
+    this.props.reactiveUser(id,localStorage.token)
   }
   render() {
     return(
@@ -39,7 +48,7 @@ class MemberBody extends Component {
                       <td>{user.last_name}</td>
                       <td>{user.email}</td>
                       <td>{user.is_staff ? <i className="material-icons done-icon">done</i> : <i className="material-icons clear-icon">clear</i>}</td>
-                      <td>{user.is_active ? <i className="material-icons done-icon">done</i> : <i className="material-icons clear-icon">clear</i>}</td>
+                      <td>{user.is_active ? <i className="material-icons done-icon" onClick={(e)=>this.deactiveUser(e,user.id)}>done</i> : <i className="material-icons clear-icon" onClick={(e)=>this.reactiveUser(e,user.id)}>clear</i>}</td>
                     </tr>
                 )
               )}
@@ -55,7 +64,11 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    deactiveUser: (id,token)=>(
+      dispatch(deactiveUser(id,token))
+    ),reactiveUser:(id,token)=>(
+      dispatch(reactiveUser(id,token))
+    )
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(MemberBody)
