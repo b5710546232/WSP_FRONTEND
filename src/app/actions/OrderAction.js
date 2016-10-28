@@ -58,7 +58,34 @@ export const updatePostalTrack= (data,id,token) => (
     }
   )
 )
-
+export const uploadTransferSlip= (data,id,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ORDER_ENDPOINT+id+'/upload_slip/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'PUT',
+        body: JSON.stringify(data),
+        types: [
+          'UPLOAD_TRANSFER_SLIP_REQUEST',
+          {
+            type: 'UPLOAD_TRANSFER_SLIP_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                return data
+              })
+            }
+          },
+          'UPLOAD_TRANSFER_SLIP_FAILURE'
+        ]
+      }
+    }
+  )
+)
 // Delete Postal Track
 export const deleteItemInCart = (id,token)=> (
   {[CALL_API]: {

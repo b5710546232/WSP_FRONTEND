@@ -391,7 +391,7 @@ export const confirmPayment = (id,token) => (
   (dispatch) =>
     dispatch({
       [CALL_API]: {
-        endpoint: ADMIN_METHOD_ENDPOINT+id+'/confirmPayment/',
+        endpoint: ADMIN_ORDER_ENDPOINT+id+'/confirmPayment/',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -418,7 +418,7 @@ export const updateTrack = (id,data,token) => (
   (dispatch) =>
     dispatch({
       [CALL_API]: {
-        endpoint: ADMIN_METHOD_ENDPOINT+id+'/updateTrack/',
+        endpoint: ADMIN_ORDER_ENDPOINT+id+'/updateTrack/',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -441,4 +441,100 @@ export const updateTrack = (id,data,token) => (
       }
     }
   )
+)
+export const deactiveUser = (id,token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_USER_ENDPOINT+id+'/',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'DELETE',
+    types: ['DEACTIVE_USER_ADMIN_REQUEST', 'DEACTIVE_USER_ADMIN_SUCCESS', 'DEACTIVE_USER_ADMIN_FAILURE']
+  }}
+)
+export const reactiveUser = (id,token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_USER_ENDPOINT+id+'/reactive/',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'PUT',
+    types: ['REACTIVE_USER_ADMIN_REQUEST', 'REACTIVE_USER_ADMIN_SUCCESS', 'REACTIVE_USER_ADMIN_FAILURE']
+  }}
+)
+export const deactiveProduct = (id,token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_PRODUCT_ENDPOINT+id+'/',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'DELETE',
+    types: ['DEACTIVE_PRODUCT_ADMIN_REQUEST', 'DEACTIVE_PRODUCT_ADMIN_SUCCESS', 'DEACTIVE_PRODUCT_ADMIN_FAILURE']
+  }}
+)
+export const reactiveProduct = (id,token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_PRODUCT_ENDPOINT+id+'/reactive/',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'PUT',
+    types: ['REACTIVE_PRODUCT_ADMIN_REQUEST', 'REACTIVE_PRODUCT_ADMIN_SUCCESS', 'REACTIVE_PRODUCT_ADMIN_FAILURE']
+  }}
+)
+export const deactiveCategory = (id,token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_CATEGORY_ENDPOINT+id+'/',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'DELETE',
+    types: ['DEACTIVE_CATEGORY_ADMIN_REQUEST', 'DEACTIVE_CATEGORY_ADMIN_SUCCESS', 'DEACTIVE_CATEGORY_ADMIN_FAILURE']
+  }}
+)
+export const reactiveCategory = (id,token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_CATEGORY_ENDPOINT+id+'/reactive/',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'PUT',
+    types: ['REACTIVE_CATEGORY_ADMIN_REQUEST', 'REACTIVE_CATEGORY_ADMIN_SUCCESS', 'REACTIVE_CATEGORY_ADMIN_FAILURE']
+  }}
+)
+export const deactiveMethod = (id,token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_METHOD_ENDPOINT+id+'/',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'DELETE',
+    types: ['DEACTIVE_METHOD_ADMIN_REQUEST', 'DEACTIVE_METHOD_ADMIN_SUCCESS', 'DEACTIVE_METHOD_ADMIN_FAILURE']
+  }}
+)
+export const reactiveMethod = (id,token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_METHOD_ENDPOINT+id+'/reactive/',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'PUT',
+    types: ['REACTIVE_METHOD_ADMIN_REQUEST', 'REACTIVE_METHOD_ADMIN_SUCCESS', 'REACTIVE_METHOD_ADMIN_FAILURE']
+  }}
 )
