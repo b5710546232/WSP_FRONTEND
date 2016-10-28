@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import OrderList from './OrderList'
 
 class OrderBody extends Component {
   componentDidMount(){
@@ -22,18 +23,31 @@ class OrderBody extends Component {
       <li>
         <div className="collapsible-header">Order</div>
         <div className="collapsible-body">
-          {/* <ul className="collapsible popout"  data-collapsible="accordion">
-          {this.props.admin.category.map(
-            (category)=>(
+          <ul className="collapsible popout"  data-collapsible="accordion">
               <li>
-                <div className="collapsible-header">{category.name}</div>
-                <div className="collapsible-body white">
-                <ProductBody products={this.findProductList(category.id)}/>
+                <div className="collapsible-header">Awaiting payment</div>
+                <div className="collapsible-body">
+                    <OrderList/>
                 </div>
               </li>
-            )
-          )}
-          </ul> */}
+              <li>
+                <div className="collapsible-header">Confirm payment</div>
+                <div className="collapsible-body white">
+                </div>
+              </li>
+              <li>
+                <div className="collapsible-header">Awaiting shipment</div>
+                <div className="collapsible-body white"></div>
+              </li>
+              <li>
+                <div className="collapsible-header">Awaiting delivery</div>
+                <div className="collapsible-body white"></div>
+              </li>
+              <li>
+                <div className="collapsible-header">Done</div>
+                <div className="collapsible-body white"></div>
+              </li>
+          </ul>
         </div>
       </li>
     )

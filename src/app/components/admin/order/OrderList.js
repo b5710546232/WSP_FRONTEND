@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 // import '../../../../assets/scss/admin.scss'
-
-class OrderItem extends Component {
+import OrderItem from './OrderItem'
+class OrderList extends Component {
   constructor(props){
     super(props)
   }
@@ -10,8 +10,9 @@ class OrderItem extends Component {
   getUserbyID(id){
     let usertemp = {id:'',first_name:'',last_name:'',email:'',username:'',is_staff:false,is_active:false}
     this.props.admin.user.forEach((user)=>{
-      if(user.id === id)
-      usertemp = user
+      if(user.id === id){
+        usertemp = user
+      }
     })
     return usertemp
   }
@@ -35,14 +36,13 @@ class OrderItem extends Component {
   }
   render() {
     return(
-      <li className="white">
-        <div className="collapsible-header">
-          OrderID: {this.props.order.id} {this.props.userorder.first_name} {this.props.userorder.last_name}
-        </div>
-        <div className="collapsible-body white">
-          dddd
-        </div>
-      </li>
+      <ul className="collapsible popout"  data-collapsible="accordion">
+            {this.props.admin.order.map(
+              (order)=>(
+                <OrderItem order={order} userorder={this.getUserbyID(order.user)}/>
+              )
+            )}
+      </ul>
     )
   }
 }
@@ -55,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
 
   }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(OrderItem)
+export default connect(mapStateToProps,mapDispatchToProps)(OrderList)
