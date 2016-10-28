@@ -30,14 +30,14 @@ export default class AppFooter extends Component {
         className='page-footer light-blue'
         >
           <h5 className="white-text">Contact us</h5>
-          <p>
+          <p className="white-text">
             Company Here
             Address Here
           </p>
           <div className='map_container'>
           <Gmaps
-              width={'800px'}
-              height={'300px'}
+              width={'20em'}
+              height={'12em'}
               lat={coords.lat}
               lng={coords.lng}
               zoom={15}
@@ -49,18 +49,8 @@ export default class AppFooter extends Component {
               lng={coords.lng}
               draggable={true}
               onDragEnd={this.onDragEnd} />
-            {/* <InfoWindow
-              lat={coords.lat}
-              lng={coords.lng}
-              content={'Wellcome to Nature Drink'}
-              onCloseClick={this.onCloseClick} /> */}
           </Gmaps>
           </div>
-          {/* <Row>
-            <Button floating  className='red' waves='light' icon='add' />
-            <Button floating  className='red' waves='light' icon='add' />
-          </Row> */}
-
       </Footer>
     )
   }
