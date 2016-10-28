@@ -387,3 +387,58 @@ export const loadItemLine = (token) => (
     types: ['LOAD_ADMIN_ITEMLINE_REQUEST', 'LOAD_ADMIN_ITEMLINE_SUCCESS', 'LOAD_ADMIN_ITEMLINE_FAILURE']
   }}
 )
+export const confirmPayment = (id,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_METHOD_ENDPOINT+id+'/confirmPayment/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'PUT',
+        types: [
+          'COMFIRM_PAYMENT_ADMIN_REQUEST',
+          {
+            type: 'COMFIRM_PAYMENT_ADMIN_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                return data
+              })
+            }
+          },
+          'COMFIRM_PAYMENT_ADMIN_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const updateTrack = (id,data,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_METHOD_ENDPOINT+id+'/updateTrack/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        body: JSON.stringify(data),
+        method: 'PUT',
+        types: [
+          'UPDATE_TRACK_ADMIN_REQUEST',
+          {
+            type: 'UPDATE_TRACK_ADMIN_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                return data
+              })
+            }
+          },
+          'UPDATE_TRACK_ADMIN_FAILURE'
+        ]
+      }
+    }
+  )
+)

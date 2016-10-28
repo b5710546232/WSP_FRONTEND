@@ -18,6 +18,7 @@ class Summarize extends Component {
     console.log('confirm',this.props);
   }
   shouldComponentUpdate(nextProps){
+    this.props.close()
     $('#cart_modal').closeModal();
     return this.props.cart!==nextProps
   }

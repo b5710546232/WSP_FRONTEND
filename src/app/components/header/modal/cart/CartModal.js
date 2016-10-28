@@ -43,6 +43,9 @@ class CartModal extends Component {
   toPayment(){
     this.setState({cart_info:false,payment_info:true,summarize:false})
   }
+  close(){
+    this.setState({cart_info:true,payment_info:false,summarize:false})
+  }
   render() {
     let total = 0
     let price = 0;
@@ -102,6 +105,7 @@ class CartModal extends Component {
             select_method={this.state.select_method}
             select_address={this.state.select_address}
             back={this.toPayment.bind(this)}
+            close={this.close.bind(this)}
             />:<div></div>
         }
       </Modal>
