@@ -9,14 +9,31 @@ class OrderBody extends Component {
       });
     });
   }
+
+  shouldComponentUpdate(nextProps){
+    console.log(this.props.admin.order,"list order");
+    // console.log(this.props,admin.item_line);
+
+    return this.props.admin.order !== nextProps
+  }
+
   render() {
     return(
       <li>
         <div className="collapsible-header">Order</div>
         <div className="collapsible-body">
-          <div>
-            Edit Here
-          </div>
+          {/* <ul className="collapsible popout"  data-collapsible="accordion">
+          {this.props.admin.category.map(
+            (category)=>(
+              <li>
+                <div className="collapsible-header">{category.name}</div>
+                <div className="collapsible-body white">
+                <ProductBody products={this.findProductList(category.id)}/>
+                </div>
+              </li>
+            )
+          )}
+          </ul> */}
         </div>
       </li>
     )

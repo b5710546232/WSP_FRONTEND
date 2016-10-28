@@ -12,6 +12,7 @@ export default class ProductBody extends Component {
       <table className="table-responsive">
         <thead>
           <tr>
+              <th data-field="name">ID</th>
               <th data-field="name">Name</th>
               <th data-field="description">Description</th>
               <th data-field="Price">Price</th>
@@ -22,6 +23,7 @@ export default class ProductBody extends Component {
           {this.props.products.map(
             (product)=>(
                 <tr>
+                  <td>{product.id}</td>
                   <td>{product.name}</td>
                   <td>{product.description}</td>
                   <td>{product.price}</td>

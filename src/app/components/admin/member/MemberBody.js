@@ -26,7 +26,6 @@ class MemberBody extends Component {
                   <th data-field="email">Email</th>
                   <th data-field="is_staff">Staff</th>
                   <th data-field="is_active">Active</th>
-                  {/* <th data-field="add"><MethodEditForm add={true}/></th> */}
               </tr>
             </thead>
             <tbody>
@@ -39,8 +38,6 @@ class MemberBody extends Component {
                       <td>{user.email}</td>
                       <td>{user.is_staff ? <i className="material-icons done-icon">done</i> : <i className="material-icons clear-icon">clear</i>}</td>
                       <td>{user.is_active ? <i className="material-icons done-icon">done</i> : <i className="material-icons clear-icon">clear</i>}</td>
-                      {/* <td>{method.is_active? <a>Active</a>:<a claasName="red-text">Disable</a>}</td>
-                      <td><MethodEditForm select_method={method}/></td> */}
                     </tr>
                 )
               )}

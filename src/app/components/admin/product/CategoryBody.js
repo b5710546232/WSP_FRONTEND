@@ -13,7 +13,6 @@ class CategoryBody extends Component {
   }
 
   shouldComponentUpdate(nextProps){
-    console.log(this.props.admin.category,"list category");
     return this.props.admin.product !== nextProps
   }
 
