@@ -448,29 +448,79 @@ export const updateTrack = (id,data,token) => (
   )
 )
 export const deactiveUser = (id,token) => (
-  {[CALL_API]: {
-    endpoint: ADMIN_USER_ENDPOINT+id+'/',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization':'Token '+token
-    },
-    method: 'DELETE',
-    types: ['DEACTIVE_USER_ADMIN_REQUEST', 'DEACTIVE_USER_ADMIN_SUCCESS', 'DEACTIVE_USER_ADMIN_FAILURE']
-  }}
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+          endpoint: ADMIN_USER_ENDPOINT+id+'/',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization':'Token '+token
+          },
+          method: 'DELETE',
+        types: [
+          'DEACTIVE_USER_ADMIN_REQUEST',
+          {
+            type: 'DEACTIVE_USER_ADMIN_SUCCESS',
+            payload: (_action, _state, res) => {
+              dispatch(loadUser(token))
+              return data
+            }
+          },
+          'DEACTIVE_USER_ADMIN_FAILURE'
+        ]
+      }
+    }
+  )
 )
+  // {[CALL_API]: {
+  //   endpoint: ADMIN_USER_ENDPOINT+id+'/',
+  //   headers: {
+  //     'Accept': 'application/json',
+  //     'Content-Type': 'application/json',
+  //     'Authorization':'Token '+token
+  //   },
+  //   method: 'DELETE',
+  //   types: ['DEACTIVE_USER_ADMIN_REQUEST', 'DEACTIVE_USER_ADMIN_SUCCESS', 'DEACTIVE_USER_ADMIN_FAILURE']
+  // }}
+
 export const reactiveUser = (id,token) => (
-  {[CALL_API]: {
-    endpoint: ADMIN_USER_ENDPOINT+id+'/reactive/',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization':'Token '+token
-    },
-    method: 'PUT',
-    types: ['REACTIVE_USER_ADMIN_REQUEST', 'REACTIVE_USER_ADMIN_SUCCESS', 'REACTIVE_USER_ADMIN_FAILURE']
-  }}
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_USER_ENDPOINT+id+'/reactive/',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization':'Token '+token
+          },
+          method: 'PUT',
+        types: [
+          'REACTIVE_USER_ADMIN_REQUEST',
+          {
+            type: 'REACTIVE_USER_ADMIN_SUCCESS',
+            payload: (_action, _state, res) => {
+              dispatch(loadUser(token))
+              return data
+            }
+          },
+          'REACTIVE_USER_ADMIN_FAILURE'
+        ]
+      }
+    }
+  )
 )
+  // {[CALL_API]: {
+  //   endpoint: ADMIN_USER_ENDPOINT+id+'/reactive/',
+  //   headers: {
+  //     'Accept': 'application/json',
+  //     'Content-Type': 'application/json',
+  //     'Authorization':'Token '+token
+  //   },
+  //   method: 'PUT',
+  //   types: ['REACTIVE_USER_ADMIN_REQUEST', 'REACTIVE_USER_ADMIN_SUCCESS', 'REACTIVE_USER_ADMIN_FAILURE']
+  // }}
+// )
 export const deactiveProduct = (id,token) => (
   (dispatch) =>
     dispatch({
