@@ -746,26 +746,77 @@ export const reactiveMethod = (id,token) => (
 //   }}
 // )
 export const assignStaff = (id,token) => (
-  {[CALL_API]: {
-    endpoint: ADMIN_USER_ENDPOINT+id+'/assign_staff/',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization':'Token '+token
-    },
-    method: 'PUT',
-    types: ['ASSIGN_STAFF_ADMIN_REQUEST', 'ASSIGN_STAFF_ADMIN_SUCCESS', 'ASSIGN_STAFF_ADMIN_FAILURE']
-  }}
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+          endpoint: ADMIN_USER_ENDPOINT+id+'/assign_staff/',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization':'Token '+token
+          },
+          method: 'PUT',
+        types: [
+          'ASSIGN_STAFF_ADMIN_REQUEST',
+          {
+            type: 'ASSIGN_STAFF_ADMIN_SUCCESS',
+            payload: (_action, _state, res) => {
+              dispatch(loadUser(token))
+              return data
+            }
+          },
+          'ASSIGN_STAFF_ADMIN_FAILURE'
+        ]
+      }
+    }
+  )
 )
+//   {[CALL_API]: {
+//     endpoint: ADMIN_USER_ENDPOINT+id+'/assign_staff/',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json',
+//       'Authorization':'Token '+token
+//     },
+//     method: 'PUT',
+//     types: ['ASSIGN_STAFF_ADMIN_REQUEST', 'ASSIGN_STAFF_ADMIN_SUCCESS', 'ASSIGN_STAFF_ADMIN_FAILURE']
+//   }}
+// )
 export const fireStaff = (id,token) => (
-  {[CALL_API]: {
-    endpoint: ADMIN_USER_ENDPOINT+id+'/fire_staff/',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization':'Token '+token
-    },
-    method: 'PUT',
-    types: ['FIRE_STAFF_ADMIN_REQUEST', 'FIRE_STAFF_ADMIN_SUCCESS', 'FIRE_STAFF_ADMIN_FAILURE']
-  }}
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+          endpoint: ADMIN_USER_ENDPOINT+id+'/fire_staff/',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization':'Token '+token
+          },
+          method: 'PUT',
+        types: [
+          'FIRE_STAFF_ADMIN_REQUEST',
+          {
+            type: 'FIRE_STAFF_ADMIN_SUCCESS',
+            payload: (_action, _state, res) => {
+              dispatch(loadUser(token))
+              return data
+            }
+          },
+          'FIRE_STAFF_ADMIN_FAILURE'
+        ]
+      }
+    }
+  )
 )
+//
+//   {[CALL_API]: {
+//     endpoint: ADMIN_USER_ENDPOINT+id+'/fire_staff/',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json',
+//       'Authorization':'Token '+token
+//     },
+//     method: 'PUT',
+//     types: ['FIRE_STAFF_ADMIN_REQUEST', 'FIRE_STAFF_ADMIN_SUCCESS', 'FIRE_STAFF_ADMIN_FAILURE']
+//   }}
+// )

@@ -21,7 +21,7 @@ const admin = (state=initialState,action)=>{
       })
     case 'LOAD_ADMIN_ADDRESS_SUCCESS':
       return Object.assign({}, state, {
-        address: action.payload
+        address: action.payload.sort((a, b) => (a.id - b.id))
       })
     case 'LOAD_ADMIN_PRODUCT_SUCCESS':
       return Object.assign({}, state, {
@@ -37,7 +37,7 @@ const admin = (state=initialState,action)=>{
       })
     case 'LOAD_ADMIN_ITEMLINE_SUCCESS':
       return Object.assign({}, state, {
-        item_line: action.payload
+        item_line:action.payload.sort((a, b) => (a.id - b.id))
       })
     case 'LOAD_ADMIN_METHOD_SUCCESS':
       return Object.assign({}, state, {
