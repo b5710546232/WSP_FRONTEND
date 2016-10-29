@@ -42,6 +42,15 @@ class ProductEditModal extends Component {
             <a className="btn-floating blue"><i className="material-icons">mode_edit</i></a>
         }>
         <form ref="form">
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>Upload Product Image</span>
+              <input type="file"/>
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text"/>
+            </div>
+          </div>
           <Input label="Product Name" name="name" defaultValue={this.props.add? "":this.props.select_product.name} s={12}/>
           <div className="input-field col s12">
             <textarea id="product_description" className="materialize-textarea" ></textarea>
