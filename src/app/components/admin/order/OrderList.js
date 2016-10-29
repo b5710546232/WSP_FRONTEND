@@ -16,11 +16,12 @@ class OrderList extends Component {
     })
     return usertemp
   }
-  
+
   render() {
+    let orderList =  this.props.admin.order.filter((order)=>order.transfer_slip==='')
     return(
       <ul className="collapsible popout"  data-collapsible="accordion">
-            {this.props.admin.order.map(
+            {orderList.map(
               (order)=>(
                 <OrderItem order={order} userorder={this.getUserbyID(order.user)}/>
               )

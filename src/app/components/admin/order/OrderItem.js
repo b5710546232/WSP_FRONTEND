@@ -27,7 +27,7 @@ class OrderItem extends Component {
   }
 
   render() {
-    let Listitem = this.props.admin.item_line.filter((itemline)=>parseInt(itemline.order)===this.props.order.user)
+    let Listitem = this.props.admin.item_line.filter((itemline)=>parseInt(itemline.order)===this.props.order.id)
     let price = 0
     let quantity = 0
     Listitem.forEach((item)=>{
@@ -61,7 +61,7 @@ class OrderItem extends Component {
                   <th data-field="price">Price</th>
                 </tr>
                 <tbody>
-                  {this.props.admin.item_line.map(
+                  {Listitem.map(
                     (item)=>(
                       <tr>
                         <td>{this.props.admin.product.find((product)=>parseInt(item.product)==product.id).name}</td>
