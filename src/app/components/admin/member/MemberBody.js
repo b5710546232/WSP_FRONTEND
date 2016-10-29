@@ -34,7 +34,7 @@ class MemberBody extends Component {
       <li>
         <div className="collapsible-header">User</div>
         <div className="collapsible-body white">
-          <table className="table-responsive">
+          <table className="table-responsive white">
             <thead>
               <tr>
                   <th data-field="id">ID</th>
