@@ -10,6 +10,7 @@ import {
   ADMIN_METHOD_ENDPOINT
 } from '../constants/endpoints'
 
+
 export const loadUser = (token) => (
   {[CALL_API]: {
     endpoint: ADMIN_USER_ENDPOINT,
@@ -181,6 +182,7 @@ export const createProduct = (data,token) => (
             type: 'CREATE_PRODUCT_ADMIN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadProduct(token))
                 return data
               })
             }
@@ -251,6 +253,7 @@ export const createCategory = (data,token) => (
             type: 'CREATE_CATEGORY_ADMIN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadCategory(token))
                 return data
               })
             }
@@ -322,6 +325,7 @@ export const createMethod = (data,token) => (
             type: 'CREATE_METHOD_ADMIN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadMethod(token))
                 return data
               })
             }
@@ -351,6 +355,7 @@ export const updateMethod = (id,data,token) => (
             type: 'UPDATE_METHOD_ADMIN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadMethod(token))
                 return data
               })
             }

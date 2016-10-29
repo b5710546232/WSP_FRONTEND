@@ -21,6 +21,7 @@ export const createPaymentMethod = (data,token) => (
             type: 'CREATE_PAYMENTMETHOD_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                console.log('paymethod',data);
                 return data
               })
             }
