@@ -11,6 +11,7 @@ const initialState = {
   method : []
 }
 
+let newproduct = []
 const admin = (state=initialState,action)=>{
   console.log('action',action.payload);
   switch(action.type) {
@@ -41,6 +42,18 @@ const admin = (state=initialState,action)=>{
     case 'LOAD_ADMIN_METHOD_SUCCESS':
       return Object.assign({}, state, {
         method: action.payload
+    })
+    case 'REACTIVE_PRODUCT_ADMIN_SUCCESS':
+    newproduct = state.product.map(product => product)
+    newproduct.sort((a, b) => (a.id - b.id))
+    return Object.assign({}, state, {
+      product: newproduct.sort()
+  })
+    case 'DEACTIVE_PRODUCT_ADMIN_SUCCESS':
+    newproduct = state.product.map(product => product)
+    newproduct.sort((a, b) => (a.id - b.id))
+    return Object.assign({}, state, {
+      product: newproduct.sort()
     })
     case 'LOGOUT':
       return initialState
