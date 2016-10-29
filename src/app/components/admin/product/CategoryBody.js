@@ -24,6 +24,9 @@ class CategoryBody extends Component {
     this.props.reactiveCategory(id,localStorage.token)
   }
   shouldComponentUpdate(nextProps){
+    $('#header-form').removeClass("acitve")
+    $('#li-form').removeClass("acitve")
+    $('#form').css('display','none');
     return this.props.admin.product !== nextProps
   }
 
@@ -43,9 +46,9 @@ class CategoryBody extends Component {
         <div className="collapsible-header">Product</div>
         <div className="collapsible-body">
         <ul className="collapsible popout"  data-collapsible="accordion">
-          <li>
-            <div className="collapsible-header grey lighten-4   center">Add new Category</div>
-            <div className="collapsible-body">
+          <li id="li-form">
+            <div id="header-form" className="collapsible-header grey lighten-4 center">Add new Category</div>
+            <div id="form"className="collapsible-body">
               <CategoryEditForm add={true}/>
             </div>
           </li>
