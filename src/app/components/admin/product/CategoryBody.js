@@ -44,8 +44,8 @@ class CategoryBody extends Component {
         <div className="collapsible-body">
         <ul className="collapsible popout"  data-collapsible="accordion">
           <li>
-            <div className="collapsible-header grey lighten-4 center">Add new Category</div>
-            <div className="collapsible-body grey lighten-4">
+            <div className="collapsible-header grey lighten-4   center">Add new Category</div>
+            <div className="collapsible-body">
               <CategoryEditForm add={true}/>
             </div>
           </li>

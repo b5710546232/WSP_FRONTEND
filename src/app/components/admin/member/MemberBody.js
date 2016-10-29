@@ -55,7 +55,7 @@ class MemberBody extends Component {
                       <td>{user.first_name}</td>
                       <td>{user.last_name}</td>
                       <td>{user.email}</td>
-                      <td>{user.is_staff ? <i className="material-icons done-icon" onClick={(e)=>this.fireStaff(e,user.id)}>done</i> : <i className="material-icons clear-icon" onClick={(e)=>this.assignStaff(e,user.id)}>clear</i> }</td>
+                      <td>{user.is_staff ? <i className="material-icons done-icon" onClick={(e)=>this.fireStaff(e,user.id)}>done</i> : <i className="material-icons clear-icon">clear</i> }</td>
                       <td>{user.is_active ? <i className="material-icons done-icon" onClick={(e)=>this.deactiveUser(e,user.id)}>done</i> : <i className="material-icons clear-icon" onClick={(e)=>this.reactiveUser(e,user.id)}>clear</i>}</td>
                     </tr>
                 )

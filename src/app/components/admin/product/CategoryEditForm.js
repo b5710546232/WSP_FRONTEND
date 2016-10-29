@@ -20,22 +20,28 @@ class CategoryEditForm extends Component {
 
   }
   render(){
+    var margin = {
+      marginLeft:"0px",
+      marginRight:"0px"
+    }
     return (
-      <Col s={12} className="white" >
-        <form ref="form">
-          <Row>
-            <Input type="text" label="Category Name" s={12} name="name" defaultValue={this.props.select_category? this.props.select_category.name:""}></Input>
-          </Row>
-          <Row>
-            <Input type="text" label="Description" s={12} name="description" defaultValue={this.props.select_category? this.props.description.name:""}></Input>
-          </Row>
-          <Row>
-            <Col s={12}>
-              <Button onClick={(e)=>this.onSave(e)} waves="light">Save</Button>
-            </Col>
-          </Row>
-        </form>
-      </Col>
+      <div className="row" style={margin}>
+        <Col s={12} className="white" >
+          <form ref="form">
+            <Row>
+              <Input type="text" label="Category Name" s={12} name="name" defaultValue={this.props.select_category? this.props.select_category.name:""}></Input>
+            </Row>
+            <Row>
+              <Input type="text" label="Description" s={12} name="description" defaultValue={this.props.select_category? this.props.description.name:""}></Input>
+            </Row>
+            <Row>
+              <Col s={12}>
+                <Button onClick={(e)=>this.onSave(e)} waves="light">Save</Button>
+              </Col>
+            </Row>
+          </form>
+        </Col>
+      </div>
     )
   }
 }
