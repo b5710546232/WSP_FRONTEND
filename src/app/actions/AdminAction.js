@@ -622,29 +622,79 @@ export const reactiveCategory = (id,token) => (
   }}
 )
 export const deactiveMethod = (id,token) => (
-  {[CALL_API]: {
-    endpoint: ADMIN_METHOD_ENDPOINT+id+'/',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization':'Token '+token
-    },
-    method: 'DELETE',
-    types: ['DEACTIVE_METHOD_ADMIN_REQUEST', 'DEACTIVE_METHOD_ADMIN_SUCCESS', 'DEACTIVE_METHOD_ADMIN_FAILURE']
-  }}
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+          endpoint: ADMIN_METHOD_ENDPOINT+id+'/',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization':'Token '+token
+          },
+          method: 'DELETE',
+        types: [
+          'DEACTIVE_METHOD_ADMIN_REQUEST',
+          {
+            type: 'DEACTIVE_METHOD_ADMIN_SUCCESS',
+            payload: (_action, _state, res) => {
+              dispatch(loadMethod(token))
+              return data
+            }
+          },
+          'DEACTIVE_USER_ADMIN_FAILURE'
+        ]
+      }
+    }
+  )
 )
+//   {[CALL_API]: {
+//     endpoint: ADMIN_METHOD_ENDPOINT+id+'/',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json',
+//       'Authorization':'Token '+token
+//     },
+//     method: 'DELETE',
+//     types: ['DEACTIVE_METHOD_ADMIN_REQUEST', 'DEACTIVE_METHOD_ADMIN_SUCCESS', 'DEACTIVE_METHOD_ADMIN_FAILURE']
+//   }}
+// )
 export const reactiveMethod = (id,token) => (
-  {[CALL_API]: {
-    endpoint: ADMIN_METHOD_ENDPOINT+id+'/reactive/',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization':'Token '+token
-    },
-    method: 'PUT',
-    types: ['REACTIVE_METHOD_ADMIN_REQUEST', 'REACTIVE_METHOD_ADMIN_SUCCESS', 'REACTIVE_METHOD_ADMIN_FAILURE']
-  }}
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+          endpoint: ADMIN_METHOD_ENDPOINT+id+'/reactive/',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization':'Token '+token
+          },
+          method: 'PUT',
+        types: [
+          'REACTIVE_METHOD_ADMIN_REQUEST',
+          {
+            type: 'REACTIVE_METHOD_ADMIN_FAILURE',
+            payload: (_action, _state, res) => {
+              dispatch(loadMethod(token))
+              return data
+            }
+          },
+          'REACTIVE_USER_ADMIN_FAILURE'
+        ]
+      }
+    }
+  )
 )
+//   {[CALL_API]: {
+//     endpoint: ADMIN_METHOD_ENDPOINT+id+'/reactive/',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json',
+//       'Authorization':'Token '+token
+//     },
+//     method: 'PUT',
+//     types: ['REACTIVE_METHOD_ADMIN_REQUEST', 'REACTIVE_METHOD_ADMIN_SUCCESS', 'REACTIVE_METHOD_ADMIN_FAILURE']
+//   }}
+// )
 export const assignStaff = (id,token) => (
   {[CALL_API]: {
     endpoint: ADMIN_USER_ENDPOINT+id+'/assign_staff/',
