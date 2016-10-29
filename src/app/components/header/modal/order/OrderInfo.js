@@ -24,13 +24,26 @@ class OrderInfo extends Component {
         <div className="collapsible-header"><h6><span className="bold left">Order ID : {this.props.order.id}</span><span className="bold right">{this.props.order.status}</span></h6></div>
         <div className="collapsible-body white">
           <Row>
-            <Col s={12} m={6}>
-              Payment Method : {this.props.paymentMethods.find((method)=> method.id===this.props.order.method).name}
-            </Col>
-            <Col s={12} m={6} >
+            <Col s={12}  >
               {this.props.order.transfer_slip==''?
-                <Button waves="light" className="right">Upload Transfer Slip</Button>:<span className="right"></span>
+                <form>
+                  <div className="file-field input-field">
+                  <div className="btn">
+                    <span>Upload Transfer Slip</span>
+                    <input type="file"/>
+                  </div>
+                  <div className="file-path-wrapper">
+                    <input className="file-path validate" type="text"/>
+                  </div>
+                  </div>
+                </form>
+                :<span className="right"></span>
               }
+            </Col>
+          </Row>
+          <Row>
+            <Col s={12} m={12}>
+              Payment Method : {this.props.paymentMethods.find((method)=> method.id===this.props.order.method).name}
             </Col>
           </Row>
           <Row>
