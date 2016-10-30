@@ -27,25 +27,42 @@ class OrderBody extends Component {
               <li>
                 <div className="collapsible-header">Awaiting payment</div>
                 <div className="collapsible-body">
-                    <OrderList/>
+                    <OrderList
+                      orderList={this.props.admin.order.filter((order)=>order.transfer_slip==='')}
+                      />
                 </div>
               </li>
               <li>
-                <div className="collapsible-header">Confirm payment</div>
+                <div className="collapsible-header">Awaiting confirmation</div>
                 <div className="collapsible-body white">
+                  <OrderList
+                    orderList={this.props.admin.order.filter((order)=>order.transfer_slip!=='')}
+                    />
                 </div>
               </li>
               <li>
                 <div className="collapsible-header">Awaiting shipment</div>
-                <div className="collapsible-body white"></div>
+                <div className="collapsible-body white">
+                  <OrderList
+                    orderList={this.props.admin.order.filter((order)=>order.is_paid)}
+                    />
+                </div>
               </li>
               <li>
                 <div className="collapsible-header">Awaiting delivery</div>
-                <div className="collapsible-body white"></div>
+                <div className="collapsible-body white">
+                  <OrderList
+                    orderList={this.props.admin.order.filter((order)=>order.is_shipped)}
+                    />
+                </div>
               </li>
               <li>
                 <div className="collapsible-header">Done</div>
-                <div className="collapsible-body white"></div>
+                <div className="collapsible-body white">
+                  <OrderList
+                    orderList={this.props.admin.order.filter((order)=>order.status.split(" ")[0]==='Accept')}
+                    />
+                </div>
               </li>
           </ul>
         </div>
