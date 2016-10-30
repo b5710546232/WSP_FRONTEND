@@ -17,27 +17,11 @@ class OrderList extends Component {
     return usertemp
   }
 
-  getAddressbyID(id){
-    let addresstemp = {address_number:'',country:'',distinct:'',id:'',username:'',province:'',is_active:false,road:'',sub_distinct:'',user:'',village:'',zipcode:''}
-    this.props.admin.address.forEach((address)=>{
-      if(address.user === id)
-      addresstemp = address
-    })
-    return addresstemp
-  }
-
-  getPaymentbyID(id){
-    let paymenttemp = {id:'',country:'',type:'',id:'',name:'',is_active:false}
-    this.props.admin.method.forEach((payment)=>{
-      if(payment.id === id)
-      paymenttemp = payment
-    })
-    return paymenttemp
-  }
   render() {
+    let orderList =  this.props.admin.order.filter((order)=>order.transfer_slip==='')
     return(
       <ul className="collapsible popout"  data-collapsible="accordion">
-            {this.props.admin.order.map(
+            {orderList.map(
               (order)=>(
                 <OrderItem order={order} userorder={this.getUserbyID(order.user)}/>
               )
