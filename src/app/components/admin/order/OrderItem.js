@@ -37,17 +37,40 @@ class OrderItem extends Component {
     return(
       <li className="white">
         <div className="collapsible-header">
-            OrderID:&nbsp;&nbsp;{this.props.order.id} &nbsp;&nbsp;&nbsp;&nbsp; Name: {this.props.userorder.first_name}&nbsp;&nbsp;{this.props.userorder.last_name}
+            <span className="left">OrderID : {this.props.order.id}</span>
+            <span className="right">
+              {!this.props.order.is_paid?
+                <i className="material-icons clear-icon">clear</i>
+                :<i className="material-icons done-icon">done</i>
+              }
+            </span>
         </div>
         <div className="collapsible-body white">
           <Row>
+            <div >
+              <Col s={12} m={6}>
+                Name: {this.props.userorder.first_name} {this.props.userorder.last_name}
+              </Col>
+            </div>
+            {this.props.order.transfer_slip!==''?
+              <div className="right">
+                <Col s={12} m={6}>
+                  <Button waves="light">View Transfer Slip</Button>
+                </Col>
+              </div>:<div></div>
+            }
+          </Row>
+          {
+            
+          }
+          <Row>
             <Col s={12} m={12}>
-              Payment Method : {this.getPaymentbyID(this.props.order.user).name}
+              Payment Method : {this.getPaymentbyID(this.props.order.method).name}
             </Col>
           </Row>
           <Row>
-            <Col s={12} m={8}>
-              Address :&nbsp;&nbsp;
+            <Col s={12} m={6}>
+              Address :
               {this.getAddressbyID(this.props.order.user).address_number} {this.getAddressbyID(this.props.order.user).village} {this.getAddressbyID(this.props.order.user).road} {this.getAddressbyID(this.props.order.user).sub_distinct} {this.getAddressbyID(this.props.order.user).distinct}
               {this.getAddressbyID(this.props.order.user).province} {this.getAddressbyID(this.props.order.user).country} {this.getAddressbyID(this.props.order.user).zipcode}
             </Col>
