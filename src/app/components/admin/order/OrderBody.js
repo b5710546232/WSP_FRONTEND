@@ -22,11 +22,11 @@ class OrderBody extends Component {
     return(
       <li>
         <div className="collapsible-header">Order</div>
-        <div className="collapsible-body">
+        <div className="collapsible-body white">
           <ul className="collapsible popout"  data-collapsible="accordion">
               <li>
                 <div className="collapsible-header">Awaiting payment</div>
-                <div className="collapsible-body">
+                <div className="collapsible-body white">
                     <OrderList
                       orderList={this.props.admin.order.filter((order)=>order.transfer_slip==='')}
                       />
