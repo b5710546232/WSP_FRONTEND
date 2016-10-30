@@ -27,6 +27,10 @@ class OrderItem extends Component {
   }
 
   render() {
+    var margin={
+      marginLeft:"10px",
+      marginRight:"10px"
+    }
     let Listitem = this.props.admin.item_line.filter((itemline)=>parseInt(itemline.order)===this.props.order.id)
     let price = 0
     let quantity = 0
@@ -46,63 +50,76 @@ class OrderItem extends Component {
             </span>
         </div>
         <div className="collapsible-body white">
-          <Row>
-            <div >
-              <Col s={12} m={6}>
-                Name: {this.props.userorder.first_name} {this.props.userorder.last_name}
-              </Col>
-            </div>
-            {this.props.order.transfer_slip!==''?
-              <div className="right">
+          <div style={margin}>
+            <Row>
+              <div >
                 <Col s={12} m={6}>
-                  <Button waves="light">View Transfer Slip</Button>
+                  Name: {this.props.userorder.first_name} {this.props.userorder.last_name}
                 </Col>
-              </div>:<div></div>
-            }
-          </Row>
-          {
-            
-          }
-          <Row>
-            <Col s={12} m={12}>
-              Payment Method : {this.getPaymentbyID(this.props.order.method).name}
-            </Col>
-          </Row>
-          <Row>
-            <Col s={12} m={6}>
-              Address :
-              {this.getAddressbyID(this.props.order.user).address_number} {this.getAddressbyID(this.props.order.user).village} {this.getAddressbyID(this.props.order.user).road} {this.getAddressbyID(this.props.order.user).sub_distinct} {this.getAddressbyID(this.props.order.user).distinct}
-              {this.getAddressbyID(this.props.order.user).province} {this.getAddressbyID(this.props.order.user).country} {this.getAddressbyID(this.props.order.user).zipcode}
-            </Col>
-          </Row>
-          <Row>
-            <Col s={12}>
-              <Table className="center">
-                <tr>
-                  <th data-field="id">Product</th>
-                  <th data-field="name">Quantity</th>
-                  <th data-field="price">Price</th>
-                </tr>
-                <tbody>
-                  {Listitem.map(
-                    (item)=>(
-                      <tr>
-                        <td>{this.props.admin.product.find((product)=>parseInt(item.product)==product.id).name}</td>
-                        <td>{item.quantity}</td>
-                        <td>{(this.props.admin.product.find((product)=>parseInt(item.product)==product.id).price)*item.quantity}</td>
-                      </tr>
-                    )
-                  )
-                  }
-                  <tr className="bold bold-text">
-                    <td>Total</td>
-                    <td>{quantity}</td>
-                    <td>{price}</td>
+              </div>
+              {this.props.order.transfer_slip!==''?
+                <div className="right">
+                  <Col s={12} m={6}>
+                    <Button waves="light">View Transfer Slip</Button>
+                  </Col>
+                </div>:<div></div>
+              }
+            </Row>
+            <Row>
+              <Col s={12} m={6}>
+                Payment Method : {this.getPaymentbyID(this.props.order.method).name}
+              </Col>
+              {this.props.order.is_shipped?
+                <div className="right">
+                  <Col s={12} m={6}>
+                    Postal Track : {this.props.postal_track}
+                  </Col>
+                </div>:<div></div>
+              }
+            </Row>
+            <Row>
+              <Col s={12} m={6}>
+                Address :
+                {this.getAddressbyID(this.props.order.user).address_number} {this.getAddressbyID(this.props.order.user).village} {this.getAddressbyID(this.props.order.user).road} {this.getAddressbyID(this.props.order.user).sub_distinct} {this.getAddressbyID(this.props.order.user).distinct}
+                {this.getAddressbyID(this.props.order.user).province} {this.getAddressbyID(this.props.order.user).country} {this.getAddressbyID(this.props.order.user).zipcode}
+              </Col>
+              <div className="right">
+                {this.props.order.is_paid?
+                  <Col s={12} m={6}>
+                    <Button waves="light">Update Postal Track</Button>
+                  </Col>:<div></div>
+                }
+              </div>
+            </Row>
+            <Row>
+              <Col s={12}>
+                <Table className="center">
+                  <tr>
+                    <th data-field="id">Product</th>
+                    <th data-field="name">Quantity</th>
+                    <th data-field="price">Price</th>
                   </tr>
-                </tbody>
-              </Table>
-            </Col>
-          </Row>
+                  <tbody>
+                    {Listitem.map(
+                      (item)=>(
+                        <tr>
+                          <td>{this.props.admin.product.find((product)=>parseInt(item.product)==product.id).name}</td>
+                          <td>{item.quantity}</td>
+                          <td>{(this.props.admin.product.find((product)=>parseInt(item.product)==product.id).price)*item.quantity}</td>
+                        </tr>
+                      )
+                    )
+                    }
+                    <tr className="bold bold-text">
+                      <td>Total</td>
+                      <td>{quantity}</td>
+                      <td>{price}</td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </Col>
+            </Row>
+          </div>
         </div>
       </li>
     )
