@@ -1,7 +1,9 @@
 const webpack = require("webpack");
 const path = require("path");
 const autoprefixer = require('autoprefixer');
-
+if (global.Promise == null) {
+    global.Promise = require('es6-promise')
+}
 module.exports = {
   // devtool: 'eval-cheap-module-source-map',
   devtool: 'source-map',
