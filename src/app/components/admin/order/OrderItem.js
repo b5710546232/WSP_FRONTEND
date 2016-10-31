@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Row,Col,Button,Table} from 'react-materialize'
 import ConfirmModal from './ConfirmModal'
+import PostalTrack from './PostalTrack'
 // import '../../../../assets/scss/admin.scss'
 class OrderItem extends Component {
   constructor(props){
@@ -82,16 +83,17 @@ class OrderItem extends Component {
               }
             </Row>
             <Row>
-              <Col s={12} m={6}>
+              <Col s={12} m={5}>
                 <span className="boldtext">Address :</span>
                 {this.getAddressbyID(this.props.order.user).address_number} {this.getAddressbyID(this.props.order.user).village} {this.getAddressbyID(this.props.order.user).road} {this.getAddressbyID(this.props.order.user).sub_distinct} {this.getAddressbyID(this.props.order.user).distinct}
                 {this.getAddressbyID(this.props.order.user).province} {this.getAddressbyID(this.props.order.user).country} {this.getAddressbyID(this.props.order.user).zipcode}
               </Col>
               <div className="right">
                 {this.props.order.is_paid?
-                  <Col s={12} m={6}>
-                    <Button waves="light">Update Postal Track</Button>
-                  </Col>:<div></div>
+                  <Col>
+                    <PostalTrack />
+                  </Col>
+                  :<div></div>
                 }
               </div>
             </Row>
