@@ -419,6 +419,33 @@ export const confirmPayment = (id,token) => (
     }
   )
 )
+export const unconfirmPayment = (id,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_ORDER_ENDPOINT+id+'/unconfirmPayment/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'PUT',
+        types: [
+          'UNCOMFIRM_PAYMENT_ADMIN_REQUEST',
+          {
+            type: 'UNCOMFIRM_PAYMENT_ADMIN_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                return data
+              })
+            }
+          },
+          'UNCOMFIRM_PAYMENT_ADMIN_FAILURE'
+        ]
+      }
+    }
+  )
+)
 export const updateTrack = (id,data,token) => (
   (dispatch) =>
     dispatch({
