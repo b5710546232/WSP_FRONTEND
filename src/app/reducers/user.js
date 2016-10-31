@@ -30,7 +30,6 @@ const initialState = {
 const user = (state=initialState,action)=>{
   switch(action.type) {
     case Action.RECEIVE_ACCESS_TOKEN_SUCCESS:
-    console.log('action',action.payload);
     localStorage.setItem('token',action.payload.token)
     return Object.assign({}, state, {
          accessToken : action.payload.token
@@ -42,7 +41,7 @@ const user = (state=initialState,action)=>{
         userdata:action.payload
       })
       case 'EDIT_USER_SUCCESS':
-      console.log('edit',action.payload);
+      // console.log('edit',action.payload);
       return Object.assign({}, state, {
           username:action.payload.username,
           userdata:action.payload
