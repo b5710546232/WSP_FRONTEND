@@ -30,11 +30,6 @@ module.exports = {
   postcss:function () {
     return [autoprefixer];
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
-    })
-  ],
   devServer: {
     historyApiFallback: true,
     proxy: {
@@ -47,7 +42,7 @@ module.exports = {
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
+  console.log('production_safe');
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
@@ -60,4 +55,13 @@ if (process.env.NODE_ENV === 'production') {
       }
     })
   ])
+}
+else{
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"development"'
+      }
+    })])
+
 }

@@ -1,10 +1,10 @@
-
+let API  = 'http://128.199.248.91:8080/api/v1'
 if(process.env.NODE_ENV !== 'production'){
-  const API  = 'http://localhost:8000/api/v1'
+  console.log('development')
+  // API  = 'http://128.199.248.91:8080/api/v1'
+   API = 'http://localhost:8000/api/v1'
 }
-else{
-  const API  = 'http://128.199.248.91:8000/api/v1'
-}
+
 export const LOGIN_ENDPOINT = API+'/u/login/'
 export const USER_ENDPOINT = API+'/u/user/'
 export const REGISTER_ENDPOINT = API+'/u/user/'
