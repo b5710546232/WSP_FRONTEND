@@ -28,7 +28,7 @@ class OrderBody extends Component {
                 <div className="collapsible-header">Awaiting payment</div>
                 <div className="collapsible-body white">
                     <OrderList
-                      orderList={this.props.admin.order.filter((order)=>order.transfer_slip==='')}
+                      orderList={this.props.admin.order.filter((order)=>order.transfer_slip===''&&!order.is_paid)}
                       />
                 </div>
               </li>

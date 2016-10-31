@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Modal,Input,Button,Row} from 'react-materialize'
+import {confirmPayment,unconfirmPayment} from '../../../actions/AdminAction'
 
 class ConfirmModal extends Component {
 
   onConfirm(e){
     e.preventDefault()
-    this.props.comfirmPayment(id,localStorage.token)
+    this.props.confirmPayment(this.props.select_order.id,localStorage.token)
   }
   onUnconfirm(e){
     e.preventDefault()
-    this.props.uncomfirmPayment(id,localStorage.token)
+    this.props.unconfirmPayment(this.props.select_order.id,localStorage.token)
   }
   render(){
     return (
@@ -28,12 +29,25 @@ class ConfirmModal extends Component {
         </Row>
         <Row>
           <div className="center">{this.props.del?
-              <Button>Unconfirm</Button>:
-                <Button>Confirm</Button>
+              <Button waves="light" onClick={(e)=>this.onUnconfirm(e)}>Unconfirm</Button>:
+                <Button waves="light" onClick={(e)=>this.onConfirm(e)}>Confirm</Button>
               }</div>
         </Row>
       </Modal>
     )
   }
 }
-export default ConfirmModal
+const mapStateToProps = (state) => {
+  return state
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    confirmPayment: (id,token)=>(
+      dispatch(confirmPayment(id,token))
+    ),
+    unconfirmPayment: (id,token)=>(
+      dispatch(unconfirmPayment(id,token))
+    )
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(ConfirmModal)
