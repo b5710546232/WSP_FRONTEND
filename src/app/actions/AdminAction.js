@@ -474,6 +474,33 @@ export const updateTrack = (id,data,token) => (
     }
   )
 )
+export const deleteTrack = (id,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_ORDER_ENDPOINT+id+'/deleteTrack/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'PUT',
+        types: [
+          'DELETE_TRACK_ADMIN_REQUEST',
+          {
+            type: 'DELETE_TRACK_ADMIN_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                return data
+              })
+            }
+          },
+          'DELETE_TRACK_ADMIN_FAILURE'
+        ]
+      }
+    }
+  )
+)
 export const deactiveUser = (id,token) => (
   (dispatch) =>
     dispatch({

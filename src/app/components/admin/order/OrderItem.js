@@ -58,7 +58,7 @@ class OrderItem extends Component {
           <div style={margin}>
             <Row>
               <div >
-                <Col s={12} m={6}>1
+                <Col s={12} m={6}>
                   <span className="boldtext">Name:</span> {this.props.userorder.first_name} {this.props.userorder.last_name}
                 </Col>
               </div>
@@ -76,8 +76,8 @@ class OrderItem extends Component {
               </Col>
               {this.props.order.is_shipped?
                 <div className="right">
-                  <Col s={12} m={6}>
-                    <span className="boldtext">Postal Track :</span> {this.props.postal_track}
+                  <Col >
+                    <span className="boldtext">Postal Track :</span> {this.props.order.postal_track}
                   </Col>
                 </div>:<div></div>
               }
@@ -91,7 +91,7 @@ class OrderItem extends Component {
               <div className="right">
                 {this.props.order.is_paid?
                   <Col>
-                    <PostalTrack />
+                    <PostalTrack order={this.props.order}/>
                   </Col>
                   :<div></div>
                 }
