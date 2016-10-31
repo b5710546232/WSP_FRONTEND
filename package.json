@@ -4,9 +4,10 @@
   "description": "Online water and bottle store",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --progress --open",
-    "start-server": "cross-env NODE_ENV=production webpack-dev-server --hot --inline --progress --open",
-    "build": "cross-env NODE_ENV=production npm run test && cross-env webpack --progress --colors",
+    "start": "NODE_ENV=development webpack-dev-server --hot --inline --progress --open",
+    "start-server": "NODE_ENV=production webpack-dev-server --hot --inline --progress --open",
+    "build": "NODE_ENV=production npm run test && cross-env webpack --progress --colors",
+    "build-server": "NODE_ENV=production webpack --progress",
     "test": "mocha -r mock-local-storage --compilers js:babel-register --require ./test/test-helper --recursive ",
     "test:watch": "npm run test -- --watch --watch-extensions jsx"
   },
