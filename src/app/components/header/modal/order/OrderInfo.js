@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Row,Col,Button,Table} from 'react-materialize'
 import {connect} from 'react-redux'
-
+import {uploadImage} from '../../../../aws/aws.js'
 class OrderInfo extends Component {
   componentDidMount(){
     $(document).ready(function(){
@@ -10,8 +10,14 @@ class OrderInfo extends Component {
       });
     });
   }
+
   onUpload(e){
-    console.log("AAAA");
+    e.preventDefault()
+    let slip = $('#slip')[0].files[0]
+    console.log($('#slip')[0]);
+    console.log(slip);
+    let dotData = slip.name.split('.')[slip.name.split('.').length-1]
+    uploadImage("slip"+this.props.order.id+'.'+dotData,slip)
   }
   render(){
     let itemList = this.props.itemlines.filter(itemline=>itemline.order===this.props.order.id)
@@ -31,9 +37,9 @@ class OrderInfo extends Component {
               {this.props.order.transfer_slip==''?
                 <form>
                   <div className="file-field input-field">
-                  <div className="btn">
+                  <div className="btn" >
                     <span>Upload Transfer Slip</span>
-                    <input type="file" id="slip" onchange={(e)=>this.onUpload(e)}/>
+                    <input type="file" id="slip" onChange={(e)=>this.onUpload(e)}/>
                   </div>
                   <div className="file-path-wrapper">
                     <input className="file-path validate" type="text"/>
