@@ -20,10 +20,10 @@ class OrderBody extends Component {
 
   render() {
     return(
-      <li>
-        <div className="collapsible-header">Order</div>
+      <li className="white">
+        <div className="collapsible-header white">Order</div>
         <div className="collapsible-body white">
-          <ul className="collapsible popout"  data-collapsible="accordion">
+          <ul className="collapsible popout white"  data-collapsible="accordion">
               <li>
                 <div className="collapsible-header">Awaiting payment</div>
                 <div className="collapsible-body white">

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Row,Col,Button,Table} from 'react-materialize'
+import ConfirmModal from './ConfirmModal'
 // import '../../../../assets/scss/admin.scss'
-
 class OrderItem extends Component {
   constructor(props){
     super(props)
@@ -44,8 +44,12 @@ class OrderItem extends Component {
             <span className="left">OrderID : {this.props.order.id}</span>
             <span className="right">
               {!this.props.order.is_paid?
-                <i className="material-icons clear-icon">clear</i>
-                :<i className="material-icons done-icon">done</i>
+                <ConfirmModal select_order={this.props.order}
+                  trigger_choose={<i className="material-icons clear-icon">clear</i>}
+                  />
+                :<ConfirmModal select_order={this.props.order} del={true}
+                  trigger_choose={<i className="material-icons done-icon">done</i>}
+                />
               }
             </span>
         </div>
@@ -53,8 +57,8 @@ class OrderItem extends Component {
           <div style={margin}>
             <Row>
               <div >
-                <Col s={12} m={6}>
-                  Name: {this.props.userorder.first_name} {this.props.userorder.last_name}
+                <Col s={12} m={6}>1
+                  <span className="boldtext">Name:</span> {this.props.userorder.first_name} {this.props.userorder.last_name}
                 </Col>
               </div>
               {this.props.order.transfer_slip!==''?
@@ -67,19 +71,19 @@ class OrderItem extends Component {
             </Row>
             <Row>
               <Col s={12} m={6}>
-                Payment Method : {this.getPaymentbyID(this.props.order.method).name}
+                <span className="boldtext">Payment Method :</span> {this.getPaymentbyID(this.props.order.method).name}
               </Col>
               {this.props.order.is_shipped?
                 <div className="right">
                   <Col s={12} m={6}>
-                    Postal Track : {this.props.postal_track}
+                    <span className="boldtext">Postal Track :</span> {this.props.postal_track}
                   </Col>
                 </div>:<div></div>
               }
             </Row>
             <Row>
               <Col s={12} m={6}>
-                Address :
+                <span className="boldtext">Address :</span>
                 {this.getAddressbyID(this.props.order.user).address_number} {this.getAddressbyID(this.props.order.user).village} {this.getAddressbyID(this.props.order.user).road} {this.getAddressbyID(this.props.order.user).sub_distinct} {this.getAddressbyID(this.props.order.user).distinct}
                 {this.getAddressbyID(this.props.order.user).province} {this.getAddressbyID(this.props.order.user).country} {this.getAddressbyID(this.props.order.user).zipcode}
               </Col>
