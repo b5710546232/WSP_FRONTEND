@@ -27,7 +27,7 @@ class MemberModal extends Component {
     });
     this.props.loadUserdata(localStorage.token)
     this.props.check_admin(localStorage.token)
-    console.log('user',this.userdata);
+    // console.log('user',this.userdata);
 
   }
   shouldComponentUpdate(nextProps){

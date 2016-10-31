@@ -13,7 +13,7 @@ const initialState = {
 
 let newproduct = []
 const admin = (state=initialState,action)=>{
-  console.log('action',action.payload);
+  // console.log('action',action.payload);
   switch(action.type) {
     case 'LOAD_ADMIN_USER_SUCCESS':
       return Object.assign({}, state, {

@@ -28,6 +28,11 @@ module.exports = {
   postcss:function () {
     return [autoprefixer];
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"'
+    })
+  ],
   devServer: {
     historyApiFallback: true,
     proxy: {

@@ -23,7 +23,7 @@ class MethodBody extends Component {
     this.props.reactiveMethod(id,localStorage.token)
   }
   render() {
-    console.log('method',this.props.admin.method);
+    // console.log('method',this.props.admin.method);
     return(
       <li>
         <div className="collapsible-header">Payment Method</div>

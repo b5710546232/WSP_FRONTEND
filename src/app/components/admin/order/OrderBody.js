@@ -12,7 +12,7 @@ class OrderBody extends Component {
   }
 
   shouldComponentUpdate(nextProps){
-    console.log(this.props.admin.order,"list order");
+    // console.log(this.props.admin.order,"list order");
     // console.log(this.props,admin.item_line);
 
     return this.props.admin.order !== nextProps

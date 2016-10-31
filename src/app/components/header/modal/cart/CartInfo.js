@@ -16,7 +16,7 @@ class CartInfo extends Component {
     this.props.onDelete(id,token)
   }
   render(){
-    console.log(this.props.key);
+    // console.log(this.props.key);
     let product = this.props.products.find((product) => product.id === this.props.product)
     return (
       <tr>

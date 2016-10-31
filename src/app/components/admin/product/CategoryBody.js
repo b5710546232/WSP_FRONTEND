@@ -40,7 +40,7 @@ class CategoryBody extends Component {
   }
 
   render() {
-    console.log(this.findProductList(3),"ProductList");
+    // console.log(this.findProductList(3),"ProductList");
     return(
       <li className="white">
         <div className="collapsible-header">Product</div>

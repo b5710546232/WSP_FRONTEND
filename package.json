@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --hot --inline --progress --open",
-    "build": "npm run test && webpack --progress --colors",
+    "build": "npm run test && cross-env NODE_ENV=production webpack --progress --colors",
     "test": "mocha -r mock-local-storage --compilers js:babel-register --require ./test/test-helper --recursive ",
-    "test:watch": "npm run test -- --watch --watch-extensions jsx",
-    "api": "json-server --watch api/db.json --routes api/routes.json --port 5000"
+    "test:watch": "npm run test -- --watch --watch-extensions jsx"
   },
   "author": "starburststream.company",
   "license": "ISC",
@@ -39,6 +38,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.5.2",
+    "cross-env": "^3.1.3",
     "css-loader": "^0.25.0",
     "enzyme": "^2.5.1",
     "eslint": "^3.5.0",
