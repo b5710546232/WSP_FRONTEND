@@ -10,6 +10,9 @@ class OrderInfo extends Component {
       });
     });
   }
+  onUpload(e){
+    console.log("AAAA");
+  }
   render(){
     let itemList = this.props.itemlines.filter(itemline=>itemline.order===this.props.order.id)
     let address = this.props.address.find(select_address=>select_address.id===this.props.order.address)
@@ -30,7 +33,7 @@ class OrderInfo extends Component {
                   <div className="file-field input-field">
                   <div className="btn">
                     <span>Upload Transfer Slip</span>
-                    <input type="file"/>
+                    <input type="file" id="slip" onchange={(e)=>this.onUpload(e)}/>
                   </div>
                   <div className="file-path-wrapper">
                     <input className="file-path validate" type="text"/>
