@@ -22,6 +22,9 @@ export const uploadImage = (name,file) => {
     Bucket: bucketName
   }, function (err,data) {
     if (err) { throw err; }
-    else console.log(data);
+    else {
+      console.log(data);
+      return data
+    }
   });
 }

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {Row,Col,Button,Table} from 'react-materialize'
 import {connect} from 'react-redux'
 import {uploadImage} from '../../../../aws/aws.js'
+import {uploadTransferSlip} from '../../../../actions/OrderAction'
+import SlipModal from './SlipModal'
 class OrderInfo extends Component {
   componentDidMount(){
     $(document).ready(function(){
@@ -17,7 +19,12 @@ class OrderInfo extends Component {
     console.log($('#slip')[0]);
     console.log(slip);
     let dotData = slip.name.split('.')[slip.name.split('.').length-1]
-    uploadImage("slip"+this.props.order.id+'.'+dotData,slip)
+    let name= "slip"+this.props.order.id+'.'+dotData
+    uploadImage(name,slip)
+    let data = {
+      transfer_slip : name
+    }
+    this.props.uploadTransferSlip(data,this.props.order.id,localStorage.token)
   }
   render(){
     let itemList = this.props.itemlines.filter(itemline=>itemline.order===this.props.order.id)
@@ -46,7 +53,9 @@ class OrderInfo extends Component {
                   </div>
                   </div>
                 </form>
-                :<span className="right"></span>
+                :<div className="center">
+                <SlipModal order={this.props.order} />
+              </div>
               }
             </Col>
           </Row>
@@ -108,11 +117,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadOrderList: (token) =>(
-      dispatch(loadOrderList(token))
-    ),
-    loadItemLines: (token)=>(
-      dispatch(loadItemLines(token))
+    uploadTransferSlip:(data,id,token)=>(
+      dispatch(uploadTransferSlip(data,id,token))
     )
   }
 }
