@@ -1,4 +1,4 @@
-let API  = 'http://128.199.248.91:8080/api/v1'
+let API  = 'http://128.199.248.91:8000/api/v1'
 if(process.env.NODE_ENV !== 'production'){
   console.log('development')
   // API  = 'http://128.199.248.91:8080/api/v1'
