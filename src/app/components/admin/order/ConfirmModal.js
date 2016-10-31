@@ -5,10 +5,12 @@ import {Modal,Input,Button,Row} from 'react-materialize'
 class ConfirmModal extends Component {
 
   onConfirm(e){
-
+    e.preventDefault()
+    this.props.comfirmPayment(id,localStorage.token)
   }
   onUnconfirm(e){
-    
+    e.preventDefault()
+    this.props.uncomfirmPayment(id,localStorage.token)
   }
   render(){
     return (
