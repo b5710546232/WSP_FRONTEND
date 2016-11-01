@@ -1,5 +1,3 @@
-// LOAD_ADMIN_CATEGORY_SUCCESS
-// LOAD_ADMIN_ORDER_SUCCESS
 // LOAD_ADMIN_ORDER_SUCCESS
 // LOAD_ADMIN_ITEMLINE_SUCCESS
 // LOAD_ADMIN_METHOD_SUCCESS
@@ -191,6 +189,29 @@ describe('Admin Reducer', () => {
       reducer(currentState, action)
       expect(nextState).to.deep.equal(expectedState)
     })
-
+  })
+  describe('Admin load order', () => {
+    it('should loading the order list if request success', () => {
+      const action = {
+        type: 'LOAD_ADMIN_ORDER_SUCCESS',
+        payload:
+        [
+          { "id": 26, "method": 1, "address": 4, "create_date": "2016-10-28", "last_update_date": null, "transfer_slip": "", "is_paid": false, "is_shipped": false, "user": 1, "is_active": true, "postal_track": null, "status": "Wait for slip" },
+        ]
+      }
+      const expectedState = {
+        user : [],
+        address : [],
+        product : [],
+        category : [],
+        order : [ { "id": 26, "method": 1, "address": 4, "create_date": "2016-10-28", "last_update_date": null, "transfer_slip": "", "is_paid": false, "is_shipped": false, "user": 1, "is_active": true, "postal_track": null, "status": "Wait for slip" },
+        ],
+        item_line : [],
+        method : []
+      }
+      const nextState = reducer(currentState, action)
+      reducer(currentState, action)
+      expect(nextState).to.deep.equal(expectedState)
+    })
   })
 })
