@@ -13,7 +13,7 @@ class ItemInfoModal extends Component {
       quantity:quantity
     }
     this.props.addItemtoCard(data,token)
-    $('#item-modal').closeModal();
+    $('#item-modal'+this.props.id).closeModal();
   }
 
   render() {
@@ -22,7 +22,7 @@ class ItemInfoModal extends Component {
       marginBottom :"0px"
     }
     return (
-      <Modal id="item-modal"
+      <Modal id={"item-modal"+this.props.id}
         trigger={
           <a>{this.props.price}฿</a>
         }>

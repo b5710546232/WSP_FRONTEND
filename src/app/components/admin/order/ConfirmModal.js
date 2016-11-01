@@ -8,10 +8,12 @@ class ConfirmModal extends Component {
   onConfirm(e){
     e.preventDefault()
     this.props.confirmPayment(this.props.select_order.id,localStorage.token)
+    $('#confirm-modal'+this.props.select_order.id).closeModal();
   }
   onUnconfirm(e){
     e.preventDefault()
     this.props.unconfirmPayment(this.props.select_order.id,localStorage.token)
+    $('#confirm-modal'+this.props.select_order.id).closeModal();
   }
   render(){
     return (
@@ -19,6 +21,7 @@ class ConfirmModal extends Component {
         header={this.props.del?
           <span>Unconfirm Payment</span>:<span>Confirm Payment</span>
         }
+        id = {'confirm-modal'+this.props.select_order.id}
         trigger={this.props.trigger_choose}
         >
         <Row>
