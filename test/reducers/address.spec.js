@@ -6,7 +6,9 @@ describe('Address Reducer', () => {
   let currentState
 
   beforeEach(() => {
-    currentState = []
+    currentState = [
+
+    ]
   })
 
   it('should return correct initial state', () => {
@@ -52,6 +54,44 @@ describe('Address Reducer', () => {
       reducer(currentState, action)
       expect(nextState).to.deep.equal(expectedState)
     })
-    
+
+  })
+
+  describe('Create new address', () => {
+    it('should create address and add in the address list if the request is sucess', () => {
+      const action = {
+        type: 'CREATE_ADDRESS_SUCCESS',
+        payload:{
+          "id": 7,
+          "address_number": "1150",
+          "village": "vil",
+          "road": "r01",
+          "sub_distinct": "sub",
+          "distinct": "dis",
+          "province": "pro",
+          "country": "thai",
+          "zipcode": "101",
+          "is_active": true}
+        }
+      const expectedState = [
+        {
+          "id": 7,
+          "address_number": "1150",
+          "village": "vil",
+          "road": "r01",
+          "sub_distinct": "sub",
+          "distinct": "dis",
+          "province": "pro",
+          "country": "thai",
+          "zipcode": "101",
+          "is_active": true
+        }
+      ]
+
+      const nextState = reducer(currentState, action)
+      reducer(currentState, action)
+      expect(nextState).to.deep.equal(expectedState)
+    })
+
   })
 })
