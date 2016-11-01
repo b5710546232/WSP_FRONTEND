@@ -16,9 +16,6 @@ class OrderInfo extends Component {
   onUpload(e){
     e.preventDefault()
     let slip = e.target.files[0]
-    // let slip = $('#slip')[0].files[0]
-    // console.log($('#slip')[0]);
-    console.log(slip);
     let dotData = slip.name.split('.')[slip.name.split('.').length-1]
     let name= "slip"+this.props.order.id+'.'+dotData
     uploadImage(name,slip)

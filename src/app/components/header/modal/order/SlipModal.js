@@ -7,11 +7,7 @@ import {uploadTransferSlip,deleteTransferSlip} from '../../../../actions/OrderAc
 class SlipModal extends Component {
   onUpload(e){
     e.preventDefault()
-    // let slip = document.getElementById('slip_edit').files[0];
-    // let slip = $('#slipedit')[0].files[0]
-    // console.log(($('#slip-edit'))[0]);
     let slip = e.target.files[0]
-    console.log(slip);
     let dotData = slip.name.split('.')[slip.name.split('.').length-1]
     let name= "slip"+this.props.order.id+'.'+dotData
     uploadImage(name,slip)
