@@ -409,6 +409,7 @@ export const confirmPayment = (id,token) => (
             type: 'COMFIRM_PAYMENT_ADMIN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadOrder(token))
                 return data
               })
             }
