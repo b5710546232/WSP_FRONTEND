@@ -1,4 +1,3 @@
-// LOAD_ADMIN_PRODUCT_SUCCESS
 // LOAD_ADMIN_CATEGORY_SUCCESS
 // LOAD_ADMIN_ORDER_SUCCESS
 // LOAD_ADMIN_ORDER_SUCCESS
@@ -167,5 +166,31 @@ describe('Admin Reducer', () => {
       reducer(currentState, action)
       expect(nextState).to.deep.equal(expectedState)
     })
+  })
+  describe('Admin load category', () => {
+    it('should loading the categories list if request success', () => {
+      const action = {
+        type: 'LOAD_ADMIN_CATEGORY_SUCCESS',
+        payload:
+        [
+          { "id": 1, "name": "cat01", "description": "cat_des", "is_active": true },
+        ]
+      }
+      const expectedState = {
+        user : [],
+        address : [],
+        product : [],
+        category : [
+          { "id": 1, "name": "cat01", "description": "cat_des", "is_active": true },
+        ],
+        order : [],
+        item_line : [],
+        method : []
+      }
+      const nextState = reducer(currentState, action)
+      reducer(currentState, action)
+      expect(nextState).to.deep.equal(expectedState)
+    })
+
   })
 })
