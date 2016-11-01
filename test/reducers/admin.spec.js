@@ -1,4 +1,3 @@
-// LOAD_ADMIN_ITEMLINE_SUCCESS
 // LOAD_ADMIN_METHOD_SUCCESS
 import { expect } from '../test-helper'
 import reducer from '../..//src/app/reducers/admin'
@@ -236,4 +235,28 @@ describe('Admin Reducer', () => {
       expect(nextState).to.deep.equal(expectedState)
     })
   })
+  describe('Admin load payment method', () => {
+    it('should loading the payment method list if request success', () => {
+      const action = {
+        type: 'LOAD_ADMIN_METHOD_SUCCESS',
+        payload:
+        [
+          { "id": 8, "type": "B", "name": "8", "is_active": true },
+        ]
+      }
+      const expectedState = {
+        user : [],
+        address : [],
+        product : [],
+        category : [],
+        order : [],
+        item_line : [],
+        method : [{ "id": 8, "type": "B", "name": "8", "is_active": true },]
+      }
+      const nextState = reducer(currentState, action)
+      reducer(currentState, action)
+      expect(nextState).to.deep.equal(expectedState)
+    })
+  })
+
 })
