@@ -2,6 +2,12 @@ import {Action} from '../constants';
 import { CALL_API } from 'redux-api-middleware'
 import {REGISTER_ENDPOINT,USER_ENDPOINT,LOGIN_ENDPOINT,ADMIN_ENDPOINT} from '../constants/endpoints'
 
+
+export const onEditPassword = ()=> {
+  return {
+    type: 'EDIT_PASSWORD'
+  }
+}
 //logout
 export const logout = ()=> {
   return {
