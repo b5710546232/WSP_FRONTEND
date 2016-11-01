@@ -1,4 +1,3 @@
-// LOAD_ADMIN_ORDER_SUCCESS
 // LOAD_ADMIN_ITEMLINE_SUCCESS
 // LOAD_ADMIN_METHOD_SUCCESS
 import { expect } from '../test-helper'
@@ -207,6 +206,29 @@ describe('Admin Reducer', () => {
         order : [ { "id": 26, "method": 1, "address": 4, "create_date": "2016-10-28", "last_update_date": null, "transfer_slip": "", "is_paid": false, "is_shipped": false, "user": 1, "is_active": true, "postal_track": null, "status": "Wait for slip" },
         ],
         item_line : [],
+        method : []
+      }
+      const nextState = reducer(currentState, action)
+      reducer(currentState, action)
+      expect(nextState).to.deep.equal(expectedState)
+    })
+  })
+  describe('Admin load itemline', () => {
+    it('should loading the itemline list if request success', () => {
+      const action = {
+        type: 'LOAD_ADMIN_ITEMLINE_SUCCESS',
+        payload:
+        [
+          { "id": 1, "product": 2, "user": 1, "order": null, "quantity": 1, "is_active": false },
+        ]
+      }
+      const expectedState = {
+        user : [],
+        address : [],
+        product : [],
+        category : [],
+        order : [],
+        item_line : [{ "id": 1, "product": 2, "user": 1, "order": null, "quantity": 1, "is_active": false },],
         method : []
       }
       const nextState = reducer(currentState, action)
