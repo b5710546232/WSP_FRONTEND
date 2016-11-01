@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {logout,loadUserdata,check_admin} from '../../../../actions/UserAction'
+import {logout,loadUserdata,check_admin,onEditPassword} from '../../../../actions/UserAction'
 import {Modal,Button} from 'react-materialize'
 import MemberInfo from './MemberInfo'
 import ChangePasswordPanel from './ChangePasswordPanel'
@@ -27,7 +27,6 @@ class MemberModal extends Component {
     });
     this.props.loadUserdata(localStorage.token)
     this.props.check_admin(localStorage.token)
-    // console.log('user',this.userdata);
 
   }
   shouldComponentUpdate(nextProps){
@@ -38,6 +37,9 @@ class MemberModal extends Component {
   }
   onLogout(){
     this.props.onLogout()
+  }
+  onEditPasswordSelect(){
+    this.props.onEditPassword()
   }
   render() {
     var margin = {
@@ -64,8 +66,11 @@ class MemberModal extends Component {
               /></div>
           </li>
           <li>
-            <div className="collapsible-header">Change Password</div>
+            <div className="collapsible-header" onClick={(e)=>this.onEditPasswordSelect(e)} >Change Password</div>
+            { !this.props.user.change_password_success ?
             <div className="collapsible-body"><ChangePasswordPanel/></div>
+            : <div></div>
+            }
           </li>
           <li>
             <div className="collapsible-header">Manage Address</div>
@@ -95,6 +100,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     check_admin: (token)=>{
       dispatch(check_admin(token))
+    },
+    onEditPassword: () =>{
+      dispatch(onEditPassword())
     }
   }
 }

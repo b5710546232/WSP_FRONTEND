@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Row,Col,Button,Table} from 'react-materialize'
 import ConfirmModal from './ConfirmModal'
 import PostalTrack from './PostalTrack'
+import SlipModal from '../../header/modal/order/SlipModal'
 // import '../../../../assets/scss/admin.scss'
 class OrderItem extends Component {
   constructor(props){
@@ -58,14 +59,14 @@ class OrderItem extends Component {
           <div style={margin}>
             <Row>
               <div >
-                <Col s={12} m={6}>1
+                <Col s={12} m={6}>
                   <span className="boldtext">Name:</span> {this.props.userorder.first_name} {this.props.userorder.last_name}
                 </Col>
               </div>
               {this.props.order.transfer_slip!==''?
                 <div className="right">
                   <Col s={12} m={6}>
-                    <Button waves="light">View Transfer Slip</Button>
+                    <SlipModal read_only={true} order={this.props.order}/>
                   </Col>
                 </div>:<div></div>
               }
@@ -76,8 +77,8 @@ class OrderItem extends Component {
               </Col>
               {this.props.order.is_shipped?
                 <div className="right">
-                  <Col s={12} m={6}>
-                    <span className="boldtext">Postal Track :</span> {this.props.postal_track}
+                  <Col >
+                    <span className="boldtext">Postal Track :</span> {this.props.order.postal_track}
                   </Col>
                 </div>:<div></div>
               }
@@ -91,7 +92,7 @@ class OrderItem extends Component {
               <div className="right">
                 {this.props.order.is_paid?
                   <Col>
-                    <PostalTrack />
+                    <PostalTrack order={this.props.order}/>
                   </Col>
                   :<div></div>
                 }

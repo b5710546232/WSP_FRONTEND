@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import {Row,Col,Button,Table} from 'react-materialize'
 import {connect} from 'react-redux'
-
+import {uploadImage} from '../../../../aws/aws.js'
+import {uploadTransferSlip} from '../../../../actions/OrderAction'
+import SlipModal from './SlipModal'
 class OrderInfo extends Component {
   componentDidMount(){
     $(document).ready(function(){
@@ -9,6 +11,18 @@ class OrderInfo extends Component {
         accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
       });
     });
+  }
+
+  onUpload(e){
+    e.preventDefault()
+    let slip = e.target.files[0]
+    let dotData = slip.name.split('.')[slip.name.split('.').length-1]
+    let name= "slip"+this.props.order.id+'.'+dotData
+    uploadImage(name,slip)
+    let data = {
+      transfer_slip : name
+    }
+    this.props.uploadTransferSlip(data,this.props.order.id,localStorage.token)
   }
   render(){
     let itemList = this.props.itemlines.filter(itemline=>itemline.order===this.props.order.id)
@@ -28,16 +42,18 @@ class OrderInfo extends Component {
               {this.props.order.transfer_slip==''?
                 <form>
                   <div className="file-field input-field">
-                  <div className="btn">
+                  <div className="btn" >
                     <span>Upload Transfer Slip</span>
-                    <input type="file"/>
+                    <input type="file" id="slip" onChange={(e)=>this.onUpload(e)}/>
                   </div>
                   <div className="file-path-wrapper">
                     <input className="file-path validate" type="text"/>
                   </div>
                   </div>
                 </form>
-                :<span className="right"></span>
+                :<div className="center">
+                <SlipModal order={this.props.order} />
+              </div>
               }
             </Col>
           </Row>
@@ -99,11 +115,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadOrderList: (token) =>(
-      dispatch(loadOrderList(token))
-    ),
-    loadItemLines: (token)=>(
-      dispatch(loadItemLines(token))
+    uploadTransferSlip:(data,id,token)=>(
+      dispatch(uploadTransferSlip(data,id,token))
     )
   }
 }

@@ -4,8 +4,8 @@ import {Footer,Row,Button} from 'react-materialize'
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps'
 
 const coords = {
-  lat: 13.846977,
-  lng: 100.5698995
+  lat: 14.5684384,
+  lng: 100.4140057
 };
 
 export default class AppFooter extends Component {

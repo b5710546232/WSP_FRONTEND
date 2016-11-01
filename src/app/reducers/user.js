@@ -71,6 +71,10 @@ const user = (state=initialState,action)=>{
       return Object.assign({}, state, {
           is_admin: false,
         })
+    case 'EDIT_PASSWORD':
+      return Object.assign({}, state, {
+        change_password_success: false
+      })
     default:
       return state;
   }
