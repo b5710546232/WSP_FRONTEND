@@ -1,4 +1,3 @@
-// LOAD_ADMIN_ADDRESS_SUCCESS
 // LOAD_ADMIN_PRODUCT_SUCCESS
 // LOAD_ADMIN_CATEGORY_SUCCESS
 // LOAD_ADMIN_ORDER_SUCCESS
@@ -144,5 +143,29 @@ describe('Admin Reducer', () => {
       expect(nextState).to.deep.equal(expectedState)
     })
   })
-
+  describe('Admin load product', () => {
+    it('should loading the product list if request success', () => {
+      const action = {
+        type: 'LOAD_ADMIN_PRODUCT_SUCCESS',
+        payload:
+        [
+          { "id": 2, "name": "p_name_02", "description": "p_des_02", "price": 10, "is_active": false, "category": 2, "image": "" }
+        ]
+      }
+      const expectedState = {
+        user : [],
+        address : [],
+        product : [
+          { "id": 2, "name": "p_name_02", "description": "p_des_02", "price": 10, "is_active": false, "category": 2, "image": "" }
+        ],
+        category : [],
+        order : [],
+        item_line : [],
+        method : []
+      }
+      const nextState = reducer(currentState, action)
+      reducer(currentState, action)
+      expect(nextState).to.deep.equal(expectedState)
+    })
+  })
 })
