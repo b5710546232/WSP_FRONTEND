@@ -135,4 +135,30 @@ describe('User Reducer', () => {
       expect(nextState.isRegister).to.deep.equal(currentState.isRegister)
     })
   })
+  describe('User Change password',()=>{
+    it('should change change_password state is True if succes',()=>{
+      const action = {
+        type:'CHANGE_PASSWORD_SUCCESS'
+      }
+      const expectedState = {
+        change_password_success:true
+      }
+      const nextState = reducer(currentState,action)
+      reducer(currentState,action)
+      expect(nextState.change_password_success).to.deep.equal(expectedState.change_password_success)
+    })
+  })
+  describe('User logout',()=>{
+    it('should logout if user logout success',()=>{
+      const action = {
+        type:'LOGOUT'
+      }
+      const expectedState = {
+        isLogin:false
+      }
+      const nextState = reducer(currentState,action)
+      reducer(currentState,action)
+      expect(nextState.isLogin).to.deep.equal(expectedState.isLogin)
+    })
+  })
 })
