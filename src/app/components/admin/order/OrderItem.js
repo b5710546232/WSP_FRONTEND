@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Row,Col,Button,Table} from 'react-materialize'
 import ConfirmModal from './ConfirmModal'
 import PostalTrack from './PostalTrack'
+import SlipModal from '../../header/modal/order/SlipModal'
 // import '../../../../assets/scss/admin.scss'
 class OrderItem extends Component {
   constructor(props){
@@ -65,7 +66,7 @@ class OrderItem extends Component {
               {this.props.order.transfer_slip!==''?
                 <div className="right">
                   <Col s={12} m={6}>
-                    <Button waves="light">View Transfer Slip</Button>
+                    <SlipModal read_only={true} order={this.props.order}/>
                   </Col>
                 </div>:<div></div>
               }
