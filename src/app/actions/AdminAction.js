@@ -437,6 +437,7 @@ export const unconfirmPayment = (id,token) => (
             type: 'UNCOMFIRM_PAYMENT_ADMIN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadOrder(token))
                 return data
               })
             }

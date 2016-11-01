@@ -18,11 +18,6 @@ class OrderBody extends Component {
     return this.props.admin.order !== nextProps
   }
 
-  updateOnClick(e){
-    e.preventDefault()
-    this.props.loadOrder(localStorage.token)
-  }
-
   render() {
     return(
       <li className="white">
@@ -30,7 +25,7 @@ class OrderBody extends Component {
         <div className="collapsible-body white">
           <ul className="collapsible popout white"  data-collapsible="accordion">
               <li>
-                <div className="collapsible-header" onClick={(e)=>this.updateOnClick(e)}>Awaiting payment</div>
+                <div className="collapsible-header">Awaiting payment</div>
                 <div className="collapsible-body white">
                     <OrderList
                       orderList={this.props.admin.order.filter((order)=>order.transfer_slip===''&&!order.is_paid)}
@@ -38,7 +33,7 @@ class OrderBody extends Component {
                 </div>
               </li>
               <li>
-                <div className="collapsible-header" onClick={(e)=>this.updateOnClick(e)}>Awaiting confirmation</div>
+                <div className="collapsible-header">Awaiting confirmation</div>
                 <div className="collapsible-body white">
                   <OrderList
                     orderList={this.props.admin.order.filter((order)=>String(order.transfer_slip)!==""&&!order.is_paid)}
@@ -46,7 +41,7 @@ class OrderBody extends Component {
                 </div>
               </li>
               <li>
-                <div className="collapsible-header" onClick={(e)=>this.updateOnClick(e)}>Awaiting shipment</div>
+                <div className="collapsible-header">Awaiting shipment</div>
                 <div className="collapsible-body white">
                   <OrderList
                     orderList={this.props.admin.order.filter((order)=>order.is_paid)}
@@ -54,7 +49,7 @@ class OrderBody extends Component {
                 </div>
               </li>
               <li>
-                <div className="collapsible-header" onClick={(e)=>this.updateOnClick(e)}>Awaiting delivery</div>
+                <div className="collapsible-header">Awaiting delivery</div>
                 <div className="collapsible-body white">
                   <OrderList
                     orderList={this.props.admin.order.filter((order)=>order.is_shipped)}
@@ -62,7 +57,7 @@ class OrderBody extends Component {
                 </div>
               </li>
               <li>
-                <div className="collapsible-header" onClick={(e)=>this.updateOnClick(e)}>Done</div>
+                <div className="collapsible-header">Done</div>
                 <div className="collapsible-body white">
                   <OrderList
                     orderList={this.props.admin.order.filter((order)=>order.status.split(" ")[0]==='Accept')}
