@@ -23,7 +23,7 @@ class OrderList extends Component {
       <ul className="collapsible popout"  data-collapsible="accordion">
             {orderList.map(
               (order)=>(
-                <OrderItem order={order} userorder={this.getUserbyID(order.user)}/>
+                <OrderItem order={order} userorder={this.getUserbyID(order.user)} key={order.id}/>
               )
             )}
       </ul>

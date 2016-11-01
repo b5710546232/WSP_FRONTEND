@@ -24,7 +24,7 @@ class MethodEditForm extends Component {
     return (
       <Modal
         header={this.props.add?
-          <div>New Payment Method</div>:this.props.select_method.name
+          <span>New Payment Method</span>:this.props.select_method.name
         }
         trigger={
           this.props.add?

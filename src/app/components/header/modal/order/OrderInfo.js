@@ -88,7 +88,7 @@ class OrderInfo extends Component {
                 <tbody>
                   {itemList.map(
                     (item)=>(
-                      <tr>
+                      <tr key={item.id}>
                         <td>{this.props.products.find((product)=>parseInt(item.product)==product.id).name}</td>
                         <td>{item.quantity}</td>
                         <td>{(this.props.products.find((product)=>parseInt(item.product)==product.id).price)*item.quantity}</td>

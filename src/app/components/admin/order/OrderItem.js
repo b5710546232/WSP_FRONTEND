@@ -109,7 +109,7 @@ class OrderItem extends Component {
                   <tbody>
                     {Listitem.map(
                       (item)=>(
-                        <tr>
+                        <tr key={item.id}>
                           <td>{this.props.admin.product.find((product)=>parseInt(item.product)==product.id).name}</td>
                           <td>{item.quantity}</td>
                           <td>{(this.props.admin.product.find((product)=>parseInt(item.product)==product.id).price)*item.quantity}</td>

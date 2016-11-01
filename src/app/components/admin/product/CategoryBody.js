@@ -54,14 +54,14 @@ class CategoryBody extends Component {
           </li>
           {this.props.admin.category.map(
             (category)=>(
-              <li>
+              <li key={category.id}>
                 <div className="collapsible-header">
                   <div className="left">{category.name}</div>
                   <div className="right">
                     {category.is_active?
                       <i className="material-icons done-icon" onClick={(e)=>this.deactiveCategory(e,category.id)}>done</i> : <i className="material-icons clear-icon" onClick={(e)=>this.reactiveCategory(e,category.id)}>clear</i>
                     }
-                    <CategoryEditModal select_category={category} />
+                    <CategoryEditModal select_category={category} key={category.id}/>
                   </div>
                 </div>
                 <div className="collapsible-body white">
