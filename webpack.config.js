@@ -44,20 +44,19 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#eval'
   console.log('production_safe');
   module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.optimize.UglifyJsPlugin({
-                sourceMap: false,
-                minimize: true,
-                compress: {
-                    drop_debugger: true,
-                    warnings: false,
-                    drop_console: true
-                }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
-    })
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      },
+      new webpack.optimize.UglifyJsPlugin({
+                  sourceMap: false,
+                  minimize: true,
+                  compress: {
+                      drop_debugger: true,
+                      warnings: false,
+                      drop_console: true
+                  }
+      })
   ])
 }
 else{
