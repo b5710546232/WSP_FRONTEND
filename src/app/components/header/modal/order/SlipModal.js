@@ -19,10 +19,12 @@ class SlipModal extends Component {
   onDelete(e){
     e.preventDefault()
     this.props.deleteTransferSlip(this.props.order.id,localStorage.token)
+    $('#slip'+this.props.order.id).closeModal();
   }
   render(){
     return (
       <Modal
+        id = {"slip"+this.props.order.id}
         header={<div>{this.props.order.id} Transfer Slip</div>}
         trigger={
           <Button waves="light">View Transfer Slip</Button>

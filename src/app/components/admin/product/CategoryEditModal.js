@@ -12,16 +12,13 @@ class CategoryEditModal extends Component {
       name:name,
       description:description
     }
-    if (this.props.add){
-      this.props.createCategory(data,localStorage.token)
-    }else {
-      this.props.updateCategory(this.props.select_category.id,data,localStorage.token)
-    }
-
+    this.props.updateCategory(this.props.select_category.id,data,localStorage.token)
+    $('#category-edit-modal'+this.props.select_category.id).closeModal();
   }
   render(){
     return (
       <Modal
+        id = {"category-edit-modal"+this.props.select_category.id}
         header={this.props.select_category.name}
         trigger={<i className="material-icons " >mode_edit</i>}>
         <form ref="form">

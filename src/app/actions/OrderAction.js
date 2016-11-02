@@ -76,6 +76,7 @@ export const uploadTransferSlip= (data,id,token) => (
             type: 'UPLOAD_TRANSFER_SLIP_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadOrderList(token))
                 return data
               })
             }
@@ -103,6 +104,7 @@ export const deleteTransferSlip= (id,token) => (
             type: 'DELETE_TRANSFER_SLIP_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadOrderList(token))
                 return data
               })
             }

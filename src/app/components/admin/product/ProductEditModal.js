@@ -11,6 +11,8 @@ class ProductEditModal extends Component {
   }
   onSave(e){
     e.preventDefault()
+    console.log(this.props.product_key,"product id");
+    console.log(this.props.select_category,"category_id");
     let dotData=null;
     let img_name = null;
     let id = this.props.admin.product.length+1
@@ -25,7 +27,6 @@ class ProductEditModal extends Component {
     else {
       img_name=this.props.select_product.image
     }
-    console.log(img_name);
     let name = this.refs.form.name.value
     let description = this.refs.form.product_description.value
     let price = this.refs.form.price.value
@@ -42,6 +43,7 @@ class ProductEditModal extends Component {
     }else {
       this.props.updateProduct(this.props.select_product.id,data,localStorage.token)
     }
+    $('#product-edit-modal'+this.props.select_category+this.props.product_key).closeModal();
   }
   onUpload(e){
     e.preventDefault()
@@ -74,6 +76,7 @@ class ProductEditModal extends Component {
   render() {
     return (
       <Modal
+        id = {"product-edit-modal"+this.props.select_category+this.props.product_key}
         header={this.props.add?
           <div>New Product</div>:this.props.select_product.name
         }
@@ -98,7 +101,7 @@ class ProductEditModal extends Component {
             <textarea name="product_description" id="product_description" className="materialize-textarea" ></textarea>
             <label for="product_description">Product Description</label>
           </div>
-          <Input label="Product Price" name="price" defaultValue={this.props.add? "":this.props.select_product.price} s={12}/>
+          <Input type="number" label="Product Price" name="price" defaultValue={this.props.add? "":this.props.select_product.price} s={12}/>
           <Row>
               <Button waves="light" onClick={(e)=>this.onSave(e)} className="right">Save</Button>
           </Row>
