@@ -12,7 +12,11 @@ const initialState = {
   onUploadSlip : false,
   is_upload_success : false,
   onDeleteSlip : false,
-  is_delete_slip_success :false
+  is_delete_slip_success :false,
+  onPay : false,
+  is_pay_success : false,
+  onDeleteItemInCart: false,
+  is_delete_item_success : false
 }
 const validator = (state=initialState,action)=>{
   switch(action.type) {
@@ -73,6 +77,26 @@ const validator = (state=initialState,action)=>{
       return Object.assign({}, state, {
           onUploadSlip : true,
           is_upload_success:false
+        })
+    case 'PAY_CART_SUCCESS':
+      return Object.assign({}, state, {
+          onPay : true,
+          is_pay_success:true
+        })
+    case 'PAY_CART_FAILURE':
+      return Object.assign({}, state, {
+          onPay : true,
+          is_pay_success:false
+        })
+    case 'DELETE_CART_SUCCESS':
+      return Object.assign({}, state, {
+          onDeleteItemInCart : true,
+          is_delete_item_success:true
+        })
+    case 'DELETE_CART_FAILURE':
+      return Object.assign({}, state, {
+          onDeleteItemInCart : true,
+          is_delete_item_success:false
         })
     case 'RESET_VALIDATOR':
       return initialState

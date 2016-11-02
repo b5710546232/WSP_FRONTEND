@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Modal,Button,Table,Row,Col} from 'react-materialize'
 import {payItemInCart} from '../../../../actions/CartAction'
 import {logout} from '../../../../actions/UserAction'
+import {loadValidator,resetValidator} from '../../../../actions/ValidatorAction'
 import {connect} from 'react-redux'
 import CartInfo from './CartInfo'
 
@@ -18,9 +19,21 @@ class Summarize extends Component {
     console.log('confirm',this.props);
   }
   shouldComponentUpdate(nextProps){
-    this.props.close()
-    $('#cart_modal').closeModal();
     return this.props.cart!==nextProps
+  }
+  componentDidUpdate(){
+    if (this.props.validator.onPay){
+      if (this.props.validator.is_pay_success){
+        Materialize.toast('Item in cart is paid!', 4000,'light-blue')
+        this.props.resetValidator()
+        this.props.close()
+        $('#cart_modal').closeModal();
+      }else {
+        Materialize.toast('Item in cart paid failed!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+
   }
   render() {
     let total = 0
@@ -92,7 +105,13 @@ const mapDispatchToProps = (dispatch) => {
     },
     logout:()=>{
       dispatch(logout())
-    }
+    },
+    loadValidator:()=>(
+      dispatch(loadValidator())
+    ),
+    resetValidator:()=>(
+      dispatch(resetValidator())
+    )
 
   }
 }

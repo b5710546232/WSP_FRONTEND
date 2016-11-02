@@ -3,6 +3,7 @@ import {Row,Button,Input,Col} from 'react-materialize'
 import {connect} from 'react-redux'
 import {loadAddressList,createAddress} from '../../../../actions/AddressAction'
 import {loadPaymentMethodList} from '../../../../actions/PaymentMethodAction'
+import {loadValidator,resetValidator} from '../../../../actions/ValidatorAction'
 
 class PaymentInfo extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class PaymentInfo extends Component {
     let token = this.props.user.accessToken
     this.props.loadAddressList(token)
     this.props.loadPaymentMethodList(token)
+    this.props.loadValidator()
   }
   onCancel(e) {
     e.preventDefault()
@@ -49,13 +51,34 @@ class PaymentInfo extends Component {
     this.props.onCreate(data,token)
     this.setState({select_address:null,select_method:null,add_address:null})
   }
+  shouldComponentUpdate(nextProps){
+    return this.props.address!==nextProps
+  }
+  componentDidUpdate(){
+    if (this.props.validator.onCreateAddress){
+      if (this.props.validator.is_create_address_success){
+        Materialize.toast('New Address is created succcessful!', 4000,'light-blue')
+        this.props.resetValidator()
+        this.setState({select_address:null,edit_address:null,add_address:null})
+      }else {
+        Materialize.toast('New Address is created failed!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+  }
   onConfirm(e){
     e.preventDefault()
     let select_method = this.refs.form.select_method.value
     let select_address = this.refs.form.select_address.value
-    console.log(select_method);
-    console.log(select_address);
-    this.props.confirm(select_address,select_method)
+    if (select_method===''||select_method===null){
+      Materialize.toast('Payment Method is empty!', 4000,'light-blue')
+    }
+    if (select_address===''||select_address===null){
+      Materialize.toast('Select Address is empty!', 4000,'light-blue')
+    }
+    if (!(select_method===''||select_method===null)&&!(select_address===''||select_address===null)){
+      this.props.confirm(select_address,select_method)
+    }
   }
   render(){
     return (
@@ -118,6 +141,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     onCreate: (data,token)=>{
       dispatch(createAddress(data,token))
+    },
+    loadValidator:()=>{
+      dispatch(loadValidator())
+    },
+    resetValidator:()=>{
+      dispatch(resetValidator())
     }
   }
 }
