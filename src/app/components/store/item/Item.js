@@ -7,14 +7,14 @@ export default class Item extends Component {
       <Col s={12} m={5} l={4}>
         <Card className='small hoverable'
           header={<CardTitle
-            image={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+this.props.image}>{this.props.name}
+            image={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+this.props.image+'?'+Math.random()}>{this.props.name}
           </CardTitle>}
           actions={<ItemInfoModal
             id = {this.props.id}
             name={this.props.name}
             description={this.props.description}
             price={this.props.price}
-            image={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+this.props.image}/>}>
+            image={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+this.props.image+'?'+Math.random()}/>}>
           {this.props.description}
         </Card>
       </Col>

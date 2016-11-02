@@ -20,7 +20,15 @@ const initialState = {
   onLogin : false,
   is_login_success:false,
   onRegister :false,
-  is_register_success:false
+  is_register_success:false,
+  onDeactiveUser : false,
+  is_deactive_user_success:false,
+  onReactiveUser : false,
+  is_reactive_user_success : false,
+  onAssignStaff : false,
+  is_assign_staff_success : false,
+  onFireStaff : false,
+  is_fire_staff_success : false
 }
 const validator = (state=initialState,action)=>{
   switch(action.type) {
@@ -122,6 +130,26 @@ const validator = (state=initialState,action)=>{
           onLogin : true,
           is_login_success:false
         })
+        case 'DEACTIVE_USER_ADMIN_SUCCESS':
+          return Object.assign({}, state, {
+              onDeactiveUser : true,
+              is_deactive_user_success:true
+            })
+        case 'DEACTIVE_USER_ADMIN_FAILURE':
+          return Object.assign({}, state, {
+              onDeactiveUser : true,
+              is_deactive_user_success:false
+            })
+        case 'REACTIVE_USER_ADMIN_SUCCESS':
+          return Object.assign({}, state, {
+              onReactiveUser : true,
+              is_reactive_user_success : true
+            })
+        case 'REACTIVE_USER_ADMIN_FAILURE':
+          return Object.assign({}, state, {
+              onReactiveUser : true,
+              is_reactive_user_success:false
+            })
     case 'RESET_VALIDATOR':
       return initialState
     default:
