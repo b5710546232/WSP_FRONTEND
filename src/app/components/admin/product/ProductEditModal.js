@@ -99,7 +99,7 @@ class ProductEditModal extends Component {
           <Input label="Product Name" name="name" defaultValue={this.props.add? "":this.props.select_product.name} s={12}/>
           <div className="input-field col s12">
             <textarea name="product_description" id="product_description" className="materialize-textarea" ></textarea>
-            <label for="product_description">Product Description</label>
+            <label className={this.props.add? "":"active"} for="product_description">Product Description</label>
           </div>
           <Input type="number" label="Product Price" name="price" defaultValue={this.props.add? "":this.props.select_product.price} s={12}/>
           <Row>

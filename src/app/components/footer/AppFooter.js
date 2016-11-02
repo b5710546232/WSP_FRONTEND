@@ -18,7 +18,7 @@ export default class AppFooter extends Component {
 
   render() {
     return (
-      <Footer copyrights="&copy; 2016 Copywrong Powered by Star Burst Stream"
+      <Footer copyrights="&copy; 2016 Copyrights Powered by Star Burst Stream"
 
         links={
           <ul>
