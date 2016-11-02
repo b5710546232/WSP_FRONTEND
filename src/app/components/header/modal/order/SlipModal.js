@@ -3,6 +3,7 @@ import {Modal,Button,Row} from 'react-materialize'
 import {connect} from 'react-redux'
 import {uploadImage} from '../../../../aws/aws.js'
 import {uploadTransferSlip,deleteTransferSlip} from '../../../../actions/OrderAction'
+import {loadValidator,resetValidator} from '../../../../actions/ValidatorAction'
 
 class SlipModal extends Component {
   onUpload(e){
@@ -21,6 +22,30 @@ class SlipModal extends Component {
     this.props.deleteTransferSlip(this.props.order.id,localStorage.token)
     $('#slip'+this.props.order.id).closeModal();
   }
+  shouldComponentUpdate(nextProps){
+    return this.props.order!==nextProps
+  }
+  componentDidUpdate(){
+    if (this.props.validator.onUploadSlip){
+      if (this.props.validator.is_upload_success){
+        Materialize.toast('Slip #'+this.props.order.id+' is uploaded!', 4000,'light-blue')
+        this.props.resetValidator()
+        $('#img-preview-slip').attr('src',"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+this.props.order.transfer_slip+'?'+Math.random())
+      }else {
+        Materialize.toast('Slip #'+this.props.order.id+' uploaded failed!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+    if (this.props.validator.onDeleteSlip){
+      if (this.props.validator.is_delete_slip_success){
+        Materialize.toast('Slip #'+this.props.order.id+' is deleted!', 4000,'light-blue')
+        this.props.resetValidator()
+      }else {
+        Materialize.toast('Slip #'+this.props.order.id+' deleted failed!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+  }
   render(){
     return (
       <Modal
@@ -32,7 +57,7 @@ class SlipModal extends Component {
         >
         <div>
           <Row>
-            <img className="responsive-img" src={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+this.props.order.transfer_slip}></img>
+            <img id="img-preview-slip" className="responsive-img" src={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+this.props.order.transfer_slip+'?'+Math.random()}></img>
           </Row>
           {this.props.read_only?
             <div></div>:
@@ -70,6 +95,12 @@ const mapDispatchToProps = (dispatch) => {
     ),
     deleteTransferSlip:(id,token)=>(
       dispatch(deleteTransferSlip(id,token))
+    ),
+    loadValidator:()=>(
+      dispatch(loadValidator())
+    ),
+    resetValidator:()=>(
+      dispatch(resetValidator())
     )
   }
 }

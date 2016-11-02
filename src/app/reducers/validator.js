@@ -54,6 +54,26 @@ const validator = (state=initialState,action)=>{
           onEditUser : true,
           is_edit_user_success:false
         })
+    case 'DELETE_TRANSFER_SLIP_SUCCESS':
+      return Object.assign({}, state, {
+          onDeleteSlip : true,
+          is_delete_slip_success:true
+        })
+    case 'DELETE_TRANSFER_SLIP_FAILURE':
+      return Object.assign({}, state, {
+          onDeleteSlip : true,
+          is_delete_slip_success:false
+        })
+    case 'UPLOAD_TRANSFER_SLIP_SUCCESS':
+      return Object.assign({}, state, {
+          onUploadSlip : true,
+          is_upload_success:true
+        })
+    case 'UPLOAD_TRANSFER_SLIP_FAILURE':
+      return Object.assign({}, state, {
+          onUploadSlip : true,
+          is_upload_success:false
+        })
     case 'RESET_VALIDATOR':
       return initialState
     default:

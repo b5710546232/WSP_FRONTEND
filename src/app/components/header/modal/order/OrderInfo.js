@@ -3,6 +3,7 @@ import {Row,Col,Button,Table} from 'react-materialize'
 import {connect} from 'react-redux'
 import {uploadImage} from '../../../../aws/aws.js'
 import {uploadTransferSlip} from '../../../../actions/OrderAction'
+import {loadValidator,resetValidator} from '../../../../actions/ValidatorAction'
 import SlipModal from './SlipModal'
 class OrderInfo extends Component {
   componentDidMount(){
@@ -11,6 +12,7 @@ class OrderInfo extends Component {
         accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
       });
     });
+    this.props.loadValidator()
   }
 
   onUpload(e){
@@ -23,6 +25,21 @@ class OrderInfo extends Component {
       transfer_slip : name
     }
     this.props.uploadTransferSlip(data,this.props.order.id,localStorage.token)
+  }
+  shouldComponentUpdate(nextProps){
+    return this.props.order!==nextProps
+  }
+  componentDidUpdate(){
+    if (this.props.validator.onUploadSlip){
+      if (this.props.validator.is_upload_success){
+        Materialize.toast('Slip #'+this.props.order.id+' is uploaded!', 4000,'light-blue')
+        this.props.resetValidator()
+        this.forceUpdate()
+      }else {
+        Materialize.toast('Slip #'+this.props.order.id+' upload failed!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
   }
   render(){
     let itemList = this.props.itemlines.filter(itemline=>itemline.order===this.props.order.id)
@@ -120,6 +137,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     uploadTransferSlip:(data,id,token)=>(
       dispatch(uploadTransferSlip(data,id,token))
+    ),
+    loadValidator:()=>(
+      dispatch(loadValidator())
+    ),
+    resetValidator:()=>(
+      dispatch(resetValidator())
     )
   }
 }
