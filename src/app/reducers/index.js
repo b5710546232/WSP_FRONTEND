@@ -9,6 +9,7 @@ import address from './address'
 import admin from './admin'
 import filters from './filters'
 import itemlines from './itemlines'
+import validator from './validator'
 import { routerReducer } from 'react-router-redux'
 
 const rootReducer = combineReducers({
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   categories,
   filters,
   admin,
-  itemlines
+  itemlines,
+  validator
 })
 export default rootReducer

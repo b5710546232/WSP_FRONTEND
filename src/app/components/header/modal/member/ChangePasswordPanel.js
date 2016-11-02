@@ -1,14 +1,27 @@
 import React, { Component } from 'react'
 import {Input,Row,Col,Button} from 'react-materialize'
 import {changePassword,loadUserdata} from '../../../../actions/UserAction'
+import {resetValidator,loadValidator} from '../../../../actions/ValidatorAction'
 import {connect} from 'react-redux'
 
 class ChangePasswordPanel extends Component {
   componentDidMount(){
     this.props.loadUserdata(localStorage.token)
+    this.props.loadValidator()
   }
   shouldComponentUpdate(nextProps){
-    return this.props.user !== nextProps.user
+    return this.props.user!==nextProps
+  }
+  componentDidUpdate(){
+    if (this.props.validator.onChangingPassword){
+      if (this.props.user.change_password_success){
+        Materialize.toast('Password is changed succcessful!', 4000,'light-blue')
+        this.props.resetValidator()
+      }else {
+        Materialize.toast('Password is changed failed!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
   }
   onChangePassword(e) {
     e.preventDefault()
@@ -16,7 +29,7 @@ class ChangePasswordPanel extends Component {
     let re_password = this.refs.form.re_password.value
     let new_password = this.refs.form.new_password.value
     if (re_password!=new_password){
-      Materialize.toast('Password doesn\'t matched', 4000)
+      Materialize.toast('Password doesn\'t matched!', 4000,'light-blue')
     }else {
       let data = {
         password: password,
@@ -53,6 +66,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     loadUserdata:(token)=>{
       dispatch(loadUserdata(token))
+    },
+    resetValidator:()=>{
+      dispatch(resetValidator())
+    },
+    loadValidator:()=>{
+      dispatch(loadValidator())
     }
   }
 }

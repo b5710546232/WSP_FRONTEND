@@ -147,6 +147,7 @@ export const changePassword= (data,token) => (
             type: 'CHANGE_PASSWORD_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadUserdata(token))
                 return data
               })
             }
@@ -177,7 +178,6 @@ export const editUser= (data,id,token) => (
             type: 'EDIT_USER_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
-                console.log(data);
                 return data
               })
             }
