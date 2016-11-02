@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import '../../../../assets/scss/admin.scss'
 import ProductBody from './ProductBody'
-import {deactiveCategory,reactiveCategory} from '../../../actions/AdminAction'
 import CategoryEditForm from './CategoryEditForm'
-import CategoryEditModal from './CategoryEditModal'
 class CategoryBody extends Component {
 
   componentDidMount(){
@@ -14,14 +12,6 @@ class CategoryBody extends Component {
       });
     });
 
-  }
-  deactiveCategory(e,id){
-    e.preventDefault()
-    this.props.deactiveCategory(id,localStorage.token)
-  }
-  reactiveCategory(e,id){
-    e.preventDefault()
-    this.props.reactiveCategory(id,localStorage.token)
   }
   shouldComponentUpdate(nextProps){
     $('#header-form').removeClass("acitve")
@@ -58,14 +48,13 @@ class CategoryBody extends Component {
                 <div className="collapsible-header">
                   <div className="left">{category.name}</div>
                   <div className="right">
-                    {category.is_active?
-                      <i className="material-icons done-icon" onClick={(e)=>this.deactiveCategory(e,category.id)}>done</i> : <i className="material-icons clear-icon" onClick={(e)=>this.reactiveCategory(e,category.id)}>clear</i>
-                    }
-                    <CategoryEditModal select_category={category} key={category.id}/>
+                  {category.is_active?
+                    <span className="active-text">Active</span> : <span className="deactive-text">Deactive</span>
+                  }
                   </div>
                 </div>
                 <div className="collapsible-body white">
-                <ProductBody select_product={this.findProductList(category.id)} select_category={category.id}/>
+                <ProductBody select_product={this.findProductList(category.id)} select_category={category}/>
                 </div>
               </li>
             )
@@ -81,8 +70,6 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    deactiveCategory:(id,token)=>(dispatch(deactiveCategory(id,token))),
-    reactiveCategory:(id,token)=>(dispatch(reactiveCategory(id,token)))
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(CategoryBody)

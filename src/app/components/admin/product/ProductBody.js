@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import {Row,Col} from 'react-materialize'
 import ProductEditModal from './ProductEditModal'
+import CategoryEditModal from './CategoryEditModal'
 // import '../../../../assets/scss/admin.scss'
-import {deactiveProduct,reactiveProduct} from '../../../actions/AdminAction'
+import {deactiveProduct,reactiveProduct,deactiveCategory,reactiveCategory} from '../../../actions/AdminAction'
 class ProductBody extends Component {
   constructor(props){
     super(props)
@@ -15,9 +17,34 @@ class ProductBody extends Component {
     e.preventDefault()
     this.props.reactiveProduct(id,localStorage.token)
   }
+  deactiveCategory(e,id){
+    e.preventDefault()
+    this.props.deactiveCategory(id,localStorage.token)
+  }
+  reactiveCategory(e,id){
+    e.preventDefault()
+    this.props.reactiveCategory(id,localStorage.token)
+  }
   render() {
     return(
       <li>
+      <br/>
+      <Row>
+        <Col s={1} m={1}></Col>
+        <Col s={9} m={9}>
+          <span>Edit Category</span>
+        </Col>
+        <Col s={1} m={1}>
+          {this.props.select_category.is_active?
+            <a className="btn-floating green"><i className="material-icons done-icon" onClick={(e)=>this.deactiveCategory(e,this.props.select_category.id)}>done</i></a> : <a className="btn-floating red"><i className="material-icons clear-icon" onClick={(e)=>this.reactiveCategory(e,this.props.select_category.id)}>clear</i></a>
+          }
+        </Col>
+        <Col s={1} m={1}>
+          <CategoryEditModal select_category={this.props.select_category} key={this.props.select_category.id}/>
+        </Col>
+
+      </Row>
+      <br/>
       <table className="table-responsive">
         <thead>
           <tr>
@@ -26,7 +53,7 @@ class ProductBody extends Component {
               <th data-field="description">Description</th>
               <th data-field="Price">Price</th>
               <th data-field="is_active">Active</th>
-              <th data-field="edit"><ProductEditModal add={true} product_key="0" select_category={this.props.select_category}/></th>
+              <th data-field="edit"><ProductEditModal add={true} product_key="0" select_category={this.props.select_category.id}/></th>
           </tr>
         </thead>
         <tbody>
@@ -38,7 +65,7 @@ class ProductBody extends Component {
                   <td>{product.description}</td>
                   <td>{product.price}</td>
                   <td>{product.is_active ? <i onClick={(e)=>this.deactiveProduct(e,product.id)} className="material-icons done-icon">done</i> : <i onClick={(e)=>this.reactiveProduct(e,product.id)} className="material-icons clear-icon">clear</i>}</td>
-                  <td><ProductEditModal select_product={product} product_key={product.id} select_category={this.props.select_category}/></td>
+                  <td><ProductEditModal select_product={product} product_key={product.id} select_category={this.props.select_category.id}/></td>
                 </tr>
             )
           )}
@@ -54,7 +81,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     deactiveProduct:(id,token)=>(dispatch(deactiveProduct(id,token))),
-    reactiveProduct:(id,token)=>(dispatch(reactiveProduct(id,token)))
+    reactiveProduct:(id,token)=>(dispatch(reactiveProduct(id,token))),
+    deactiveCategory:(id,token)=>(dispatch(deactiveCategory(id,token))),
+    reactiveCategory:(id,token)=>(dispatch(reactiveCategory(id,token)))
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(ProductBody)

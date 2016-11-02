@@ -20,13 +20,13 @@ class CategoryEditModal extends Component {
       <Modal
         id = {"category-edit-modal"+this.props.select_category.id}
         header={this.props.select_category.name}
-        trigger={<i className="material-icons " >mode_edit</i>}>
+        trigger={<a className="btn-floating blue"><i className="material-icons">mode_edit</i></a>}>
         <form ref="form">
           <Row>
             <Input type="text" label="Category Name" s={12} name="name" defaultValue={this.props.select_category? this.props.select_category.name:""}></Input>
           </Row>
           <Row>
-            <Input type="text" label="Description" s={12} name="description" defaultValue={this.props.select_category? this.props.select_category.description.name:""}></Input>
+            <Input type="text" label="Description" s={12} name="description" defaultValue={this.props.select_category? this.props.select_category.description:""}></Input>
           </Row>
           <Row className="right-align">
             <Col s={12}>
