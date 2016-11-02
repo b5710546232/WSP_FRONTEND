@@ -35,6 +35,24 @@ class MemberBody extends Component {
         this.props.resetValidator()
       }
     }
+    if (this.props.validator.onFireStaff){
+      if (this.props.validator.is_fire_staff_success){
+        Materialize.toast('Fire user staff success!', 4000,'light-blue')
+        this.props.resetValidator()
+      }else {
+        Materialize.toast('Fire user staff fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+    if (this.props.validator.onAssignStaff){
+      if (this.props.validator.is_assign_staff_success){
+        Materialize.toast('Assign user success!', 4000,'light-blue')
+        this.props.resetValidator()
+      }else {
+        Materialize.toast('Assign user fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
   }
   deactiveUser(e,id){
     e.preventDefault()

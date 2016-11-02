@@ -150,6 +150,26 @@ const validator = (state=initialState,action)=>{
               onReactiveUser : true,
               is_reactive_user_success:false
             })
+            case 'ASSIGN_STAFF_ADMIN_SUCCESS':
+              return Object.assign({}, state, {
+                  onAssignStaff : true,
+                  is_assign_staff_success:true
+                })
+            case 'ASSIGN_STAFF_ADMIN_FAILURE':
+              return Object.assign({}, state, {
+                  onAssignStaff : true,
+                  is_assign_staff_success:false
+                })
+            case 'FIRE_STAFF_ADMIN_SUCCESS':
+              return Object.assign({}, state, {
+                  onFireStaff : true,
+                  is_fire_staff_success : true
+                })
+            case 'FIRE_STAFF_ADMIN_FAILURE':
+              return Object.assign({}, state, {
+                  onFireStaff : true,
+                  is_fire_staff_success:false
+                })
     case 'RESET_VALIDATOR':
       return initialState
     default:
