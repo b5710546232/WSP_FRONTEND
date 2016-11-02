@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {Row,Input,Col,Button} from 'react-materialize'
 import {connect} from 'react-redux'
 import {editUser} from '../../../../actions/UserAction'
+import {resetValidator,loadValidator} from '../../../../actions/ValidatorAction'
+
 class MemberInfo extends Component {
   constructor(props) {
     super(props);
@@ -24,11 +26,26 @@ class MemberInfo extends Component {
       last_name: last_name,
       email : email
     }
-    this.changeState(false)
     this.props.editUser(data,id,token)
+  }
+  shouldComponentUpdate(nextProps){
+    return this.props.user!==nextProps
+  }
+  componentDidUpdate(){
+    if (this.props.validator.onEditUser){
+      if (this.props.validator.is_edit_user_success){
+        Materialize.toast(this.props.user.username+' is edited!', 4000,'light-blue')
+        this.props.resetValidator()
+        this.changeState(false)
+      }else {
+        Materialize.toast(this.props.user.username+' is edited failed!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
   }
   componentDidMount(){
     this.props.onChange()
+    this.props.loadValidator()
   }
   render(){
     return (
@@ -73,6 +90,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     editUser: (data,id,token) => {
       dispatch(editUser(data,id,token))
+    },
+    loadValidator:()=>{
+      dispatch(loadValidator())
+    },
+    resetValidator:()=>{
+      dispatch(resetValidator())
     }
   }
 }

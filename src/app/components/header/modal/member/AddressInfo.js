@@ -65,21 +65,21 @@ class AddressInfo extends Component {
   componentDidUpdate(){
     if (this.props.validator.onEditAddress){
       if (this.props.validator.is_edit_address_success){
-        Materialize.toast('Address is updated succcessful!', 4000,'light-blue')
+        Materialize.toast(this.state.select_address.address_number+' ,'+this.state.select_address.province+' is updated succcessful!', 4000,'light-blue')
         this.props.resetValidator()
         this.setState({select_address:null,edit_address:null,add_address:null})
       }else {
-        Materialize.toast('Address is updated failed!', 4000,'light-blue')
+        Materialize.toast(this.state.select_address.address_number+' ,'+this.state.select_address.province+'is updated failed!', 4000,'light-blue')
         this.props.resetValidator()
       }
     }
     if (this.props.validator.onCreateAddress){
       if (this.props.validator.is_create_address_success){
-        Materialize.toast('Address is created succcessful!', 4000,'light-blue')
+        Materialize.toast('New Address is created succcessful!', 4000,'light-blue')
         this.props.resetValidator()
         this.setState({select_address:null,edit_address:null,add_address:null})
       }else {
-        Materialize.toast('Address is created failed!', 4000,'light-blue')
+        Materialize.toast('New Address is created failed!', 4000,'light-blue')
         this.props.resetValidator()
       }
     }

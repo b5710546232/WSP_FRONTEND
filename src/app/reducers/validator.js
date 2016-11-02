@@ -7,6 +7,12 @@ const initialState = {
   onEditAddress : false,
   is_create_address_success : false,
   is_edit_address_success : false,
+  onEditUser:false,
+  is_edit_user_success : false,
+  onUploadSlip : false,
+  is_upload_success : false,
+  onDeleteSlip : false,
+  is_delete_slip_success :false
 }
 const validator = (state=initialState,action)=>{
   switch(action.type) {
@@ -37,6 +43,16 @@ const validator = (state=initialState,action)=>{
       return Object.assign({}, state, {
           onEditAddress : true,
           is_edit_address_success:false
+        })
+    case 'EDIT_USER_SUCCESS':
+      return Object.assign({}, state, {
+          onEditUser : true,
+          is_edit_user_success:true
+        })
+    case 'EDIT_USER_FAILURE':
+      return Object.assign({}, state, {
+          onEditUser : true,
+          is_edit_user_success:false
         })
     case 'RESET_VALIDATOR':
       return initialState
