@@ -57,15 +57,17 @@ class OrderInfo extends Component {
               }
             </Col>
           </Row>
+          <br/>
           <Row>
             <Col s={12} m={12}>
-              Payment Method : {this.props.paymentMethods.find((method)=> method.id===this.props.order.method).name}
+              <span className="boldtext">Payment Method : </span>{this.props.paymentMethods.find((method)=> method.id===this.props.order.method).name}
             </Col>
           </Row>
+          <br/>
           <Row>
             <Col s={12} m={6}>
               <Row>
-                Address :
+                <span className="boldtext">Address :</span>
               </Row>
               <Row>
                 {address.address_number} {address.village} {address.road} {address.sub_distinct} {address.distinct} {address.province} {address.country} {address.zipcode}
@@ -77,6 +79,7 @@ class OrderInfo extends Component {
               }
             </Col>
           </Row>
+          <br/>
           <Row>
             <Col s={12}>
               <Table className="center">

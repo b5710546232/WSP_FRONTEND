@@ -30,10 +30,11 @@ class CategoryEditForm extends Component {
               <Input type="text" label="Description" s={12} name="description" defaultValue={this.props.select_category? this.props.description.name:""}></Input>
             </Row>
             <Row>
-              <Col s={12}>
+              <Col s={12} className="center-align">
                 <Button onClick={(e)=>this.onSave(e)} waves="light">Save</Button>
               </Col>
             </Row>
+            <br/>
           </form>
         </Col>
       </div>

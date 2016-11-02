@@ -62,6 +62,7 @@ class AddressInfo extends Component {
   render(){
     return (
       <div>
+        <br/>
         <Row>
           <form ref="form">
             <Input s={12} type='select' name="select_address" label="Select Address" ref="select_address" >
@@ -74,22 +75,25 @@ class AddressInfo extends Component {
               }
             </Input>
             {!this.state.select_address?
-              <Col s={12} className="center"><Button waves="light" className="center" onClick={(e)=>this.onEditSelect(e)}>View Address</Button><Button waves="light" className="center" onClick={(e)=>this.onAddSelect(e)}>Add New Address</Button></Col>:<div></div>
+              <Col s={12} className="center"><Button waves="light" className="center" onClick={(e)=>this.onEditSelect(e)}>View Address</Button>&nbsp;<Button waves="light" className="center" onClick={(e)=>this.onAddSelect(e)}>Add New Address</Button></Col>:<div></div>
             }
           </form>
         </Row>
+        <br/>
         { this.state.select_address?
+          <div>
+          <Row>
           <form ref="edit_form">
             <Input s={12} type="text" name="address_number" label="Address Number" defaultValue={this.state.select_address.address_number}></Input>
             <Input s={12} type="text" name="village" label="Village" defaultValue={this.state.select_address.village}></Input>
             <Input s={12} type="text" name="road" label="Road" defaultValue={this.state.select_address.village}></Input>
-            <Input s={12} type="text" name="sub_distinct" label="Sub-Distinct" defaultValue={this.state.select_address.sub_distinct}></Input>
-            <Input s={12} type="text" name="distinct" label="Distinct" defaultValue={this.state.select_address.distinct}></Input>
+            <Input s={12} type="text" name="sub_distinct" label="Sub-District" defaultValue={this.state.select_address.sub_distinct}></Input>
+            <Input s={12} type="text" name="distinct" label="District" defaultValue={this.state.select_address.distinct}></Input>
             <Input s={12} type="text" name="province" label="Province" defaultValue={this.state.select_address.province}></Input>
             <Input s={12} type="text" name="country" label="Country" defaultValue={this.state.select_address.country}></Input>
             <Input s={12} type="number" name="zipcode" label="Zipcode" defaultValue={this.state.select_address.zipcode}></Input>
-            <Col s={12} className="center"><Button waves="light" onClick={(e)=>this.onSave(e)}>Save</Button><Button waves="light" onClick={(e)=>this.onCancel(e)}>Cancel</Button></Col>
-          </form>:<div></div>
+            <Col s={12} className="center"><Button waves="light" onClick={(e)=>this.onSave(e)}>Save</Button>&nbsp;<Button waves="light" onClick={(e)=>this.onCancel(e)}>Cancel</Button></Col>
+          </form></Row><br/></div>:<div></div>
         }
       </div>
     )

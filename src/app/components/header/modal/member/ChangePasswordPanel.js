@@ -30,12 +30,16 @@ class ChangePasswordPanel extends Component {
   render(){
 
     return (
+      <div>
+      <br/>
       <form ref="form">
         <Row><Input type="password" name="password" label="Password" s={12} /></Row>
         <Row><Input type="password" name="new_password" label="New Password" s={12} /></Row>
         <Row><Input type="password" name="re_password" label="Re-Password" s={12} /></Row>
-        <Row><Col s={12}><Button waves="light" onClick={(e)=>this.onChangePassword(e)}>Change</Button></Col></Row>
+        <Row className="right-align"><Col s={12}><Button waves="light" onClick={(e)=>this.onChangePassword(e)}>Change</Button></Col></Row>
+        <br/>
       </form>
+      </div>
     )
   }
 }

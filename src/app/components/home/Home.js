@@ -29,19 +29,21 @@ export default class Home extends Component {
           }
           />
         <ParallaxSection
-          position="left"
+          position="right"
           title="Explose your imagination!"
           subtitle="Design your own bottle!"
           background="src/assets/media/images/2.png"
           height = "450px"
           margin = "3%"
           button={
+            <div className="right-align">
             <Link
-              className="waves-effect waves-light btn-large"
+              className="waves-effect waves-light btn-large GotoDesignBtn"
               to={{ pathname:'/Design' }}
               >
               Go to Design
             </Link>
+            </div>
           }
           />
       </div>
