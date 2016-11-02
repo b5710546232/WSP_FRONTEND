@@ -2,7 +2,7 @@ const webpack = require("webpack");
 const path = require("path");
 const autoprefixer = require('autoprefixer');
 if (global.Promise == null) {
-    global.Promise = require('es6-promise')
+  global.Promise = require('es6-promise')
 }
 module.exports = {
   // devtool: 'eval-cheap-module-source-map',
@@ -39,24 +39,24 @@ module.exports = {
     }
   },
 }
-
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#eval'
+  module.exports.devtool = '#source-map'
   console.log('production_safe');
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
-      },
-      new webpack.optimize.UglifyJsPlugin({
-                  sourceMap: false,
-                  minimize: true,
-                  compress: {
-                      drop_debugger: true,
-                      warnings: false,
-                      drop_console: true
-                  }
-      })
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: false,
+      minimize: true,
+      compress: {
+        drop_debugger: true,
+        warnings: false,
+        drop_console: true
+      }
+    })
   ])
 }
 else{
@@ -67,4 +67,34 @@ else{
       }
     })])
 
-}
+  }
+
+  // //
+  // if (process.env.NODE_ENV === 'production') {
+  //   module.exports.devtool = '#eval'
+  //   console.log('production_safe');
+  //   module.exports.plugins = (module.exports.plugins || []).concat([
+  //     new webpack.DefinePlugin({
+  //       'process.env': {
+  //         NODE_ENV: '"production"'
+  //       }),
+  //       new webpack.optimize.UglifyJsPlugin({
+  //                   sourceMap: false,
+  //                   minimize: true,
+  //                   compress: {
+  //                       drop_debugger: true,
+  //                       warnings: false,
+  //                       drop_console: true
+  //                   }
+  //       })
+  //   ])
+  // }
+  // else{
+  //   module.exports.plugins = (module.exports.plugins || []).concat([
+  //     new webpack.DefinePlugin({
+  //       'process.env': {
+  //         NODE_ENV: '"development"'
+  //       }
+  //     })])
+  //
+  // }
