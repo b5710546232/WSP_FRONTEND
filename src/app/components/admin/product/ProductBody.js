@@ -26,7 +26,7 @@ class ProductBody extends Component {
               <th data-field="description">Description</th>
               <th data-field="Price">Price</th>
               <th data-field="is_active">Active</th>
-              <th data-field="edit"><ProductEditModal add={true} select_category={this.props.select_category}/></th>
+              <th data-field="edit"><ProductEditModal add={true} product_key="0" select_category={this.props.select_category}/></th>
           </tr>
         </thead>
         <tbody>
@@ -38,7 +38,7 @@ class ProductBody extends Component {
                   <td>{product.description}</td>
                   <td>{product.price}</td>
                   <td>{product.is_active ? <i onClick={(e)=>this.deactiveProduct(e,product.id)} className="material-icons done-icon">done</i> : <i onClick={(e)=>this.reactiveProduct(e,product.id)} className="material-icons clear-icon">clear</i>}</td>
-                  <td><ProductEditModal select_product={product} key={product.id} select_category={this.props.select_category}/></td>
+                  <td><ProductEditModal select_product={product} product_key={product.id} select_category={this.props.select_category}/></td>
                 </tr>
             )
           )}
