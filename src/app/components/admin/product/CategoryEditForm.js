@@ -12,12 +12,7 @@ class CategoryEditForm extends Component {
       name:name,
       description:description
     }
-    if (this.props.add){
-      this.props.createCategory(data,localStorage.token)
-    }else {
-      this.props.updateCategory(this.props.select_category.id,data,localStorage.token)
-    }
-
+    this.props.createCategory(data,localStorage.token)
   }
   render(){
     var margin = {

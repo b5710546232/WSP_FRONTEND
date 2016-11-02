@@ -212,6 +212,7 @@ export const updateProduct = (id,data,token) => (
             type: 'UPDATE_PRODUCT_ADMIN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadProduct(token))
                 return data
               })
             }
@@ -283,6 +284,7 @@ export const updateCategory = (id,data,token) => (
             type: 'UPDATE_CATEGORY_ADMIN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadCategory(token))
                 return data
               })
             }
