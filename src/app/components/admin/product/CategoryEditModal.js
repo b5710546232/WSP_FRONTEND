@@ -28,7 +28,7 @@ class CategoryEditModal extends Component {
           <Row>
             <Input type="text" label="Description" s={12} name="description" defaultValue={this.props.select_category? this.props.select_category.description.name:""}></Input>
           </Row>
-          <Row>
+          <Row className="right-align">
             <Col s={12}>
               <Button onClick={(e)=>this.onSave(e)} waves="light">Save</Button>
             </Col>

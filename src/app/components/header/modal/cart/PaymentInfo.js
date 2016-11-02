@@ -93,9 +93,10 @@ class PaymentInfo extends Component {
             <Input s={12} type="text" name="province" label="Province" ></Input>
             <Input s={12} type="text" name="country" label="Country" ></Input>
             <Input s={12} type="number" name="zipcode" label="Zipcode"></Input>
-            <Col s={12} className="center"><Button waves="light" onClick={(e)=>this.onSave(e)}>Save</Button><Button waves="light" onClick={(e)=>this.onCancel(e)}>Cancel</Button></Col>
+            <Col s={12} className="center"><Button waves="light" onClick={(e)=>this.onSave(e)}>Save</Button>&nbsp;<Button waves="light" onClick={(e)=>this.onCancel(e)}>Cancel</Button></Col>
           </form>
         }
+        <br/>
         <Row>
           <Button waves="light" className="left" onClick={this.props.back}>Back</Button>
           {this.props.address.length>0&&this.props.paymentMethods.length>0? <Button waves="light" className="right" onClick={(e)=>this.onConfirm(e)}>Confirm</Button>:<div></div>}

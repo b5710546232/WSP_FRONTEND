@@ -57,10 +57,11 @@ class OrderItem extends Component {
         </div>
         <div className="collapsible-body white">
           <div style={margin}>
+            <br/>
             <Row>
               <div >
                 <Col s={12} m={6}>
-                  <span className="boldtext">Name:</span> {this.props.userorder.first_name} {this.props.userorder.last_name}
+                  <span className="boldtext">Name :</span> {this.props.userorder.first_name} {this.props.userorder.last_name}
                 </Col>
               </div>
               {this.props.order.transfer_slip!==''?
@@ -71,6 +72,7 @@ class OrderItem extends Component {
                 </div>:<div></div>
               }
             </Row>
+            <br/>
             <Row>
               <Col s={12} m={6}>
                 <span className="boldtext">Payment Method :</span> {this.getPaymentbyID(this.props.order.method).name}
@@ -83,9 +85,10 @@ class OrderItem extends Component {
                 </div>:<div></div>
               }
             </Row>
+            <br/>
             <Row>
               <Col s={12} m={5}>
-                <span className="boldtext">Address :</span>
+                <span className="boldtext">Address : </span>
                 {this.getAddressbyID(this.props.order.user).address_number} {this.getAddressbyID(this.props.order.user).village} {this.getAddressbyID(this.props.order.user).road} {this.getAddressbyID(this.props.order.user).sub_distinct} {this.getAddressbyID(this.props.order.user).distinct}
                 {this.getAddressbyID(this.props.order.user).province} {this.getAddressbyID(this.props.order.user).country} {this.getAddressbyID(this.props.order.user).zipcode}
               </Col>

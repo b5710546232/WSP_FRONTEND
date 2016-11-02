@@ -77,10 +77,11 @@ class MemberModal extends Component {
             <div className="collapsible-body"><AddressInfo/></div>
           </li>
         </ul>
+        <br/>
         <div className="row center">
           <Button waves="light" className="modal-close" onClick={
              (e)=>this.onLogout()
-           }>Logout</Button>
+           }>Logout</Button>&nbsp;
          {this.props.user.is_admin? <Link className="waves-effect waves-light btn modal-close" to={{ pathname:'/admin' }}>Admin</Link>:<div></div>}
         </div>
       </Modal>
