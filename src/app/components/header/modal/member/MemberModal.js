@@ -37,9 +37,14 @@ class MemberModal extends Component {
   }
   onLogout(){
     this.props.onLogout()
+    $('.button-collapse').sideNav('hide');
   }
   onEditPasswordSelect(){
     this.props.onEditPassword()
+  }
+  hideSideNav(e){
+    e.preventDefault()
+    $('.button-collapse').sideNav('hide');
   }
   render() {
     var margin = {
@@ -82,7 +87,7 @@ class MemberModal extends Component {
           <Button waves="light" className="modal-close" onClick={
              (e)=>this.onLogout()
            }>Logout</Button>&nbsp;
-         {this.props.user.is_admin? <Link className="waves-effect waves-light btn modal-close" to={{ pathname:'/admin' }}>Admin</Link>:<div></div>}
+         {this.props.user.is_admin? <Link className="waves-effect waves-light btn modal-close" onClick={(e)=>this.hideNav(e)} to={{ pathname:'/admin' }}>Admin</Link>:<div></div>}
         </div>
       </Modal>
     )
