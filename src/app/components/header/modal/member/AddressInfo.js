@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Row,Col,Button,Dropdown,Input,NavItem} from 'react-materialize'
 import {createAddress,editAddress,loadAddress,loadAddressList} from '../../../../actions/AddressAction'
+import {loadValidator,resetValidator} from '../../../../actions/ValidatorAction'
 import {connect} from 'react-redux'
 
 class AddressInfo extends Component {
@@ -13,6 +14,7 @@ class AddressInfo extends Component {
   componentDidMount(){
     let token = this.props.user.accessToken
     this.props.loadAddressList(token)
+    this.props.loadValidator()
   }
 
   onEditSelect(e){
@@ -56,9 +58,32 @@ class AddressInfo extends Component {
     }else {
       this.props.onCreate(data,token)
     }
-    this.setState({select_address:null,edit_address:null,add_address:null})
   }
-
+  shouldComponentUpdate(nextProps){
+    return this.props.address!==nextProps
+  }
+  componentDidUpdate(){
+    if (this.props.validator.onEditAddress){
+      if (this.props.validator.is_edit_address_success){
+        Materialize.toast('Address is updated succcessful!', 4000,'light-blue')
+        this.props.resetValidator()
+        this.setState({select_address:null,edit_address:null,add_address:null})
+      }else {
+        Materialize.toast('Address is updated failed!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+    if (this.props.validator.onCreateAddress){
+      if (this.props.validator.is_create_address_success){
+        Materialize.toast('Address is created succcessful!', 4000,'light-blue')
+        this.props.resetValidator()
+        this.setState({select_address:null,edit_address:null,add_address:null})
+      }else {
+        Materialize.toast('Address is created failed!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+  }
   render(){
     return (
       <div>
@@ -112,6 +137,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     onEdit: (data,token,id) =>{
       dispatch(editAddress(data,id,token))
+    },
+    loadValidator: ()=>{
+      dispatch(loadValidator())
+    },
+    resetValidator:()=>{
+      dispatch(resetValidator())
     }
   }
 }
