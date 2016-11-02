@@ -19,14 +19,18 @@ class MemberInfo extends Component {
     let first_name = this.refs.form.first_name.value
     let last_name = this.refs.form.last_name.value
     let email = this.refs.form.email.value
-    let token = this.props.user.accessToken
-    let id = this.props.user.userdata.id
-    let data = {
-      first_name: first_name,
-      last_name: last_name,
-      email : email
+    if (email.split('@').length!=2){
+      Materialize.toast('Invalid form of email', 4000,'light-blue')
+    }else {
+      let token = this.props.user.accessToken
+      let id = this.props.user.userdata.id
+      let data = {
+        first_name: first_name,
+        last_name: last_name,
+        email : email
+      }
+      this.props.editUser(data,id,token)
     }
-    this.props.editUser(data,id,token)
   }
   shouldComponentUpdate(nextProps){
     return this.props.user!==nextProps
