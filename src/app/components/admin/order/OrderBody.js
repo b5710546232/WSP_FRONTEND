@@ -44,7 +44,7 @@ class OrderBody extends Component {
                 <div className="collapsible-header">Awaiting shipment</div>
                 <div className="collapsible-body white">
                   <OrderList
-                    orderList={this.props.admin.order.filter((order)=>order.is_paid)}
+                    orderList={this.props.admin.order.filter((order)=>order.is_paid&&!order.is_shipped)}
                     />
                 </div>
               </li>
@@ -52,7 +52,7 @@ class OrderBody extends Component {
                 <div className="collapsible-header">Awaiting delivery</div>
                 <div className="collapsible-body white">
                   <OrderList
-                    orderList={this.props.admin.order.filter((order)=>order.is_shipped)}
+                    orderList={this.props.admin.order.filter((order)=>order.is_shipped&&!(order.status.split(" ")[2]==='(Successful)'))}
                     />
                 </div>
               </li>
@@ -60,7 +60,7 @@ class OrderBody extends Component {
                 <div className="collapsible-header">Done</div>
                 <div className="collapsible-body white">
                   <OrderList
-                    orderList={this.props.admin.order.filter((order)=>order.status.split(" ")[0]==='Accept')}
+                    orderList={this.props.admin.order.filter((order)=>order.status.split(" ")[2]==='(Successful)')}
                     />
                 </div>
               </li>
