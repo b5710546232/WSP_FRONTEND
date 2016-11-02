@@ -33,14 +33,18 @@ class ItemInfoModal extends Component {
             <p className="flow-text">
               {this.props.description}
             </p>
-            <Row>
-              <Col>
-                <span className="flow-text">Quantity : </span>
-              </Col>
+            {this.props.user.isLogin?
+              <Row>
+                <Col>
+                  <span className="flow-text">Quantity : </span>
+                </Col>
 
-                <Input type="number" lable="Quantity" ref="quantity" defaultValue={1} s={12} m={1} style={margin  } />
-                <Button type="submit" onClick = {(e)=>this.addToCart(e)} >Add to cart</Button>
-            </Row>
+                  <Input type="number" lable="Quantity" ref="quantity" defaultValue={1} s={12} m={1} style={margin  } />
+                  <Button type="submit" onClick = {(e)=>this.addToCart(e)} >Add to cart</Button>
+              </Row>:
+              <div></div>
+            }
+
           </div>
         </div>
       </Modal>
