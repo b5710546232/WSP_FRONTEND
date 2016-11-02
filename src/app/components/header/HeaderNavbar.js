@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import GuestNavSubComponent from './navsubcomponent/GuestNavSubComponent'
 import UserNavSubComponent from './navsubcomponent/UserNavSubComponent'
 import UserSideNavSubComponent from './sidenavsubcomponent/UserSideNaveSubComponent'
+import '../../../assets/scss/navbar.scss'
 import {connect} from 'react-redux'
 class HeaderNavbar extends Component {
   componentDidMount(){
