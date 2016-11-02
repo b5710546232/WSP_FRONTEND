@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 import {Modal,Button,Input,Row} from 'react-materialize'
 import {login} from '../../../../actions/UserAction'
 import {connect} from 'react-redux'
+import {resetValidator,loadValidator} from '../../../../actions/ValidatorAction'
+
 class LoginModal extends Component {
   onLogin(e){
     e.preventDefault()
@@ -15,11 +17,24 @@ class LoginModal extends Component {
     }
     this.props.onLogin(data)
   }
-
-  shouldComponentUpdate(){
-    $('#login_modal').closeModal();
+  shouldComponentUpdate(nextProps){
+    return this.props.user!==nextProps
   }
-
+  componentDidUpdate(){
+    if (this.props.validator.onLogin){
+      if (this.props.validator.is_login_success){
+        Materialize.toast(this.props.user.userdata.username+' is logged in!', 4000,'light-blue')
+        this.props.resetValidator()
+        $('#login_modal').closeModal();
+      }else {
+        Materialize.toast('Invalid username or password!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+  }
+  componentDidMount(){
+    this.props.loadValidator()
+  }
   render() {
     return (
       <Modal
@@ -52,6 +67,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onLogin: (username) => {
       dispatch(login(username))
+    },
+    loadValidator:()=>{
+      dispatch(loadValidator())
+    },
+    resetValidator:()=>{
+      dispatch(resetValidator())
     }
   }
 }

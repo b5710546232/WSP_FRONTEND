@@ -16,7 +16,10 @@ const initialState = {
   onPay : false,
   is_pay_success : false,
   onDeleteItemInCart: false,
-  is_delete_item_success : false
+  is_delete_item_success : false,
+  onLogin : false,
+  is_login_success:false,
+  onRegister :false,
 }
 const validator = (state=initialState,action)=>{
   switch(action.type) {
@@ -97,6 +100,24 @@ const validator = (state=initialState,action)=>{
       return Object.assign({}, state, {
           onDeleteItemInCart : true,
           is_delete_item_success:false
+        })
+    case 'REGISTER_SUCCESS':
+      return Object.assign({}, state, {
+          onRegister : true,
+        })
+    case 'REGISTER_FAILURE':
+      return Object.assign({}, state, {
+          onRegister : true,
+        })
+    case 'RECEIVE_ACCESS_TOKEN_SUCCESS':
+      return Object.assign({}, state, {
+          onLogin : true,
+          is_login_success : true
+        })
+    case 'RECEIVE_ACCESS_TOKEN_FAILURE':
+      return Object.assign({}, state, {
+          onLogin : true,
+          is_login_success:false
         })
     case 'RESET_VALIDATOR':
       return initialState

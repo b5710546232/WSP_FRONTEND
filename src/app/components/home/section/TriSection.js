@@ -13,7 +13,7 @@ export default class TriSection extends Component {
             <div className="col s12 m4 center">
               <div>
                 <h3 className="medium">{this.props.subtitle[0]}</h3>
-                <p className="light condensed">{this.props.detail[0]} 1</p>
+                <p className="light condensed">{this.props.detail[0]}</p>
               </div>
             </div>
             <div className="col s12 m4 center">
