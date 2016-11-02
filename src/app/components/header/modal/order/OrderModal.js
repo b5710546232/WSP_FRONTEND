@@ -29,7 +29,7 @@ class OrderModal extends Component {
         <ul className="collapsible" data-collapsible="accordion">
           {this.props.orders.map(
             (order)=>(
-              <OrderInfo order={order} />
+              <OrderInfo order={order} key={order.id} />
             )
           )}
         </ul>

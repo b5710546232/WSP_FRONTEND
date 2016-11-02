@@ -62,7 +62,6 @@ class ProductEditModal extends Component {
       this.refs.form.product_description.value = value
       $('#product_description').trigger('autoresize');
       if (this.props.select_product!=null){
-        console.log(this.props.select_product);
         if (this.props.select_product.image!=''&&this.props.select_product.image!=null){
           let url = "https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+this.props.select_product.image
           this.setState({image_location:url})

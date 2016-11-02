@@ -6,12 +6,12 @@ import {confirmPayment,unconfirmPayment} from '../../../actions/AdminAction'
 class ConfirmModal extends Component {
 
   onConfirm(e){
-    e.preventDefault()
+    // e.preventDefault()
     this.props.confirmPayment(this.props.select_order.id,localStorage.token)
     $('#confirm-modal'+this.props.select_order.id).closeModal();
   }
   onUnconfirm(e){
-    e.preventDefault()
+    // e.preventDefault()
     this.props.unconfirmPayment(this.props.select_order.id,localStorage.token)
     $('#confirm-modal'+this.props.select_order.id).closeModal();
   }

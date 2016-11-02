@@ -40,11 +40,11 @@ class MethodBody extends Component {
             <tbody>
               {this.props.admin.method.map(
                 (method)=>(
-                    <tr>
+                    <tr key={method.id}>
                       <td>{method.id}</td>
                       <td>{method.name}</td>
-                      <td>{method.is_active? <i onClick={(e)=>this.deactiveMethod(e,method.id)} className="material-icons done-icon">done</i> : <i onClick={(e)=>this.reactiveMethod(e,method.id)} className="material-icons clear-icon">clear</i>}</td>
-                      <td><MethodEditForm select_method={method}/></td>
+                      <td>{method.is_active? <i onClick={(e)=>this.deactiveMethod(e,method.id)} key={method.id} className="material-icons done-icon">done</i> : <i onClick={(e)=>this.reactiveMethod(e,method.id)} key={method.id} className="material-icons clear-icon">clear</i>}</td>
+                      <td><MethodEditForm select_method={method} key={method.id}/></td>
                     </tr>
                 )
               )}
