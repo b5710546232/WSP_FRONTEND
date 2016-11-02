@@ -20,6 +20,7 @@ const initialState = {
   onLogin : false,
   is_login_success:false,
   onRegister :false,
+  is_register_success:false
 }
 const validator = (state=initialState,action)=>{
   switch(action.type) {
@@ -104,10 +105,12 @@ const validator = (state=initialState,action)=>{
     case 'REGISTER_SUCCESS':
       return Object.assign({}, state, {
           onRegister : true,
+          is_register_success:true
         })
     case 'REGISTER_FAILURE':
       return Object.assign({}, state, {
           onRegister : true,
+          is_register_success:false
         })
     case 'RECEIVE_ACCESS_TOKEN_SUCCESS':
       return Object.assign({}, state, {

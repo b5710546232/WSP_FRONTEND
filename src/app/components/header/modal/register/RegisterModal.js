@@ -2,30 +2,35 @@ import React, { Component } from 'react'
 import {Modal,Button,Input,Row} from 'react-materialize'
 import {connect} from 'react-redux'
 import {register} from '../../../../actions/UserAction'
+import {resetValidator,loadValidator} from '../../../../actions/ValidatorAction'
 
 
 class RegisterModal extends Component {
 
   onRegister(e){
     e.preventDefault()
-    console.log('refs',this.refs.form.username.value);
     let username = this.refs.form.username.value
     let password = this.refs.form.password.value
-    let first_name = this.refs.form.firstname.value
-    let last_name = this.refs.form.lastname.value
-    let email = this.refs.form.email.value
-
-    let data = {
-      username:username,
-      password:password,
-      first_name:first_name,
-      last_name:last_name,
-      email:email
+    let confirm_password = this.refs.form.confirm_password.value
+    if (password!=confirm_password){
+      Materialize.toast('Password doesn\'t matched!', 4000,'light-blue')
+    }else {
+      let first_name = this.refs.form.firstname.value
+      let last_name = this.refs.form.lastname.value
+      let email = this.refs.form.email.value
+      if (email.split('@').length!=2){
+        Materialize.toast('Invalid Email Format!', 4000,'light-blue')
+      }else {
+        let data = {
+          username:username,
+          password:password,
+          first_name:first_name,
+          last_name:last_name,
+          email:email
+        }
+        this.props.register(data)
+      }
     }
-    this.props.register(data)
-    console.log('data',data);
-    console.log(this.props.user.isRegister)
-
   }
   onReset(e){
     e.preventDefault()
@@ -37,10 +42,24 @@ class RegisterModal extends Component {
     this.refs.form.email.value = ''
   }
 
-  shouldComponentUpdate(){
-    $('#register_modal').closeModal();
+  componentDidMount(){
+    this.props.loadValidator()
   }
-
+  shouldComponentUpdate(nextProps){
+    return this.props.user!==nextProps
+  }
+  componentDidUpdate(){
+    if (this.props.validator.onRegister){
+      if (this.props.validator.is_register_success){
+        Materialize.toast('New user is registered!', 4000,'light-blue')
+        this.props.resetValidator()
+        $('#register_modal').closeModal();
+      }else {
+        Materialize.toast('Registered Fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+  }
   render() {
     return (
       <Modal
@@ -53,7 +72,7 @@ class RegisterModal extends Component {
           <Row className="center">
             <Input name="username" s={12}  label="Username" />
             <Input name="password" type="password" label="Password" s={12} />
-            <Input name="confirm_password" type="password" ref="confrim_password" label="Confirm Password" s={12} />
+            <Input name="confirm_password" type="password"  label="Confirm Password" s={12} />
             <Input s={6} name="firstname" label="First Name" />
             <Input s={6} name="lastname" label="Last Name"  />
             <Input name="email" type="email" label="Email" s={12} />
@@ -74,6 +93,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     register: (data) => {
       dispatch(register(data))
+    },
+    loadValidator:()=>{
+      dispatch(loadValidator())
+    },
+    resetValidator:()=>{
+      dispatch(resetValidator())
     }
   }
 }
