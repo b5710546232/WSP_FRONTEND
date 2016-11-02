@@ -31,8 +31,9 @@ export default class AppFooter extends Component {
         >
           <h5 className="white-text">Contact us</h5>
           <p className="white-text">
-            Company Here
-            Address Here
+            Fasaiproduct Company
+            40 Moo 5 Khlong Wua sub-district, Muang district, Ang-thong 14000
+            Tel. 081-587-9559, 03-561-8233
           </p>
           <div className='map_container'>
           <Gmaps
