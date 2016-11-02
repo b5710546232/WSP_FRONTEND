@@ -11,6 +11,9 @@ class HeaderNavbar extends Component {
   shouldComponentUpdate(nextProps){
     return this.props.user !== nextProps.user
   }
+  hideNav(){
+    $('.button-collapse').sideNav('hide');
+  }
   render() {
     var margin = {
       marginLeft: "1%",
@@ -29,9 +32,9 @@ class HeaderNavbar extends Component {
           </ul>
           <ul className="side-nav light-blue " id="mobile-demo">
             {!this.props.user.isLogin ?<GuestNavSubComponent/>:<UserSideNavSubComponent/>}
-            <li><Link className="waves-effect waves-light white-text" to={{ pathname:'/' }}>Home</Link></li>
-            <li><Link className="waves-effect waves-light white-text" to={{ pathname:'/store' }}>Store</Link></li>
-            <li><Link className="waves-effect waves-light white-text" to={{ pathname:'/design' }}>Design</Link></li>
+            <li><Link className="waves-effect waves-light white-text" onClick={()=>this.hideNav()} to={{ pathname:'/' }}>Home</Link></li>
+            <li><Link className="waves-effect waves-light white-text" onClick={()=>this.hideNav()} to={{ pathname:'/store' }}>Store</Link></li>
+            <li><Link className="waves-effect waves-light white-text" onClick={()=>this.hideNav()} to={{ pathname:'/design' }}>Design</Link></li>
           </ul>
         </div>
       </nav>

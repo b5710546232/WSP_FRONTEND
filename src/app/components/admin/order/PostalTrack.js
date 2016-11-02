@@ -11,14 +11,17 @@ class PostalTrack extends Component{
       track:this.refs.form.track.value
     }
     this.props.updateTrack(this.props.order.id,data,localStorage.token)
+    $('#track'+this.props.order.id).closeModal();
   }
   onDelete(e){
     e.preventDefault()
     this.props.deleteTrack(this.props.order.id,localStorage.token)
+    $('#track'+this.props.order.id).closeModal();
   }
   render(){
     return (
       <Modal
+        id={"track"+this.props.order.id}
         header="Update Postal Track"
         trigger={<Button waves="light">Update Postal Track</Button>}
         >

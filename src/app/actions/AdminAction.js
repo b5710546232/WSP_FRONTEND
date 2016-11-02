@@ -42,6 +42,7 @@ export const createUser = (data,token) => (
             type: 'CREATE_USER_ADMIN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadUser(token))
                 return data
               })
             }
@@ -71,6 +72,7 @@ export const updateUser = (id,data,token) => (
             type: 'UPDATE_USER_ADMIN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadUser(token))
                 return data
               })
             }
@@ -468,6 +470,7 @@ export const updateTrack = (id,data,token) => (
             type: 'UPDATE_TRACK_ADMIN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadOrder(token))
                 return data
               })
             }
@@ -495,6 +498,7 @@ export const deleteTrack = (id,token) => (
             type: 'DELETE_TRACK_ADMIN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadOrder(token))
                 return data
               })
             }
