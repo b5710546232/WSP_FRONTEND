@@ -59,7 +59,7 @@ class CartModal extends Component {
       <Modal
         header="Cart"
         trigger={
-          <Button waves='light' className="space-button" >Cart {total}</Button>
+          <Button waves='light' className="space-button" >Cart {String(price)+"฿"}</Button>
         }
         id="cart_modal"
         >
