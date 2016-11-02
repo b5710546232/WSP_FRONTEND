@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --progress --open",
-    "start-server": "NODE_ENV=production webpack-dev-server --hot --inline --progress --open",
+    "start-server": "NODE_ENV=production webpack-dev-server --hot --inline --progress -display-chunks --optimize-min-chunk-size 10000 --optimize-max-chunks 10 --display-reasons",
     "start-win": "cross-env NODE_ENV=production webpack-dev-server --hot --inline --progress --open",
     "build": "cross-env NODE_ENV=production npm run test && webpack --progress --colors",
-    "build-server": "NODE_ENV=production webpack --progress",
+    "build-server": "NODE_ENV=production webpack --display-chunks --optimize-min-chunk-size 10000 --optimize-max-chunks 10 --display-reasons --progress --color",
     "test": "mocha -r mock-local-storage --compilers js:babel-register --require ./test/test-helper --recursive ",
     "test:watch": "npm run test -- --watch --watch-extensions jsx"
   },
