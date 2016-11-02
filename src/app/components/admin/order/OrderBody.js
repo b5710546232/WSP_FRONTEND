@@ -17,7 +17,22 @@ class OrderBody extends Component {
 
     return this.props.admin.order !== nextProps
   }
-
+  isDelivered(order){
+    if (order.is_shipped){
+      console.log('status',order.status);
+      if (order.status){
+        console.log('order',order);
+        let status_part = order.status.split(" ")
+        console.log('part',status_part);
+        if (status_part.length>=3){
+          if (order.status.split(" ")[2]==='(Successful)'){
+            return true
+          }
+        }
+      }
+    }
+    return false
+  }
   render() {
     return(
       <li className="white">
@@ -52,7 +67,8 @@ class OrderBody extends Component {
                 <div className="collapsible-header">Awaiting delivery</div>
                 <div className="collapsible-body white">
                   <OrderList
-                    orderList={this.props.admin.order.filter((order)=>order.is_shipped&&!(order.status.split(" ")[2]==='(Successful)'))}
+                    orderList={this.props.admin.order.filter((order)=>order.is_shipped&&!this.isDelivered(order))
+                    }
                     />
                 </div>
               </li>
@@ -60,7 +76,7 @@ class OrderBody extends Component {
                 <div className="collapsible-header">Done</div>
                 <div className="collapsible-body white">
                   <OrderList
-                    orderList={this.props.admin.order.filter((order)=>order.status.split(" ")[2]==='(Successful)')}
+                    orderList={this.props.admin.order.filter((order)=>this.isDelivered(order))}
                     />
                 </div>
               </li>
