@@ -24,7 +24,7 @@ class ItemInfoModal extends Component {
     return (
       <Modal id={"item-modal"+this.props.id}
         trigger={
-          <a>{this.props.price}฿</a>
+          <a className="selectAtprice">{this.props.price}฿</a>
         }>
         <div>
           <img className="item-preview" src={this.props.image}/>
