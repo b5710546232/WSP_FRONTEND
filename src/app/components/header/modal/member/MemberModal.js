@@ -38,6 +38,7 @@ class MemberModal extends Component {
   onLogout(){
     this.props.onLogout()
     $('.button-collapse').sideNav('hide');
+    Materialize.toast('Goodbye :D', 4000,'light-blue')
   }
   onEditPasswordSelect(){
     this.props.onEditPassword()

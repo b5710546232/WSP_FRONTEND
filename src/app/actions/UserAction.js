@@ -11,7 +11,7 @@ export const onEditPassword = ()=> {
 //logout
 export const logout = ()=> {
   return {
-    type: Action.LOGOUT
+    type: 'LOGOUT',
   }
 }
 //load user data

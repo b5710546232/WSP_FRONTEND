@@ -58,10 +58,16 @@ const user = (state=initialState,action)=>{
     return Object.assign({}, state, {
       change_password_success: false
     })
-    case Action.LOGOUT:
+    case 'LOGOUT':
       localStorage.removeItem('token')
-      return Object.assign({}, initialState, {
-          isLogin: false,
+      return Object.assign({}, state, {
+        username: "",
+        isLogin:localStorage.token!=null ? true:false,
+        isRegister:false,
+        accessToken:localStorage.token !==null?localStorage.token :null,
+        userdata:null,
+        change_password_success:false,
+        is_admin:false
         })
     case 'CHECK_ADMIN_SUCCESS':
       return Object.assign({}, state, {
