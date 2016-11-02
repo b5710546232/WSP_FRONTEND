@@ -7,7 +7,7 @@ export default class Design extends Component {
         position="center"
         title="Coming Soon..."
         subtitle="Under constructing"
-        background="src/assets/media/images/3.png"/>
+        background="src/assets/media/images/2.png"/>
     )
   }
 }

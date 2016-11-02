@@ -21,7 +21,7 @@ class Admin extends Component {
 
   render() {
     var bg = {
-      backgroundImage: 'url(src/assets/media/images/3.png)',
+      backgroundImage: 'url(src/assets/media/images/1.jpg)',
       minHeight:"600px"
     }
 

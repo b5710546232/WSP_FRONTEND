@@ -10,7 +10,7 @@ export default class Home extends Component {
           position="right"
           logo="src/assets/media/images/logo.png"
           title="Nature Drink"
-          subtitle="It&lsquo;s not the noob water, but &ldquo;It&lsquo;s water from the heaven!&ldquo;"
+          subtitle="It&rsquo;s a clean mineral water from the mountain"
           button={
             <div className="right-align">
             <Link
@@ -25,8 +25,8 @@ export default class Home extends Component {
           footer = {
             <TriSection
               title="Why you have to buy Nature Drink"
-              subtitle={["Small Molecule","Postal Delivery","Healthy"]}
-              detail={["It's fucking small","We have Postal Tracking EMS","I don't know K\nU\ny"]}
+              subtitle={["Clean","Postal Delivery","Healthy"]}
+              detail={["Clean and Free from bacteria","We have Postal Tracking EMS","Breezy and Well-being"]}
               />
           }
           />
