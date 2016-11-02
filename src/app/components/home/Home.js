@@ -7,17 +7,19 @@ export default class Home extends Component {
     return (
       <div>
         <ParallaxSection
-          position="center"
+          position="right"
           logo="src/assets/media/images/logo.png"
           title="Nature Drink"
           subtitle="It&lsquo;s not the noob water, but &ldquo;It&lsquo;s water from the heaven!&ldquo;"
           button={
+            <div className="right-align">
             <Link
               className="waves-effect waves-light btn-large"
               to={{ pathname:'/Store' }}
               >
               Visit Store
             </Link>
+            </div>
           }
           background="src/assets/media/images/1.jpg"
           footer = {
