@@ -784,7 +784,7 @@ export const reactiveMethod = (id,token) => (
         types: [
           'REACTIVE_METHOD_ADMIN_REQUEST',
           {
-            type: 'REACTIVE_METHOD_ADMIN_FAILURE',
+            type: 'REACTIVE_METHOD_ADMIN_SUCCESS',
             payload: (_action, _state, res) => {
               dispatch(loadMethod(token))
               return data
