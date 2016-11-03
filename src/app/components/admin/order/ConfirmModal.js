@@ -2,18 +2,45 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Modal,Input,Button,Row} from 'react-materialize'
 import {confirmPayment,unconfirmPayment} from '../../../actions/AdminAction'
+import {loadValidator,resetValidator} from '../../../actions/ValidatorAction'
 
 class ConfirmModal extends Component {
 
   onConfirm(e){
     e.preventDefault()
     this.props.confirmPayment(this.props.select_order.id,localStorage.token)
-    $('#confirm-modal'+this.props.select_order.id).closeModal();
   }
   onUnconfirm(e){
     e.preventDefault()
     this.props.unconfirmPayment(this.props.select_order.id,localStorage.token)
-    $('#confirm-modal'+this.props.select_order.id).closeModal();
+  }
+  componentDidMount(){
+    this.props.loadValidator()
+  }
+  shouldComponentUpdate(nextProps){
+    return this.props.admin.order!== nextProps
+  }
+  componentDidUpdate(){
+    if (this.props.validator.onConfirmOrder){
+      if (this.props.validator.is_confirm_order_success){
+        Materialize.toast('#'+this.props.select_order.id+' Order is confirmed!', 4000,'light-blue')
+        this.props.resetValidator()
+        $('#confirm-modal'+this.props.select_order.id).closeModal();
+      }else {
+        Materialize.toast('#'+this.props.select_order.id+' Order is confirmed fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+    if (this.props.validator.onUnconfirmOrder){
+      if (this.props.validator.is_unconfirm_order_success){
+        Materialize.toast('#'+this.props.select_order.id+' Order is unconfirmed!', 4000,'light-blue')
+        this.props.resetValidator()
+        $('#confirm-modal'+this.props.select_order.id).closeModal();
+      }else {
+        Materialize.toast('#'+this.props.select_order.id+' Order is unconfirmed fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
   }
   render(){
     return (
@@ -50,7 +77,9 @@ const mapDispatchToProps = (dispatch) => {
     ),
     unconfirmPayment: (id,token)=>(
       dispatch(unconfirmPayment(id,token))
-    )
+    ),
+    loadValidator:()=>(dispatch(loadValidator())),
+    resetValidator:()=>(dispatch(resetValidator()))
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(ConfirmModal)

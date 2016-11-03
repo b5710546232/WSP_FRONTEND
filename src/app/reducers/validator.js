@@ -52,7 +52,15 @@ const initialState = {
   onCreateMethod : false,
   is_create_method_success : false,
   onUpdateMethod : false,
-  is_update_method_success : false
+  is_update_method_success : false,
+  onConfirmOrder : false,
+  is_confirm_order_success : false,
+  onUpdateTrack : false,
+  is_update_track_success : false,
+  onDeleteTrack : false,
+  is_delete_track_success : false,
+  onUnconfirmOrder:false,
+  is_unconfirm_order_success : false
 }
 const validator = (state=initialState,action)=>{
   switch(action.type) {
@@ -313,6 +321,46 @@ const validator = (state=initialState,action)=>{
     return Object.assign({}, state, {
       onEditProduct : true,
       is_edit_product_success:false
+    })
+    case 'COMFIRM_PAYMENT_ADMIN_SUCCESS':
+    return Object.assign({}, state, {
+      onConfirmOrder : true,
+      is_confirm_order_success : true
+    })
+    case 'COMFIRM_PAYMENT_ADMIN_FAILURE':
+    return Object.assign({}, state, {
+      onConfirmOrder : true,
+      is_confirm_order_success:false
+    })
+    case 'UPDATE_TRACK_ADMIN_SUCCESS':
+    return Object.assign({}, state, {
+      onUpdateTrack : true,
+      is_update_track_success : true
+    })
+    case 'UPDATE_TRACK_ADMIN_FAILURE':
+    return Object.assign({}, state, {
+      onUpdateTrack : true,
+      is_update_track_success:false
+    })
+    case 'DELETE_TRACK_ADMIN_SUCCESS':
+    return Object.assign({}, state, {
+      onDeleteTrack : true,
+      is_delete_track_success : true
+    })
+    case 'DELETE_TRACK_ADMIN_FAILURE':
+    return Object.assign({}, state, {
+      onDeleteTrack : true,
+      is_delete_track_success:false
+    })
+    case 'UNCOMFIRM_PAYMENT_ADMIN_SUCCESS':
+    return Object.assign({}, state, {
+      onUnconfirmOrder : true,
+      is_unconfirm_order_success : true
+    })
+    case 'UNCOMFIRM_PAYMENT_ADMIN_FAILURE':
+    return Object.assign({}, state, {
+      onUnconfirmOrder : true,
+      is_unconfirm_order_success:false
     })
     case 'RESET_VALIDATOR':
     return initialState

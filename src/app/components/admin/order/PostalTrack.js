@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Modal,Input,Button,Row,Col} from 'react-materialize'
 import {updateTrack,deleteTrack} from '../../../actions/AdminAction'
+import {loadValidator,resetValidator} from '../../../actions/ValidatorAction'
 
 class PostalTrack extends Component{
   onUpdate(e){
@@ -11,12 +12,38 @@ class PostalTrack extends Component{
       track:this.refs.form.track.value
     }
     this.props.updateTrack(this.props.order.id,data,localStorage.token)
-    $('#track'+this.props.order.id).closeModal();
   }
   onDelete(e){
     e.preventDefault()
     this.props.deleteTrack(this.props.order.id,localStorage.token)
-    $('#track'+this.props.order.id).closeModal();
+  }
+  componentDidMount(){
+    this.props.loadValidator()
+  }
+  shouldComponentUpdate(nextProps){
+    return this.props.admin.order!== nextProps
+  }
+  componentDidUpdate(){
+    if (this.props.validator.onUpdateTrack){
+      if (this.props.validator.is_update_track_success){
+        Materialize.toast('#'+this.props.order.id+' Order Postal Track is updated!', 4000,'light-blue')
+        this.props.resetValidator()
+        $('#track'+this.props.order.id).closeModal();
+      }else {
+        Materialize.toast('#'+this.props.order.id+' Order Postal Track update fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+    if (this.props.validator.onUnconfirmOrder){
+      if (this.props.validator.is_unconfirm_order_success){
+        Materialize.toast('#'+this.props.order.id+' Order Postal Track is deleted!', 4000,'light-blue')
+        this.props.resetValidator()
+        $('#track'+this.props.order.id).closeModal();
+      }else {
+        Materialize.toast('#'+this.props.order.id+' Order Postal Track delete fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
   }
   render(){
     return (
@@ -50,7 +77,9 @@ const mapDispatchToProps = (dispatch) => {
     ),
     updateTrack:(id,data,token)=>(
       dispatch(updateTrack(id,data,token))
-    )
+    ),
+    loadValidator:()=>(dispatch(loadValidator())),
+    resetValidator:()=>(dispatch(resetValidator()))
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(PostalTrack)
