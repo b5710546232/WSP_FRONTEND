@@ -3,11 +3,41 @@ import {connect} from 'react-redux'
 import {Modal,Input,Button,Row,Col} from 'react-materialize'
 import {updateProduct,createProduct} from '../../../actions/AdminAction'
 import {uploadImage} from '../../../aws/aws.js'
+import {loadValidator,resetValidator} from '../../../actions/ValidatorAction'
 
 class ProductEditModal extends Component {
   constructor(props){
     super(props)
     this.state={image_location:"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/no-img.jpg"}
+  }
+  componentDidMount(){
+    this.props.loadValidator()
+  }
+  shouldComponentUpdate(nextProps){
+    return this.props.admin.product!== nextProps
+  }
+  componentDidUpdate(){
+    if (this.props.validator.onCreateProduct){
+      if (this.props.validator.is_create_product_success){
+        Materialize.toast('New Category is created!', 4000,'light-blue')
+        this.props.resetValidator()
+        $('#product-edit-modal'+this.props.select_category+this.props.product_key).closeModal();
+      }else {
+        Materialize.toast('Category creating Fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+    /** Bug Occur Here **/
+    if (this.props.validator.onEditProduct){
+      if (this.props.validator.is_edit_product_success){
+        Materialize.toast(this.props.select_product.name+' is edited!', 4000,'light-blue')
+        this.props.resetValidator()
+        $('#product-edit-modal'+this.props.select_category+this.props.product_key).closeModal();
+      }else {
+        Materialize.toast(this.props.select_product.name+' editing Fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
   }
   onSave(e){
     e.preventDefault()
@@ -43,7 +73,7 @@ class ProductEditModal extends Component {
     }else {
       this.props.updateProduct(this.props.select_product.id,data,localStorage.token)
     }
-    $('#product-edit-modal'+this.props.select_category+this.props.product_key).closeModal();
+
   }
   onUpload(e){
     e.preventDefault()
@@ -121,7 +151,9 @@ const mapDispatchToProps = (dispatch) => {
     ),
     updateProduct: (id,data,token) =>(
       dispatch(updateProduct(id,data,token))
-    )
+    ),
+    loadValidator:()=>(dispatch(loadValidator())),
+    resetValidator:()=>(dispatch(resetValidator()))
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(ProductEditModal)

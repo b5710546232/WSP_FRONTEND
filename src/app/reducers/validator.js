@@ -35,14 +35,16 @@ const initialState = {
   is_reactive_category_success : false,
   onEditCategory : false,
   is_edit_category_success :false,
+  onCreateCategory : false,
+  is_create_category_success : false,
   onDeactiveProduct : false,
   is_deactive_product_success : false,
   onReactiveProduct : false,
   is_reactive_product_success : false,
   onEditProduct : false,
   is_edit_product_success : false,
-  onEditMethod : false,
-  is_edit_method_sucess : false,
+  onCreateProduct : false,
+  is_create_product_success : false,
   onReactiveMethod  : false,
   is_reactive_method_success: false,
   onDeactiveMethod  : false,
@@ -241,6 +243,76 @@ const validator = (state=initialState,action)=>{
     return Object.assign({}, state, {
       onDeactiveCategory : true,
       is_deactive_category_success:false
+    })
+    case 'REACTIVE_CATEGORY_ADMIN_SUCCESS':
+    return Object.assign({}, state, {
+      onReactiveCategory : true,
+      is_reactive_category_success : true
+    })
+    case 'REACTIVE_CATEGORY_ADMIN_FAILURE':
+    return Object.assign({}, state, {
+      onReactiveCategory : true,
+      is_reactive_category_success:false
+    })
+    case 'DEACTIVE_PRODUCT_ADMIN_SUCCESS':
+    return Object.assign({}, state, {
+      onDeactiveProduct : true,
+      is_deactive_product_success : true
+    })
+    case 'DEACTIVE_PRODUCT_ADMIN_FAILURE':
+    return Object.assign({}, state, {
+      onDeactiveProduct : true,
+      is_deactive_product_success:false
+    })
+    case 'REACTIVE_PRODUCT_ADMIN_SUCCESS':
+    return Object.assign({}, state, {
+      onReactiveProduct : true,
+      is_reactive_product_success : true
+    })
+    case 'REACTIVE_PRODUCT_ADMIN_FAILURE':
+    return Object.assign({}, state, {
+      onReactiveProduct : true,
+      is_reactive_product_success:false
+    })
+    case 'CREATE_CATEGORY_ADMIN_SUCCESS':
+    return Object.assign({}, state, {
+      onCreateCategory : true,
+      is_create_category_success : true
+    })
+    case 'CREATE_CATEGORY_ADMIN_FAILURE':
+    return Object.assign({}, state, {
+      onCreateCategory : true,
+      is_create_category_success:false
+    })
+    case 'CREATE_PRODUCT_ADMIN_SUCCESS':
+    return Object.assign({}, state, {
+      onCreateProduct : true,
+      is_create_product_success : true
+    })
+    case 'CREATE_PRODUCT_ADMIN_FAILURE':
+    return Object.assign({}, state, {
+      onCreateProduct : true,
+      is_create_product_success:false
+    })
+    case 'UPDATE_CATEGORY_ADMIN_SUCCESS':
+    return Object.assign({}, state, {
+      onEditCategory : true,
+      is_edit_category_success : true
+    })
+    case 'UPDATE_CATEGORY_ADMIN_FAILURE':
+    return Object.assign({}, state, {
+      onEditCategory : true,
+      is_edit_category_success:false
+    })
+    case 'UPDATE_PRODUCT_ADMIN_SUCCESS':
+    return Object.assign({}, state, {
+      onEditProduct : true,
+      is_edit_product_success : true
+    })
+    case 'UPDATE_PRODUCT_ADMIN_FAILURE':
+    return Object.assign({}, state, {
+      onEditProduct : true,
+      is_edit_product_success:false
     })
     case 'RESET_VALIDATOR':
     return initialState

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {createCategory,updateCategory} from '../../../actions/AdminAction'
 import {Row,Button,Input,Col} from 'react-materialize'
+import {loadValidator,resetValidator} from '../../../actions/ValidatorAction'
 
 class CategoryEditForm extends Component {
   onSave(e){
@@ -13,6 +14,23 @@ class CategoryEditForm extends Component {
       description:description
     }
     this.props.createCategory(data,localStorage.token)
+  }
+  componentDidMount(){
+    this.props.loadValidator()
+  }
+  shouldComponentUpdate(nextProps){
+    return this.props.admin.category!== nextProps
+  }
+  componentDidUpdate(){
+    if (this.props.validator.onCreateCategory){
+      if (this.props.validator.is_create_category_success){
+        Materialize.toast('New Category is created!', 4000,'light-blue')
+        this.props.resetValidator()
+      }else {
+        Materialize.toast('Category creating Fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
   }
   render(){
     var margin = {
@@ -51,7 +69,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     updateCategory: (id,data,token)=>{
       dispatch(updateCategory(id,data,token))
-    }
+    },
+    loadValidator:()=>(dispatch(loadValidator())),
+    resetValidator:()=>(dispatch(resetValidator()))
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(CategoryEditForm)

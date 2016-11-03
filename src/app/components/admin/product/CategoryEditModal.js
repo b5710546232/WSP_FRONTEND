@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {createCategory,updateCategory} from '../../../actions/AdminAction'
 import {Row,Button,Input,Col,Modal} from 'react-materialize'
+import {loadValidator,resetValidator} from '../../../actions/ValidatorAction'
 
 class CategoryEditModal extends Component {
   onSave(e){
@@ -13,7 +14,25 @@ class CategoryEditModal extends Component {
       description:description
     }
     this.props.updateCategory(this.props.select_category.id,data,localStorage.token)
-    $('#category-edit-modal'+this.props.select_category.id).closeModal();
+
+  }
+  componentDidMount(){
+    this.props.loadValidator()
+  }
+  shouldComponentUpdate(nextProps){
+    return this.props.admin.category!== nextProps
+  }
+  componentDidUpdate(){
+    if (this.props.validator.onEditCategory){
+      if (this.props.validator.is_edit_category_success){
+        Materialize.toast(this.props.select_category.name+' Category is edited!', 4000,'light-blue')
+        this.props.resetValidator()
+        $('#category-edit-modal'+this.props.select_category.id).closeModal();
+      }else {
+        Materialize.toast(this.props.select_category.name+' Category edited Fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
   }
   render(){
     return (
@@ -48,7 +67,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     updateCategory: (id,data,token)=>{
       dispatch(updateCategory(id,data,token))
-    }
+    },
+    loadValidator:()=>(dispatch(loadValidator())),
+    resetValidator:()=>(dispatch(resetValidator()))
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(CategoryEditModal)

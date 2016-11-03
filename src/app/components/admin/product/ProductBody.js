@@ -5,9 +5,52 @@ import ProductEditModal from './ProductEditModal'
 import CategoryEditModal from './CategoryEditModal'
 // import '../../../../assets/scss/admin.scss'
 import {deactiveProduct,reactiveProduct,deactiveCategory,reactiveCategory} from '../../../actions/AdminAction'
+import {loadValidator,resetValidator} from '../../../actions/ValidatorAction'
+
 class ProductBody extends Component {
   constructor(props){
     super(props)
+  }
+  shouldComponentUpdate(nextProps){
+    return this.props.admin.product!==nextProps || this.props.admin.category!== nextProps
+  }
+  componentDidUpdate(){
+    if (this.props.validator.onDeactiveCategory){
+      if (this.props.validator.is_deactive_category_success){
+        Materialize.toast('Deactive Category!', 4000,'light-blue')
+        this.props.resetValidator()
+      }else {
+        Materialize.toast('Deactive Category fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+    if (this.props.validator.onReactiveCategory){
+      if (this.props.validator.is_reactive_category_success){
+        Materialize.toast('Reactive Category!', 4000,'light-blue')
+        this.props.resetValidator()
+      }else {
+        Materialize.toast('Reactive Category fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+    if (this.props.validator.onDeactiveProduct){
+      if (this.props.validator.is_deactive_product_success){
+        Materialize.toast('Deactive Product!', 4000,'light-blue')
+        this.props.resetValidator()
+      }else {
+        Materialize.toast('Deactive Product fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+    if (this.props.validator.onReactiveProduct){
+      if (this.props.validator.is_reactive_product_success){
+        Materialize.toast('Reactive Product!', 4000,'light-blue')
+        this.props.resetValidator()
+      }else {
+        Materialize.toast('Reactive Product fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
   }
   deactiveProduct(e,id){
     e.preventDefault()
@@ -83,7 +126,9 @@ const mapDispatchToProps = (dispatch) => {
     deactiveProduct:(id,token)=>(dispatch(deactiveProduct(id,token))),
     reactiveProduct:(id,token)=>(dispatch(reactiveProduct(id,token))),
     deactiveCategory:(id,token)=>(dispatch(deactiveCategory(id,token))),
-    reactiveCategory:(id,token)=>(dispatch(reactiveCategory(id,token)))
+    reactiveCategory:(id,token)=>(dispatch(reactiveCategory(id,token))),
+    loadValidator:()=>(dispatch(loadValidator())),
+    resetValidator:()=>(dispatch(resetValidator()))
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(ProductBody)
