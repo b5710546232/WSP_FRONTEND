@@ -2,18 +2,43 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import MethodEditForm from './MethodEditForm'
 import {deactiveMethod,reactiveMethod} from '../../../actions/AdminAction'
+import {loadValidator,resetValidator} from '../../../actions/ValidatorAction'
 
 class MethodBody extends Component {
   componentDidMount(){
+    this.props.loadValidator()
     $(document).ready(function(){
       $('.collapsible').collapsible({
         accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
       });
     });
   }
+
   shouldComponentUpdate(nextProps){
     return this.props.admin.method!==nextProps
   }
+
+  componentDidUpdate(){
+    if (this.props.validator.onDeactiveMethod){
+      if (this.props.validator.is_deactive_method_success){
+        Materialize.toast('Deactive Payment Method!', 4000,'light-blue')
+        this.props.resetValidator()
+      }else {
+        Materialize.toast('Deactive Payment Method fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+    if (this.props.validator.onReactiveMethod){
+      if (this.props.validator.is_reactive_method_success){
+        Materialize.toast('Reactive Payment Method!', 4000,'light-blue')
+        this.props.resetValidator()
+      }else {
+        Materialize.toast('Reactive Payment Method fail!', 4000,'light-blue')
+        this.props.resetValidator()
+      }
+    }
+  }
+
   deactiveMethod(e,id){
     e.preventDefault()
     this.props.deactiveMethod(id,localStorage.token)
@@ -66,6 +91,12 @@ const mapDispatchToProps = (dispatch) => {
     ),
     reactiveMethod: (id,token)=>(
       dispatch(reactiveMethod(id,token))
+    ),
+    loadValidator: ()=>(
+      dispatch(loadValidator())
+    ),
+    resetValidator: ()=>(
+      dispatch(resetValidator())
     )
   }
 }

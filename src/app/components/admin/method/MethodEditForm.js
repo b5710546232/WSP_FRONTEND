@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Modal,Input,Button,Row} from 'react-materialize'
 import {updateMethod,createMethod} from '../../../actions/AdminAction'
+import {loadValidator,resetValidator} from '../../../actions/ValidatorAction'
 
 class MethodEditForm extends Component {
   onSave(e){
@@ -20,9 +21,40 @@ class MethodEditForm extends Component {
     }
   }
 
+    shouldComponentUpdate(nextProps){
+      return this.props.admin.method!==nextProps
+    }
+
+    componentDidUpdate(){
+      if (this.props.validator.onCreateMethod){
+        if (this.props.validator.is_create_method_success){
+          Materialize.toast('New Payment Method is created!', 4000,'light-blue')
+          this.props.resetValidator()
+          $('#create-method').closeModal()
+        }else {
+          Materialize.toast('Creating Payment Method fail!', 4000,'light-blue')
+          this.props.resetValidator()
+        }
+      }
+      /** Bug occur here **/
+      if (this.props.validator.onUpdateMethod){
+        if (this.props.validator.is_update_method_success){
+          Materialize.toast('Payment Method '+this.props.select_method.name+' is edited!', 4000,'light-blue')
+          this.props.resetValidator()
+          $('#edit-method'+this.props.select_method.id).closeModal()
+        }else {
+          Materialize.toast('Editing Payment Method '+this.props.select_method.name+' fail!', 4000,'light-blue')
+          this.props.resetValidator()
+        }
+      }
+    }
+  componentDidMount(){
+    this.props.loadValidator()
+  }
   render() {
     return (
       <Modal
+        id = {this.props.add? "create-method":"edit-method"+this.props.select_method.id}
         header={this.props.add?
           <span>New Payment Method</span>:this.props.select_method.name
         }
@@ -53,6 +85,12 @@ const mapDispatchToProps = (dispatch) => {
     ),
     updateMethod: (id,data,token) =>(
       dispatch(updateMethod(id,data,token))
+    ),
+    loadValidator:()=>(
+      dispatch(loadValidator())
+    ),
+    resetValidator:()=>(
+      dispatch(resetValidator())
     )
   }
 }
