@@ -34,7 +34,7 @@ export default class Home extends Component {
           position="right"
           title="Explose your imagination!"
           subtitle="Design your own bottle!"
-          background="src/assets/media/images/2.png"
+          background="src/assets/media/images/2.jpg"
           height = "450px"
           margin = "3%"
           button={
