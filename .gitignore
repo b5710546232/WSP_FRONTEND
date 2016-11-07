@@ -1,5 +1,4 @@
 node_modules/
 test.zip
 .DS_Store
-npm-debug.log
-api/
+npm-debug.*
