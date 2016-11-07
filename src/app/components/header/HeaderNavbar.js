@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import GuestNavSubComponent from './navsubcomponent/GuestNavSubComponent'
-import UserNavSubComponent from './navsubcomponent/UserNavSubComponent'
-import UserSideNavSubComponent from './sidenavsubcomponent/UserSideNaveSubComponent'
+
 import '../../../assets/scss/navbar.scss'
 import {connect} from 'react-redux'
 class HeaderNavbar extends Component {
@@ -23,19 +21,15 @@ class HeaderNavbar extends Component {
     return (
       <nav className=" light-blue">
         <div className="nav-wrapper  ">
-          <Link className="waves-effect waves-light brand-logo center" to={{ pathname:'/' }}>Nature Drink</Link>
+          <Link className="waves-effect waves-light brand-logo center" to={{ pathname:'/' }}>Rice Variety</Link>
           <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
           <ul className="hide-on-med-and-down " style={margin}>
-            <li className="left"><Link className="waves-effect waves-light" to={{ pathname:'/store' }}>Store</Link></li>
-            <li className="left"><Link className="waves-effect waves-light" to={{ pathname:'/design' }}>Design</Link></li>
-
-            {!this.props.user.isLogin ?<GuestNavSubComponent position="right"/>:<UserNavSubComponent position="right"/>}
+            <li className="left"><Link className="waves-effect waves-light" to={{ pathname:'/' }}>Simple</Link></li>
+            <li className="left"><Link className="waves-effect waves-light" to={{ pathname:'/expert' }}>Expert</Link></li>
           </ul>
           <ul className="side-nav light-blue " id="mobile-demo">
-            {!this.props.user.isLogin ?<GuestNavSubComponent/>:<UserSideNavSubComponent/>}
-            <li><Link className="waves-effect waves-light white-text" onClick={()=>this.hideNav()} to={{ pathname:'/' }}>Home</Link></li>
-            <li><Link className="waves-effect waves-light white-text" onClick={()=>this.hideNav()} to={{ pathname:'/store' }}>Store</Link></li>
-            <li><Link className="waves-effect waves-light white-text" onClick={()=>this.hideNav()} to={{ pathname:'/design' }}>Design</Link></li>
+            <li><Link className="waves-effect waves-light white-text" onClick={()=>this.hideNav()} to={{ pathname:'/' }}>Simple</Link></li>
+            <li><Link className="waves-effect waves-light white-text" onClick={()=>this.hideNav()} to={{ pathname:'/expert' }}>Expert</Link></li>
           </ul>
         </div>
       </nav>

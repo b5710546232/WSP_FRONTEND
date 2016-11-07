@@ -4,9 +4,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import {
   App,
   Home,
-  Store,
-  Admin,
-  Design
+  Expert,
 } from './components'
 
 export default (store,history) => {
@@ -14,14 +12,8 @@ export default (store,history) => {
      <Router history={syncHistoryWithStore(history, store)}>
       <Router path='/' component={App}>
         <IndexRoute component={Home}/>
-        <route path='/store'>
-          <IndexRoute component={Store} />
-        </route>
-        <route path='/design'>
-          <IndexRoute component={Design} />
-        </route>
-        <route path='/admin'>
-          <IndexRoute component={Admin} />
+        <route path='/expert'>
+          <IndexRoute component={Expert} />
         </route>
       </Router>
     </Router>
