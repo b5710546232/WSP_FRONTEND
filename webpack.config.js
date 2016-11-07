@@ -41,6 +41,7 @@ module.exports = {
 }
 if (process.env.NODE_ENV === 'production') {
   console.log('production_safe');
+  module.exports.devtool = 'cheap-module-source-map'
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
@@ -48,12 +49,8 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: false,
-      minimize: true,
       compress: {
-        drop_debugger: true,
-        warnings: false,
-        drop_console: true
+        warnings: false
       }
     })
   ])

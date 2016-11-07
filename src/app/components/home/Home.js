@@ -37,6 +37,7 @@ class Home extends Component {
           </Table>:
           <div></div>
         }
+
       </div>
     )
   }
