@@ -1,6 +1,6 @@
 node_modules/
 test.zip
 .DS_Store
-npm-debug.log
+npm-debug.log*
 dist/
 api/
