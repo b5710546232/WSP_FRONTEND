@@ -29,9 +29,9 @@ const initialState = {
 
 const logoutState = {
   username: "",
-  isLogin:false
+  isLogin:false,
   isRegister:false,
-  accessToken:null
+  accessToken:null,
   userdata:null,
   change_password_success:false,
   is_admin:false
