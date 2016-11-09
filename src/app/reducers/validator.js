@@ -362,6 +362,8 @@ const validator = (state=initialState,action)=>{
       onUnconfirmOrder : true,
       is_unconfirm_order_success:false
     })
+    case 'LOGOUT':
+    return initialState
     case 'RESET_VALIDATOR':
     return initialState
     default:

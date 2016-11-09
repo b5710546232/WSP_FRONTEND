@@ -1,4 +1,5 @@
 import {Action} from '../constants';
+import {loadOrderList} from './OrderAction'
 import { CALL_API } from 'redux-api-middleware'
 import {
   ADMIN_USER_ENDPOINT,
@@ -471,6 +472,7 @@ export const updateTrack = (id,data,token) => (
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
                 dispatch(loadOrder(token))
+                dispatch(loadOrderList(token))
                 return data
               })
             }

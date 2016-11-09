@@ -27,6 +27,16 @@ const initialState = {
   is_admin:false
 }
 
+const logoutState = {
+  username: "",
+  isLogin:false
+  isRegister:false,
+  accessToken:null
+  userdata:null,
+  change_password_success:false,
+  is_admin:false
+}
+
 const user = (state=initialState,action)=>{
   switch(action.type) {
     case Action.RECEIVE_ACCESS_TOKEN_SUCCESS:
@@ -60,15 +70,7 @@ const user = (state=initialState,action)=>{
     })
     case 'LOGOUT':
       localStorage.removeItem('token')
-      return Object.assign({}, state, {
-        username: "",
-        isLogin:localStorage.token!=null ? true:false,
-        isRegister:false,
-        accessToken:localStorage.token !==null?localStorage.token :null,
-        userdata:null,
-        change_password_success:false,
-        is_admin:false
-        })
+      return logoutState
     case 'CHECK_ADMIN_SUCCESS':
       return Object.assign({}, state, {
           is_admin: true,
