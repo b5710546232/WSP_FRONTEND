@@ -16,7 +16,8 @@ export default class Section extends Component {
       margin : this.props.margin ? this.props.margin:"auto"
     }
     var marginLogo = {
-      marginTop : "5%"
+      marginTop : "5%",
+      marginLeft : "15%"
     }
     return(
       <div>
