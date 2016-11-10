@@ -34,6 +34,7 @@ const initialState = {
   onReactiveCategory : false,
   is_reactive_category_success : false,
   onEditCategory : false,
+  edit_category_number : 0,
   is_edit_category_success :false,
   onCreateCategory : false,
   is_create_category_success : false,
@@ -42,6 +43,7 @@ const initialState = {
   onReactiveProduct : false,
   is_reactive_product_success : false,
   onEditProduct : false,
+  edit_product_number: 0,
   is_edit_product_success : false,
   onCreateProduct : false,
   is_create_product_success : false,
@@ -54,8 +56,10 @@ const initialState = {
   onUpdateMethod : false,
   is_update_method_success : false,
   onConfirmOrder : false,
+  update_method_number : 0,
   is_confirm_order_success : false,
   onUpdateTrack : false,
+  confirm_order_number:0,
   is_update_track_success : false,
   onDeleteTrack : false,
   is_delete_track_success : false,
@@ -234,11 +238,13 @@ const validator = (state=initialState,action)=>{
     })
     case 'UPDATE_METHOD_ADMIN_SUCCESS':
     return Object.assign({}, state, {
+      update_method_number:action.payload.id,
       onUpdateMethod : true,
       is_update_method_success : true
     })
     case 'UPDATE_METHOD_ADMIN_FAILURE':
     return Object.assign({}, state, {
+      update_method_number:action.payload.id,
       onUpdateMethod : true,
       is_update_method_success:false
     })
@@ -305,31 +311,37 @@ const validator = (state=initialState,action)=>{
     case 'UPDATE_CATEGORY_ADMIN_SUCCESS':
     return Object.assign({}, state, {
       onEditCategory : true,
-      is_edit_category_success : true
+      is_edit_category_success : true,
+      edit_category_number : action.payload.id
     })
     case 'UPDATE_CATEGORY_ADMIN_FAILURE':
     return Object.assign({}, state, {
       onEditCategory : true,
-      is_edit_category_success:false
+      is_edit_category_success:false,
+      edit_category_number : action.payload.id
     })
     case 'UPDATE_PRODUCT_ADMIN_SUCCESS':
     return Object.assign({}, state, {
       onEditProduct : true,
-      is_edit_product_success : true
+      is_edit_product_success : true,
+      edit_product_number : action.payload.id
     })
     case 'UPDATE_PRODUCT_ADMIN_FAILURE':
     return Object.assign({}, state, {
       onEditProduct : true,
-      is_edit_product_success:false
+      is_edit_product_success:false,
+      edit_product_number : action.payload.id
     })
     case 'COMFIRM_PAYMENT_ADMIN_SUCCESS':
     return Object.assign({}, state, {
       onConfirmOrder : true,
+      confirm_order_number:action.payload.id,
       is_confirm_order_success : true
     })
     case 'COMFIRM_PAYMENT_ADMIN_FAILURE':
     return Object.assign({}, state, {
       onConfirmOrder : true,
+      confirm_order_number:action.payload.id,
       is_confirm_order_success:false
     })
     case 'UPDATE_TRACK_ADMIN_SUCCESS':
@@ -355,11 +367,13 @@ const validator = (state=initialState,action)=>{
     case 'UNCOMFIRM_PAYMENT_ADMIN_SUCCESS':
     return Object.assign({}, state, {
       onUnconfirmOrder : true,
+      confirm_order_number:action.payload.id,
       is_unconfirm_order_success : true
     })
     case 'UNCOMFIRM_PAYMENT_ADMIN_FAILURE':
     return Object.assign({}, state, {
       onUnconfirmOrder : true,
+      confirm_order_number:action.payload.id,
       is_unconfirm_order_success:false
     })
     case 'LOGOUT':
