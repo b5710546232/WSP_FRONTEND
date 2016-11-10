@@ -46,12 +46,8 @@ class OrderItem extends Component {
             <span className="left">OrderID : {this.props.order.id}</span>
             <span className="right">
               {!this.props.order.is_paid?
-                <ConfirmModal select_order={this.props.order}
-                  trigger_choose={<i className="material-icons clear-icon">clear</i>}
-                  />
-                :<ConfirmModal select_order={this.props.order} del={true}
-                  trigger_choose={<i className="material-icons done-icon">done</i>}
-                />
+                <span className="unconfirm_text">Unconfirm</span>
+                :<span className="confirm_text">Confirm</span>
               }
             </span>
         </div>
@@ -129,6 +125,20 @@ class OrderItem extends Component {
                 </Table>
               </Col>
             </Row>
+
+            <Row>
+              <div className="right">
+              {!this.props.order.is_paid?
+                <ConfirmModal select_order={this.props.order}
+                trigger_choose={<button className="btn waves-effect waves-green confirmBtn">Confirm</button>}
+                />
+                :<ConfirmModal select_order={this.props.order} del={true}
+                  trigger_choose={<button className="btn waves-effect waves-red confirmBtn">Unconfirm</button>}
+                />
+              }
+              </div>
+            </Row>
+            <br/>
           </div>
         </div>
       </li>

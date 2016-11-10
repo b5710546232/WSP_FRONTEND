@@ -57,6 +57,7 @@ class ConfirmModal extends Component {
                 <div>Do you sure to confirm the payment of Order {this.props.select_order.id} ?</div>
               }</div>
         </Row>
+        <br/>
         <Row>
           <div className="center">{this.props.del?
               <Button waves="light" onClick={(e)=>this.onUnconfirm(e)}>Unconfirm</Button>:
