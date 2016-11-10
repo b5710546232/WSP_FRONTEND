@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Row} from 'react-materialize'
 import '../../../../assets/scss/home.scss'
 import classnames from 'classnames';
 
@@ -16,7 +17,11 @@ export default class Section extends Component {
       margin : this.props.margin ? this.props.margin:"auto"
     }
     var marginLogo = {
-      marginTop : "5%"
+      marginTop : "5%",
+      marginLeft : "15%"
+    }
+    var marginButton = {
+      marginTop : "15%",
     }
     return(
       <div>
@@ -32,7 +37,7 @@ export default class Section extends Component {
               <div className="col s12">
                 <h5>{this.props.subtitle}</h5>
               </div>
-              <div className="col s12">
+              <div className="col s12" style={marginButton}>
                 {this.props.button}
               </div>
             </row>
