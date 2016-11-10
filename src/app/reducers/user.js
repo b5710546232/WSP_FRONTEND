@@ -52,7 +52,7 @@ const user = (state=initialState,action)=>{
       })
       case 'LOAD_USER_DATA_FAILURE':
       return logoutState
-
+      
       case 'EDIT_USER_SUCCESS':
       // console.log('edit',action.payload);
       return Object.assign({}, state, {
