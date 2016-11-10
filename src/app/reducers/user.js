@@ -50,6 +50,9 @@ const user = (state=initialState,action)=>{
         username:action.payload.username,
         userdata:action.payload
       })
+      case 'LOAD_USER_DATA_FAILURE':
+      return logoutState
+
       case 'EDIT_USER_SUCCESS':
       // console.log('edit',action.payload);
       return Object.assign({}, state, {
