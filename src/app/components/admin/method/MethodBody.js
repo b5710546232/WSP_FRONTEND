@@ -56,20 +56,20 @@ class MethodBody extends Component {
           <table className="table-responsive">
             <thead>
               <tr>
-                  <th data-field="id">ID</th>
-                  <th data-field="name">Payment Method</th>
-                  <th data-field="is_active">Is Active</th>
-                  <th data-field="add"><MethodEditForm add={true}/></th>
+                <th data-field="id">ID</th>
+                <th data-field="name">Payment Method</th>
+                <th data-field="is_active">Is Active</th>
+                <th data-field="add"><MethodEditForm add={true}/></th>
               </tr>
             </thead>
             <tbody>
               {this.props.admin.method.map(
                 (method)=>(
-                    <tr key={method.id}>
-                      <td>{method.id}</td>
-                      <td>{method.name}</td>
-                      <td>{method.is_active? <i onClick={(e)=>this.deactiveMethod(e,method.id)} key={method.id} className="material-icons done-icon">done</i> : <i onClick={(e)=>this.reactiveMethod(e,method.id)} key={method.id} className="material-icons clear-icon">clear</i>}</td>
-                      <td><MethodEditForm select_method={method} key={method.id}/></td>
+                  <tr key={method.id}>
+                    <td>{method.id}</td>
+                    <td>{method.name}</td>
+                    <td>{method.is_active? <i onClick={(e)=>this.deactiveMethod(e,method.id)} key={method.id} className="material-icons done-icon">done</i> : <i onClick={(e)=>this.reactiveMethod(e,method.id)} key={method.id} className="material-icons clear-icon">clear</i>}</td>
+                    <td><MethodEditForm select_method={method} keys={method.id}/></td>
                     </tr>
                 )
               )}

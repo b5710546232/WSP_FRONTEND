@@ -23,7 +23,7 @@ class CategoryEditModal extends Component {
     return this.props.admin.category!== nextProps
   }
   componentDidUpdate(){
-    if (this.props.validator.onEditCategory){
+    if (this.props.select_category&&this.props.select_category.id==this.props.validator.edit_category_number&&this.props.validator.onEditCategory){
       if (this.props.validator.is_edit_category_success){
         Materialize.toast(this.props.select_category.name+' Category is edited!', 4000,'light-blue')
         this.props.resetValidator()

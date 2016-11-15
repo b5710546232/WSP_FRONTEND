@@ -28,7 +28,8 @@ class ProductEditModal extends Component {
       }
     }
     /** Bug Occur Here **/
-    if (this.props.validator.onEditProduct){
+    console.log(this.props.select_product);
+    if (this.props.select_product&&this.props.select_product.id==this.props.validator.edit_product_number&&this.props.validator.onEditProduct){
       if (this.props.validator.is_edit_product_success){
         Materialize.toast(this.props.select_product.name+' is edited!', 4000,'light-blue')
         this.props.resetValidator()

@@ -54,17 +54,17 @@ class SlipModal extends Component {
         trigger={
           <Button waves="light">View Transfer Slip</Button>
         }
-        >
+      >
         <div>
           <Row>
-            <img id="img-preview-slip" className="responsive-img" src={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+this.props.order.transfer_slip+'?'+Math.random()}></img>
+            <img id="img-preview-slip" className="responsive-img" src={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+this.props.order.transfer_slip}></img>
           </Row>
           {this.props.read_only?
             <div></div>:
-              <div>
-                <Row>
-                  <form>
-                    <div className="file-field input-field">
+            <div>
+              <Row>
+                <form>
+                  <div className="file-field input-field">
                     <div className="btn" >
                       <span>Edit Transfer Slip</span>
                       <input type="file" id="slipedit" onChange={(e)=>this.onUpload(e)}/>
@@ -72,12 +72,12 @@ class SlipModal extends Component {
                     <div className="file-path-wrapper">
                       <input className="file-path validate" type="text"/>
                     </div>
-                    </div>
-                  </form>
-                </Row>
-                <Row><div className="right">
-                  <a className="btn-floating waves-effect waves-light red" onClick={(e)=>this.onDelete(e)}><i className="material-icons">delete</i></a>
-                </div></Row>
+                  </div>
+                </form>
+              </Row>
+              <Row><div className="right">
+                <a className="btn-floating waves-effect waves-light red" onClick={(e)=>this.onDelete(e)}><i className="material-icons">delete</i></a>
+              </div></Row>
               </div>
           }
         </div>

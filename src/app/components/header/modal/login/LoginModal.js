@@ -24,8 +24,8 @@ class LoginModal extends Component {
     if (this.props.validator.onLogin){
       if (this.props.validator.is_login_success){
         Materialize.toast(this.props.user.userdata.username+' is logged in!', 4000,'light-blue')
+        $('#login_modal').closeModal()
         this.props.resetValidator()
-        $('#login_modal').closeModal();
       }else {
         Materialize.toast('Invalid username or password!', 4000,'light-blue')
         this.props.resetValidator()
@@ -47,13 +47,13 @@ class LoginModal extends Component {
           <Row className="center">
             <Input name="username" s={12} label="Username"
               ref = "username"
-               />
+            />
             <Input name="password" type="password" label="password" s={12}
               ref = "password"
-               />
-             <Button waves="light" className="space-button" type="submit" onClick={
-                (e)=>this.onLogin(e)
-              }>Login</Button>
+            />
+            <Button waves="light" className="space-button" type="submit" onClick={
+              (e)=>this.onLogin(e)
+            }>Login</Button>
           </Row>
         </form>
       </Modal>
