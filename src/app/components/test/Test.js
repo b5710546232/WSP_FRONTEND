@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Modal} from '../../../util/react-materialize-yr'
+import {Modal,Collapsible,CollapsibleChild} from '../../../util/react-materialize-yr'
 import {Button} from 'react-materialize'
 export default class Test extends Component {
   render(){
@@ -14,7 +14,15 @@ export default class Test extends Component {
           >
             <div>Content</div>
           </Modal>
-          </div>
+          <Collapsible
+            option="popout"
+          >
+            <CollapsibleChild
+              header="aaaa">AAA</CollapsibleChild>
+            <CollapsibleChild
+              header="aaaa">AAA</CollapsibleChild>
+          </Collapsible>
+        </div>
       </div>
     )
   }

@@ -9,7 +9,7 @@ export default class Modal extends Component {
       <div>
         <a className="modal-trigger" href={'#'+this.props.id}>{this.props.trigger}</a>
         <div id={this.props.id} className="modal modal-fixed-footer">
-          <div className="modal-content">
+          <div className="modal-content black-text">
             <h4>{this.props.header}</h4>
             {this.props.children}
           </div>

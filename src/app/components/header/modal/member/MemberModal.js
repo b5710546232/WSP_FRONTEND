@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {logout,loadUserdata,check_admin,onEditPassword} from '../../../../actions/UserAction'
-import {Modal,Button} from 'react-materialize'
+import {Button} from 'react-materialize'
+import {Modal} from '../../../../../util/react-materialize-yr'
 import MemberInfo from './MemberInfo'
 import ChangePasswordPanel from './ChangePasswordPanel'
 import AddressInfo from './AddressInfo'
@@ -10,13 +11,13 @@ class MemberModal extends Component {
   constructor(props){
     super(props)
 
-      this.userdata = {
-        username:"",
-        first_name:"",
-        last_name:"",
-        email:""
-      }
-      this.handleChange = this.onChange.bind(this)
+    this.userdata = {
+      username:"",
+      first_name:"",
+      last_name:"",
+      email:""
+    }
+    this.handleChange = this.onChange.bind(this)
   }
 
   componentDidMount(){
@@ -55,40 +56,43 @@ class MemberModal extends Component {
     this.userdata = this.props.user.userdata===null?this.userdata:this.props.user.userdata
     return (
       <Modal
+        id="user-control-panel"
         header='User Control Panel'
         trigger={
           <span className="waves-effect waves-light" style={margin}>Welcome, {this.userdata.username}</span>
         }
-        >
-        <ul className="collapsible row" data-collapsible="accordion">
-          <li>
-            <div className="collapsible-header active">User Info</div>
-            <div className="collapsible-body"><MemberInfo
-              username={this.userdata.username}
-              first_name={this.userdata.first_name}
-              last_name={this.userdata.last_name}
-              email={this.userdata.email}
-              onChange = {this.handleChange}
-              /></div>
-          </li>
-          <li>
-            <div className="collapsible-header" onClick={(e)=>this.onEditPasswordSelect(e)} >Change Password</div>
-            { !this.props.user.change_password_success ?
-            <div className="collapsible-body"><ChangePasswordPanel/></div>
-            : <div></div>
-            }
-          </li>
-          <li>
-            <div className="collapsible-header">Manage Address</div>
-            <div className="collapsible-body"><AddressInfo/></div>
-          </li>
-        </ul>
-        <br/>
-        <div className="row center">
-          <Button waves="light" className="modal-close" onClick={
-             (e)=>this.onLogout()
-           }>Logout</Button>&nbsp;
-         {this.props.user.is_admin? <Link className="waves-effect waves-light btn modal-close"  to={{ pathname:'/admin' }}>Admin</Link>:<div></div>}
+      >
+        <div>
+          <ul className="collapsible row" data-collapsible="accordion">
+            <li>
+              <div className="collapsible-header active">User Info</div>
+              <div className="collapsible-body"><MemberInfo
+                username={this.userdata.username}
+                first_name={this.userdata.first_name}
+                last_name={this.userdata.last_name}
+                email={this.userdata.email}
+                onChange = {this.handleChange}
+                                                /></div>
+            </li>
+            <li>
+              <div className="collapsible-header" onClick={(e)=>this.onEditPasswordSelect(e)} >Change Password</div>
+              { !this.props.user.change_password_success ?
+                <div className="collapsible-body"><ChangePasswordPanel/></div>
+                : <div></div>
+              }
+            </li>
+            <li>
+              <div className="collapsible-header">Manage Address</div>
+              <div className="collapsible-body"><AddressInfo/></div>
+            </li>
+          </ul>
+          <br/>
+          <div className="row center">
+            <Button waves="light" className="modal-close" onClick={
+              (e)=>this.onLogout()
+            }>Logout</Button>&nbsp;
+            {this.props.user.is_admin? <Link className="waves-effect waves-light btn modal-close"  to={{ pathname:'/admin' }}>Admin</Link>:<div></div>}
+          </div>
         </div>
       </Modal>
     )
