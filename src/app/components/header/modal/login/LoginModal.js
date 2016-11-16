@@ -72,13 +72,13 @@ class LoginModal extends Component {
           <Row className="center">
             <Input name="username" s={12} label="Username"
               ref = "username"
-               />
+            />
             <Input name="password" type="password" label="password" s={12}
               ref = "password"
-               />
-             <Button waves="light" className="space-button" type="submit" onClick={
-                (e)=>this.onLogin(e)
-              }>Login</Button>
+            />
+            <Button waves="light" className="space-button" type="submit" onClick={
+              (e)=>this.onLogin(e)
+            }>Login</Button>
           </Row>
         </form>
       </Modal>

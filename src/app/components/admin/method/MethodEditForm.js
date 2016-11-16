@@ -37,7 +37,7 @@ class MethodEditForm extends Component {
         }
       }
       /** Bug occur here **/
-      if (this.props.validator.onUpdateMethod){
+      if (this.props.select_method&&this.props.validator.update_method_number==this.props.select_method.id&&this.props.validator.onUpdateMethod){
         if (this.props.validator.is_update_method_success){
           Materialize.toast('Payment Method '+this.props.select_method.name+' is edited!', 4000,'light-blue')
           this.props.resetValidator()
