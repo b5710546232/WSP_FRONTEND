@@ -6,24 +6,28 @@ import {
   Home,
   Store,
   Admin,
-  Design
+  Design,
+  Test
 } from './components'
 
 export default (store,history) => {
   return (
      <Router history={syncHistoryWithStore(history, store)}>
-      <Router path='/' component={App}>
-        <IndexRoute component={Home}/>
-        <route path='/store'>
-          <IndexRoute component={Store} />
-        </route>
-        <route path='/design'>
-          <IndexRoute component={Design} />
-        </route>
-        <route path='/admin'>
-          <IndexRoute component={Admin} />
-        </route>
-      </Router>
+       <Router path='/' component={App}>
+         <IndexRoute component={Home}/>
+         <route path='/store'>
+           <IndexRoute component={Store} />
+         </route>
+         <route path='/design'>
+           <IndexRoute component={Design} />
+         </route>
+         <route path='/admin'>
+           <IndexRoute component={Admin} />
+         </route>
+         <route path='/test'>
+           <IndexRoute component={Test} />
+         </route>
+       </Router>
     </Router>
   )
 }
