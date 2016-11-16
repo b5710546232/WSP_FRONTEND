@@ -12,8 +12,9 @@ class Search extends Component{
   }
 
   updateSearch(event){
-    this.setState({search: event.target.value.substr(0,20)});
-    console.log(this.state.search,"test search");
+    this.setState({search: event.target.value.substr(0,20)})
+      console.log(this.state.search);
+    })
   }
 
   render() {
@@ -50,15 +51,15 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    // onLoadCategoryList: () => {
-    //   dispatch(loadCategoryList())
-    // },
-    // addFilter: (filters) => {
-    //   dispatch(addFilter(filters))
-    // },
-    // removeFilter: (filters) => {
-    //   dispatch(removeFilter(filters))
-    // }
+    onLoadCategoryList: () => {
+      dispatch(loadCategoryList())
+    },
+    addFilter: (filters) => {
+      dispatch(addFilter(filters))
+    },
+    removeFilter: (filters) => {
+      dispatch(removeFilter(filters))
+    }
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Search)
