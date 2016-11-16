@@ -12,7 +12,7 @@ class Search extends Component{
   }
 
   updateSearch(event){
-    this.setState({search: event.target.value.substr(0,20)})
+    this.setState({search:event.target.value},()=>{
       console.log(this.state.search);
     })
   }
