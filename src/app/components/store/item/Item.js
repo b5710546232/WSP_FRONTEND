@@ -6,10 +6,10 @@ export default class Item extends Component {
     return (
       <Col s={12} m={5} l={4}>
         <Card className='small hoverable'
-          header={<CardTitle
+            header={<CardTitle
             image={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+this.props.image+'?'+Math.random()}>{this.props.name}
-          </CardTitle>}
-          actions={<ItemInfoModal
+            </CardTitle>}
+            actions={<ItemInfoModal
             id = {this.props.id}
             name={this.props.name}
             description={this.props.description}

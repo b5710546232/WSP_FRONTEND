@@ -20,7 +20,12 @@ class FilterItem extends Component {
   }
   render() {
     return (
-        <Input name='category' id={'checkbox'+this.props.id} type='checkbox' value={this.props.id}  checked={this.props.filters.includes(this.props.id)} onClick={(e)=>this.boxClick(e)} label={this.props.name} />
+        <Input  name='category'
+                id={'checkbox'+this.props.id}
+                type='checkbox' value={this.props.id}
+                checked={this.props.filters.includes(this.props.id)}
+                onClick={(e)=>this.boxClick(e)}
+                label={this.props.name} />
     )
   }
 }

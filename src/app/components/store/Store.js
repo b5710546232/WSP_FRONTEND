@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Filter from './filter/Filter'
-import Search from '../search/Search'
+import Search from './search/Search'
 import ItemContainer from './itemcontainer/ItemContainer'
 import '../../../assets/scss/store.scss'
 export default class Store extends Component {
