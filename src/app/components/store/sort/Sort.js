@@ -5,31 +5,28 @@ import {sortNone,sortPriceLow,sortPriceHigh,sortNameA,sortNameZ} from '../../../
 import {loadProductList} from '../../../actions/ProductAction'
 class Sort extends Component{
   componentWillMount(){
-    this.props.onLoadProductList()
     this.sortByNone()
   }
   sortByNone(){
-    this.props.sortNone(this.props.products)
+    this.props.sortNone(this.props.search.search_product)
   }
   sortByNameA(){
-    this.props.sortNameA(this.props.products)
+    this.props.sortNameA(this.props.search.search_product)
   }
   sortByNameZ(){
-    this.props.sortNameZ(this.props.products)
+    this.props.sortNameZ(this.props.search.search_product)
   }
   sortByPriceLow(){
-    this.props.sortPriceLow(this.props.products)
+    this.props.sortPriceLow(this.props.search.search_product)
   }
   sortByPriceHigh(){
-    this.props.sortPriceHigh(this.props.products)
+    this.props.sortPriceHigh(this.props.search.search_product)
   }
   render(){
     return(
       <div className="sort_container">
          <a className='dropdown-button btn' href='#' data-activates='dropdown1'>Sort by</a>
          <ul id='dropdown1' className='dropdown-content'>
-           <li><a href="#" onClick={()=>this.sortByNone()}>None</a></li>
-           <li className="divider"></li>
            <li><a href="#" onClick={()=>this.sortByNameA()}>Name: A-Z</a></li>
            <li><a href="#" onClick={()=>this.sortByNameZ()}>Name: Z-A</a></li>
            <li><a href="#" onClick={()=>this.sortByPriceLow()}>Price: Low-High</a></li>
