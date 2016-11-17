@@ -30,11 +30,11 @@ export default class AppFooter extends Component {
         className='page-footer light-blue'
         >
           <h5 className="white-text">Contact us</h5>
-          <p className="white-text">
+          <div className="white-text">
             <Row>Fasaiproduct Company</Row>
             <Row>40 Moo 5 Khlong Wua sub-district, Muang district, Ang-thong 14000</Row>
             <Row>Tel. 081-587-9559, 03-561-8233</Row>
-          </p>
+          </div>
           <div className='map_container'>
           <Gmaps
               width={'20em'}

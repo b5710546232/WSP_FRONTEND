@@ -18,9 +18,37 @@ class LoginModal extends Component {
     this.props.onLogin(data)
   }
   shouldComponentUpdate(nextProps){
-    return this.props.user!==nextProps
+    console.log('debug','should update');
+    return this.props.user!==nextProps.user
   }
   componentDidUpdate(){
+    console.log('debug','did update');
+    // if (this.props.validator.onLogin){
+    //   if (this.props.validator.is_login_success){
+    //     Materialize.toast(this.props.user.userdata.username+' is logged in!', 4000,'light-blue')
+    //     this.props.resetValidator()
+    //     $('#login_modal').closeModal();
+    //   }else {
+    //     Materialize.toast('Invalid username or password!', 4000,'light-blue')
+    //     this.props.resetValidator()
+    //   }
+    // }
+        // if (this.props.validator.onLogin){
+        //   if (this.props.validator.is_login_success){
+        //     Materialize.toast(this.props.user.userdata.username+' is logged in!', 4000,'light-blue')
+        //     this.props.resetValidator()
+        //     $('#login_modal').closeModal();
+        //   }else {
+        //     Materialize.toast('Invalid username or password!', 4000,'light-blue')
+        //     this.props.resetValidator()
+        //   }
+        // }
+  }
+  componentDidMount(){
+    console.log('debug','didmount');
+    this.props.loadValidator()
+  }
+  render() {
     if (this.props.validator.onLogin){
       if (this.props.validator.is_login_success){
         Materialize.toast(this.props.user.userdata.username+' is logged in!', 4000,'light-blue')
@@ -31,13 +59,10 @@ class LoginModal extends Component {
         this.props.resetValidator()
       }
     }
-  }
-  componentDidMount(){
-    this.props.loadValidator()
-  }
-  render() {
+    console.log('debug','render');
     return (
       <Modal
+        ref = "my_modal"
         id='login_modal'
         header='Login'
         trigger={

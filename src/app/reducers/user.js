@@ -52,7 +52,7 @@ const user = (state=initialState,action)=>{
       })
       case 'LOAD_USER_DATA_FAILURE':
       return logoutState
-      
+
       case 'EDIT_USER_SUCCESS':
       // console.log('edit',action.payload);
       return Object.assign({}, state, {
@@ -72,6 +72,7 @@ const user = (state=initialState,action)=>{
       change_password_success: false
     })
     case 'LOGOUT':
+      // console.log('debug','reducer logout')
       localStorage.removeItem('token')
       return logoutState
     case 'CHECK_ADMIN_SUCCESS':
