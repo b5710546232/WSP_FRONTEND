@@ -1,134 +1,116 @@
 import React, { Component } from 'react'
 import ParallaxSection from '../home/section/ParallaxSection'
-// import PIXI from 'pixi'
+import * as PIXI from "pixi.js"
+
 export default class Design extends Component {
-  constructor(){
-    super()
+  constructor( props ) {
+    super(props);
     this.state = {
-      loaded:false
+      isLoad : false
     }
+    //bind our animate function
+    this.animate = this.animate.bind(this);
   }
-  componentWillUpdate(){
+  initPIXI(){
+    this.renderer = new PIXI.WebGLRenderer(800, 600);
 
-  }
-  initPixi(){
-    console.log('pixi','created');
-    let renderer = PIXI.autoDetectRenderer(800, 600)
-    renderer.backgroundColor = 	0xb0bdd2
-    document.getElementById('design-container').appendChild(renderer.view)
-    // create the root of the scene graph
-    var stage =  new PIXI.Container();
+    // The renderer will create a canvas element for you that you can then insert into the DOM.
+    this.refs.canvas.appendChild(this.renderer.view);
 
-    console.log('loaded init',this.state.loaded);
-    // var loader = PIXI.loader; // pixi exposes a premade instance for you to use.
-    // // //or
-    // var loader = new PIXI.loaders.Loader(); // you can also create your own if you want
-    // //
-    // loader.add('bunny',"required/logo.png");
-    // //
-    // loader.once('complete',()=>{
-    //   console.log('loaded',this.state.loaded);
-    //   this.setState({loaded:true})
-    // });
-    //
+    // You need to create a root container that will hold the scene you want to draw.
+    this.stage = new PIXI.Container();
 
+    // Declare a global variable for our sprite so that the animate function can access it.
+    this.logo = null;
+    let loaders = new PIXI.loaders.Loader();
+    let self = this
+    console.log('state',this.state);
+    loaders.add('logo', 'src/assets/images/logo.png').load(function (loader, resources) {
+      // This creates a texture from a 'logo.png' image.
+      self.logo = new PIXI.Sprite(resources.logo.texture);
+      // Setup the position and scale of the logo
+      self.logo.position.x = 400;
+      self.logo.position.y = 300;
 
-    // create a texture from an image path
-    // create a new Sprite using the texture
-    var texture = new PIXI.Texture.fromImage("bunny");
-    let bunny = new PIXI.Sprite(texture);
-    console.log('pixi',texture);
+      self.logo.anchor.set(0.5);
 
-    // center the sprite's anchor point
-    bunny.anchor.x = 0.5;
-    bunny.anchor.y = 0.5;
-    bunny.interactive = true;
+      self.logo.scale.set(0.5);
 
-   bunny.buttonMode = true;
+      self.logo.interactive = true;
+      self.logo.buttonMode = true;
+      self.logo// events for drag start
+      .on('mousedown', self.onDragStart)
+      .on('touchstart', self.onDragStart)
+      // events for drag end
+      .on('mouseup', self.onDragEnd)
+      .on('mouseupoutside', self.onDragEnd)
+      .on('touchend', self.onDragEnd)
+      .on('touchendoutside', self.onDragEnd)
+      // events for drag move
+      .on('mousemove', self.onDragMove)
+      .on('touchmove', self.onDragMove);
+      // Add the logo to the scene we are building.
+      self.stage.addChild(self.logo);
 
+      // kick off the animation loop (defined below)
+      self.animate();
 
-    // move the sprite to the center of the screen
-    bunny.position.x = 200;
-    bunny.position.y = 150;
-    bunny.on('mousedown', this.onDragStart)
-        .on('touchstart', this.onDragStart)
-        // events for drag end
-        .on('mouseup', this.onDragEnd)
-        .on('mouseupoutside', this.onDragEnd)
-        .on('touchend', this.onDragEnd)
-        .on('touchendoutside', this.onDragEnd)
-        // events for drag move
-        .on('mousemove', this.onDragMove)
-        .on('touchmove', this.onDragMove);
-
-    stage.addChild(bunny);
-    renderer.render(stage)
-  }
-
-  animate() {
-
-    // requestAnimationFrame(animate);
-    // render the stage
-    this.forceUpdate()
-    renderer.render(stage);
-  }
-  onDragStart(event){
-    console.log('drag');
-    this.data = event.data;
-    this.alpha = 0.5;
-    this.dragging = true;
-}
-onDragEnd()
-{
-    this.alpha = 1;
-
-    this.dragging = false;
-
-    // set the interaction data to null
-    this.data = null;
-}
-onDragMove()
-{
-    if (this.dragging)
-    {
-      console.log('move');
-        var newPosition = this.data.getLocalPosition(this.parent);
-        this.position.x = newPosition.x;
-        this.position.y = newPosition.y;
-    }
-}
-  shouldComponentUpdate(nextProps,nextState){
-    return nextProps!==this.props
+    });
+    this.setState({
+      isLoad:true
+    })
   }
   componentDidMount(){
-
-    var loader = PIXI.loader; // pixi exposes a premade instance for you to use.
-    // //or
-    var loader = new PIXI.loaders.Loader(); // you can also create your own if you want
-    //
-    loader.add('bunny',"required/logo.png");
-    //
-    loader.once('complete',()=>{
-      console.log('loaded',this.state.loaded);
-      this.setState({loaded:true})
-      this.initPixi()
-    });
-    loader.load();
+    this.initPIXI()
+    this.setState({
+      isLoad:true
+    })
   }
-  componetnWillUpdate(){
-    this.initPixi()
+  animate() {
+    // start the timer for the next animation loop
+    requestAnimationFrame(this.animate);
+
+    // this is the main render call that makes pixi draw your container and its children.
+    this.renderer.render(this.stage);
+  }
+  onDragStart(event)
+  {
+      // store a reference to the data
+      // the reason for this is because of multitouch
+      // we want to track the movement of this particular touch
+      this.data = event.data;
+      this.alpha = 0.5;
+      this.dragging = true;
+  }
+
+  onDragEnd()
+  {
+      this.alpha = 1;
+
+      this.dragging = false;
+
+      // set the interaction data to null
+      this.data = null;
+  }
+
+  onDragMove()
+  {
+      if (this.dragging)
+      {
+          var newPosition = this.data.getLocalPosition(this.parent);
+          this.position.x = newPosition.x;
+          this.position.y = newPosition.y;
+      }
   }
   render() {
     let canvasStyle={
       width:"800px",
       height:"600px"
     }
-    requestAnimationFrame( this.animate )
     return (
       <ParallaxSection
         background="src/assets/media/images/2.jpg">
-        <div id="design-container" className="container">
-          {/* <canvas id="design-canvas" style={canvasStyle}></canvas> */}
+        <div className="design-container" ref="canvas">
         </div>
       </ParallaxSection>
     )
