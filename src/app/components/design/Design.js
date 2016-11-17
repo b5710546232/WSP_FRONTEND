@@ -2,6 +2,16 @@ import React, { Component } from 'react'
 import ParallaxSection from '../home/section/ParallaxSection'
 // import PIXI from 'pixi'
 export default class Design extends Component {
+  constructor(){
+    super()
+    this.state = {
+      loaded:false
+    }
+  }
+
+  componentWillUpdate(){
+
+  }
   initPixi(){
     console.log('pixi','created');
     let renderer = PIXI.autoDetectRenderer(800, 600)
@@ -9,14 +19,25 @@ export default class Design extends Component {
     document.getElementById('design-container').appendChild(renderer.view)
     // create the root of the scene graph
     var stage =  new PIXI.Container();
+    console.log('loaded init',this.state.loaded);
+    // var loader = PIXI.loader; // pixi exposes a premade instance for you to use.
+    // // //or
+    // var loader = new PIXI.loaders.Loader(); // you can also create your own if you want
+    // //
+    // loader.add('bunny',"required/logo.png");
+    // //
+    // loader.once('complete',()=>{
+    //   console.log('loaded',this.state.loaded);
+    //   this.setState({loaded:true})
+    // });
+    //
+
 
     // create a texture from an image path
-
     // create a new Sprite using the texture
-    if(!texture){
-      var texture = PIXI.Texture.fromImage("required/logo.png");
-    }
-    var bunny = new PIXI.Sprite(texture);
+    var texture = new PIXI.Texture.fromImage("bunny");
+    let bunny = new PIXI.Sprite(texture);
+    console.log('pixi',texture);
 
     // center the sprite's anchor point
     bunny.anchor.x = 0.5;
@@ -29,10 +50,26 @@ export default class Design extends Component {
     stage.addChild(bunny);
     renderer.render(stage)
   }
+  shouldComponentUpdate(nextProps,nextState){
+    return nextProps!==this.props
+  }
   componentDidMount(){
 
+    var loader = PIXI.loader; // pixi exposes a premade instance for you to use.
+    // //or
+    var loader = new PIXI.loaders.Loader(); // you can also create your own if you want
+    //
+    loader.add('bunny',"required/logo.png");
+    //
+    loader.once('complete',()=>{
+      console.log('loaded',this.state.loaded);
+      this.setState({loaded:true})
+      this.initPixi()
+    });
+    loader.load();
+  }
+  componetnWillUpdate(){
     this.initPixi()
-    this.forceUpdate()
   }
   render() {
     let canvasStyle={
