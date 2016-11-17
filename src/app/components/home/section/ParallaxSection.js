@@ -26,6 +26,7 @@ export default class Section extends Component {
     return(
       <div>
         <div className="parallax-container" style={heightStyle}>
+          {this.props.children}
           <div className={classnames('parallax_container',this.props.position,'white-text')} style={margin}>
             <row>
               <div className="col s12" style={marginLogo}>
