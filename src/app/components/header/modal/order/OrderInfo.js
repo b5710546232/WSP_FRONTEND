@@ -100,11 +100,13 @@ class OrderInfo extends Component {
           <Row>
             <Col s={12}>
               <Table className="center">
-                <tr>
-                  <th data-field="id">Product</th>
-                  <th data-field="name">Quantity</th>
-                  <th data-field="price">Price</th>
-                </tr>
+                <tbody>
+                  <tr>
+                    <th data-field="id">Product</th>
+                    <th data-field="name">Quantity</th>
+                    <th data-field="price">Price</th>
+                  </tr>
+                </tbody>
                 <tbody>
                   {itemList.map(
                     (item)=>(
