@@ -3,7 +3,7 @@ import SearchBar from 'react-search-bar'
 import '../../../../assets/scss/search.scss'
 import {Icon,Input,NavItem,Row,Navbar,Col} from 'react-materialize'
 import {connect} from 'react-redux'
-import {searchProduct} from '../../../actions/SearchAction'
+import {searchProduct,createSearchProduct} from '../../../actions/SearchAction'
 import {loadProductList} from '../../../actions/ProductAction'
 class Search extends Component{
   constructor(){
@@ -12,6 +12,10 @@ class Search extends Component{
       search: ''
     };
   }
+  // 
+  // shouldComponentUpdate(nextProps){
+  //   return this.props.products!=nextProps.products
+  // }
 
   componentWillMount(){
     this.props.onLoadProductList()
@@ -23,8 +27,12 @@ class Search extends Component{
       this.props.searchProduct(this.props.products,this.state.search)
     })
   }
-
-
+  componentDidMount(){
+    this.props.createSearchProduct(this.props.products)
+  }
+  // componentWillUpdate(){
+  //   this.props.createSearchProduct(this.props.products)
+  // }
 
   render() {
     // let filterSearch = this.props.categories.filter(
@@ -32,6 +40,7 @@ class Search extends Component{
     //     return category.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== 1
     //   }
     // );
+
     return (
         <div className="col s12 ">
           <div className="filter white  z-depth-2 ">
@@ -62,6 +71,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     searchProduct: (products,text) => {
       dispatch(searchProduct(products,text))
+    },
+    createSearchProduct: (products) => {
+      dispatch(createSearchProduct(products))
     }
     // addFilter: (filters) => {
     //   dispatch(addFilter(filters))

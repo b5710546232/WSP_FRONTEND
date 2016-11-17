@@ -1,7 +1,7 @@
 import {Action} from '../constants';
 import { CALL_API } from 'redux-api-middleware'
 import {PRODUCT_ENDPOINT} from '../constants/endpoints'
-
+import {createSearchProduct} from './SearchAction'
 // Add new Product [Staff]
 export const createProduct = (data,token) => (
   (dispatch) =>
@@ -33,15 +33,27 @@ export const createProduct = (data,token) => (
 )
 // List product [All(limit),Staff]
 export const loadProductList = () => (
-  {[CALL_API]: {
+  (dispatch) =>
+    dispatch({[CALL_API]: {
     endpoint: PRODUCT_ENDPOINT,
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
     method: 'GET',
-    types: ['LOAD_PRODUCT_LIST_REQUEST', 'LOAD_PRODUCT_LIST_SUCCESS', 'LOAD_PRODUCT_LIST_FAILURE']
+    types: ['LOAD_PRODUCT_LIST_REQUEST',
+    {
+      type: 'LOAD_PRODUCT_LIST_SUCCESS',
+      payload: (_action, _state, res) => {
+        return res.json().then((data) => {
+          // console.log(data);
+          dispatch(createSearchProduct(data))
+          return data
+        })
+      }
+    }, 'LOAD_PRODUCT_LIST_FAILURE']
   }}
+)
 )
 
 // Get product

@@ -15,11 +15,10 @@ class ItemContainer extends Component {
     return this.props.products !== nextProps
   }
   filterProduct(){
-    let temp =  this.props.products
     this.filter_product = []
     var self = this
     // console.log(this.props.filters,'state filters');
-    temp.forEach(function(product) {
+    this.props.search.search_product.forEach(function(product) {
       if(self.props.filters.includes(product.category))
         self.filter_product.push(product)
     });

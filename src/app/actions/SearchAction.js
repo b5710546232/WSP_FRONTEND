@@ -5,3 +5,10 @@ export const searchProduct = (products,text)=> {
     text
   }
 }
+
+export const createSearchProduct = (products)=> {
+  return {
+    type: 'CREATE_SEARCH_PRODUCT',
+    products
+  }
+}

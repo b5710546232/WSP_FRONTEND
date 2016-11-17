@@ -7,6 +7,10 @@ const initialState = {
 
 const search = (state=initialState,action)=>{
   switch(action.type) {
+    case 'CREATE_SEARCH_PRODUCT':
+      return Object.assign( {}, state, {
+        search_product:action.products
+      })
     case 'SEARCH_PRODUCT':
       return Object.assign( {}, state, {
         search_product:action.products.filter(
