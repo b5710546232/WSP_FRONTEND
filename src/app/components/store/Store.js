@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Filter from './filter/Filter'
 import Search from '../search/Search'
+import Sort from './sort/Sort'
 import ItemContainer from './itemcontainer/ItemContainer'
 import '../../../assets/scss/store.scss'
 export default class Store extends Component {
@@ -11,6 +12,7 @@ export default class Store extends Component {
     }
     return (
       <div className="store-container" style={bg}>
+        <Sort/>
         <div className="transparent container center">
           <div className="row">
             <Search />
