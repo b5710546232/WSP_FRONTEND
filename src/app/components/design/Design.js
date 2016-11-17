@@ -8,7 +8,6 @@ export default class Design extends Component {
       loaded:false
     }
   }
-
   componentWillUpdate(){
 
   }
@@ -19,6 +18,7 @@ export default class Design extends Component {
     document.getElementById('design-container').appendChild(renderer.view)
     // create the root of the scene graph
     var stage =  new PIXI.Container();
+
     console.log('loaded init',this.state.loaded);
     // var loader = PIXI.loader; // pixi exposes a premade instance for you to use.
     // // //or
@@ -42,14 +42,61 @@ export default class Design extends Component {
     // center the sprite's anchor point
     bunny.anchor.x = 0.5;
     bunny.anchor.y = 0.5;
+    bunny.interactive = true;
+
+   bunny.buttonMode = true;
+
 
     // move the sprite to the center of the screen
     bunny.position.x = 200;
     bunny.position.y = 150;
+    bunny.on('mousedown', this.onDragStart)
+        .on('touchstart', this.onDragStart)
+        // events for drag end
+        .on('mouseup', this.onDragEnd)
+        .on('mouseupoutside', this.onDragEnd)
+        .on('touchend', this.onDragEnd)
+        .on('touchendoutside', this.onDragEnd)
+        // events for drag move
+        .on('mousemove', this.onDragMove)
+        .on('touchmove', this.onDragMove);
 
     stage.addChild(bunny);
     renderer.render(stage)
   }
+
+  animate() {
+
+    // requestAnimationFrame(animate);
+    // render the stage
+    this.forceUpdate()
+    renderer.render(stage);
+  }
+  onDragStart(event){
+    console.log('drag');
+    this.data = event.data;
+    this.alpha = 0.5;
+    this.dragging = true;
+}
+onDragEnd()
+{
+    this.alpha = 1;
+
+    this.dragging = false;
+
+    // set the interaction data to null
+    this.data = null;
+}
+onDragMove()
+{
+    if (this.dragging)
+    {
+      console.log('move');
+        var newPosition = this.data.getLocalPosition(this.parent);
+        this.position.x = newPosition.x;
+        this.position.y = newPosition.y;
+    }
+}
   shouldComponentUpdate(nextProps,nextState){
     return nextProps!==this.props
   }
@@ -76,6 +123,7 @@ export default class Design extends Component {
       width:"800px",
       height:"600px"
     }
+    requestAnimationFrame( this.animate )
     return (
       <ParallaxSection
         background="src/assets/media/images/2.jpg">
