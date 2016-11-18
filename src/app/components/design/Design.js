@@ -11,11 +11,14 @@ export default class Design extends Component {
     //bind our animate function
     this.animate = this.animate.bind(this);
   }
-  initPIXI(){
+  initRenderer(){
     this.renderer = new PIXI.WebGLRenderer(800, 600);
 
     // The renderer will create a canvas element for you that you can then insert into the DOM.
     this.refs.canvas.appendChild(this.renderer.view);
+
+  }
+  initPIXI(){
 
     // You need to create a root container that will hold the scene you want to draw.
     this.stage = new PIXI.Container();
@@ -29,8 +32,13 @@ export default class Design extends Component {
       // This creates a texture from a 'logo.png' image.
       self.logo = new PIXI.Sprite(resources.logo.texture);
       // Setup the position and scale of the logo
-      self.logo.position.x = 400;
-      self.logo.position.y = 300;
+      console.log('weight',$(window).width());
+      let locationX = 400
+      if ($(window).width()<800){
+        locationX = $(window).width()/2
+      }
+      self.logo.position.x = locationX;
+      self.logo.position.y = 100;
 
       self.logo.anchor.set(0.5);
 
@@ -61,9 +69,15 @@ export default class Design extends Component {
     })
   }
   componentDidMount(){
+    this.initRenderer()
     this.initPIXI()
     this.setState({
       isLoad:true
+    })
+    let self = this
+    $(window).on('resize', function(){
+      console.log('resizeing');
+      self.initPIXI()
     })
   }
   animate() {
