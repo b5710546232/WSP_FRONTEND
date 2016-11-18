@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ParallaxSection from '../home/section/ParallaxSection'
 import * as PIXI from "pixi.js"
-
+import {Button} from "react-materialize"
 export default class Design extends Component {
   constructor( props ) {
     super(props);
@@ -121,10 +121,23 @@ export default class Design extends Component {
       width:"800px",
       height:"600px"
     }
+    let buttonStyle={
+      margin:"2px"
+    }
     return (
       <ParallaxSection
-        background="src/assets/media/images/2.jpg">
-        <div className="design-container" ref="canvas">
+        background="src/assets/media/images/2.jpg"
+        height="900px"
+      >
+        <div className="container center">
+          <div className="row"><h1 className="light condensed white-text">Explose your Imagination</h1></div>
+          <div className="row" ref="canvas">
+          </div>
+          <div className="row">
+            <Button style={buttonStyle}>Select Bottle Type</Button>
+            <Button  style={buttonStyle}>Upload Your Logo</Button>
+            <Button  style={buttonStyle}>Select Bottle Label</Button>
+          </div>
         </div>
       </ParallaxSection>
     )
