@@ -24,11 +24,17 @@ export default class Design extends Component {
     this.stage = new PIXI.Container();
 
     // Declare a global variable for our sprite so that the animate function can access it.
-    this.logo = null;
+    this.logo =null
+    this.bottle=null
+    this.banner=null
     let loaders = new PIXI.loaders.Loader();
     let self = this
     console.log('state',this.state);
-    loaders.add('logo', 'src/assets/images/logo.png').load(function (loader, resources) {
+    loaders
+    .add('logo', 'src/assets/images/logo.png')
+    .add('bottle', 'src/assets/images/logo.png')
+    .add('banner', 'src/assets/images/logo.png')
+    .load(function (loader, resources) {
       // This creates a texture from a 'logo.png' image.
       self.logo = new PIXI.Sprite(resources.logo.texture);
       // Setup the position and scale of the logo
@@ -39,11 +45,8 @@ export default class Design extends Component {
       }
       self.logo.position.x = locationX;
       self.logo.position.y = 100;
-
       self.logo.anchor.set(0.5);
-
       self.logo.scale.set(0.5);
-
       self.logo.interactive = true;
       self.logo.buttonMode = true;
       self.logo// events for drag start
@@ -57,9 +60,22 @@ export default class Design extends Component {
       // events for drag move
       .on('mousemove', self.onDragMove)
       .on('touchmove', self.onDragMove);
+
+      self.bottle = new PIXI.Sprite(resources.bottle.texture);
+      self.bottle.position.x = 0;
+      self.bottle.position.y = 0;
+      self.bottle.anchor.set(0.5);
+      self.bottle.scale.set(0.5);
+
+      self.banner = new PIXI.Sprite(resources.banner.texture);
+      self.banner.position.x = 100;
+      self.banner.position.y = 100;
+      self.banner.anchor.set(0.5);
+      self.banner.scale.set(0.5);
       // Add the logo to the scene we are building.
       self.stage.addChild(self.logo);
-
+      self.stage.addChild(self.bottle);
+      self.stage.addChild(self.banner)
       // kick off the animation loop (defined below)
       self.animate();
 
