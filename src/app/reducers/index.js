@@ -13,6 +13,7 @@ import itemlines from './itemlines'
 import validator from './validator'
 import bottle from './bottle'
 import logo from './logo'
+import statistic from './statistic'
 import search from './search'
 import sorts from './sorts'
 import { routerReducer } from 'react-router-redux'
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   cart,
   products,
   design,
+  statistic,
   orders,
   paymentMethods,
   address,
