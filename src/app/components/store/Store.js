@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import Filter from './filter/Filter'
-import Search from './search/Search'
-import Sort from './sort/Sort'
+import Sidebar from './sidebar/sidebar.js'
 import ItemContainer from './itemcontainer/ItemContainer'
 import '../../../assets/scss/store.scss'
 export default class Store extends Component {
@@ -12,11 +10,13 @@ export default class Store extends Component {
     }
     return (
       <div className="store-container" style={bg}>
-        <Sort/>
         <div className="transparent container center">
+          <br/>
+          <div className="row left">
+            <Sidebar/>
+          </div>
+          <br/>
           <div className="row">
-            <Search />
-            <Filter />
             <ItemContainer />
           </div>
         </div>
