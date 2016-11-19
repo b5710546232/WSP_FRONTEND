@@ -19,12 +19,14 @@ class SelectLogoModal extends Component {
     reader.onload = (e)=>{
       path=e.target.result
       this.props.selectLogo(path)
+      $('#logo-modal').closeModal()
     }
-    reader.readAsDataURL(image);   
+    reader.readAsDataURL(image);
   }
   render(){
     return (
       <Modal
+        id = "logo-modal"
         header="Select Logo Style"
         trigger={
           <Button>Select Logo</Button>
