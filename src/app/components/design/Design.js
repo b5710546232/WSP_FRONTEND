@@ -18,7 +18,7 @@ export default class Design extends Component {
     this.animate = this.animate.bind(this);
   }
   initRenderer(){
-    this.renderer = new PIXI.WebGLRenderer(800, 600);
+    this.renderer = new PIXI.WebGLRenderer(800, 600, { preserveDrawingBuffer:true });
     this.renderer.backgroundColor = 0xFFEBCD
     // The renderer will create a canvas element for you that you can then insert into the DOM.
     this.refs.canvas.appendChild(this.renderer.view);
@@ -148,6 +148,13 @@ export default class Design extends Component {
           this.position.y = newPosition.y;
       }
   }
+  onSave(e){
+    e.preventDefault()
+    let canvas = document.getElementsByTagName("canvas")[0]
+    console.log(canvas);
+    var image = this.renderer.view.toDataURL()
+    window.location.href=image;
+  }
   render() {
     let canvasStyle={
       width:"800px",
@@ -164,6 +171,9 @@ export default class Design extends Component {
         <div className="container center">
           <div className="row"><h1 className="light condensed white-text">Explose your Imagination</h1></div>
           <div className="row" ref="canvas">
+          </div>
+          <div className="row">
+            <Button onClick={(e)=>this.onSave(e)}>Save</Button>
           </div>
           <div className="row">
             <SelectBottleModal
