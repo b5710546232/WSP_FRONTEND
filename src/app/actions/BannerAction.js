@@ -3,7 +3,7 @@ import { CALL_API } from 'redux-api-middleware'
 import {BANNER_ENDPOINT} from '../constants/endpoints'
 
 // List bottle
-export const loadBottleList = (token) => (
+export const loadBannerList = (token) => (
   {[CALL_API]: {
     endpoint: BANNER_ENDPOINT,
     headers: {

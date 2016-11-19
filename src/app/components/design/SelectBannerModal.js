@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Modal,Button} from 'react-materialize'
-import {loadBottleList} from '../../actions/BottleAction'
+import {loadBannerList} from '../../actions/BannerAction'
 import {connect} from 'react-redux'
 
 class SelectBannerModal extends Component {
@@ -9,7 +9,7 @@ class SelectBannerModal extends Component {
   }
   setBanner(e,path){
     e.preventDefault()
-    this.props.selectBottle("src/assets/media/images/1.png")
+    this.props.selectBanner(path)
   }
   render(){
     return (
@@ -20,7 +20,13 @@ class SelectBannerModal extends Component {
         }
       >
         <div className="row">
-
+          {
+            this.props.banner.map((banner)=>(
+              <div className="col s12 m3" onClick={(e)=>this.setBanner(e,banner.image)}>
+                <img className="responsive-img" src={banner.image}></img>
+              </div>
+            ))
+          }
         </div>
       </Modal>
     )
