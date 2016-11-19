@@ -5,21 +5,25 @@ import {Button} from "react-materialize"
 import SelectBottleModal from './SelectBottleModal'
 import SelectLogoModal from './SelectLogoModal'
 import SelectBannerModal from './SelectBannerModal'
+import DesignModal from './DesignModal'
+import {uploadImage} from '../../aws/aws.js'
+import {addDesign,loadDesignList} from '../../actions/DesignAction'
+import {connect} from 'react-redux'
 
-export default class Design extends Component {
+class Design extends Component {
   constructor( props ) {
     super(props);
     this.state = {
-      logo : 'src/assets/images/logo.png',
-      bottle: 'src/assets/images/logo.png',
-      banner: 'src/assets/images/logo.png'
+      logo : 'src/assets/media/images/logo_design/logo_01.png',
+      bottle: 'src/assets/media/images/bottle_design/bottle_01.png',
+      banner: ''
     }
     //bind our animate function
     this.animate = this.animate.bind(this);
   }
   initRenderer(){
-    this.renderer = new PIXI.WebGLRenderer(800, 600);
-    this.renderer.backgroundColor = 0xFFEBCD
+    this.renderer = new PIXI.WebGLRenderer(800, 600, { preserveDrawingBuffer:true });
+    this.renderer.backgroundColor = 0x80d8ff
     // The renderer will create a canvas element for you that you can then insert into the DOM.
     this.refs.canvas.appendChild(this.renderer.view);
 
@@ -45,13 +49,17 @@ export default class Design extends Component {
       // Setup the position and scale of the logo
       console.log('weight',$(window).width());
       let locationX = 400
+      let locationY = 300
+      let scale = 64/self.logo.width
+      console.log(self.logo.width);
       if ($(window).width()<1000){
         locationX = $(window).width()/2
+        locationY = $(window).width()/2+100
       }
       self.logo.position.x = locationX;
-      self.logo.position.y = 100;
+      self.logo.position.y = locationY;
       self.logo.anchor.set(0.5);
-      self.logo.scale.set(0.5);
+      self.logo.scale.set(scale);
       self.logo.interactive = true;
       self.logo.buttonMode = true;
       self.logo// events for drag start
@@ -67,10 +75,10 @@ export default class Design extends Component {
       .on('touchmove', self.onDragMove);
 
       self.bottle = new PIXI.Sprite(resources.bottle.texture);
-      self.bottle.position.x = 0;
-      self.bottle.position.y = 0;
+      self.bottle.position.x = locationX;
+      self.bottle.position.y = locationY;
       self.bottle.anchor.set(0.5);
-      self.bottle.scale.set(0.5);
+      self.bottle.scale.set(1);
 
       self.banner = new PIXI.Sprite(resources.banner.texture);
       self.banner.position.x = 100;
@@ -88,16 +96,16 @@ export default class Design extends Component {
     });
   }
   setLogo(logo){
-    console.log("Set Logo");
+    this.setState({logo:logo})
   }
   setBottle(bottle){
-    console.log("Set "+bottle);
     this.setState({bottle:bottle})
   }
   setBanner(banner){
-    console.log("Set banner");
+    this.setState({banner:banner})
   }
   componentDidMount(){
+    this.props.loadDesignList(localStorage.token)
     this.initRenderer()
     this.initPIXI()
     let self = this
@@ -121,32 +129,51 @@ export default class Design extends Component {
   }
   onDragStart(event)
   {
-      // store a reference to the data
-      // the reason for this is because of multitouch
-      // we want to track the movement of this particular touch
-      this.data = event.data;
-      this.alpha = 0.5;
-      this.dragging = true;
+    // store a reference to the data
+    // the reason for this is because of multitouch
+    // we want to track the movement of this particular touch
+    this.data = event.data;
+    this.alpha = 0.5;
+    this.dragging = true;
   }
 
   onDragEnd()
   {
-      this.alpha = 1;
+    this.alpha = 1;
 
-      this.dragging = false;
+    this.dragging = false;
 
-      // set the interaction data to null
-      this.data = null;
+    // set the interaction data to null
+    this.data = null;
   }
 
   onDragMove()
   {
-      if (this.dragging)
-      {
-          var newPosition = this.data.getLocalPosition(this.parent);
-          this.position.x = newPosition.x;
-          this.position.y = newPosition.y;
-      }
+    if (this.dragging)
+    {
+      var newPosition = this.data.getLocalPosition(this.parent);
+      this.position.x = newPosition.x;
+      this.position.y = newPosition.y;
+    }
+  }
+  onSave(e){
+    e.preventDefault()
+    let image = this.renderer.view.toDataURL("image/png")
+    let blobBin = atob(image.split(',')[1]);
+    let array = [];
+    for(let i = 0; i < blobBin.length; i++) {
+      array.push(blobBin.charCodeAt(i));
+    }
+    let file=new Blob([new Uint8Array(array)], {type: 'image/png'});
+    console.log(this.props);
+    let path = "design-"+localStorage.token+'-'+(this.props.design.length+1)+".png"
+    uploadImage(path,file)
+    let data = {
+      name : this.props.design.length+1,
+      description : "-",
+      image : path
+    }
+    this.props.addDesign(data,localStorage.token)
   }
   render() {
     let canvasStyle={
@@ -165,7 +192,13 @@ export default class Design extends Component {
           <div className="row"><h1 className="light condensed white-text">Explose your Imagination</h1></div>
           <div className="row" ref="canvas">
           </div>
-          <div className="row">
+          <div className="row" style={buttonStyle}>
+            <Button onClick={(e)=>this.onSave(e)}>Save</Button>
+          </div>
+          <div className="row" style={buttonStyle}>
+            <DesignModal />
+          </div>
+          <div className="row" style={buttonStyle}>
             <SelectBottleModal
               selectBottle = {this.setBottle.bind(this)}
             />
@@ -174,10 +207,24 @@ export default class Design extends Component {
             />
             <SelectBannerModal
               selectBanner = {this.setBanner.bind(this)}
-            />
+              />
           </div>
         </div>
       </ParallaxSection>
     )
   }
 }
+const mapStateToProps = (state) => {
+  return state
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addDesign: (data,token) => (
+      dispatch(addDesign(data,token))
+    ),
+    loadDesignList: (token) =>(
+      dispatch(loadDesignList(token))
+    )
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Design)

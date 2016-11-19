@@ -21,6 +21,7 @@ export const addDesign = (data,token) => (
             type: 'ADD_DESIGN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadDesignList(token))
                 return data
               })
             }
@@ -57,14 +58,13 @@ export const deleteDesign = (id,token)=> (
           'Authorization':'Token '+token
         },
         method: 'DELETE',
-        body: JSON.stringify(data),
         types: [
           'DELETE_DESIGN_REQUEST',
           {
             type: 'DELETE_DESIGN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
-                dispatch(loadDesignList())
+                dispatch(loadDesignList(token))
                 return data
               })
             }
@@ -76,23 +76,24 @@ export const deleteDesign = (id,token)=> (
   )
 )
 
-export const submitDesign = (token) => (
+export const submitDesign = (id,token) => (
   (dispatch) =>
     dispatch({
       [CALL_API]: {
-        endpoint: DESIGN_ENDPOINT+'submit/',
+        endpoint: DESIGN_ENDPOINT+id+'/submit/',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'Authorization':'Token '+token
         },
-        method: 'POST',
+        method: 'PUT',
         types: [
           'SUBMIT_DESIGN_REQUEST',
           {
             type: 'SUMBIT_DESIGN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadDesignList(token))
                 return data
               })
             }
@@ -104,23 +105,24 @@ export const submitDesign = (token) => (
   )
 )
 
-export const deSubmitDesign = (token) => (
+export const deSubmitDesign = (id,token) => (
   (dispatch) =>
     dispatch({
       [CALL_API]: {
-        endpoint: DESIGN_ENDPOINT+'desubmit/',
+        endpoint: DESIGN_ENDPOINT+id+'/desubmit/',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'Authorization':'Token '+token
         },
-        method: 'POST',
+        method: 'PUT',
         types: [
           'DESUBMIT_DESIGN_REQUEST',
           {
             type: 'DESUMBIT_DESIGN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadDesignList(token))
                 return data
               })
             }
