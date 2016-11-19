@@ -95,14 +95,13 @@ class Design extends Component {
     });
   }
   setLogo(logo){
-    console.log("Set Logo");
+    this.setState({logo:logo})
   }
   setBottle(bottle){
-    console.log("Set "+bottle);
     this.setState({bottle:bottle})
   }
   setBanner(banner){
-    console.log("Set banner");
+    this.setState({banner:banner})
   }
   componentDidMount(){
     this.props.loadDesignList(localStorage.token)
