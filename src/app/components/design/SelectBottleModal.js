@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import {Modal,Button} from 'react-materialize'
+import {loadBottleList} from '../../actions/BottleAction'
+import {connect} from 'react-redux'
 
-export default class SelectBottleModal extends Component {
-  setBottle(e){
+class SelectBottleModal extends Component {
+  componentDidMount(){
+    this.props.loadBottleList(localStorage.token)
+  }
+  setBottle(e,path){
     e.preventDefault()
-    this.props.selectBottle("src/assets/media/images/1.png")
+    this.props.selectBottle(path)
   }
   render(){
     return (
@@ -14,9 +19,27 @@ export default class SelectBottleModal extends Component {
           <Button>Select Bottle Type</Button>
         }
       >
-        <h1>Test</h1>
-        <Button onClick={(e)=>this.setBottle(e)}>AAA</Button>
+        <div className="row">
+          {
+            this.props.bottle.map((bottle)=>(
+              <div className="col s12 m3" onClick={(e)=>this.setBottle(e,bottle.image)}>
+                <img className="responsive-img" src={bottle.image}></img>
+              </div>
+            ))
+          }
+        </div>
       </Modal>
     )
   }
 }
+const mapStateToProps = (state) => {
+  return state
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadBottleList: (token) =>(
+      dispatch(loadBottleList(token))
+    )
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(SelectBottleModal)

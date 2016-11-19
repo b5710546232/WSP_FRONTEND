@@ -37,6 +37,8 @@ const rootReducer = combineReducers({
   validator,
   search,
   sorts,
-  banner
+  banner,
+  bottle,
+  logo
 })
 export default rootReducer
