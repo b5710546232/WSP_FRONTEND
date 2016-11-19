@@ -2,18 +2,24 @@ import React, { Component } from 'react'
 import ParallaxSection from '../home/section/ParallaxSection'
 import * as PIXI from "pixi.js"
 import {Button} from "react-materialize"
+import SelectBottleModal from './SelectBottleModal'
+import SelectLogoModal from './SelectLogoModal'
+import SelectBannerModal from './SelectBannerModal'
+
 export default class Design extends Component {
   constructor( props ) {
     super(props);
     this.state = {
-      isLoad : false
+      logo : 'src/assets/images/logo.png',
+      bottle: 'src/assets/images/logo.png',
+      banner: 'src/assets/images/logo.png'
     }
     //bind our animate function
     this.animate = this.animate.bind(this);
   }
   initRenderer(){
     this.renderer = new PIXI.WebGLRenderer(800, 600);
-
+    this.renderer.backgroundColor = 0xFFEBCD
     // The renderer will create a canvas element for you that you can then insert into the DOM.
     this.refs.canvas.appendChild(this.renderer.view);
 
@@ -29,18 +35,17 @@ export default class Design extends Component {
     this.banner=null
     let loaders = new PIXI.loaders.Loader();
     let self = this
-    console.log('state',this.state);
     loaders
-    .add('logo', 'src/assets/images/logo.png')
-    .add('bottle', 'src/assets/images/logo.png')
-    .add('banner', 'src/assets/images/logo.png')
+    .add('logo', this.state.logo)
+    .add('bottle', this.state.bottle)
+    .add('banner', this.state.banner)
     .load(function (loader, resources) {
       // This creates a texture from a 'logo.png' image.
       self.logo = new PIXI.Sprite(resources.logo.texture);
       // Setup the position and scale of the logo
       console.log('weight',$(window).width());
       let locationX = 400
-      if ($(window).width()<800){
+      if ($(window).width()<1000){
         locationX = $(window).width()/2
       }
       self.logo.position.x = locationX;
@@ -73,28 +78,39 @@ export default class Design extends Component {
       self.banner.anchor.set(0.5);
       self.banner.scale.set(0.5);
       // Add the logo to the scene we are building.
-      self.stage.addChild(self.logo);
       self.stage.addChild(self.bottle);
       self.stage.addChild(self.banner)
+      self.stage.addChild(self.logo);
+
       // kick off the animation loop (defined below)
       self.animate();
 
     });
-    this.setState({
-      isLoad:true
-    })
+  }
+  setLogo(logo){
+    console.log("Set Logo");
+  }
+  setBottle(bottle){
+    console.log("Set "+bottle);
+    this.setState({bottle:bottle})
+  }
+  setBanner(banner){
+    console.log("Set banner");
   }
   componentDidMount(){
     this.initRenderer()
     this.initPIXI()
-    this.setState({
-      isLoad:true
-    })
     let self = this
     $(window).on('resize', function(){
       console.log('resizeing');
       self.initPIXI()
     })
+  }
+  shouldComponentUpdate(nextProps, nextState){
+    return this.state!=nextState
+  }
+  componentDidUpdate(){
+    this.initPIXI()
   }
   animate() {
     // start the timer for the next animation loop
@@ -150,9 +166,15 @@ export default class Design extends Component {
           <div className="row" ref="canvas">
           </div>
           <div className="row">
-            <Button style={buttonStyle}>Select Bottle Type</Button>
-            <Button  style={buttonStyle}>Upload Your Logo</Button>
-            <Button  style={buttonStyle}>Select Bottle Label</Button>
+            <SelectBottleModal
+              selectBottle = {this.setBottle.bind(this)}
+            />
+            <SelectLogoModal
+              selectLogo = {this.setLogo.bind(this)}
+            />
+            <SelectBannerModal
+              selectBanner = {this.setBanner.bind(this)}
+            />
           </div>
         </div>
       </ParallaxSection>
