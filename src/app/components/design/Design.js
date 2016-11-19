@@ -5,6 +5,7 @@ import {Button} from "react-materialize"
 import SelectBottleModal from './SelectBottleModal'
 import SelectLogoModal from './SelectLogoModal'
 import SelectBannerModal from './SelectBannerModal'
+import {uploadImage} from '../../aws/aws.js'
 
 export default class Design extends Component {
   constructor( props ) {
@@ -121,39 +122,43 @@ export default class Design extends Component {
   }
   onDragStart(event)
   {
-      // store a reference to the data
-      // the reason for this is because of multitouch
-      // we want to track the movement of this particular touch
-      this.data = event.data;
-      this.alpha = 0.5;
-      this.dragging = true;
+    // store a reference to the data
+    // the reason for this is because of multitouch
+    // we want to track the movement of this particular touch
+    this.data = event.data;
+    this.alpha = 0.5;
+    this.dragging = true;
   }
 
   onDragEnd()
   {
-      this.alpha = 1;
+    this.alpha = 1;
 
-      this.dragging = false;
+    this.dragging = false;
 
-      // set the interaction data to null
-      this.data = null;
+    // set the interaction data to null
+    this.data = null;
   }
 
   onDragMove()
   {
-      if (this.dragging)
-      {
-          var newPosition = this.data.getLocalPosition(this.parent);
-          this.position.x = newPosition.x;
-          this.position.y = newPosition.y;
-      }
+    if (this.dragging)
+    {
+      var newPosition = this.data.getLocalPosition(this.parent);
+      this.position.x = newPosition.x;
+      this.position.y = newPosition.y;
+    }
   }
   onSave(e){
     e.preventDefault()
-    let canvas = document.getElementsByTagName("canvas")[0]
-    console.log(canvas);
-    var image = this.renderer.view.toDataURL()
-    window.location.href=image;
+    let image = this.renderer.view.toDataURL("image/png")
+    let blobBin = atob(image.split(',')[1]);
+    let array = [];
+    for(let i = 0; i < blobBin.length; i++) {
+      array.push(blobBin.charCodeAt(i));
+    }
+    let file=new Blob([new Uint8Array(array)], {type: 'image/png'});
+    uploadImage("test-design.png",file)
   }
   render() {
     let canvasStyle={
@@ -167,7 +172,7 @@ export default class Design extends Component {
       <ParallaxSection
         background="src/assets/media/images/2.jpg"
         height="900px"
-      >
+        >
         <div className="container center">
           <div className="row"><h1 className="light condensed white-text">Explose your Imagination</h1></div>
           <div className="row" ref="canvas">
@@ -178,13 +183,13 @@ export default class Design extends Component {
           <div className="row">
             <SelectBottleModal
               selectBottle = {this.setBottle.bind(this)}
-            />
+              />
             <SelectLogoModal
               selectLogo = {this.setLogo.bind(this)}
-            />
+              />
             <SelectBannerModal
               selectBanner = {this.setBanner.bind(this)}
-            />
+              />
           </div>
         </div>
       </ParallaxSection>
