@@ -8,6 +8,7 @@ import OrderBody from './order/OrderBody'
 import MethodBody from './method/MethodBody'
 import MemberBody from './member/MemberBody'
 import StatisticBody from './statistic/StatisticBody'
+import DesignBody from './design/DesignBody'
 class Admin extends Component {
   componentDidMount(){
     this.props.check_admin(localStorage.token)
@@ -37,6 +38,7 @@ class Admin extends Component {
                 <CategoryBody />
                 <MethodBody />
                 <OrderBody />
+                <DesignBody />
                 <StatisticBody/>
                </ul>:
               <h1 className="white-text thin">Permission Denied</h1>
