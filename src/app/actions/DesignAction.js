@@ -21,6 +21,7 @@ export const addDesign = (data,token) => (
             type: 'ADD_DESIGN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadDesignList(token))
                 return data
               })
             }
@@ -57,14 +58,13 @@ export const deleteDesign = (id,token)=> (
           'Authorization':'Token '+token
         },
         method: 'DELETE',
-        body: JSON.stringify(data),
         types: [
           'DELETE_DESIGN_REQUEST',
           {
             type: 'DELETE_DESIGN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
-                dispatch(loadDesignList())
+                dispatch(loadDesignList(token))
                 return data
               })
             }
@@ -86,13 +86,14 @@ export const submitDesign = (id,token) => (
           'Content-Type': 'application/json',
           'Authorization':'Token '+token
         },
-        method: 'POST',
+        method: 'PUT',
         types: [
           'SUBMIT_DESIGN_REQUEST',
           {
             type: 'SUMBIT_DESIGN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadDesignList(token))
                 return data
               })
             }
@@ -114,13 +115,14 @@ export const deSubmitDesign = (id,token) => (
           'Content-Type': 'application/json',
           'Authorization':'Token '+token
         },
-        method: 'POST',
+        method: 'PUT',
         types: [
           'DESUBMIT_DESIGN_REQUEST',
           {
             type: 'DESUMBIT_DESIGN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                dispatch(loadDesignList(token))
                 return data
               })
             }
