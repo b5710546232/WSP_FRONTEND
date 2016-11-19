@@ -76,11 +76,11 @@ export const deleteDesign = (id,token)=> (
   )
 )
 
-export const submitDesign = (token) => (
+export const submitDesign = (id,token) => (
   (dispatch) =>
     dispatch({
       [CALL_API]: {
-        endpoint: DESIGN_ENDPOINT+'submit/',
+        endpoint: DESIGN_ENDPOINT+id+'/submit/',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -104,11 +104,11 @@ export const submitDesign = (token) => (
   )
 )
 
-export const deSubmitDesign = (token) => (
+export const deSubmitDesign = (id,token) => (
   (dispatch) =>
     dispatch({
       [CALL_API]: {
-        endpoint: DESIGN_ENDPOINT+'desubmit/',
+        endpoint: DESIGN_ENDPOINT+id+'/desubmit/',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',

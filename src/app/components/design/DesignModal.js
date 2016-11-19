@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Modal,Button} from 'react-materialize'
-import {loadDesignList} from '../../actions/DesignAction'
+import {loadDesignList,deleteDesign,submitDesign,deSubmitDesign} from '../../actions/DesignAction'
 import {connect} from 'react-redux'
 
 class DesignModal extends Component {
