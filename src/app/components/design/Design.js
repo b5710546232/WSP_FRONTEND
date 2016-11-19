@@ -22,7 +22,7 @@ class Design extends Component {
   }
   initRenderer(){
     this.renderer = new PIXI.WebGLRenderer(800, 600, { preserveDrawingBuffer:true });
-    this.renderer.backgroundColor = 0xFFEBCD
+    this.renderer.backgroundColor = 0x80d8ff
     // The renderer will create a canvas element for you that you can then insert into the DOM.
     this.refs.canvas.appendChild(this.renderer.view);
 
