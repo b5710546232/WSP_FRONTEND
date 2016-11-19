@@ -16,6 +16,8 @@ import logo from './logo'
 import statistic from './statistic'
 import search from './search'
 import sorts from './sorts'
+import banner from './banner'
+
 import { routerReducer } from 'react-router-redux'
 
 const rootReducer = combineReducers({
@@ -34,6 +36,7 @@ const rootReducer = combineReducers({
   itemlines,
   validator,
   search,
-  sorts
+  sorts,
+  banner
 })
 export default rootReducer

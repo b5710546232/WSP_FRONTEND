@@ -183,21 +183,24 @@ class Design extends Component {
       <ParallaxSection
         background="src/assets/media/images/2.jpg"
         height="900px"
-        >
+      >
         <div className="container center">
           <div className="row"><h1 className="light condensed white-text">Explose your Imagination</h1></div>
           <div className="row" ref="canvas">
           </div>
-          <div className="row">
+          <div className="row" style={buttonStyle}>
             <Button onClick={(e)=>this.onSave(e)}>Save</Button>
           </div>
-          <div className="row">
+          <div className="row" style={buttonStyle}>
+            <Button>View Saved Design</Button>
+          </div>
+          <div className="row" style={buttonStyle}>
             <SelectBottleModal
               selectBottle = {this.setBottle.bind(this)}
-              />
+            />
             <SelectLogoModal
               selectLogo = {this.setLogo.bind(this)}
-              />
+            />
             <SelectBannerModal
               selectBanner = {this.setBanner.bind(this)}
               />

@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import {Modal,Button} from 'react-materialize'
+import {loadBottleList} from '../../actions/BottleAction'
+import {connect} from 'react-redux'
 
-export default class SelectBannerModal extends Component {
-  setBanner(e){
+class SelectBannerModal extends Component {
+  componentDidMount(){
+    this.props.loadBannerList(localStorage.token)
+  }
+  setBanner(e,path){
     e.preventDefault()
     this.props.selectBottle("src/assets/media/images/1.png")
   }
@@ -14,9 +19,21 @@ export default class SelectBannerModal extends Component {
           <Button>Select Banner Type</Button>
         }
       >
-        <h1>Test</h1>
-        <Button onClick={(e)=>this.setBanner(e)}>AAA</Button>
+        <div className="row">
+
+        </div>
       </Modal>
     )
   }
 }
+const mapStateToProps = (state) => {
+  return state
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadBannerList: (token) =>(
+      dispatch(loadBannerList(token))
+    )
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(SelectBannerModal)
