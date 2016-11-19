@@ -49,6 +49,8 @@ class Design extends Component {
       console.log('weight',$(window).width());
       let locationX = 400
       let locationY = 300
+      let scale = 64/self.logo.width
+      console.log(self.logo.width);
       if ($(window).width()<1000){
         locationX = $(window).width()/2
         locationY = $(window).width()/2+100
@@ -56,7 +58,7 @@ class Design extends Component {
       self.logo.position.x = locationX;
       self.logo.position.y = locationY;
       self.logo.anchor.set(0.5);
-      self.logo.scale.set(0.5);
+      self.logo.scale.set(scale);
       self.logo.interactive = true;
       self.logo.buttonMode = true;
       self.logo// events for drag start
