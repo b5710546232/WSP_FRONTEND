@@ -13,9 +13,9 @@ class Design extends Component {
   constructor( props ) {
     super(props);
     this.state = {
-      logo : 'src/assets/images/logo.png',
-      bottle: 'src/assets/images/logo.png',
-      banner: 'src/assets/images/logo.png'
+      logo : 'src/assets/media/images/logo_design/logo_01.png',
+      bottle: 'src/assets/media/images/bottle_design/bottle_01.png',
+      banner: ''
     }
     //bind our animate function
     this.animate = this.animate.bind(this);
@@ -48,11 +48,13 @@ class Design extends Component {
       // Setup the position and scale of the logo
       console.log('weight',$(window).width());
       let locationX = 400
+      let locationY = 300
       if ($(window).width()<1000){
         locationX = $(window).width()/2
+        locationY = $(window).width()/2+100
       }
       self.logo.position.x = locationX;
-      self.logo.position.y = 100;
+      self.logo.position.y = locationY;
       self.logo.anchor.set(0.5);
       self.logo.scale.set(0.5);
       self.logo.interactive = true;
@@ -70,10 +72,10 @@ class Design extends Component {
       .on('touchmove', self.onDragMove);
 
       self.bottle = new PIXI.Sprite(resources.bottle.texture);
-      self.bottle.position.x = 0;
-      self.bottle.position.y = 0;
+      self.bottle.position.x = locationX;
+      self.bottle.position.y = locationY;
       self.bottle.anchor.set(0.5);
-      self.bottle.scale.set(0.5);
+      self.bottle.scale.set(1);
 
       self.banner = new PIXI.Sprite(resources.banner.texture);
       self.banner.position.x = 100;
