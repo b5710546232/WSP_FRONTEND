@@ -31,13 +31,14 @@ export const addDesign = (data,token) => (
     }
   )
 )
-// List category [All(limit),Staff]
-export const loadDesinList = () => (
+
+export const loadDesignList = (token) => (
   {[CALL_API]: {
     endpoint: DESIGN_ENDPOINT,
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
+      'Authorization':'Token '+token
     },
     method: 'GET',
     types: ['LOAD_DESIGN_LIST_REQUEST', 'LOAD_DESIGN_LIST_SUCCESS', 'LOAD_DESIGN_LIST_FAILURE']
@@ -46,16 +47,33 @@ export const loadDesinList = () => (
 
 // delete Design
 export const deleteDesign = (id,token)=> (
-  {[CALL_API]: {
-    endpoint: DESIGN_ENDPOINT+id+'/',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization':'Token '+token
-    },
-    method: 'DELETE',
-    types: ['DELETE_DESIGN_REQUEST', 'DELETE_DESIGN_SUCCESS', 'DELETE_DESIGN_FAILURE']
-  }}
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: DESIGN_ENDPOINT+id+'/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'DELETE',
+        body: JSON.stringify(data),
+        types: [
+          'DELETE_DESIGN_REQUEST',
+          {
+            type: 'DELETE_DESIGN_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadDesignList())
+                return data
+              })
+            }
+          },
+          'DELETE_DESIGN_FAILURE'
+        ]
+      }
+    }
+  )
 )
 
 export const submitDesign = (token) => (

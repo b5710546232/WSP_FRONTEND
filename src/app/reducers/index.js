@@ -7,9 +7,12 @@ import orders from './orders'
 import paymentMethods from './paymentMethods'
 import address from './address'
 import admin from './admin'
+import design from './design'
 import filters from './filters'
 import itemlines from './itemlines'
 import validator from './validator'
+import bottle from './bottle'
+import logo from './logo'
 import search from './search'
 import sorts from './sorts'
 import { routerReducer } from 'react-router-redux'
@@ -19,6 +22,7 @@ const rootReducer = combineReducers({
   routing: routerReducer,
   cart,
   products,
+  design,
   orders,
   paymentMethods,
   address,
