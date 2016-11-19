@@ -22,7 +22,7 @@ class SelectBannerModal extends Component {
         <div className="row">
           {
             this.props.banner.map((banner)=>(
-              <div className="col s12 m3" onClick={(e)=>this.setBanner(e,banner.image)}>
+              <div className="col s12 m3 modal-close" onClick={(e)=>this.setBanner(e,banner.image)}>
                 <img className="responsive-img" src={banner.image}></img>
               </div>
             ))

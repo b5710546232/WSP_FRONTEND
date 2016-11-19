@@ -22,7 +22,7 @@ class SelectBottleModal extends Component {
         <div className="row">
           {
             this.props.bottle.map((bottle)=>(
-              <div className="col s12 m3" onClick={(e)=>this.setBottle(e,bottle.image)}>
+              <div className="col s12 m3 modal-close" onClick={(e)=>this.setBottle(e,bottle.image)}>
                 <img className="responsive-img" src={bottle.image}></img>
               </div>
             ))
