@@ -49,7 +49,7 @@ class SelectLogoModal extends Component {
           {
             this.props.logo.map((logo)=>(
               <div className="col s12 m3 modal-close" onClick={(e)=>this.setBottle(e,logo.image)}>
-                <img className="responsive-img" src={logo.image}></img>
+                <img className="responsive-img" src={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+logo.image}></img>
               </div>
             ))
           }

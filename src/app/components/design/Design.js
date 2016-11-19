@@ -5,6 +5,7 @@ import {Button} from "react-materialize"
 import SelectBottleModal from './SelectBottleModal'
 import SelectLogoModal from './SelectLogoModal'
 import SelectBannerModal from './SelectBannerModal'
+import DesignModal from './DesignModal'
 import {uploadImage} from '../../aws/aws.js'
 import {addDesign,loadDesignList} from '../../actions/DesignAction'
 import {connect} from 'react-redux'
@@ -195,7 +196,7 @@ class Design extends Component {
             <Button onClick={(e)=>this.onSave(e)}>Save</Button>
           </div>
           <div className="row" style={buttonStyle}>
-            <Button>View Saved Design</Button>
+            <DesignModal />
           </div>
           <div className="row" style={buttonStyle}>
             <SelectBottleModal

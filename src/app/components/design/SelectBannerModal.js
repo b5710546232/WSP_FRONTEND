@@ -23,7 +23,7 @@ class SelectBannerModal extends Component {
           {
             this.props.banner.map((banner)=>(
               <div className="col s12 m3 modal-close" onClick={(e)=>this.setBanner(e,banner.image)}>
-                <img className="responsive-img" src={banner.image}></img>
+                <img className="responsive-img" src={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+banner.image}></img>
               </div>
             ))
           }
