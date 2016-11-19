@@ -25,12 +25,12 @@ class Sort extends Component{
   render(){
     return(
       <div className="sort_container">
-         <a className='dropdown-button btn' href='#' data-activates='dropdown1'>Sort by</a>
+         <a className='dropdown-button btn' data-activates='dropdown1'>Sort by</a>
          <ul id='dropdown1' className='dropdown-content'>
-           <li><a href="#" onClick={()=>this.sortByNameA()}>Name: A-Z</a></li>
-           <li><a href="#" onClick={()=>this.sortByNameZ()}>Name: Z-A</a></li>
-           <li><a href="#" onClick={()=>this.sortByPriceLow()}>Price: Low-High</a></li>
-           <li><a href="#" onClick={()=>this.sortByPriceHigh()}>Price: High-Low</a></li>
+           <li><span onClick={()=>this.sortByNameA()}>Name: A-Z</span></li>
+           <li><span onClick={()=>this.sortByNameZ()}>Name: Z-A</span></li>
+           <li><span onClick={()=>this.sortByPriceLow()}>Price: Low-High</span></li>
+           <li><span onClick={()=>this.sortByPriceHigh()}>Price: High-Low</span></li>
          </ul>
       </div>
     )

@@ -18,7 +18,6 @@ class Filter extends Component {
         <div className="filter white  z-depth-2 ">
           <div className="row ">
               <h5 className="container ">Category</h5>
-              <br/>
           </div>
           <div className="container ">
             <div className="filter-component row " >
