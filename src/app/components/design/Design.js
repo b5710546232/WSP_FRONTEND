@@ -6,8 +6,10 @@ import SelectBottleModal from './SelectBottleModal'
 import SelectLogoModal from './SelectLogoModal'
 import SelectBannerModal from './SelectBannerModal'
 import {uploadImage} from '../../aws/aws.js'
+import {addDesign,loadDesignList} from '../../actions/DesignAction'
+import {connect} from 'react-redux'
 
-export default class Design extends Component {
+class Design extends Component {
   constructor( props ) {
     super(props);
     this.state = {
@@ -99,6 +101,7 @@ export default class Design extends Component {
     console.log("Set banner");
   }
   componentDidMount(){
+    this.props.loadDesignList(localStorage.token)
     this.initRenderer()
     this.initPIXI()
     let self = this
@@ -158,7 +161,15 @@ export default class Design extends Component {
       array.push(blobBin.charCodeAt(i));
     }
     let file=new Blob([new Uint8Array(array)], {type: 'image/png'});
-    uploadImage("test-design.png",file)
+    console.log(this.props);
+    let path = "design-"+localStorage.token+'-'+(this.props.design.length+1)+".png"
+    uploadImage(path,file)
+    let data = {
+      name : this.props.design.length+1,
+      description : "-",
+      image : path
+    }
+    this.props.addDesign(data,localStorage.token)
   }
   render() {
     let canvasStyle={
@@ -196,3 +207,17 @@ export default class Design extends Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+  return state
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addDesign: (data,token) => (
+      dispatch(addDesign(data,token))
+    ),
+    loadDesignList: (token) =>(
+      dispatch(loadDesignList(token))
+    )
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Design)
