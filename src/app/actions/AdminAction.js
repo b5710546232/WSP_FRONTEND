@@ -1163,3 +1163,87 @@ export const deleteLogo = (id,token)=> (
     }
   )
 )
+export const reactiveBottle = (id,token)=> (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_BOTTLE_ENDPOINT+id+'/reactive/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'PUT',
+        types: [
+          'REACTIVE_ADMIN_BOTTLE_REQUEST',
+          {
+            type: 'REACTIVE_ADMIN_BOTTLE_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadBottle(token))
+                return data
+              })
+            }
+          },
+          'REACTIVE_ADMIN_BOTTLE_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const reactiveBanner = (id,token)=> (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_BANNER_ENDPOINT+id+'/reactive/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'PUT',
+        types: [
+          'REACTIVE_ADMIN_BANNER_REQUEST',
+          {
+            type: 'REACTIVE_ADMIN_BANNER_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadBanner(token))
+                return data
+              })
+            }
+          },
+          'REACTIVE_ADMIN_BANNER_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const reactiveLogo = (id,token)=> (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_LOGO_ENDPOINT+id+'/reactive/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'PUT',
+        types: [
+          'REACTIVE_ADMIN_LOGO_REQUEST',
+          {
+            type: 'REACTIVE_ADMIN_LOGO_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadLogo(token))
+                return data
+              })
+            }
+          },
+          'REACTIVE_ADMIN_LOGO_FAILURE'
+        ]
+      }
+    }
+  )
+)
