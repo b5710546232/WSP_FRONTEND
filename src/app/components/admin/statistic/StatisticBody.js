@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import '../../../../assets/scss/admin.scss'
 import {loadProduct,loadCategory,loadMoneyProduct,loadUserPayment,loadUserOrder,loadUserShiping,loadAddress} from '../../../actions/StatisticAction'
-
+import {LineChart} from 'react-chartjs'
 
 class StatisticBody extends Component {
   componentDidMount(){
@@ -43,7 +43,9 @@ class StatisticBody extends Component {
 
           </table>
         </div>
+        <div><LineChart data={this.props.statistic.product} /></div>
       </li>
+
     )
   }
 }
