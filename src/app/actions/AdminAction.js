@@ -1079,3 +1079,87 @@ export const addLogo = (data,token) => (
     }
   )
 )
+export const deleteBottle = (id,token)=> (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_BOTTLE_ENDPOINT+id+'/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'DELETE',
+        types: [
+          'DELETE_ADMIN_BOTTLE_REQUEST',
+          {
+            type: 'DELETE_ADMIN_BOTTLE_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadBottle(token))
+                return data
+              })
+            }
+          },
+          'DELETE_ADMIN_BOTTLE_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const deleteBanner = (id,token)=> (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_BANNER_ENDPOINT+id+'/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'DELETE',
+        types: [
+          'DELETE_ADMIN_BANNER_REQUEST',
+          {
+            type: 'DELETE_ADMIN_BANNER_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadBanner(token))
+                return data
+              })
+            }
+          },
+          'DELETE_ADMIN_BANNER_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const deleteLogo = (id,token)=> (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_LOGO_ENDPOINT+id+'/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'DELETE',
+        types: [
+          'DELETE_ADMIN_LOGO_REQUEST',
+          {
+            type: 'DELETE_ADMIN_LOGO_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadLogo(token))
+                return data
+              })
+            }
+          },
+          'DELETE_ADMIN_LOGO_FAILURE'
+        ]
+      }
+    }
+  )
+)
