@@ -992,3 +992,90 @@ export const deconfirmDesign = (id,token) => (
     }
   )
 )
+export const addBottle = (data,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_BOTTLE_ENDPOINT,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'POST',
+        body: JSON.stringify(data),
+        types: [
+          'ADMIN_ADD_BOTTLE_REQUEST',
+          {
+            type: 'ADMIN_ADD_BOTTLE_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadBottle(token))
+                return data
+              })
+            }
+          },
+          'ADMIN_ADD_BOTTLE_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const addBanner = (data,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_BANNER_ENDPOINT,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'POST',
+        body: JSON.stringify(data),
+        types: [
+          'ADMIN_ADD_BANNER_REQUEST',
+          {
+            type: 'ADMIN_ADD_BANNER_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadBanner(token))
+                return data
+              })
+            }
+          },
+          'ADMIN_ADD_BANNER_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const addLogo = (data,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_LOGO_ENDPOINT,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'POST',
+        body: JSON.stringify(data),
+        types: [
+          'ADMIN_ADD_LOGO_REQUEST',
+          {
+            type: 'ADMIN_ADD_LOGO_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadLogo(token))
+                return data
+              })
+            }
+          },
+          'ADMIN_ADD_LOGO_FAILURE'
+        ]
+      }
+    }
+  )
+)
