@@ -8,7 +8,11 @@ const initialState = {
   category : [],
   order : [],
   item_line : [],
-  method : []
+  method : [],
+  bottle : [],
+  design : [],
+  logo : [],
+  banner : []
 }
 
 let newproduct = []
@@ -42,6 +46,22 @@ const admin = (state=initialState,action)=>{
     case 'LOAD_ADMIN_METHOD_SUCCESS':
       return Object.assign({}, state, {
         method: action.payload.sort((a, b) => (a.id - b.id))
+    })
+    case 'LOAD_ADMIN_LOGO_SUCCESS':
+      return Object.assign({}, state, {
+        logo: action.payload.sort((a, b) => (a.id - b.id))
+    })
+    case 'LOAD_ADMIN_BANNER_SUCCESS':
+      return Object.assign({}, state, {
+        bottle: action.payload.sort((a, b) => (a.id - b.id))
+    })
+    case 'LOAD_ADMIN_DESIGN_SUCCESS':
+      return Object.assign({}, state, {
+        design: action.payload.sort((a, b) => (a.id - b.id))
+    })
+    case 'LOAD_ADMIN_BOTTLE_SUCCESS':
+      return Object.assign({}, state, {
+        bottle: action.payload.sort((a, b) => (a.id - b.id))
     })
     case 'LOGOUT':
       return initialState
