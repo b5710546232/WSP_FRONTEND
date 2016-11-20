@@ -8,7 +8,11 @@ import {
   ADMIN_CATEGORY_ENDPOINT,
   ADMIN_PRODUCT_ENDPOINT,
   ADMIN_ITEMLINE_ENDPOINT,
-  ADMIN_METHOD_ENDPOINT
+  ADMIN_METHOD_ENDPOINT,
+  ADMIN_DESIGN_ENDPOINT,
+  ADMIN_BOTTLE_ENDPOINT,
+  ADMIN_BANNER_ENDPOINT,
+  ADMIN_LOGO_ENDPOINT
 } from '../constants/endpoints'
 
 
@@ -884,3 +888,49 @@ export const fireStaff = (id,token) => (
 //     types: ['FIRE_STAFF_ADMIN_REQUEST', 'FIRE_STAFF_ADMIN_SUCCESS', 'FIRE_STAFF_ADMIN_FAILURE']
 //   }}
 // )
+export const loadDesign = (token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_DESIGN_ENDPOINT,
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'GET',
+    types: ['LOAD_ADMIN_DESIGN_REQUEST', 'LOAD_ADMIN_DESIGN_SUCCESS', 'LOAD_ADMIN_DESIGN_FAILURE']
+  }}
+)
+export const loadBottle = (token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_BOTTLE_ENDPOINT,
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'GET',
+    types: ['LOAD_ADMIN_BOTTLE_REQUEST', 'LOAD_ADMIN_BOTTLE_SUCCESS', 'LOAD_ADMIN_BOTTLE_FAILURE']
+  }}
+)export const loadBanner = (token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_BANNER_ENDPOINT,
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'GET',
+    types: ['LOAD_ADMIN_BANNER_REQUEST', 'LOAD_ADMIN_BANNER_SUCCESS', 'LOAD_ADMIN_BANNER_FAILURE']
+  }}
+)export const loadLogo = (token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_LOGO_ENDPOINT,
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'GET',
+    types: ['LOAD_ADMIN_LOGO_REQUEST', 'LOAD_ADMIN_LOGO_SUCCESS', 'LOAD_ADMIN_LOGO_FAILURE']
+  }}
+)
