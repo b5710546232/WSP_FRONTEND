@@ -911,7 +911,8 @@ export const loadBottle = (token) => (
     method: 'GET',
     types: ['LOAD_ADMIN_BOTTLE_REQUEST', 'LOAD_ADMIN_BOTTLE_SUCCESS', 'LOAD_ADMIN_BOTTLE_FAILURE']
   }}
-)export const loadBanner = (token) => (
+)
+export const loadBanner = (token) => (
   {[CALL_API]: {
     endpoint: ADMIN_BANNER_ENDPOINT,
     headers: {
@@ -922,7 +923,8 @@ export const loadBottle = (token) => (
     method: 'GET',
     types: ['LOAD_ADMIN_BANNER_REQUEST', 'LOAD_ADMIN_BANNER_SUCCESS', 'LOAD_ADMIN_BANNER_FAILURE']
   }}
-)export const loadLogo = (token) => (
+)
+export const loadLogo = (token) => (
   {[CALL_API]: {
     endpoint: ADMIN_LOGO_ENDPOINT,
     headers: {
@@ -933,4 +935,60 @@ export const loadBottle = (token) => (
     method: 'GET',
     types: ['LOAD_ADMIN_LOGO_REQUEST', 'LOAD_ADMIN_LOGO_SUCCESS', 'LOAD_ADMIN_LOGO_FAILURE']
   }}
+)
+export const confirmDesign = (id,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_DESIGN_ENDPOINT+id+'/confirm/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'PUT',
+        types: [
+          'ADMIN_CONFIRM_DESIGN_REQUEST',
+          {
+            type: 'ADMIN_CONFIRM_DESIGN_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadDesign(token))
+                return data
+              })
+            }
+          },
+          'ADMIN_CONFIRM_DESIGN_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const deconfirmDesign = (id,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_DESIGN_ENDPOINT+id+'/deconfirm/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'PUT',
+        types: [
+          'ADMIN_DECONFIRM_DESIGN_REQUEST',
+          {
+            type: 'ADMIN_DECONFIRM_DESIGN_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadDesign(token))
+                return data
+              })
+            }
+          },
+          'ADMIN_DECONFIRM_DESIGN_FAILURE'
+        ]
+      }
+    }
+  )
 )
