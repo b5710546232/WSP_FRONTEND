@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import '../../../../assets/scss/admin.scss'
+import {loadProduct,loadCategory,loadMoneyProduct,loadUserPayment,loadUserOrder,loadUserShiping,loadAddress} from '../../../actions/StatisticAction'
 
 
 class StatisticBody extends Component {
@@ -10,6 +11,13 @@ class StatisticBody extends Component {
         accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
       });
     });
+    this.props.loadProduct()
+    this.props.loadCategory()
+    this.props.loadMoneyProduct()
+    this.props.loadUserPayment()
+    this.props.loadUserOrder()
+    this.props.loadUserShiping()
+    this.props.loadAddress()
     // this.props.loadValidator()
   }
   shouldComponentUpdate(nextProps){
@@ -44,7 +52,13 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    loadProduct:()=>(dispatch(loadProduct())),
+    loadCategory:()=>(dispatch(loadCategory())),
+    loadMoneyProduct:()=>(dispatch(loadMoneyProduct())),
+    loadUserPayment:()=>(dispatch(loadUserPayment())),
+    loadUserOrder:()=>(dispatch(loadUserOrder())),
+    loadUserShiping:()=>(dispatch(loadUserShiping())),
+    loadAddress:()=>(dispatch(loadAddress()))
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(StatisticBody)
