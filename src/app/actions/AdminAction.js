@@ -936,7 +936,7 @@ export const loadLogo = (token) => (
     types: ['LOAD_ADMIN_LOGO_REQUEST', 'LOAD_ADMIN_LOGO_SUCCESS', 'LOAD_ADMIN_LOGO_FAILURE']
   }}
 )
-export const confirmDesign = (id,token) => (
+export const confirmDesign = (id,data,token) => (
   (dispatch) =>
     dispatch({
       [CALL_API]: {
@@ -947,6 +947,7 @@ export const confirmDesign = (id,token) => (
           'Authorization':'Token '+token
         },
         method: 'PUT',
+        body: JSON.stringify(data),
         types: [
           'ADMIN_CONFIRM_DESIGN_REQUEST',
           {
