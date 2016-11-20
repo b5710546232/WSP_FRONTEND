@@ -19,11 +19,8 @@ class OrderBody extends Component {
   }
   isDelivered(order){
     if (order.is_shipped){
-      console.log('status',order.status);
       if (order.status){
-        console.log('order',order);
         let status_part = order.status.split(" ")
-        console.log('part',status_part);
         if (status_part.length>=3){
           if (order.status.split(" ")[2]==='(Successful)'){
             return true

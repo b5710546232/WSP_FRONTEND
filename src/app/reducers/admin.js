@@ -53,7 +53,7 @@ const admin = (state=initialState,action)=>{
     })
     case 'LOAD_ADMIN_BANNER_SUCCESS':
       return Object.assign({}, state, {
-        bottle: action.payload.sort((a, b) => (a.id - b.id))
+        banner: action.payload.sort((a, b) => (a.id - b.id))
     })
     case 'LOAD_ADMIN_DESIGN_SUCCESS':
       return Object.assign({}, state, {

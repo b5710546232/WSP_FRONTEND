@@ -15,7 +15,9 @@ class DesignBody extends Component {
       });
     });
   }
-
+  shouldComponentUpdate(nextProps){
+    return this.props.admin.user !== nextProps
+  }
   render() {
     return(
       <li>
