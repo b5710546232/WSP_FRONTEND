@@ -4,6 +4,12 @@ import '../../../../assets/scss/admin.scss'
 import {loadProduct,loadCategory,loadMoneyProduct,loadUserPayment,loadUserOrder,loadUserShiping,loadAddress} from '../../../actions/StatisticAction'
 import {LineChart,Line,CartesianGrid,XAxis,YAxis} from 'recharts'
 import StatisticProduct from './StatisticProduct'
+import StatisticCategory from './StatisticCategory'
+import StatisticMoney from './StatisticMoney'
+import StatisticPayment from './StatisticPayment'
+import StatisticOrder from './StatisticOrder'
+import StatisticShipping from './StatisticShipping'
+import StatisticAddress from './StatisticAddress'
 
 class StatisticBody extends Component {
 
@@ -56,6 +62,42 @@ class StatisticBody extends Component {
             <div className="collapsible-header">Statistic of Products</div>
             <div className="collapsible-body white">
                 <StatisticProduct/>
+            </div>
+          </li>
+          <li>
+            <div className="collapsible-header">Statistic of Category</div>
+            <div className="collapsible-body white">
+                <StatisticCategory/>
+            </div>
+          </li>
+          <li>
+            <div className="collapsible-header">Statistic of Money</div>
+            <div className="collapsible-body white">
+                <StatisticMoney/>
+            </div>
+          </li>
+          <li>
+            <div className="collapsible-header">Statistic of Payment</div>
+            <div className="collapsible-body white">
+                <StatisticPayment/>
+            </div>
+          </li>
+          <li>
+            <div className="collapsible-header">Statistic of Shipping</div>
+            <div className="collapsible-body white">
+                <StatisticShipping/>
+            </div>
+          </li>
+          <li>
+            <div className="collapsible-header">Statistic of Order</div>
+            <div className="collapsible-body white">
+                <StatisticOrder/>
+            </div>
+          </li>
+          <li>
+            <div className="collapsible-header">Statistic of Address</div>
+            <div className="collapsible-body white">
+                <StatisticAddress/>
             </div>
           </li>
           </ul>
