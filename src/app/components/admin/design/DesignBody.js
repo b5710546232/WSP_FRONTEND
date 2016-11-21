@@ -4,6 +4,7 @@ import '../../../../assets/scss/admin.scss'
 import {loadDesign,loadBottle,loadLogo,loadBanner} from '../../../actions/AdminAction'
 import DesignModal from './DesignModal'
 import BottleModal from './BottleModal'
+import LogoModal from './LogoModal'
 class DesignBody extends Component {
   componentDidMount(){
     this.props.loadDesign(localStorage.token)
@@ -28,6 +29,7 @@ class DesignBody extends Component {
           <div className="container">
             <DesignModal/>
             <BottleModal/>
+            <LogoModal/>
           </div>
         </div>
       </li>

@@ -48,8 +48,8 @@ class SelectLogoModal extends Component {
         <div className="row">
           {
             this.props.logo.map((logo)=>(
-              <div className="col s12 m3 modal-close" onClick={(e)=>this.setBottle(e,logo.image)}>
-                <img className="responsive-img" src={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+logo.image}></img>
+              <div className="col s12 m3 modal-close" onClick={(e)=>this.setLogo(e,"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+logo.img)}>
+                <img className="responsive-img light-blue" src={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+logo.img}></img>
               </div>
             ))
           }
