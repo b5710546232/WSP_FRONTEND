@@ -37,9 +37,7 @@ class BottleModal extends Component {
     e.preventDefault()
     this.props.reactiveBottle(id,localStorage.token)
   }
-  onReactive(e,id){
-    e.preventDefault()
-  }
+
   render(){
     let margin = {
       margin:"2px"
@@ -63,7 +61,7 @@ class BottleModal extends Component {
                     bottle.is_active?
                       <a className="btn-floating btn waves-effect waves-light red" onClick={(e)=>this.onDeactive(e,bottle.id)}><i className="material-icons small">delete</i></a>
                     :
-                    <a className="btn-floating btn waves-effect waves-light green" onClick={(e)=>this.onDeactive(e,bottle.id)}><i className="material-icons small">done</i></a>
+                    <a className="btn-floating btn waves-effect waves-light green" onClick={(e)=>this.onReactive(e,bottle.id)}><i className="material-icons small">done</i></a>
                   }
                 </div>
               </div>
