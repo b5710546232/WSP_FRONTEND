@@ -9,7 +9,6 @@ class DesignModal extends Component {
     let data = {
       price : this.refs.form["price"+id].value
     }
-    console.log("value",data);
     this.props.confirmDesign(id,data,localStorage.token)
   }
   onDeconfirm(e,id){

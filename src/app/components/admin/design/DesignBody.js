@@ -25,7 +25,7 @@ class DesignBody extends Component {
       <li>
         <div className="collapsible-header">Design</div>
         <div className="collapsible-body white">
-          <div className="row">
+          <div className="container">
             <DesignModal/>
             <BottleModal/>
           </div>
