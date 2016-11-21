@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import '../../../../assets/scss/admin.scss'
 import {LineChart,Line,CartesianGrid,XAxis,YAxis,Tooltip,Legend} from 'recharts'
-import {loadProduct} from '../../../actions/StatisticAction'
+import {loadUserPayment} from '../../../actions/StatisticAction'
 
 class StatisticPayment extends Component {
 
   componentDidMount(){
-    this.props.loadProduct()
+    this.props.loadUserPayment()
   }
 
 
@@ -33,7 +33,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-      loadProduct:()=>(dispatch(loadProduct()))
+      loadUserPayment:()=>(dispatch(loadUserPayment()))
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(StatisticPayment)

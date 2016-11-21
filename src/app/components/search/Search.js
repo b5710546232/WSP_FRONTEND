@@ -29,7 +29,7 @@ class Search extends Component{
             <Row>
             <Col s={12}>
               <h2 className="container ">
-                <input  id="search"
+                <SearchBar  id="search"
                         type="search"
                         required placeholder="Search..."
                         value={this.state.search}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import '../../../../assets/scss/admin.scss'
-import {loadProduct,loadCategory,loadMoneyProduct,loadUserPayment,loadUserOrder,loadUserShiping,loadAddress} from '../../../actions/StatisticAction'
+// import {loadProduct,loadCategory,loadMoneyProduct,loadUserPayment,loadUserOrder,loadUserShiping,loadAddress} from '../../../actions/StatisticAction'
 import {LineChart,Line,CartesianGrid,XAxis,YAxis} from 'recharts'
 import StatisticProduct from './StatisticProduct'
 import StatisticCategory from './StatisticCategory'
@@ -34,12 +34,12 @@ class StatisticBody extends Component {
         accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
       });
     });
-    this.props.loadCategory()
-    this.props.loadMoneyProduct()
-    this.props.loadUserPayment()
-    this.props.loadUserOrder()
-    this.props.loadUserShiping()
-    this.props.loadAddress()
+    // this.props.loadCategory()
+    // this.props.loadMoneyProduct()
+    // this.props.loadUserPayment()
+    // this.props.loadUserOrder()
+    // this.props.loadUserShiping()
+    // this.props.loadAddress()
   }
 
   shouldComponentUpdate(nextProps){
@@ -113,12 +113,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadCategory:()=>(dispatch(loadCategory())),
-    loadMoneyProduct:()=>(dispatch(loadMoneyProduct())),
-    loadUserPayment:()=>(dispatch(loadUserPayment())),
-    loadUserOrder:()=>(dispatch(loadUserOrder())),
-    loadUserShiping:()=>(dispatch(loadUserShiping())),
-    loadAddress:()=>(dispatch(loadAddress()))
+
+
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(StatisticBody)

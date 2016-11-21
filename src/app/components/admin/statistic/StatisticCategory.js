@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import '../../../../assets/scss/admin.scss'
 import {LineChart,Line,CartesianGrid,XAxis,YAxis,Tooltip,Legend} from 'recharts'
-import {loadProduct} from '../../../actions/StatisticAction'
+import {loadCategory} from '../../../actions/StatisticAction'
 
 class StatisticCategory extends Component {
 
   componentDidMount(){
-    this.props.loadProduct()
+    this.props.loadCategory()
   }
 
 
@@ -33,7 +33,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-      loadProduct:()=>(dispatch(loadProduct()))
+      loadCategory:()=>(dispatch(loadCategory()))
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(StatisticCategory)
