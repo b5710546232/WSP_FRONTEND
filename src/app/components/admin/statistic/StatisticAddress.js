@@ -13,18 +13,17 @@ class StatisticAddress extends Component {
 
   render() {
     return(
-      // <LineChart width={780} height={300} data={this.props.statistic.product}
-      //       margin={{top: 20, right: 100, left: 10, bottom: 5}}>
-      //  <XAxis label="product name" dataKey="product"/>
-      //  <YAxis label="amount"/>
-      //  <CartesianGrid strokeDasharray="3 3"/>
-      //  <Tooltip/>
-      //  {/* <Legend /> */}
-      //  {/* <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/> */}
-      //  {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
-      //  <Line type="monotone" dataKey="amount" stroke="#82ca9d" />
-      // </LineChart>
-      <div></div>
+      <LineChart width={780} height={300} data={this.props.statistic.address}
+            margin={{top: 20, right: 100, left: 10, bottom: 5}}>
+       <XAxis label="province" dataKey="province"/>
+       <YAxis label="amount"/>
+       <CartesianGrid strokeDasharray="3 3"/>
+       <Tooltip/>
+       {/* <Legend /> */}
+       {/* <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/> */}
+       {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
+       <Line type="monotone" dataKey="amount" stroke="#82ca9d" />
+      </LineChart>
     )
   }
 }

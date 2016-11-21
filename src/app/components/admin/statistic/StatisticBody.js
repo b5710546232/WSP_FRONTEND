@@ -71,7 +71,7 @@ class StatisticBody extends Component {
             </div>
           </li>
           <li>
-            <div className="collapsible-header">Statistic of Money</div>
+            <div className="collapsible-header">Statistic of Money Product</div>
             <div className="collapsible-body white">
                 <StatisticMoney/>
             </div>
