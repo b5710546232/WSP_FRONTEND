@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import '../../../../assets/scss/admin.scss'
 import {loadDesign,loadBottle,loadLogo,loadBanner} from '../../../actions/AdminAction'
 import DesignModal from './DesignModal'
+import BottleModal from './BottleModal'
 class DesignBody extends Component {
   componentDidMount(){
     this.props.loadDesign(localStorage.token)
@@ -24,7 +25,10 @@ class DesignBody extends Component {
       <li>
         <div className="collapsible-header">Design</div>
         <div className="collapsible-body white">
-          <DesignModal/>
+          <div className="row">
+            <DesignModal/>
+            <BottleModal/>
+          </div>
         </div>
       </li>
     )
