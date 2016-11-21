@@ -22,8 +22,8 @@ class SelectBottleModal extends Component {
         <div className="row">
           {
             this.props.bottle.map((bottle)=>(
-              <div className="col s12 m3 modal-close" onClick={(e)=>this.setBottle(e,bottle.image)}>
-                <img className="responsive-img" src={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+bottle.image}></img>
+              <div className="col s12 m3 modal-close" onClick={(e)=>this.setBottle(e,"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+bottle.img)}>
+                <img className="responsive-img light-blue" src={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+bottle.img}></img>
               </div>
             ))
           }

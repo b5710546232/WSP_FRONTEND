@@ -27,8 +27,6 @@ class ProductEditModal extends Component {
         this.props.resetValidator()
       }
     }
-    /** Bug Occur Here **/
-    console.log(this.props.select_product);
     if (this.props.select_product&&this.props.select_product.id==this.props.validator.edit_product_number&&this.props.validator.onEditProduct){
       if (this.props.validator.is_edit_product_success){
         Materialize.toast(this.props.select_product.name+' is edited!', 4000,'light-blue')
@@ -42,8 +40,6 @@ class ProductEditModal extends Component {
   }
   onSave(e){
     e.preventDefault()
-    console.log(this.props.product_key,"product id");
-    console.log(this.props.select_category,"category_id");
     let dotData=null;
     let img_name = null;
     let id = this.props.admin.product.length+1
@@ -78,7 +74,6 @@ class ProductEditModal extends Component {
   }
   onUpload(e){
     e.preventDefault()
-    console.log("AAA");
     let file = e.target.files[0]
     var reader = new FileReader();
     reader.onload = (e)=>{

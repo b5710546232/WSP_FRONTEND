@@ -8,7 +8,11 @@ import {
   ADMIN_CATEGORY_ENDPOINT,
   ADMIN_PRODUCT_ENDPOINT,
   ADMIN_ITEMLINE_ENDPOINT,
-  ADMIN_METHOD_ENDPOINT
+  ADMIN_METHOD_ENDPOINT,
+  ADMIN_DESIGN_ENDPOINT,
+  ADMIN_BOTTLE_ENDPOINT,
+  ADMIN_BANNER_ENDPOINT,
+  ADMIN_LOGO_ENDPOINT
 } from '../constants/endpoints'
 
 
@@ -884,3 +888,363 @@ export const fireStaff = (id,token) => (
 //     types: ['FIRE_STAFF_ADMIN_REQUEST', 'FIRE_STAFF_ADMIN_SUCCESS', 'FIRE_STAFF_ADMIN_FAILURE']
 //   }}
 // )
+export const loadDesign = (token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_DESIGN_ENDPOINT,
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'GET',
+    types: ['LOAD_ADMIN_DESIGN_REQUEST', 'LOAD_ADMIN_DESIGN_SUCCESS', 'LOAD_ADMIN_DESIGN_FAILURE']
+  }}
+)
+export const loadBottle = (token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_BOTTLE_ENDPOINT,
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'GET',
+    types: ['LOAD_ADMIN_BOTTLE_REQUEST', 'LOAD_ADMIN_BOTTLE_SUCCESS', 'LOAD_ADMIN_BOTTLE_FAILURE']
+  }}
+)
+export const loadBanner = (token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_BANNER_ENDPOINT,
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'GET',
+    types: ['LOAD_ADMIN_BANNER_REQUEST', 'LOAD_ADMIN_BANNER_SUCCESS', 'LOAD_ADMIN_BANNER_FAILURE']
+  }}
+)
+export const loadLogo = (token) => (
+  {[CALL_API]: {
+    endpoint: ADMIN_LOGO_ENDPOINT,
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+token
+    },
+    method: 'GET',
+    types: ['LOAD_ADMIN_LOGO_REQUEST', 'LOAD_ADMIN_LOGO_SUCCESS', 'LOAD_ADMIN_LOGO_FAILURE']
+  }}
+)
+export const confirmDesign = (id,data,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_DESIGN_ENDPOINT+id+'/confirm/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'PUT',
+        body: JSON.stringify(data),
+        types: [
+          'ADMIN_CONFIRM_DESIGN_REQUEST',
+          {
+            type: 'ADMIN_CONFIRM_DESIGN_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadDesign(token))
+                return data
+              })
+            }
+          },
+          'ADMIN_CONFIRM_DESIGN_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const deconfirmDesign = (id,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_DESIGN_ENDPOINT+id+'/deconfirm/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'PUT',
+        types: [
+          'ADMIN_DECONFIRM_DESIGN_REQUEST',
+          {
+            type: 'ADMIN_DECONFIRM_DESIGN_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadDesign(token))
+                return data
+              })
+            }
+          },
+          'ADMIN_DECONFIRM_DESIGN_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const addBottle = (data,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_BOTTLE_ENDPOINT,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'POST',
+        body: JSON.stringify(data),
+        types: [
+          'ADMIN_ADD_BOTTLE_REQUEST',
+          {
+            type: 'ADMIN_ADD_BOTTLE_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadBottle(token))
+                return data
+              })
+            }
+          },
+          'ADMIN_ADD_BOTTLE_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const addBanner = (data,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_BANNER_ENDPOINT,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'POST',
+        body: JSON.stringify(data),
+        types: [
+          'ADMIN_ADD_BANNER_REQUEST',
+          {
+            type: 'ADMIN_ADD_BANNER_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadBanner(token))
+                return data
+              })
+            }
+          },
+          'ADMIN_ADD_BANNER_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const addLogo = (data,token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_LOGO_ENDPOINT,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'POST',
+        body: JSON.stringify(data),
+        types: [
+          'ADMIN_ADD_LOGO_REQUEST',
+          {
+            type: 'ADMIN_ADD_LOGO_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadLogo(token))
+                return data
+              })
+            }
+          },
+          'ADMIN_ADD_LOGO_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const deleteBottle = (id,token)=> (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_BOTTLE_ENDPOINT+id+'/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'DELETE',
+        types: [
+          'DELETE_ADMIN_BOTTLE_REQUEST',
+          {
+            type: 'DELETE_ADMIN_BOTTLE_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadBottle(token))
+                return data
+              })
+            }
+          },
+          'DELETE_ADMIN_BOTTLE_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const deleteBanner = (id,token)=> (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_BANNER_ENDPOINT+id+'/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'DELETE',
+        types: [
+          'DELETE_ADMIN_BANNER_REQUEST',
+          {
+            type: 'DELETE_ADMIN_BANNER_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadBanner(token))
+                return data
+              })
+            }
+          },
+          'DELETE_ADMIN_BANNER_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const deleteLogo = (id,token)=> (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_LOGO_ENDPOINT+id+'/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'DELETE',
+        types: [
+          'DELETE_ADMIN_LOGO_REQUEST',
+          {
+            type: 'DELETE_ADMIN_LOGO_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadLogo(token))
+                return data
+              })
+            }
+          },
+          'DELETE_ADMIN_LOGO_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const reactiveBottle = (id,token)=> (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_BOTTLE_ENDPOINT+id+'/reactive/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'PUT',
+        types: [
+          'REACTIVE_ADMIN_BOTTLE_REQUEST',
+          {
+            type: 'REACTIVE_ADMIN_BOTTLE_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadBottle(token))
+                return data
+              })
+            }
+          },
+          'REACTIVE_ADMIN_BOTTLE_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const reactiveBanner = (id,token)=> (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_BANNER_ENDPOINT+id+'/reactive/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'PUT',
+        types: [
+          'REACTIVE_ADMIN_BANNER_REQUEST',
+          {
+            type: 'REACTIVE_ADMIN_BANNER_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadBanner(token))
+                return data
+              })
+            }
+          },
+          'REACTIVE_ADMIN_BANNER_FAILURE'
+        ]
+      }
+    }
+  )
+)
+export const reactiveLogo = (id,token)=> (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: ADMIN_LOGO_ENDPOINT+id+'/reactive/',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization':'Token '+token
+        },
+        method: 'PUT',
+        types: [
+          'REACTIVE_ADMIN_LOGO_REQUEST',
+          {
+            type: 'REACTIVE_ADMIN_LOGO_SUCCESS',
+            payload: (_action, _state, res) => {
+              return res.json().then((data) => {
+                dispatch(loadLogo(token))
+                return data
+              })
+            }
+          },
+          'REACTIVE_ADMIN_LOGO_FAILURE'
+        ]
+      }
+    }
+  )
+)
