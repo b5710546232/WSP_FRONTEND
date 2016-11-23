@@ -9,7 +9,6 @@ const initialState = {
 }
 
 const statistic = (state=initialState,action)=>{
-  // console.log('action',action.payload);
   switch(action.type) {
     case 'LOAD_STAT_PRODUCT_SUCCESS':
       return Object.assign({}, state, {

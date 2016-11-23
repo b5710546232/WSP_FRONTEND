@@ -1,22 +1,5 @@
 import {Action} from '../constants';
 import { CALL_API } from 'redux-api-middleware'
-// const authed = (state=initialState,action)=>{
-//   switch (action.type) {
-//     case 'RECEIVE_ACCESS_TOKEN':
-//     return Object.assign({}, state, {
-//       accessToken: action.accessToken,
-//     })
-//
-//     case 'RECEIVE_AUTHED_USER':
-//     return Object.assign({}, state, {
-//       user: action.user,
-//     })
-//     default : return state
-//   }
-//
-// }
-// export default authed
-
 const initialState = {
   username: "",
   isLogin:localStorage.token!=null ? true:false,

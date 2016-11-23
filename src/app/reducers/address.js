@@ -19,12 +19,3 @@ const address = (state=initialState,action)=>{
   }
 }
 export default address;
-// case 'UPDATE_ADDRESS_SUCCESS':
-// return [
-//         ...state.
-//     ]
-// case 'CREATE_ADDRESS_SUCCESS':
-// return [
-//         ...state,
-//         action.payload
-//     ]

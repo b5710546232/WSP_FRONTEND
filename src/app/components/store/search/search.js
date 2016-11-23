@@ -12,10 +12,6 @@ class Search extends Component{
       search: ''
     };
   }
-  // 
-  // shouldComponentUpdate(nextProps){
-  //   return this.props.products!=nextProps.products
-  // }
 
   componentWillMount(){
     this.props.onLoadProductList()
@@ -27,20 +23,12 @@ class Search extends Component{
       this.props.searchProduct(this.props.products,this.state.search)
     })
   }
+
   componentDidMount(){
     this.props.createSearchProduct(this.props.products)
   }
-  // componentWillUpdate(){
-  //   this.props.createSearchProduct(this.props.products)
-  // }
 
   render() {
-    // let filterSearch = this.props.categories.filter(
-    //   (category) => {
-    //     return category.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== 1
-    //   }
-    // );
-
     return (
         <div className="col s12 ">
           <div className="filter white  z-depth-2 ">
@@ -75,12 +63,6 @@ const mapDispatchToProps = (dispatch) => {
     createSearchProduct: (products) => {
       dispatch(createSearchProduct(products))
     }
-    // addFilter: (filters) => {
-    //   dispatch(addFilter(filters))
-    // },
-    // removeFilter: (filters) => {
-    //   dispatch(removeFilter(filters))
-    // }
   }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Search)

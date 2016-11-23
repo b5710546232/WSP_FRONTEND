@@ -39,7 +39,6 @@ class CartInfo extends Component {
     }
   }
   render(){
-    // console.log(this.props.key);
     let product = this.props.products.find((product) => product.id === this.props.product)
     return (
       <tr>

@@ -17,7 +17,6 @@ class ItemContainer extends Component {
   filterProduct(){
     this.filter_product = []
     var self = this
-    // console.log(this.props.filters,'state filters');
     this.props.search.search_product.forEach(function(product) {
       if(self.props.filters.includes(product.category))
         self.filter_product.push(product)

@@ -36,9 +36,6 @@ class Search extends Component{
                         onChange={this.updateSearch.bind(this)}/>
               </h2>
             </Col>
-            {/* <Col s={1}>
-              <Icon>search</Icon>
-            </Col> */}
             </Row>
           </div>
         </div>

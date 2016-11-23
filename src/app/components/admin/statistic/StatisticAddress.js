@@ -10,7 +10,6 @@ class StatisticAddress extends Component {
     this.props.loadAddress()
   }
 
-
   render() {
     return(
       <LineChart width={780} height={300} data={this.props.statistic.address}
@@ -19,9 +18,6 @@ class StatisticAddress extends Component {
        <YAxis label="amount"/>
        <CartesianGrid strokeDasharray="3 3"/>
        <Tooltip/>
-       {/* <Legend /> */}
-       {/* <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/> */}
-       {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
        <Line type="monotone" dataKey="amount" stroke="#82ca9d" />
       </LineChart>
     )
