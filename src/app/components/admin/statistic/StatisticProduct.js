@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import '../../../../assets/scss/admin.scss'
-import {LineChart,Line,CartesianGrid,XAxis,YAxis,Tooltip,Legend,PieChart,Pie} from 'recharts'
+import {LineChart,Line,CartesianGrid,XAxis,YAxis,Tooltip,Legend,PieChart,Pie,Cell} from 'recharts'
 import {loadProduct} from '../../../actions/StatisticAction'
 
 class StatisticProduct extends Component {
@@ -10,25 +10,33 @@ class StatisticProduct extends Component {
   }
 
   componentWillUpdate(){
-    this.statistic_product = this.props.statistic.product
-    for(let i=0;i<this.statistic_product.length;i++){
-        this.statistic_product[i].name = this.props.products.find((product)=>(product.id==this.statistic_product[i].product)).name
-        this.statistic_product[i].value = this.statistic_product[i].amount
+    this.statistic = this.props.statistic.product
+    this.colors = []
+    for(let i=0;i<this.statistic.length;i++){
+        this.statistic[i].name = this.props.products.find((product)=>(product.id==this.statistic[i].product)).name
+        this.statistic[i].value = this.statistic[i].amount
+        this.colors.push(this.getRandomColor())
     }
   }
 
+  getRandomColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
   render() {
     return(
-      // <LineChart width={780} height={300} data={this.statistic_product}
-      //       margin={{top: 20, right: 100, left: 10, bottom: 5}}>
-      //  <XAxis label="product name" dataKey="name"/>
-      //  <YAxis label="amount"/>
-      //  <CartesianGrid strokeDasharray="3 3"/>
-      //  <Tooltip/>
-      //  <Line type="monotone" dataKey="amount" stroke="#82ca9d" />
-      // </LineChart>
       <PieChart width={730} height={250}>
-        <Pie isAnimationActive={true} data={this.statistic_product} cx={200} cy={100} outerRadius={80} fill="#8884d8" label/>
+        <Pie isAnimationActive={true} data={this.statistic} cx={200} cy={100} outerRadius={80} fill="#8884d8" label>
+        {this.statistic!==undefined ? 
+          this.statistic.map((entry, index) => <Cell fill={this.colors[index % this.colors.length]}/>)
+          : <span></span>
+        }
+        </Pie>
         <Tooltip/>
       </PieChart>
     )

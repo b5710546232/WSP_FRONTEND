@@ -25,12 +25,6 @@ class StatisticBody extends Component {
   }
 
   render() {
-    console.log(this.props.statistic.category,"category");
-    console.log(this.props.statistic.moneyProduct,"moneyProduct");
-    console.log(this.props.statistic.userPayment,"userPayment");
-    console.log(this.props.statistic.userOrder,"userOrder");
-    console.log(this.props.statistic.userShipping,"userShipping");
-    console.log(this.props.statistic.address,"address");
     return(
       <li className="white">
         <div className="collapsible-header white">Statistic</div>
