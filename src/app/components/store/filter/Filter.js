@@ -15,21 +15,20 @@ class Filter extends Component {
   render() {
     return (
       <div className="col s12 ">
-        <div className="filter white  z-depth-2 ">
-          <div className="row ">
-              <h5 className="container ">Category</h5>
-          </div>
-          <div className="container ">
-            <div className="filter-component row " >
-              {this.props.categories.map((category) =>
-                (<FilterItem
-                  key={category.id}
-                  name ={category.name}
-                  check ={category.checked}
-                  {...category}
-                  />)
-              )}
-            </div>
+
+        <div className="row ">
+          <h5 className="container ">Category</h5>
+        </div>
+        <div className="container ">
+          <div className="filter-component row " >
+            {this.props.categories.map((category) =>
+              (<FilterItem
+                key={category.id}
+                name ={category.name}
+                check ={category.checked}
+                {...category}
+               />)
+            )}
           </div>
         </div>
       </div>

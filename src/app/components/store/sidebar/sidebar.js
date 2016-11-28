@@ -9,7 +9,7 @@ export default class Sidebar extends Component{
   render(){
     return(
       <div>
-        <ul id="slide-out" className="side-nav">
+        <ul id="slide-out" className="side-nav white">
           {/* <li><a href="#!"><i className="material-icons">cloud</i>First Link With Icon</a></li> */}
           <li><Sort/></li>
           <li><Search/></li>

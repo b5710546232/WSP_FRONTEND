@@ -29,24 +29,22 @@ class Search extends Component{
   }
 
   render() {
+    let margin = {
+      paddingLeft : "10px",
+      paddingRight : "10px"
+    }
     return (
-        <div className="col s12 ">
-          <div className="filter white  z-depth-2 ">
-            <Row>
-            <Col s={12}>
-              <div className="container ">
-                <input  id="search"
-                        type="text"
-                        required placeholder="Search..."
-                        value={this.state.search}
-                        onChange={(e)=>this.updateSearch(e)}/>
-              </div>
-            </Col>
-            </Row>
-          </div>
-        </div>
+        <div
+          style={margin}
+        >
+          <Input
+            placeholder="Search..."
+            onChange={(e)=>this.updateSearch(e)          }
+            s={12}
 
-    )
+          />
+        </div>
+      )
   }
 }
 const mapStateToProps = (state) => {
