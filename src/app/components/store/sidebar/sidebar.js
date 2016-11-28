@@ -7,6 +7,9 @@ export default class Sidebar extends Component{
     $("#filterSide").sideNav();
   }
   render(){
+    let fix = {
+      position : "fixed"
+    }
     return(
       <div>
         <ul id="slide-out-filter" className="side-nav white">
@@ -18,7 +21,7 @@ export default class Sidebar extends Component{
           {/* <li><a href="#!">Second Link</a></li> */}
           {/* <li><a className="waves-effect" href="#!">Third Link With Waves</a></li> */}
         </ul>
-        <a data-activates="slide-out-filter" id="filterSide" className="waves-effect waves-light btn button-collapse">Sort/Search/Filter</a>
+        <a style={fix} data-activates="slide-out-filter" id="filterSide" className="waves-effect waves-light btn button-collapse">Sort/Search/Filter</a>
       </div>
     )
   }
