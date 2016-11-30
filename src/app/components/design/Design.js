@@ -165,7 +165,6 @@ class Design extends Component {
       array.push(blobBin.charCodeAt(i));
     }
     let file=new Blob([new Uint8Array(array)], {type: 'image/png'});
-    console.log(this.props);
     let path = "design-"+localStorage.token+'-'+(this.props.design.length+1)+".png"
     uploadImage(path,file)
     let data = {

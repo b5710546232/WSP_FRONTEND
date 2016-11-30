@@ -21,6 +21,7 @@ export const addDesign = (data,token) => (
             type: 'ADD_DESIGN_SUCCESS',
             payload: (_action, _state, res) => {
               return res.json().then((data) => {
+                Materialize.toast('Design Added!', 4000,'light-blue')
                 dispatch(loadDesignList(token))
                 return data
               })
