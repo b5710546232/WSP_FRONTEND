@@ -3,6 +3,7 @@ import {check_admin} from '../../actions/UserAction'
 import {loadUser,loadOrder,loadAddress,loadProduct,loadItemLine,loadCategory,loadMethod} from '../../actions/AdminAction'
 import {loadUserdata} from '../../actions/UserAction'
 import {connect} from 'react-redux'
+import AppFooter from '../footer/AppFooter'
 import SideNav from './SideNav'
 class AdminCP extends Component {
   componentDidMount(){
@@ -25,10 +26,9 @@ class AdminCP extends Component {
         <div className="row">
           <div className="col s12 m12 l3"></div>
           <div className="col s12 m12 l9">
-            <div className="container">
-              aaadsadsadsadsadsadsadsadassssssssssssssaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            </div>
+            {this.props.children}
           </div>
+
         </div>
 
       </div>

@@ -7,7 +7,8 @@ import {
   Store,
   Admin,
   Design,
-  AdminCP
+  AdminCP,
+  DashBoard
 } from './components'
 
 export default (store,history) => {
@@ -26,7 +27,7 @@ export default (store,history) => {
          </route>
        </Router>
        <Router path='/admin-cp' component={AdminCP}>
-         {/* <IndexRoute component={Home}/> */}
+         <IndexRoute component={DashBoard}/>
        </Router>
      </Router>
   )
