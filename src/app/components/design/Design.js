@@ -52,9 +52,9 @@ class Design extends Component {
       let locationY = 300
       let scale = 64/self.logo.width
       console.log(self.logo.width);
-      if ($(window).width()<1000){
+      if ($(window).width()<800){
         locationX = $(window).width()/2
-        locationY = $(window).height()/2+100
+        locationY = $(window).height()/2
       }
       self.logo.position.x = locationX;
       self.logo.position.y = locationY;
@@ -84,7 +84,7 @@ class Design extends Component {
       self.banner.position.x = 100;
       self.banner.position.y = 100;
       self.banner.anchor.set(0.5);
-      self.banner.scale.set(0.5);
+      self.banner.scale.set(scale);
       // Add the logo to the scene we are building.
       self.stage.addChild(self.bottle);
       self.stage.addChild(self.banner)
