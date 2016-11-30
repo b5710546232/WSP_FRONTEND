@@ -195,20 +195,34 @@ class Design extends Component {
           <div className="row" style={buttonStyle}>
             <Button onClick={(e)=>this.onSave(e)}>Save</Button>
           </div>
-          <div className="row" style={buttonStyle}>
-            <DesignModal />
+          <div className="row center" style={buttonStyle}>
+            <div className="container center" align="center">
+              <div className="col s12 m4">
+                <SelectBottleModal
+                  selectBottle = {this.setBottle.bind(this)}
+                />
+              </div>
+              <div className="col s12 m4">
+                <DesignModal />
+              </div>
+              <div className="col s12 m4">
+                <SelectLogoModal
+                  selectLogo = {this.setLogo.bind(this)}
+                />
+              </div>
+            </div>
+
+
+
           </div>
-          <div className="row" style={buttonStyle}>
-            <SelectBottleModal
-              selectBottle = {this.setBottle.bind(this)}
-            />
-            <SelectLogoModal
-              selectLogo = {this.setLogo.bind(this)}
-            />
-            <SelectBannerModal
-              selectBanner = {this.setBanner.bind(this)}
-              />
-          </div>
+          {/* <div className="row" style={buttonStyle}>
+
+
+            {/* <SelectBannerModal
+            selectBanner = {this.setBanner.bind(this)}
+          /> */}
+          {/* </div>  */}
+
         </div>
       </ParallaxSection>
     )

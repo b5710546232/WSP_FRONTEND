@@ -49,7 +49,7 @@ class SelectLogoModal extends Component {
           {
             this.props.logo.map((logo)=>(
               <div className="col s12 m3 modal-close" onClick={(e)=>this.setLogo(e,"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+logo.img)}>
-                <img className="responsive-img light-blue" src={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+logo.img}></img>
+                <img crossOrigin="Anonymous" className="responsive-img light-blue" src={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+logo.img}></img>
               </div>
             ))
           }
