@@ -43,7 +43,6 @@ class StatisticBody extends Component {
       }
     }
     if (this.props.admin.user.length>0){
-      console.log('debug','adsdsadsadsa');
       this.statistic3 = this.props.statistic.userOrder
       this.colors = []
       for(let i=0;i<this.statistic3.length;i++){
