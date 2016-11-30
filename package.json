@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --hot --inline --progress --open",
     "start-server": "NODE_ENV=production webpack-dev-server --hot --host 0.0.0.0 --port 8080 --inline --progress",
     "start-win": "cross-env NODE_ENV=production webpack-dev-server --hot --inline --progress --open",
-    "build": "npm run test && cross-env NODE_ENV=production webpack --progress --colors --optimize-min",
+    "build": " cross-env NODE_ENV=production webpack --progress --colors --optimize-min",
     "build-server": "NODE_ENV=production  webpack --display-chunks --optimize-min --display-reasons --progress --color",
     "test": "mocha -r mock-local-storage --compilers js:babel-register --require ./test/test-helper --recursive ",
     "test:watch": "npm run test -- --watch --watch-extensions jsx"
