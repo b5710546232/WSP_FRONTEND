@@ -51,8 +51,8 @@ class BottleModal extends Component {
       >
         <div className="row">
           {
-            this.props.admin.bottle.map((bottle)=>(
-              <div className="col s12 m5" style={margin} >
+            this.props.admin.bottle.map((bottle,index)=>(
+            < div key={index} className="col s12 m5" style={margin} >
                 <div className="row center">
                   <img className="responsive-img light-blue" src={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+bottle.img}></img>
                 </div>

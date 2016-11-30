@@ -51,8 +51,8 @@ class LogoModal extends Component {
       >
         <div className="row">
           {
-            this.props.admin.logo.map((logo)=>(
-              <div className="col s12 m5" style={margin} >
+            this.props.admin.logo.map((logo,index)=>(
+              <div key={index} className="col s12 m5" style={margin} >
                 <div className="row center">
                   <img className="responsive-img light-blue" src={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+logo.img}></img>
                 </div>

@@ -25,8 +25,8 @@ class DesignModal extends Component {
       >
         <div className="row">
           {
-            this.props.admin.design.filter((design)=>(design.is_request&&design.is_active)).map((design)=>(
-              <div className="col s12 m6" >
+            this.props.admin.design.filter((design)=>(design.is_request&&design.is_active)).map((design,index)=>(
+              <div key={index} className="col s12 m6" >
                 <img className="responsive-img" src={"https://s3.ap-northeast-2.amazonaws.com/naturedrink-seoul/"+design.image}></img>
                 <div className="row center">
                   <span>By {this.props.admin.user.find((user)=>user.id==design.user).username}</span>
