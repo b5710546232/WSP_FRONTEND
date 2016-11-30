@@ -30,17 +30,19 @@ class ItemInfoModal extends Component {
           <img className="item-preview" src={this.props.image}/>
           <div className="section ">
             <h3>{this.props.name} {this.props.price}฿/pack</h3>
-            <p className="flow-text">
-              {this.props.description}
-            </p>
+            <Row>
+              <Col s={12}>
+                <div dangerouslySetInnerHTML={{__html: this.props.description}} ></div>
+              </Col>
+            </Row>
             {this.props.user.isLogin?
               <Row>
                 <Col>
                   <span className="flow-text">Quantity : </span>
                 </Col>
 
-                  <Input type="number" lable="Quantity" ref="quantity" defaultValue={1} s={12} m={1} style={margin  } />
-                  <Button type="submit" onClick = {(e)=>this.addToCart(e)} >Add to cart</Button>
+                <Input type="number" lable="Quantity" ref="quantity" defaultValue={1} s={12} m={1} style={margin  } />
+                <Button type="submit" onClick = {(e)=>this.addToCart(e)} >Add to cart</Button>
               </Row>:
               <div></div>
             }

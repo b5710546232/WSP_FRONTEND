@@ -54,7 +54,7 @@ class Design extends Component {
       console.log(self.logo.width);
       if ($(window).width()<1000){
         locationX = $(window).width()/2
-        locationY = $(window).width()/2+100
+        locationY = $(window).height()/2+100
       }
       self.logo.position.x = locationX;
       self.logo.position.y = locationY;
