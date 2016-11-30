@@ -196,19 +196,13 @@ class Design extends Component {
           </div>
           <div className="row center" style={buttonStyle}>
             <div className="container center" align="center">
-              <div className="col s12 m4">
-                <SelectBottleModal
-                  selectBottle = {this.setBottle.bind(this)}
-                />
-              </div>
-              <div className="col s12 m4">
-                <DesignModal />
-              </div>
-              <div className="col s12 m4">
-                <SelectLogoModal
-                  selectLogo = {this.setLogo.bind(this)}
-                />
-              </div>
+              <SelectBottleModal
+                selectBottle = {this.setBottle.bind(this)}
+              />
+              <DesignModal />
+              <SelectLogoModal
+                selectLogo = {this.setLogo.bind(this)}
+              />
             </div>
 
 
