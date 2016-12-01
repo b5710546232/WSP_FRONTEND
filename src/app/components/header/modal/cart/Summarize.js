@@ -11,6 +11,7 @@ class Summarize extends Component {
   constructor(props) {
     super(props);
     // this.state = {total_price:0}
+    this.total_price = 0
   }
 
   onConfirm(e){
@@ -75,7 +76,7 @@ class Summarize extends Component {
         transactions: [
           {
             amount: {
-              total: this.total_price *0.028,
+              total: this.total_price,
               currency: "USD"
             },
             description: ""
