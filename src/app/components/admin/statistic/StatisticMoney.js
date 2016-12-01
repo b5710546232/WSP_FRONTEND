@@ -5,7 +5,6 @@ import {LineChart,Line,CartesianGrid,XAxis,YAxis,Tooltip,Legend,PieChart,Pie,Cel
 import {loadMoneyProduct} from '../../../actions/StatisticAction'
 
 class StatisticMoney extends Component {
-
   componentDidMount(){
     this.props.loadMoneyProduct()
   }
@@ -33,7 +32,7 @@ class StatisticMoney extends Component {
     return(
       <PieChart width={730} height={250}>
         <Pie isAnimationActive={true} data={this.statistic} cx={200} cy={100} outerRadius={80} fill="#8884d8" label>
-        {this.statistic!==undefined ? 
+        {this.statistic!==undefined ?
           this.statistic.map((entry, index) => <Cell fill={this.colors[index % this.colors.length]}/>)
           : <span></span>
         }

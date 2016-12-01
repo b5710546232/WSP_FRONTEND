@@ -30,14 +30,16 @@ class CartModal extends Component {
     console.log(this.state);
     this.setState({cart_info:true,payment_info:false,summarize:false})
   }
-  toConfirm(select_address,select_method){
+  toConfirm(select_address,select_method,credit_token,credit_data){
     this.setState(
       {
         cart_info:false,
         payment_info:false,
         summarize:true,
         select_address:select_address,
-        select_method:select_method
+        select_method:select_method,
+        credit_token:credit_token,
+        credit_data:credit_data
       })
   }
   toPayment(){
@@ -104,6 +106,8 @@ class CartModal extends Component {
           <Summarize
             select_method={this.state.select_method}
             select_address={this.state.select_address}
+            credit_token={this.state.credit_token}
+            credit_data={this.state.credit_data}
             back={this.toPayment.bind(this)}
             close={this.close.bind(this)}
             />:<div></div>

@@ -1,7 +1,6 @@
 import {Action} from '../constants';
 import { CALL_API } from 'redux-api-middleware'
 import {PAYMENTMETHOD_ENDPOINT} from '../constants/endpoints'
-
 // Add new Product [Staff]
 export const createPaymentMethod = (data,token) => (
   (dispatch) =>
@@ -113,4 +112,41 @@ export const reactivePaymentMethod = (id,token) => (
     method: 'PUT',
     types: ['REACTIVE_PAYMENTMETHOD_REQUEST', 'REACTIVE_PAYMENTMETHOD_SUCCESS', 'REACTIVE_PAYMENTMETHOD_FAILURE']
   }}
+)
+
+// Get Credit Card Token From Paypal
+const AUTH_ID = 'AeMa_jaHkdJJdMWgyOD2y5O9AL6NtnEeYrFlXxY51vEyo3-HOd2YHDMVxGdoAK2c8v_1UO5UYa5Piza-:EAuj6P6rT7T7a9ZuBLKPsxkCfkr-YJ190CeOZ19yQshkKlme8HT39K-O0TUYyaMHXSnnE_ymls_PTCBW'
+export const getCreditCardToken = (token) => (
+  (dispatch) =>
+    dispatch({
+      [CALL_API]: {
+        endpoint: PAYPAL_ENDPOINT,
+        headers: {
+          Accept: 'application/json',
+         'Accept-Language': "es_US",
+          Authorization: 'Basic ' + AUTH_ID,
+         'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: JSON.stringify(data),
+        data: {
+         grant_type: 'client_credentials'
+       },
+        method: 'POST',
+        types: [
+          'GETCREDITCARDTOKEN_REQUEST',
+          {
+            type: 'GETCREDITCARDTOKEN_SUCCESS',
+            payload: (res) => {
+              return res.json().then((data) => {
+                console.log('paymethod',data);
+                return data
+              }).catch((err) => {
+                console.log(err);
+              })
+            }
+          }
+        ]
+      }
+    }
+  )
 )
