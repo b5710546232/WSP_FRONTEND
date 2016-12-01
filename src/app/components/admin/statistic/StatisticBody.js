@@ -28,41 +28,41 @@ class StatisticBody extends Component {
   componentWillUpdate(){
     if (this.props.admin.product.length>0){
       this.statistic = this.props.statistic.product
-      this.colors = []
+      this.colors1 = []
       for(let i=0;i<this.statistic.length;i++){
         this.statistic[i].name = this.props.admin.product.find((product)=>(product.id==this.statistic[i].product)).name
         this.statistic[i].value = this.statistic[i].amount
-        this.colors.push(this.getRandomColor())
+        this.colors1.push(this.getRandomColor())
       }
       this.statistic2 = this.props.statistic.moneyProduct
-      this.colors = []
+      this.colors2 = []
       for(let i=0;i<this.statistic2.length;i++){
         this.statistic2[i].name = this.props.admin.product.find((product)=>(product.id==this.statistic2[i].product)).name
         this.statistic2[i].value = this.statistic2[i].amount
-        this.colors.push(this.getRandomColor())
+        this.colors2.push(this.getRandomColor())
       }
     }
     if (this.props.admin.user.length>0){
       this.statistic3 = this.props.statistic.userOrder
-      this.colors = []
+      this.colors3 = []
       for(let i=0;i<this.statistic3.length;i++){
         this.statistic3[i].name = this.props.admin.user.find((user)=>(user.id==this.statistic3[i].user)).username
         this.statistic3[i].value = this.statistic3[i].amount
-        this.colors.push(this.getRandomColor())
+        this.colors3.push(this.getRandomColor())
       }
       this.statistic4 = this.props.statistic.userPayment
-      this.colors = []
+      this.colors4 = []
       for(let i=0;i<this.statistic4.length;i++){
         this.statistic4[i].name = this.props.admin.user.find((user)=>(user.id==this.statistic4[i].user)).username
         this.statistic4[i].value = this.statistic4[i].amount
-        this.colors.push(this.getRandomColor())
+        this.colors4.push(this.getRandomColor())
       }
       this.statistic5 = this.props.statistic.userShipping
-      this.colors = []
+      this.colors5 = []
       for(let i=0;i<this.statistic5.length;i++){
         this.statistic5[i].name = this.props.admin.user.find((user)=>(user.id==this.statistic5[i].user)).username
         this.statistic5[i].value = this.statistic5[i].amount
-        this.colors.push(this.getRandomColor())
+        this.colors5.push(this.getRandomColor())
       }
     }
   }
@@ -93,7 +93,7 @@ class StatisticBody extends Component {
                       <PieChart width={300} height={300} className="center-align" >
                         <Pie isAnimationActive={true} data={this.statistic} cx={120} cy={150} outerRadius={90} fill="#8884d8" label>
                           {this.statistic!==undefined ?
-                            this.statistic.map((entry, index) => <Cell key={index} fill={this.colors[index % this.colors.length]}/>)
+                            this.statistic.map((entry, index) => <Cell key={index} fill={this.colors1[index % this.colors1.length]}/>)
                             : <span></span>
                           }
                         </Pie>
@@ -149,7 +149,7 @@ class StatisticBody extends Component {
                   <PieChart width={300} height={300} className="center-align">
                     <Pie isAnimationActive={true} data={this.statistic2} cx={120} cy={150} outerRadius={90} fill="#8884d8" label>
                       {this.statistic2!==undefined ?
-                        this.statistic2.map((entry, index) => <Cell key={index} fill={this.colors[index % this.colors.length]} />)
+                        this.statistic2.map((entry, index) => <Cell key={index} fill={this.colors2[index % this.colors2.length]} />)
                         : <span></span>
                       }
                     </Pie>
@@ -203,7 +203,7 @@ class StatisticBody extends Component {
                   <PieChart width={300} height={300} className="center-align">
                     <Pie isAnimationActive={true} data={this.statistic3} cx={120} cy={150} outerRadius={90} fill="#8884d8" label>
                       {this.statistic3!==undefined ?
-                        this.statistic3.map((entry, index) => <Cell key={index} fill={this.colors[index % this.colors.length]} />)
+                        this.statistic3.map((entry, index) => <Cell key={index} fill={this.colors3[index % this.colors3.length]} />)
                         : <span></span>
                       }
                     </Pie>
@@ -257,7 +257,7 @@ class StatisticBody extends Component {
                   <PieChart width={300} height={300} className="center-align">
                     <Pie isAnimationActive={true} data={this.statistic4} cx={120} cy={150} outerRadius={90} fill="#8884d8" label>
                       {this.statistic4!==undefined ?
-                        this.statistic4.map((entry, index) => <Cell key={index} fill={this.colors[index % this.colors.length]} />)
+                        this.statistic4.map((entry, index) => <Cell key={index} fill={this.colors4[index % this.colors4.length]} />)
                         : <span></span>
                       }
                     </Pie>
@@ -311,7 +311,7 @@ class StatisticBody extends Component {
                   <PieChart width={300} height={300} className="center-align">
                     <Pie isAnimationActive={true} data={this.statistic5} cx={120} cy={150} outerRadius={90} fill="#8884d8" label>
                       {this.statistic5!==undefined ?
-                        this.statistic5.map((entry, index) => <Cell key={index} fill={this.colors[index % this.colors.length]} />)
+                        this.statistic5.map((entry, index) => <Cell key={index} fill={this.colors5[index % this.colors5.length]} />)
                         : <span></span>
                       }
                     </Pie>
