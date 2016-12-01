@@ -17,20 +17,6 @@ describe('Admin Reducer', () => {
       method : []
     }
   })
-
-  it('should return correct initial state', () => {
-    const expectedState = {
-      user : [],
-      address : [],
-      product : [],
-      category : [],
-      order : [],
-      item_line : [],
-      method : []
-    }
-
-    expect(reducer(undefined, {})).to.deep.equal(expectedState)
-  })
   describe('Admin load user', () => {
     it('should loading the user data if request success', () => {
       const action = {
