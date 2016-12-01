@@ -21,7 +21,8 @@ class PaymentInfo extends Component {
   }
   onCancel(e) {
     e.preventDefault()
-    this.setState(add_address:false)
+    console.log('cancel');
+    this.setState({add_address:false})
   }
   shouldComponentUpdate(nextProps){
     return this.props.address !== nextProps
@@ -87,18 +88,18 @@ class PaymentInfo extends Component {
           <Input s={12} type='select' name="select_method" label="Select Payment Method" ref="select_method" >
             {
               this.props.paymentMethods.filter((method)=>method.is_active===true).map((method) =>
-                (
-                  <option key={method.id} value={method.id} >{method.name}</option>
-                )
+              (
+                <option key={method.id} value={method.id} >{method.name}</option>
+              )
               )
             }
           </Input>
           <Input s={12} type='select' name="select_address" label="Select Address" ref="select_address" >
             {
               this.props.address.map((address) =>
-                (
-                  <option key={address.id} value={address.id} >{address.address_number} {address.province}</option>
-                )
+              (
+                <option key={address.id} value={address.id} >{address.address_number} {address.province}</option>
+              )
               )
             }
           </Input>
